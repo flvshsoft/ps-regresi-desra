@@ -45,23 +45,24 @@
                                             <?= $value['nama_lengkap'] ?>
                                         </td>
                                         <td style="font-size: 11px;">
-                                            <?= $value['weeks']?>
+                                            <?= $value['weeks'] ?>
                                         </td>
                                         <td style="font-size: 11px;">
-                                            <?= $value['nama_area']?>
+                                            <?= $value['nama_area'] ?>
                                         </td>
                                         <td style="font-size: 11px;">
 
                                         </td>
                                         <td style="font-size: 11px;">
-                                            <?= $value['created_at']?>
+                                            <?= $value['created_at'] ?>
                                         </td>
                                         <td style="font-size: 11px;">
 
                                         </td>
                                         <td style="font-size: 11px;">
                                             <div class="justify-content-center text-center">
-                                                <a href="<?= base_url('/akk/detail_input_piutang') ?>">
+                                                <a
+                                                    href="<?= base_url('/akk/detail_input_piutang/' . $value['id_sales']) ?>">
                                                     <i class="mdi mdi-database-plus icon-md"></i>
                                                 </a>
                                             </div>

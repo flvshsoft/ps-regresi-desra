@@ -14,7 +14,7 @@ class notaModel extends Model
     protected $returnType = 'array';
     protected $usSoftDeletes = true;
 
-    protected $allowedFields = ['id_sales',  'id_partner', 'id_customer', 'id_area', 'weeks', 'payment_method', 'created_by', 'pay', 'id_bank', 'tgl_bayar'];
+    protected $allowedFields = ['id_sales',  'id_partner', 'id_customer', 'total_beli', 'id_area', 'weeks', 'payment_method', 'created_by', 'pay', 'id_bank', 'tgl_bayar'];
 
     protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';

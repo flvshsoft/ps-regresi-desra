@@ -93,7 +93,6 @@ $routes->post('/akk/input_detail_closing', 'admin_kas_kecil\transaksi\closingSal
 $routes->get('/akk/master_closing', 'admin_kas_kecil\transaksi\closingSalesController::master_closing');
 $routes->get('/akk/closing_sales_print/(:any)', 'admin_kas_kecil\transaksi\closingSalesController::print/$1');
 
-
 $routes->get('/akk/stock', 'admin_kas_kecil\master\stockController::index');
 $routes->get('/akk/master_stock', 'admin_kas_kecil\master\stockController::tambah');
 $routes->post('/akk/save_stock', 'admin_kas_kecil\master\stockController::input');
@@ -106,8 +105,8 @@ $routes->get('/akk/repayment_detail', 'admin_kas_kecil\piutang_usahaController::
 $routes->get('/akk/form_piutang', 'admin_kas_kecil\piutang_usahaController::form_piutang');
 $routes->get('/akk/input_piutang', 'admin_kas_kecil\piutang\tunaiController::index');
 $routes->get('/akk/input_piutang_kredit', 'admin_kas_kecil\piutang\kreditController::index');
-$routes->get('/akk/detail_input_piutang', 'admin_kas_kecil\piutang\tunaiController::detail_input_piutang');
-$routes->get('/akk/detail_input_piutang_kredit', 'admin_kas_kecil\piutang\kreditController::detail_input_piutang_kredit');
+$routes->get('/akk/detail_input_piutang/(:any)', 'admin_kas_kecil\piutang\tunaiController::detail_input_piutang/$1');
+$routes->get('/akk/detail_input_piutang_kredit/(:any)', 'admin_kas_kecil\piutang\kreditController::detail_input_piutang_kredit/$1');
 
 $routes->get('/akk/master_bank', 'admin_kas_kecil\master\bankController::index');
 $routes->post('/akk/input_bank', 'admin_kas_kecil\master\bankController::input');
@@ -138,10 +137,10 @@ $routes->get('/akk/edit_detail_price/(:any)', 'admin_kas_kecil\master\priceContr
 $routes->post('/akk/update_detail_price', 'admin_kas_kecil\master\priceController::update_detail_price');
 $routes->get('/akk/del_price_detail/(:any)', 'admin_kas_kecil\master\priceController::hapus_detail_price/$1');
 $routes->post('/tambah_nama_harga', 'admin_kas_kecil\master\priceController::tambah_nama_harga');
+
 $routes->post('/proses_login', 'LoginController::proseslogin');
 $routes->post('/proses_register', 'LoginController::proses_register');
 $routes->get('/logout', 'LoginController::logout');
-
 
 $routes->get('/keuangan', 'admin\keuanganController::index');
 $routes->get('/konsumen', 'admin\konsumenController::index');

@@ -109,6 +109,8 @@ class closingSalesController extends BaseController
         $data['lastIdNotaDetail'] = $this->mdNotaDetail->getLastIdNotaDetail();
         $data['sales_detail'] = $this->mdSalesDetail
             ->join('product', 'product.id_product=sales_detail.id_product')
+            //->join('product', 'product.id_product=price_detail.id_product')
+            ->join('price_detail', 'price_detail.id_price_detail=sales_detail.id_price_detail')
             ->join('nota', 'nota.id_sales=sales_detail.id_sales')
             ->where('id_nota', $id_nota)
             ->findAll();
@@ -156,10 +158,29 @@ class closingSalesController extends BaseController
             //'created_by' => SESSION('userData')['id_user'],
             //'tgl_bayar' =>  $this->request->getPost('tgl_bayar'),
         ];
-        // print_r($data);
-        // exit;
         $this->mdNotaDetail->insert($data);
 
+
+        //total
+        $data['model'] = $this->mdNotaDetail
+            ->join('sales_detail', 'sales_detail.id_sales_detail=nota_detail.id_sales_detail')
+            ->join('product', 'product.id_product=sales_detail.id_product')
+            ->join('price_detail', 'price_detail.id_price_detail=sales_detail.id_price_detail')
+            ->where('nota_detail.id_nota', $id_nota)
+            ->findAll();
+
+        $total = 0;
+        foreach ($data['model'] as $key => $value) {
+            $total += ($value['harga'] * $value['satuan_penjualan']) - $value['diskon_penjualan'];
+        }
+        $data['total'] = $total;
+        //update nota
+
+        $data2 = [
+            'id_nota' => $id_nota,
+            'total_beli' => $total,
+        ];
+        $this->mdNota->save($data2);
 
         return redirect()->to(base_url('/akk/closing_detail/' . $id_nota));
     }

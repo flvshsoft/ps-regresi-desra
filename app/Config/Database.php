@@ -29,7 +29,7 @@ class Database extends Config
         'hostname' => 'localhost',
         'username' => 'root',
         'password' => '',
-        'database' => 'sh_bintang',
+        'database' => 'bintang_distributor',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
