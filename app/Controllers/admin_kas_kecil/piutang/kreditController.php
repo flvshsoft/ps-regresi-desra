@@ -42,4 +42,13 @@ class kreditController extends BaseController
 
         return view('admin_kas_kecil/piutang_usaha/kredit/tambah', $data);
     }
+    public function add()
+    {
+        $id_sales = $this->request->getPost('id_sales');
+        $id_nota =  $this->request->getPost('id_nota');
+        $pay =  $this->request->getPost('pay');
+
+        $this->mdNota->where('id_nota', $id_nota)->increment('pay', $pay);
+        return redirect()->to(base_url('/akk/detail_input_piutang_kredit/' . $id_sales));
+    }
 }

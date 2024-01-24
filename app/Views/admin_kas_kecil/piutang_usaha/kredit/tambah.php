@@ -25,30 +25,36 @@
                         <div class="form-group row mb-0">
                             <label for="exampleInputUsername2" class="col-sm-3 col-form-label">No. DO</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control form-control-sm" disabled value="<?= $info['id_sales'] ?>">
+                                <input type="text" class="form-control form-control-sm" disabled name="id_sales"
+                                    value="<?= $info['id_sales'] ?>">
+
                             </div>
                         </div>
                         <div class="form-group row mb-0">
                             <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Salesman</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control form-control-sm" disabled value="<?= $info['nama_lengkap'] ?>">
+                                <input type="text" class="form-control form-control-sm" disabled
+                                    value="<?= $info['nama_lengkap'] ?>">
                             </div>
                         </div>
                         <div class="form-group row mb-0">
                             <label for="exampleInputMobile" class="col-sm-3 col-form-label">Area / Tujuan</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control form-control-sm" disabled value="<?= $info['nama_area'] ?>">
+                                <input type="text" class="form-control form-control-sm" disabled
+                                    value="<?= $info['nama_area'] ?>">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Minggu</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control form-control-sm" disabled value="<?= $info['week'] ?>">
+                                <input type="text" class="form-control form-control-sm" disabled
+                                    value="<?= $info['week'] ?>">
                             </div>
                         </div>
 
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped" id="dataTable" width="100%" height="88%" cellspacing="0">
+                            <table class="table table-bordered table-striped" id="dataTable" width="100%" height="88%"
+                                cellspacing="0">
                                 <thead class="table table-primary">
                                     <tr>
                                         <th style="font-size: 11px;"> NO. Tagihan </th>
@@ -65,15 +71,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($model as $value) {
-                                        $total = 0;
-                                        $tot_bay = $value['harga'] * $value['satuan_penjualan'];
-                                        $total += $tot_bay;
+                                    <?php foreach ($model as $value) { ?>
 
-                                    ?>
-                                        <tr>
+                                    <tr>
+                                        <form method="POST" action="<?= base_url('/akk/add_piutang_kredit') ?>">
                                             <td style="font-size: 11px;">
                                                 <?= $value['id_nota'] ?>
+                                                <input type="hidden" class="form-control form-control-sm" name="id_nota"
+                                                    value="<?= $value['id_nota'] ?>">
+                                                <input type="hidden" class="form-control form-control-sm"
+                                                    name="id_sales" value="<?= $value['id_sales'] ?>">
                                             </td>
                                             <td style="font-size: 11px;">
 
@@ -88,7 +95,7 @@
                                                 <?= $value['nama_customer'] ?>
                                             </td>
                                             <td style="font-size: 11px;">
-                                                <?= 'Rp. ' . number_format($total, 0, ',', '.'); ?>
+                                                <?= 'Rp. ' . number_format($value['total_beli'], 0, ',', '.'); ?>
                                             </td>
                                             <td style="font-size: 11px;">
 
@@ -97,16 +104,21 @@
 
                                             </td>
                                             <td style="font-size: 11px;" width="1090px">
-                                                <input type="text" placeholder="Payment" class="form-control form-control-sm">
+                                                <input type="text" placeholder="Payment" name="pay"
+                                                    class="form-control form-control-sm">
                                             </td>
                                             <td style="font-size: 11px;">
-                                                <div class="justify-content-center text-center">
-                                                    <a href="#" class="btn btn-success btn-xs">
-                                                        S
-                                                    </a>
-                                                </div>
+                                                <!-- <div class="justify-content-center text-center"> -->
+
+                                                <button type="submit" class="btn btn-success btn-xs">
+                                                    S
+                                                </button>
+
+                                                <!-- </div> -->
                                             </td>
-                                        </tr>
+                                        </form>
+                                    </tr>
+
                                     <?php }; ?>
                                 </tbody>
                             </table>
@@ -119,12 +131,12 @@
 </div>
 
 <style>
-    .table-bordered-custom {
-        border: 1px solid #000;
-        /* Ganti dengan warna dan ketebalan sesuai preferensi Anda */
-    }
+.table-bordered-custom {
+    border: 1px solid #000;
+    /* Ganti dengan warna dan ketebalan sesuai preferensi Anda */
+}
 
-    /* Tambahkan class ini pada tabel Anda */
+/* Tambahkan class ini pada tabel Anda */
 </style>
 
 <?= $this->endSection() ?>

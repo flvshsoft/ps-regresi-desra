@@ -1,4 +1,4 @@
-<?= $this->extend('layout/admin'); ?>
+<?= $this->extend('layout/admin_kas_kecil'); ?>
 <?= $this->section('content'); ?>
 
 <div class="main-panel">
@@ -161,22 +161,22 @@
     </div>
 </div>
 <style>
-.menu-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-}
+    .menu-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+    }
 
-.menu-item a {
-    display: flex;
-    align-items: start;
-    text-decoration: none;
-    color: black;
-}
+    .menu-item a {
+        display: flex;
+        align-items: start;
+        text-decoration: none;
+        color: black;
+    }
 
-.menu-item i {
-    margin-right: 10px;
-}
+    .menu-item i {
+        margin-right: 10px;
+    }
 </style>
 
 

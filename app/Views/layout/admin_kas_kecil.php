@@ -257,13 +257,13 @@ use CodeIgniter\Session\Session;
                         <span class="menu-title">Penjualan</span>
                         <i class="mdi mdi-file-pdf-box menu-icon text-white text-shadow"></i>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url() ?>/akk/laporan">
                         <span class="menu-title">Laporan</span>
-                        <i class="mdi mdi-file-pdf-box menu-icon text-white text-shadow"></i>
+                        <i class="mdi mdi-file-pdf-box menu-icon text-whitex text-shadow"></i>
                     </a>
-                </li> -->
+                </li>
                 <!-- <li class="nav-item">
                     <a class="nav-link" href="<?= base_url() ?>/akk/keuangan">
                         <span class="menu-title">Keuangan</span>
