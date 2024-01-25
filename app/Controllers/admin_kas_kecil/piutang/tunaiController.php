@@ -41,4 +41,23 @@ class tunaiController extends BaseController
             ->findAll();
         return view('admin_kas_kecil/piutang_usaha/lunas/tambah', $data);
     }
+    public function add()
+    {
+        $id_sales = $this->request->getPost('id_sales');
+        $id_nota =  $this->request->getPost('id_nota');
+
+        // Periksa apakah checkbox dicentang
+        $isChecked = $this->request->getPost('myCheckbox');
+
+        if ($isChecked) {
+            // Jika checkbox dicentang, isi pay dengan total_beli
+            $notaData = $this->mdNota->find($id_nota);
+            if ($notaData) {
+                $totalBeli = $notaData['total_beli'];
+                // Update nilai pay dengan total_beli
+                $this->mdNota->update($id_nota, ['pay' => $totalBeli]);
+            }
+        }
+        return redirect()->to(base_url('/akk/detail_input_piutang/' . $id_sales));
+    }
 }

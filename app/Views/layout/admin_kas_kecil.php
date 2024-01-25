@@ -22,104 +22,105 @@ use CodeIgniter\Session\Session;
     <link rel="shortcut icon" href="<?= base_url() ?>/public/assets/images/favicon1.ico" />
     <link href="<?= base_url() ?>/public/assets/vendors/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <style>
-        p,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            margin-bottom: 0;
-        }
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin-bottom: 0;
+    }
 
-        /* icon app */
+    /* icon app */
 
-        .navbar .navbar-brand-wrapper .navbar-brand {
-            font-size: 15px;
-            font-weight: 600;
-        }
+    .navbar .navbar-brand-wrapper .navbar-brand {
+        font-size: 15px;
+        font-weight: 600;
+    }
 
-        .navbar .navbar-brand-wrapper .navbar-brand img {
-            width: 50px;
-            height: 50px;
-            margin-left: 0px;
-            margin-right: 5%;
-        }
+    .navbar .navbar-brand-wrapper .navbar-brand img {
+        width: 50px;
+        height: 50px;
+        margin-left: 0px;
+        margin-right: 5%;
+    }
 
-        /* tulisan menu active */
-        .sidebar .nav .nav-item.active>.nav-link .menu-title {
-            padding: 2% 5% 2% 5%;
-            font-size: 18px;
-            font-weight: 600;
-            color: #294B29;
-        }
+    /* tulisan menu active */
+    .sidebar .nav .nav-item.active>.nav-link .menu-title {
+        padding: 2% 5% 2% 5%;
+        font-size: 18px;
+        font-weight: 600;
+        color: #294B29;
+    }
 
 
-        /* icon menu */
-        .sidebar .nav .nav-item .nav-link i.menu-icon {
-            color: #FFF;
-            font-size: 30px;
-            margin-left: 0;
-            margin-right: 10px;
-        }
+    /* icon menu */
+    .sidebar .nav .nav-item .nav-link i.menu-icon {
+        color: #FFF;
+        font-size: 30px;
+        margin-left: 0;
+        margin-right: 10px;
+    }
 
-        /* icon menu active */
-        .sidebar .nav .nav-item.active>.nav-link i {
-            color: #294B29;
-            font-size: 30px;
-            margin-left: 20px;
-            margin-right: 0px;
-        }
+    /* icon menu active */
+    .sidebar .nav .nav-item.active>.nav-link i {
+        color: #294B29;
+        font-size: 30px;
+        margin-left: 20px;
+        margin-right: 0px;
+    }
 
-        /* off kan putih */
-        .sidebar .nav .nav-item.active {
-            padding: 3%;
-            background-color: #20a2a0;
-        }
+    /* off kan putih */
+    .sidebar .nav .nav-item.active {
+        padding: 3%;
+        background-color: #20a2a0;
+    }
 
-        /* menu active */
-        .sidebar .nav .nav-item.active>a {
-            background: #FFFFFF;
-            border-radius: 10px;
-            padding: 5% 4% 5% 4%;
-        }
+    /* menu active */
+    .sidebar .nav .nav-item.active>a {
+        background: #FFFFFF;
+        border-radius: 10px;
+        padding: 5% 4% 5% 4%;
+    }
 
-        /* menu off */
-        .sidebar .nav .nav-item .nav-link .menu-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #FFFFFF;
-        }
+    /* menu off */
+    .sidebar .nav .nav-item .nav-link .menu-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #FFFFFF;
+    }
 
-        /* sub menu */
-        .sidebar .nav .nav-item .collapse {
-            margin-left: 20%;
-        }
+    /* sub menu */
+    .sidebar .nav .nav-item .collapse {
+        margin-left: 20%;
+    }
 
-        /* nav ul .active>a {
+    /* nav ul .active>a {
             background: #E95793;
             border-radius: 10px;
             color: #FFFFFF;
         } */
 
-        nav ul .active>a .xn-text {
-            color: #FFFFFF;
-        }
+    nav ul .active>a .xn-text {
+        color: #FFFFFF;
+    }
 
-        nav ul .active>a .fa {
-            color: #FFFFFF;
-        }
+    nav ul .active>a .fa {
+        color: #FFFFFF;
+    }
 
-        nav ul li>a .fa {
-            color: #33414e;
-            font-size: 18px;
-        }
+    nav ul li>a .fa {
+        color: #33414e;
+        font-size: 18px;
+    }
     </style>
 </head>
 
 <body>
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center" style="background-color:#20A2A0 ;">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center"
+            style="background-color:#20A2A0 ;">
             <a class="navbar-brand brand-logo text-white" href="#">
                 <img src="<?= base_url('') ?>/public/assets/images/logo.png" alt="logo" width="30px" />
                 BRMADISTRO
@@ -130,16 +131,19 @@ use CodeIgniter\Session\Session;
             </a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
-            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize" id="sidebarToggle">
+            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize"
+                id="sidebarToggle">
                 <span class="mdi mdi-menu"></span>
             </button>
             <ul class="navbar-nav navbar-nav-right">
                 <li class="nav-item dropdown">
-                    <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
+                    <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
+                        data-bs-toggle="dropdown">
                         <i class="mdi mdi-bell-outline"></i>
                         <span class="count-symbol bg-danger"></span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+                        aria-labelledby="notificationDropdown">
                         <h6 class="p-3 mb-0">Notifications</h6>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item preview-item">
@@ -148,7 +152,8 @@ use CodeIgniter\Session\Session;
                                     <i class="mdi mdi-calendar"></i>
                                 </div>
                             </div>
-                            <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                            <div
+                                class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                                 <h6 class="preview-subject font-weight-normal mb-1">Event today</h6>
                                 <p class="text-gray ellipsis mb-0"> Just a reminder that you have an event today </p>
                             </div>
@@ -160,7 +165,8 @@ use CodeIgniter\Session\Session;
                                     <i class="mdi mdi-settings"></i>
                                 </div>
                             </div>
-                            <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                            <div
+                                class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                                 <h6 class="preview-subject font-weight-normal mb-1">Settings</h6>
                                 <p class="text-gray ellipsis mb-0"> Update dashboard </p>
                             </div>
@@ -172,7 +178,8 @@ use CodeIgniter\Session\Session;
                                     <i class="mdi mdi-link-variant"></i>
                                 </div>
                             </div>
-                            <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                            <div
+                                class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                                 <h6 class="preview-subject font-weight-normal mb-1">Launch Admin</h6>
                                 <p class="text-gray ellipsis mb-0"> New admin wow! </p>
                             </div>
@@ -182,7 +189,8 @@ use CodeIgniter\Session\Session;
                     </div>
                 </li>
                 <li class="nav-item nav-profile dropdown">
-                    <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown"
+                        aria-expanded="false">
                         <div class="nav-profile-text">
                             <p class="mb-1 text-black">
                                 Hai, <?= Session('userData')['nama_user'] ?> , PKU
@@ -203,7 +211,8 @@ use CodeIgniter\Session\Session;
                     </a>
                 </li>
             </ul>
-            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" id="sidebarToggle" type="button" data-toggle="offcanvas">
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" id="sidebarToggle"
+                type="button" data-toggle="offcanvas">
                 <span class="mdi mdi-menu"></span>
             </button>
         </div>
@@ -221,28 +230,40 @@ use CodeIgniter\Session\Session;
                 </li>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
+                        aria-controls="ui-basic">
                         <i class="menu-icon mdi mdi-server-network text-whitex text-shadowx"></i>
                         <span class="menu-title">Master</span>
                         <i class="menu-arrow text-whitex"></i>
                     </a>
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link text-black" href="<?= base_url('/akk/master_area') ?>"> Area</a> </li>
-                            <li class="nav-item"> <a class="nav-link text-black" href="<?= base_url('/akk/master_asset') ?>">Asset</a></li>
-                            <li class="nav-item"> <a class="nav-link text-black" href="<?= base_url('/akk/master_bank') ?>">Bank</a></li>
-                            <li class="nav-item"> <a class="nav-link text-black" href="<?= base_url('/akk/master_product') ?>">Barang</a></li>
-                            <li class="nav-item"> <a class="nav-link text-black" href="<?= base_url('/akk/master_price') ?>">Harga</a></li>
+                            <li class="nav-item"> <a class="nav-link text-black"
+                                    href="<?= base_url('/akk/master_area') ?>"> Area</a> </li>
+                            <li class="nav-item"> <a class="nav-link text-black"
+                                    href="<?= base_url('/akk/master_asset') ?>">Asset</a></li>
+                            <li class="nav-item"> <a class="nav-link text-black"
+                                    href="<?= base_url('/akk/master_bank') ?>">Bank</a></li>
+                            <li class="nav-item"> <a class="nav-link text-black"
+                                    href="<?= base_url('/akk/master_product') ?>">Barang</a></li>
+                            <li class="nav-item"> <a class="nav-link text-black"
+                                    href="<?= base_url('/akk/master_price') ?>">Harga</a></li>
                             <!-- <li class="nav-item"> <a class="nav-link text-black"
                                     href="<?= base_url('/akk/master_jenis_cuti') ?>">Jenis Cuti</a></li> -->
-                            <li class="nav-item"> <a class="nav-link text-black" href="<?= base_url('/akk/master_jenis_harga') ?>">Jenis Harga</a></li>
+                            <li class="nav-item"> <a class="nav-link text-black"
+                                    href="<?= base_url('/akk/master_jenis_harga') ?>">Jenis Harga</a></li>
                             <!-- <li class="nav-item"> <a class="nav-link text-black"
                                     href="<?= base_url('/akk/master_jenis_izin') ?>">Jenis Izin</a></li> -->
-                            <li class="nav-item"> <a class="nav-link text-black" href="<?= base_url('/akk/master_customer') ?>">Konsumen</a></li>
-                            <li class="nav-item"> <a class="nav-link text-black" href="<?= base_url('/akk/master_lokasi') ?>">Lokasi</a></li>
-                            <li class="nav-item"> <a class="nav-link text-black" href="<?= base_url('/akk/master_partner') ?>">Salesman</a></li>
-                            <li class="nav-item"> <a class="nav-link text-black" href="<?= base_url('/akk/master_supplier') ?>">Supplier</a></li>
-                            <li class="nav-item"> <a class="nav-link text-black" href="<?= base_url('/akk/stock') ?>">Stock</a></li>
+                            <li class="nav-item"> <a class="nav-link text-black"
+                                    href="<?= base_url('/akk/master_customer') ?>">Konsumen</a></li>
+                            <li class="nav-item"> <a class="nav-link text-black"
+                                    href="<?= base_url('/akk/master_lokasi') ?>">Lokasi</a></li>
+                            <li class="nav-item"> <a class="nav-link text-black"
+                                    href="<?= base_url('/akk/master_partner') ?>">Salesman</a></li>
+                            <li class="nav-item"> <a class="nav-link text-black"
+                                    href="<?= base_url('/akk/master_supplier') ?>">Supplier</a></li>
+                            <li class="nav-item"> <a class="nav-link text-black"
+                                    href="<?= base_url('/akk/stock') ?>">Stock</a></li>
                         </ul>
                     </div>
                 </li>
@@ -260,8 +281,8 @@ use CodeIgniter\Session\Session;
                 </li> -->
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url() ?>/akk/laporan">
-                        <span class="menu-title">Laporan</span>
                         <i class="mdi mdi-file-pdf-box menu-icon text-whitex text-shadow"></i>
+                        <span class="menu-title">Laporan</span>
                     </a>
                 </li>
                 <!-- <li class="nav-item">
@@ -320,12 +341,12 @@ use CodeIgniter\Session\Session;
     </script>
 
     <script>
-        $(document).ready(function() {
-            $('#sidebar').addClass('hidden');
-            $('#sidebarToggle').on('click', function() {
-                $('#sidebar').toggleClass('hidden');
-            });
+    $(document).ready(function() {
+        $('#sidebar').addClass('hidden');
+        $('#sidebarToggle').on('click', function() {
+            $('#sidebar').toggleClass('hidden');
         });
+    });
     </script>
 
 

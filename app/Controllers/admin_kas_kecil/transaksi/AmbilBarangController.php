@@ -2,7 +2,7 @@
 
 namespace App\Controllers\admin_kas_kecil\transaksi;
 
-class salesController extends BaseController
+class AmbilBarangController extends BaseController
 {
     public function index(): string
     {
@@ -14,7 +14,7 @@ class salesController extends BaseController
             ->join('asset', 'asset.id_asset=sales.id_asset')
             ->orderBy('id_sales', 'DESC')
             ->findAll();
-        return view('admin_kas_kecil/transaksi/sales/index', $data);
+        return view('admin_kas_kecil/transaksi/ambil_barang/index', $data);
     }
     public function tambah(): string
     {
@@ -98,8 +98,8 @@ class salesController extends BaseController
         $data['judul1'] = 'Detail Product';
         $data['model'] = $this->mdSalesDetail
             ->join('sales', 'sales.id_sales=sales_detail.id_sales',)
+            // ->join('product', 'product.id_product=price_detail.id_product')
             ->join('price_detail', 'price_detail.id_price_detail=sales_detail.id_price_detail')
-            ->join('product', 'product.id_product=price_detail.id_product')
             ->join('partner', 'partner.id_partner=sales.id_partner')
             ->where('sales_detail.id_sales', $id_sales)
             ->orderBy('id_sales_detail', 'DESC')
@@ -127,7 +127,7 @@ class salesController extends BaseController
             ->find()[0];
         $data['product'] = $this->mdProduct
             ->join('price_detail', 'price_detail.id_product=product.id_product')
-            // ->join('sales_detail', 'sales_detail.id_price_detail=price_detail.id_price_detail')
+            ->join('sales_detail', 'sales_detail.id_price_detail=price_detail.id_price_detail')
             ->join('jenis_harga', 'jenis_harga.id_jenis_harga=price_detail.id_jenis_harga')
             //->where('id_sales', $id_sales)
             ->findAll();
@@ -146,8 +146,8 @@ class salesController extends BaseController
             ->join('price_detail', 'price_detail.id_product=product.id_product')
             ->join('sales_detail', 'sales_detail.id_price_detail=price_detail.id_price_detail')
             ->join('jenis_harga', 'jenis_harga.id_jenis_harga=price_detail.id_jenis_harga')
-            ->where('price_detail.id_price_detail', $id)
-            ->orderBy('product.id_product', 'ASC')
+            ->where('price_detail.id_product', $id)
+            ->orderBy('id_product', 'ASC')
             ->find()[0];
         // print_r($data);
         return $data['product']['nama_product'] . ';' . $data['product']['stock_product'];

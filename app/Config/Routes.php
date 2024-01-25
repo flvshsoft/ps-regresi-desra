@@ -70,10 +70,15 @@ $routes->get('/akk/del_customer/(:any)', 'admin_kas_kecil\master\customerControl
 $routes->get('/akk/form_customer/(:any)', 'admin_kas_kecil\master\customerController::edit/$1');
 $routes->post('/akk/update_customer', 'admin_kas_kecil\master\customerController::update');
 
+
+//transaksi
+$routes->get('/akk/transaksi', 'admin_kas_kecil\transaksiController::index');
+$routes->get('/akk/transaksi/ambil_barang', 'admin_kas_kecil\transaksi\AmbilBarangController::index');
+
+
 $routes->get('/akk/master_sales', 'admin_kas_kecil\transaksi\salesController::index');
 $routes->get('/akk/sales', 'admin_kas_kecil\transaksi\salesController::tambah');
 $routes->post('/akk/save_sales', 'admin_kas_kecil\transaksi\salesController::input');
-$routes->get('/akk/transaksi', 'admin_kas_kecil\transaksiController::index');
 $routes->get('/akk/del_sales/(:any)', 'admin_kas_kecil\transaksi\salesController::hapus/$1');
 $routes->get('/akk/form_sales/(:any)', 'admin_kas_kecil\transaksi\salesController::edit/$1');
 $routes->post('/akk/update_sales', 'admin_kas_kecil\transaksi\salesController::update');
@@ -105,6 +110,7 @@ $routes->get('/akk/repayment_detail', 'admin_kas_kecil\piutang_usahaController::
 $routes->get('/akk/form_piutang', 'admin_kas_kecil\piutang_usahaController::form_piutang');
 $routes->get('/akk/input_piutang', 'admin_kas_kecil\piutang\tunaiController::index');
 $routes->post('/akk/add_piutang', 'admin_kas_kecil\piutang\tunaiController::add');
+//$routes->post('/akk/input_piutang', 'admin_kas_kecil\piutang\tunaiController::add');
 $routes->get('/akk/input_piutang_kredit', 'admin_kas_kecil\piutang\kreditController::index');
 $routes->post('/akk/add_piutang_kredit', 'admin_kas_kecil\piutang\kreditController::add');
 $routes->get('/akk/detail_input_piutang/(:any)', 'admin_kas_kecil\piutang\tunaiController::detail_input_piutang/$1');

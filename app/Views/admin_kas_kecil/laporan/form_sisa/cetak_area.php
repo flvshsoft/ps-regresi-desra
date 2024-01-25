@@ -56,6 +56,10 @@
         text-align: left;
     }
 
+    tbody td {
+        vertical-align: top;
+    }
+
     .payment {
         margin-top: 20px;
     }
@@ -83,34 +87,35 @@
                 <p>
                     <b>
                         Area :
-                        <?//= $nota['nama_customer'] ?>
+                        <?= $info['nama_area'] ?>
                     </b>
                 </p>
+
                 <p>
                     <b>
                         Dicetak Oleh :
-                        <?//= $nota['alamat_customer'] ?>
+                        <?= SESSION('userData')['nama_user'] ?>
                     </b>
                 </p>
                 <p>
                     <b>
                         Salesman :
-                        <?//= $nota['alamat_customer'] ?>
+                        <?= $info['nama_lengkap'] ?>
                     </b>
                 </p>
             </div>
-        </div><br>
+        </div>
         <table>
             <thead>
-                <tr style="font-size: 11px;">
-                    <th rowspan="2">No.</th>
-                    <th rowspan="2">No Nota</th>
-                    <th rowspan="2">Tgl Nota</th>
-                    <th rowspan="2">Konsumen</th>
-                    <th rowspan="2">Tagihan</th>
-                    <th rowspan="2">Telp/HP</th>
-                    <th rowspan="2">Cicilan</th>
-                    <th rowspan="2">Sisa Tagihan</th>
+                <tr style="font-size:11px ;">
+                    <th>No.</th>
+                    <th>No Nota</th>
+                    <th>Tgl Nota</th>
+                    <th>Konsumen</th>
+                    <th>Tagihan</th>
+                    <th>Telp/HP</th>
+                    <th>Cicilan</th>
+                    <th>Sisa Tagihan</th>
                 </tr>
             </thead>
             <tbody>
@@ -120,7 +125,7 @@
                 foreach ($model as $value) {
                     $total += $value['total_beli'];
                 ?>
-                <tr style=" font-size: 11px;">
+                <tr style="font-size:11px ;">
                     <td><?= $no ?> </td>
                     <td><?= $value['id_nota'] ?> </td>
                     <td><?= tgl_indo($value['tgl_bayar']) ?> </td>
@@ -134,8 +139,8 @@
                 } ?>
             </tbody>
             <tfoot>
-                <tr style=" font-size: 11px;">
-                    <td colspan="4" align="right"><b>Total Tagihan Piutang Usaha </b></td>
+                <tr style="font-size:11px ;">
+                    <td colspan="4" align="left"><b>Total Tagihan Piutang Usaha </b></td>
                     <td colspan="2" align="left"><?= 'Rp. ' . number_format($total, 0, ',', '.') ?></td>
                     <td></td>
                     <td></td>
@@ -147,18 +152,19 @@
             <div style="text-align: left;">
                 <p>
                     Salesman: <br><br><br><br>
-                    (Muhammad)
+                    ( <?= $info['nama_lengkap'] ?> )
                 </p>
             </div>
             <div style="text-align: right;">
                 <p>
                     Admin Penjualan: <br><br><br><br>
-                    (__________)
+                    ( <?= SESSION('userData')['nama_user'] ?> )
                 </p>
             </div>
         </div>
     </div>
 </body>
+
 
 
 <?php

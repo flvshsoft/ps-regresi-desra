@@ -108,25 +108,22 @@ class closingSalesController extends BaseController
         $data['customer'] = $this->mdCustomer->findAll();
         $data['lastIdNotaDetail'] = $this->mdNotaDetail->getLastIdNotaDetail();
         $data['sales_detail'] = $this->mdSalesDetail
-            ->join('product', 'product.id_product=sales_detail.id_product')
-            //->join('product', 'product.id_product=price_detail.id_product')
+            // ->select('sales.createat as createat')
+            // ->join('product', 'product.id_product=sales_detail.id_product')
             ->join('price_detail', 'price_detail.id_price_detail=sales_detail.id_price_detail')
+            ->join('product', 'product.id_product=price_detail.id_product')
             ->join('nota', 'nota.id_sales=sales_detail.id_sales')
             ->where('id_nota', $id_nota)
             ->findAll();
         $data['model'] = $this->mdNotaDetail
             ->join('sales_detail', 'sales_detail.id_sales_detail=nota_detail.id_sales_detail')
             // ->join('sales', 'sales.id_sales=nota.id_sales')
-            ->join('product', 'product.id_product=sales_detail.id_product')
             ->join('price_detail', 'price_detail.id_price_detail=sales_detail.id_price_detail')
+            ->join('product', 'product.id_product=price_detail.id_product')
             ->join('nota', 'nota.id_nota=nota_detail.id_nota')
             ->where('nota_detail.id_nota', $id_nota)
-            // ->where('price_detail.id_price_detail >', 2)
-            // ->groupBy('id_nota_detail')
             ->findAll();
 
-        // print_r($data['nota']);
-        // exit;
 
         $id_sales = $data['nota']['id_sales'];
         $data['cek_nota'] = $this->mdNota
@@ -137,11 +134,6 @@ class closingSalesController extends BaseController
             ->where('nota.id_sales', $id_sales)
             ->findAll();
 
-        // $total = 0;
-        // foreach ($data['model'] as $key => $value) {
-        //     $total += $value['nominal_payment_detail'];
-        // }
-        // $data['total'] = $total;
         return view('admin_kas_kecil/transaksi/closing_sales/closing1', $data);
     }
     public function input_detail_closing()
