@@ -11,7 +11,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?= base_url('/akk/dashboard') ?>"> Beranda </a></li>
                     <li class="breadcrumb-item"><a href="<?= base_url('/akk/transaksi') ?>"> Transaksi</a></li>
-                    <li class="breadcrumb-item"><a href="<?= base_url('/akk/master_sales') ?>"> Sales</a></li>
+                    <li class="breadcrumb-item"><a href="<?= base_url('/akk/transaksi/ambil_barang') ?>"> Sales</a></li>
                     <li class="breadcrumb-item active" aria-current="page"> <?= $judul1 ?></li>
                 </ol>
             </nav>
@@ -20,7 +20,8 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <form class="forms-sample" method="POST" action="<?= base_url('/akk/update_sales') ?>">
+                        <form class="forms-sample" method="POST"
+                            action="<?= base_url('/akk/transaksi/edit_penjualan_barang') ?>">
                             <div class="form-group row mb-0">
                                 <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Salesman</label>
                                 <div class="col-sm-9">
@@ -155,7 +156,7 @@
                             <div class="form-group mb-0 text-center">
                                 <button type="submit" class="btn btn-gradient-success btn-xs"><i
                                         class="mdi mdi-content-save-all icon-sm"></i> Transasct</button>
-                                <a href="<?= base_url('/akk/master_sales') ?>" class="btn btn-light btn-xs">
+                                <a href="<?= base_url('/akk/transaksi/ambil_barang') ?>" class="btn btn-light btn-xs">
                                     <i class="mdi mdi-backburger"></i> Cancel
                                 </a>
                             </div>

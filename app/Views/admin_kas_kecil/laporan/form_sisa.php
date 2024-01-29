@@ -18,7 +18,8 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">USAHA PER AREA</h4>
-                        <form class="forms-sample" method="POST" action="<?= base_url('/akk/print_form_sisa') ?>">
+                        <form class="forms-sample" method="POST"
+                            action="<?= base_url('/akk/laporan/form_sisa/print') ?>">
                             <div class="form-group row mb-0">
                                 <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Id Area</label>
                                 <div class="col-sm-9">

@@ -11,8 +11,9 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?= base_url('/akk/dashboard') ?>"> Beranda </a></li>
                     <li class="breadcrumb-item"><a href="<?= base_url('/akk/transaksi') ?>"> Transaksi</a></li>
-                    <li class="breadcrumb-item"><a href="<?= base_url('/akk/master_sales') ?>"> Sales</a></li>
-                    <li class="breadcrumb-item"><a href="<?= base_url('/akk/detail_sales/' . $id_sales['id_sales']) ?>">
+                    <li class="breadcrumb-item"><a href="<?= base_url('/akk/transaksi/ambil_barang') ?>"> Sales</a></li>
+                    <li class="breadcrumb-item"><a
+                            href="<?= base_url('/akk/transaksi/ambil_barang/detail/' . $id_sales['id_sales']) ?>">
                             Detail</a></li>
                     <li class="breadcrumb-item active" aria-current="page"> <?= $judul1 ?></li>
                 </ol>
@@ -22,7 +23,8 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <form class="forms-sample" method="POST" action="<?= base_url('/akk/save_detail_sales') ?>">
+                        <form class="forms-sample" method="POST"
+                            action="<?= base_url('/akk/transaksi/ambil_barang/detail/tambah') ?>">
                             <div class="form-group row mb-0">
                                 <div class="col-sm-9">
                                     <input type="hidden" name="id_sales" value="<?= $id_sales['id_sales'] ?>"
@@ -67,7 +69,7 @@
                             <div class="form-group mb-0 text-center">
                                 <button type="submit" class="btn btn-gradient-success btn-xs"><i
                                         class="mdi mdi-content-save-all icon-sm"></i> Transasct</button>
-                                <a href="<?= base_url('/akk/detail_sales/' . $id_sales['id_sales']) ?>"
+                                <a href="<?= base_url('/akk/transaksi/ambil_barang/detail/' . $id_sales['id_sales']) ?>"
                                     class="btn btn-light btn-xs">
                                     <i class="mdi mdi-backburger"></i> Cancel
                                 </a>

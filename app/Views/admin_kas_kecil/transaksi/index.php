@@ -18,27 +18,27 @@
                     <div class="card-body">
                         <div class="template-demo">
                             <div class="menu-item">
-                                <a href="<?= base_url('/akk/closing_sales') ?>"> <i class="mdi mdi-cloud-check icon-md"></i>
+                                <a href="<?= base_url('/akk/transaksi/tagihan_baru') ?>"> <i class="mdi mdi-cloud-check icon-md"></i>
                                     <h6> Input Tagihan Baru</h6>
                                 </a>
                             </div>
                             <hr>
                             <div class="menu-item">
-                                <a href="<?= base_url('/akk/master_sales') ?>">
+                                <a href="<?= base_url('/akk/transaksi/ambil_barang') ?>">
                                     <i class="mdi mdi-archive text-dark icon-md"></i>
                                     <h6> Pengambilan Barang</h6>
                                 </a>
                             </div>
                             <hr>
                             <div class="menu-item">
-                                <a href="<?= base_url('/akk/master_defect') ?>">
+                                <a href="<?= base_url('/akk/transaksi/master_defect') ?>">
                                     <i class="mdi mdi-tag icon-md"></i>
                                     <h6> Pengeluaran Stock Defect</h6>
                                 </a>
                             </div>
                             <hr>
                             <div class="menu-item">
-                                <a href="<?= base_url('/akk/master_sample') ?>">
+                                <a href="<?= base_url('/akk/transaksi/master_sample') ?>">
                                     <i class="mdi mdi-truck icon-md"></i>
                                     <h6> Pengeluaran Stock Sample</h6>
                                 </a>

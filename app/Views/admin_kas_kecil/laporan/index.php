@@ -20,63 +20,63 @@
                         <hr>
                         <div class="template-demo">
                             <div class="menu-item">
-                                <a href="<?= base_url('/akk/form_report_assets') ?>"> <i
+                                <a href="<?= base_url('/akk/laporan/form_report_assets') ?>"> <i
                                         class="mdi mdi-car-back menu-icons"></i>
                                     <h6>Assets</h6>
                                 </a>
                             </div>
                             <hr>
                             <div class="menu-item">
-                                <a href="<?= base_url('/akk/form_closing') ?>">
+                                <a href="<?= base_url('/akk/laporan/form_closing') ?>">
                                     <i class="mdi mdi-close-box menu-icons"></i>
                                     <h6>Closing</h6>
                                 </a>
                             </div>
                             <hr>
                             <div class="menu-item">
-                                <a href="<?= base_url('/akk/deposit') ?>">
+                                <a href="<?= base_url('/akk/laporan/deposit') ?>">
                                     <i class="mdi mdi-book menu-icons"></i>
                                     <h6>Laporan Kas Kecil</h6>
                                 </a>
                             </div>
                             <hr>
                             <div class="menu-item">
-                                <a href="<?= base_url('/akk/form_tertagih') ?>">
+                                <a href="<?= base_url('/akk/laporan/form_tertagih') ?>">
                                     <i class="mdi mdi-file-document menu-icons"></i>
                                     <h6>Laporan Nota Tertagih</h6>
                                 </a>
                             </div>
                             <hr>
                             <div class="menu-item">
-                                <a href="<?= base_url('/akk/form_cetak_labarugi') ?>">
+                                <a href="<?= base_url('/akk/laporan/form_cetak_labarugi') ?>">
                                     <i class="mdi mdi-file-chart menu-icons"></i>
                                     <h6>Laporan Pelunasan Hutang</h6>
                                 </a>
                             </div>
                             <hr>
                             <div class="menu-item">
-                                <a href="<?= base_url('/akk/form_print_pengeluaran') ?>">
+                                <a href="<?= base_url('/akk/laporan/form_print_pengeluaran') ?>">
                                     <i class="mdi mdi-cash-100 menu-icons"></i>
                                     <h6>Laporan Pengeluaran Kantor & Operasional</h6>
                                 </a>
                             </div>
                             <hr>
                             <div class="menu-item">
-                                <a href="<?= base_url('/akk/form_report_sales') ?>">
+                                <a href="<?= base_url('/akk/laporan/form_report_sales') ?>">
                                     <i class="mdi mdi-file-document menu-icons"></i>
                                     <h6>Laporan Penjualan</h6>
                                 </a>
                             </div>
                             <hr>
                             <div class="menu-item">
-                                <a href="<?= base_url('/akk/form_sisa') ?>">
+                                <a href="<?= base_url('/akk/laporan/form_sisa') ?>">
                                     <i class="mdi mdi-camera-metering-matrix menu-icons"></i>
                                     <h6>Laporan Piutang Usaha</h6>
                                 </a>
                             </div>
                             <hr>
                             <div class="menu-item">
-                                <a href="<?= base_url('/akk/form_cost_ratio') ?>">
+                                <a href="<?= base_url('/akk/laporan/form_cost_ratio') ?>">
                                     <i class="mdi mdi-sale menu-icons"></i>
                                     <h6>Setoran Salesman & Cost Rasio</h6>
                                 </a>

@@ -12,7 +12,8 @@
                     <li class="breadcrumb-item"><a href="<?= base_url('/akk/dashboard') ?>"> BERANDA </a></li>
                     <li class="breadcrumb-item"><a href="<?= base_url('/akk/piutang_usaha') ?>"> RIWAYAT PIUTANG </a>
                     </li>
-                    <li class="breadcrumb-item"><a href="<?= base_url('/akk/input_piutang_kredit') ?>"> KREDIT </a>
+                    <li class="breadcrumb-item"><a href="<?= base_url('/akk/piutang_usaha/input_kredit') ?>"> KREDIT
+                        </a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page"> <?= $judul1 ?></li>
                 </ol>
@@ -74,7 +75,8 @@
                                     <?php foreach ($model as $value) { ?>
 
                                     <tr>
-                                        <form method="POST" action="<?= base_url('/akk/add_piutang_kredit') ?>">
+                                        <form method="POST"
+                                            action="<?= base_url('/akk/piutang_usaha/input_kredit/add') ?>">
                                             <td style="font-size: 11px;">
                                                 <?= $value['id_nota'] ?>
                                                 <input type="hidden" class="form-control form-control-sm" name="id_nota"

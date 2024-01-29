@@ -24,7 +24,7 @@ class AmbilBarangController extends BaseController
         $data['area'] = $this->mdArea->findAll();
         $data['asset'] = $this->mdAsset->findAll();
 
-        return view('admin_kas_kecil/transaksi/sales/tambah', $data);
+        return view('admin_kas_kecil/transaksi/ambil_barang/tambah', $data);
     }
     public function input()
     {
@@ -45,13 +45,13 @@ class AmbilBarangController extends BaseController
         $data = array(
             'id_sales' => $id_sales,
         );
-        return redirect()->to(base_url('/akk/detail_sales/' . $id_sales));
+        return redirect()->to(base_url('/akk/transaksi/ambil_barang/detail/' . $id_sales));
     }
     public function hapus($id_sales)
     {
         $delete = $this->mdSales->delete($id_sales);
         if ($delete) {
-            return redirect()->to(base_url('/akk/master_sales'));
+            return redirect()->to(base_url('/akk/transaksi/ambil_barang'));
         } else {
             echo 'Gagal menghapus data.';
         }
@@ -70,7 +70,7 @@ class AmbilBarangController extends BaseController
         $data['salesman'] = $this->mdPartner->findAll();
         $data['area'] = $this->mdArea->findAll();
         $data['asset'] = $this->mdAsset->findAll();
-        return view('admin_kas_kecil/transaksi/sales/edit', $data);
+        return view('admin_kas_kecil/transaksi/ambil_barang/edit', $data);
     }
 
     public function update()
@@ -89,7 +89,7 @@ class AmbilBarangController extends BaseController
         // print_r($data);
         // exit;
         $this->mdSales->save($data);
-        return redirect()->to(base_url('/akk/master_sales'));
+        return redirect()->to(base_url('/akk/transaksi/ambil_barang'));
     }
 
     public function detail($id_sales)
@@ -98,18 +98,18 @@ class AmbilBarangController extends BaseController
         $data['judul1'] = 'Detail Product';
         $data['model'] = $this->mdSalesDetail
             ->join('sales', 'sales.id_sales=sales_detail.id_sales',)
-            // ->join('product', 'product.id_product=price_detail.id_product')
             ->join('price_detail', 'price_detail.id_price_detail=sales_detail.id_price_detail')
+            ->join('product', 'product.id_product=price_detail.id_product')
             ->join('partner', 'partner.id_partner=sales.id_partner')
             ->where('sales_detail.id_sales', $id_sales)
             ->orderBy('id_sales_detail', 'DESC')
             ->findAll();
-        // print_r($data['model']);
+        // print_r($id_sales);
         // exit;
         $data['id_sales'] = $this->mdSales
             ->where('id_sales', $id_sales)
             ->find()[0];
-        return view('admin_kas_kecil/transaksi/sales/detail', $data);
+        return view('admin_kas_kecil/transaksi/ambil_barang/detail', $data);
     }
 
     public function detail_tambah($id_sales)
@@ -122,21 +122,19 @@ class AmbilBarangController extends BaseController
             ->join('asset', 'asset.id_asset=sales.id_asset')
             ->where('id_sales', $id_sales)
             ->findAll();
-        $data['id_sales'] = $this->mdSales
-            ->where('id_sales', $id_sales)
-            ->find()[0];
+
         $data['product'] = $this->mdProduct
             ->join('price_detail', 'price_detail.id_product=product.id_product')
             ->join('sales_detail', 'sales_detail.id_price_detail=price_detail.id_price_detail')
             ->join('jenis_harga', 'jenis_harga.id_jenis_harga=price_detail.id_jenis_harga')
-            //->where('id_sales', $id_sales)
             ->findAll();
-        // print_r($data['product']);
-        // exit;
+
+        $data['id_sales'] = $this->mdSales
+            ->where('id_sales', $id_sales)
+            ->find()[0];
         $data['area'] = $this->mdArea->findAll();
         $data['asset'] = $this->mdAsset->findAll();
-        //  $data['product'] = $this->mdProduct ->findAll();
-        return view('admin_kas_kecil/transaksi/sales/detail_tambah', $data);
+        return view('admin_kas_kecil/transaksi/ambil_barang/detail_tambah', $data);
     }
 
     public function tambah_nama_barang()
@@ -146,10 +144,9 @@ class AmbilBarangController extends BaseController
             ->join('price_detail', 'price_detail.id_product=product.id_product')
             ->join('sales_detail', 'sales_detail.id_price_detail=price_detail.id_price_detail')
             ->join('jenis_harga', 'jenis_harga.id_jenis_harga=price_detail.id_jenis_harga')
-            ->where('price_detail.id_product', $id)
-            ->orderBy('id_product', 'ASC')
+            ->where('price_detail.id_price_detail', $id)
+            ->orderBy('product.id_product', 'ASC')
             ->find()[0];
-        // print_r($data);
         return $data['product']['nama_product'] . ';' . $data['product']['stock_product'];
     }
     public function input_detail_sales()
@@ -167,48 +164,51 @@ class AmbilBarangController extends BaseController
         // print_r($data);
         // exit;
         $this->mdSalesDetail->insert($data);
-        $this->mdProduct->where('id_product', $id_product)->decrement('stock_product', $satuan_sales_detail);
-
-
-        return redirect()->to(base_url('/akk/detail_sales/' . $id_sales));
+        //$this->mdProduct->where('id_product', $id_product)->decrement('stock_product', $satuan_sales_detail);
+        return redirect()->to(base_url('/akk/transaksi/ambil_barang/detail/' . $id_sales));
     }
     public function edit_detail_sales($id_sales_detail)
     {
         $data['judul'] = 'Bintang';
         $data['judul1'] = 'Detail Product';
-        $data['id_sales'] = $this->mdSalesDetail
-            ->where('id_sales_detail', $id_sales_detail)
-            ->find()[0];
+        $data['product'] = $this->mdProduct
+            ->join('price_detail', 'price_detail.id_product=product.id_product')
+            ->join('sales_detail', 'sales_detail.id_price_detail=price_detail.id_price_detail')
+            ->join('jenis_harga', 'jenis_harga.id_jenis_harga=price_detail.id_jenis_harga')
+            ->findAll();
         $data['model'] = $this->mdSalesDetail
-            ->join('sales', 'sales.id_sales=sales_detail.id_sales',)
-            ->join('product', 'product.id_product=sales_detail.id_product')
             ->where('sales_detail.id_sales_detail', $id_sales_detail)
+            ->join('sales', 'sales.id_sales=sales_detail.id_sales',)
+            ->join('price_detail', 'price_detail.id_price_detail=sales_detail.id_price_detail')
+            ->join('product', 'product.id_product=price_detail.id_product')
+            ->join('jenis_harga', 'jenis_harga.id_jenis_harga=price_detail.id_jenis_harga')
+
             ->find()[0];
-        $data['product'] = $this->mdProduct->findAll();
-        return view('admin_kas_kecil/transaksi/sales/detail_edit', $data);
+        return view('admin_kas_kecil/transaksi/ambil_barang/detail_edit', $data);
     }
     public function update_detail_sales()
     {
         $id_sales_detail = $this->request->getPost('id_sales_detail');
         $id_sales = $this->request->getPost('id_sales');
-        $id_product = $this->request->getPost('id_product');
+        $id_price_detail = $this->request->getPost('id_price_detail');
+        $satuan_sales_detail = $this->request->getPost('satuan_sales_detail');
         $data = [
             'id_sales_detail' => $id_sales_detail,
             'id_sales' => $id_sales,
-            'id_product' => $id_product,
-            'satuan_sales_detail' => $this->request->getPost('satuan_sales_detail'),
-            // 'jumlah_sales' => $this->request->getPost('jumlah_sales'),
+            'id_product' => 0,
+            'satuan_sales_detail' => $satuan_sales_detail,
+            'id_price_detail' => $id_price_detail,
         ];
         // print_r($data);
         // exit;
         $this->mdSalesDetail->save($data);
-        return redirect()->to(base_url('/akk/detail_sales/' . $id_sales));
+        return redirect()->to(base_url('/akk/transaksi/ambil_barang/detail/' . $id_sales));
     }
     public function hapus_detail_sales($id_sales_detail, $id_sales)
     {
         $delete = $this->mdSalesDetail->delete($id_sales_detail);
         if ($delete) {
-            return redirect()->to(base_url('/akk/detail_sales/' . $id_sales));
+            return redirect()->to(base_url('/akk/transaksi/ambil_barang/detail/' . $id_sales));
         } else {
             echo 'Gagal menghapus data.';
         }
@@ -227,7 +227,7 @@ class AmbilBarangController extends BaseController
             ->where('id_sales', $id_sales)
             ->find()[0];
         $mpdf = new \Mpdf\Mpdf();
-        $html = view('admin_kas_kecil/transaksi/sales/print', $data, []);
+        $html = view('admin_kas_kecil/transaksi/ambil_barang/print', $data, []);
         $mpdf->WriteHTML($html);
         $this->response->setHeader('Content-Type', 'application/pdf');
         $mpdf->Output('arjun.pdf', 'I'); // opens in browser

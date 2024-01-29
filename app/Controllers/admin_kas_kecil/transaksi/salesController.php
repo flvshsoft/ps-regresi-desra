@@ -127,9 +127,9 @@ class salesController extends BaseController
             ->find()[0];
         $data['product'] = $this->mdProduct
             ->join('price_detail', 'price_detail.id_product=product.id_product')
-            // ->join('sales_detail', 'sales_detail.id_price_detail=price_detail.id_price_detail')
+
             ->join('jenis_harga', 'jenis_harga.id_jenis_harga=price_detail.id_jenis_harga')
-            //->where('id_sales', $id_sales)
+
             ->findAll();
         // print_r($data['product']);
         // exit;
@@ -164,8 +164,8 @@ class salesController extends BaseController
             'satuan_sales_detail' => $satuan_sales_detail,
             'id_price_detail' => $id_price_detail,
         ];
-        // print_r($data);
-        // exit;
+        print_r($data);
+        exit;
         $this->mdSalesDetail->insert($data);
         $this->mdProduct->where('id_product', $id_product)->decrement('stock_product', $satuan_sales_detail);
 

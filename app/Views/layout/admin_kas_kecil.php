@@ -268,7 +268,7 @@ use CodeIgniter\Session\Session;
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>/akk/transaksi">
+                    <a class="nav-link" href="<?= base_url() ?>akk/transaksi">
                         <i class="mdi mdi-cart menu-icon text-whitex text-shadow"></i>
                         <span class="menu-title">Transaksi</span>
                     </a>
@@ -280,7 +280,7 @@ use CodeIgniter\Session\Session;
                     </a>
                 </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>/akk/laporan">
+                    <a class="nav-link" href="<?= base_url() ?>akk/laporan">
                         <i class="mdi mdi-file-pdf-box menu-icon text-whitex text-shadow"></i>
                         <span class="menu-title">Laporan</span>
                     </a>
@@ -292,7 +292,7 @@ use CodeIgniter\Session\Session;
                     </a>
                 </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>/akk/piutang_usaha">
+                    <a class="nav-link" href="<?= base_url() ?>akk/piutang_usaha">
                         <i class="mdi mdi-calendar-check menu-icon text-whitex text-shadow"></i>
                         <span class="menu-title">Piutang Usaha</span>
                     </a>

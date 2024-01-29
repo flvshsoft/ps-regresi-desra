@@ -21,7 +21,8 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="form-group col-6">
-                                <a class="btn btn-success btn-xs" href="<?= base_url('/akk/sales') ?>">
+                                <a class="btn btn-success btn-xs"
+                                    href="<?= base_url('/akk/transaksi/penjualan_barang') ?>">
                                     <i class="mdi mdi-database-plus btn-icon-prepend"></i> Proses</a>
                                 <a class="btn btn-primary btn-xs" href="<?//= base_url('/akk/riwayat_sales') ?>">
                                     <i class="mdi mdi-history btn-icon-prepend"></i> Riwayat</a>
@@ -54,7 +55,7 @@
                                         <td style=" font-size: 11px;">
                                             <b>
                                                 <a style="text-decoration:none"
-                                                    href="<?= base_url('/akk/form_sales/' .  $value['id_sales']) ?>">
+                                                    href="<?= base_url('/akk/transaksi/edit_penjualan_barang/' .  $value['id_sales']) ?>">
                                                     <?= $value['id_sales'] ?>
                                                 </a>
                                             </b>
@@ -75,16 +76,18 @@
                                             <?= $value['tgl_do'] ?>
                                         </td>
                                         <td style=" font-size: 11px;">
-                                            <a href="<?= base_url('/akk/print_sales/' . $value['id_sales']) ?>">
+                                            <a
+                                                href="<?= base_url('/akk/transaksi/print_penjualan_barang/' . $value['id_sales']) ?>">
                                                 <i class="mdi mdi-file-pdf icon-md"></i></a>
                                         </td>
                                         <td>
-                                            <a href="<?= base_url('/akk/detail_sales/' . $value['id_sales']) ?>"> <i
-                                                    class="mdi mdi-plus-circle text-default icon-md"></i> </a>
+                                            <a
+                                                href="<?= base_url('/akk/transaksi/ambil_barang/detail/' . $value['id_sales']) ?>">
+                                                <i class="mdi mdi-plus-circle text-default icon-md"></i> </a>
 
                                             <a onclick="return confirm('Anda Yakin Ingin Menghapusnya?')"
-                                                href="<?= base_url('/akk/del_sales/' . $value['id_sales']) ?>"> <i
-                                                    class="mdi mdi-delete-circle text-default icon-md"></i> </a>
+                                                href="<?= base_url('/akk/transaksi/hapus_penjualan_barang/' . $value['id_sales']) ?>">
+                                                <i class="mdi mdi-delete-circle text-default icon-md"></i> </a>
                                         </td>
                                     </tr>
                                     <?php $no++;

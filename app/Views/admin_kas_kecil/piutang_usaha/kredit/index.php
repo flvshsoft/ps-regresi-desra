@@ -62,7 +62,7 @@
                                         <td style="font-size: 11px;">
                                             <div class="justify-content-center text-center">
                                                 <a
-                                                    href="<?= base_url('/akk/detail_input_piutang_kredit/'.$value['id_sales']) ?>">
+                                                    href="<?= base_url('/akk/piutang_usaha/input_kredit/detail/' . $value['id_sales']) ?>">
                                                     <i class="mdi mdi-database-plus icon-md"></i>
                                                 </a>
                                             </div>
