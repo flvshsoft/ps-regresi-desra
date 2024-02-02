@@ -79,19 +79,21 @@ class TagihanBaruController extends BaseController
             'id_customer' => $id_customer,
             'id_area' => $id_area,
             'id_bank' => 3,
-            'weeks' => $this->request->getPost('weeks'),
+            'no_nota' => $this->request->getPost('no_nota'),
+            //'weeks' => $this->request->getPost('weeks'),
             'payment_method' => $this->request->getPost('payment_method'),
             'pay' => NULL,
             'created_by' => SESSION('userData')['id_user'],
             'tgl_bayar' =>  $this->request->getPost('tgl_bayar'),
         ];
+        // print_r($data);
+        // exit;
         $this->mdNota->insert($data);
         $id_nota = $this->mdNota->insertID();
         $data = array(
             'id_nota' => $id_nota,
         );
-        // print_r($data);
-        // exit;
+
         return redirect()->to(base_url('/akk/transaksi/tagihan_baru/nota/detail/' . $id_nota));
     }
     public function closing_detail($id_nota): string
@@ -123,8 +125,13 @@ class TagihanBaruController extends BaseController
             ->join('nota', 'nota.id_nota=nota_detail.id_nota')
             ->where('nota_detail.id_nota', $id_nota)
             ->findAll();
-
-
+        $data['detail'] = $this->mdNotaDetail
+            ->join('sales_detail', 'sales_detail.id_sales_detail=nota_detail.id_sales_detail')
+            ->join('price_detail', 'price_detail.id_price_detail=sales_detail.id_price_detail')
+            ->join('product', 'product.id_product=price_detail.id_product')
+            ->join('nota', 'nota.id_nota=nota_detail.id_nota')
+            ->where('nota_detail.id_nota', $id_nota)
+            ->find()[0];
         $id_sales = $data['nota']['id_sales'];
         $data['cek_nota'] = $this->mdNota
             ->join('sales', 'sales.id_sales=nota.id_sales')
@@ -135,6 +142,35 @@ class TagihanBaruController extends BaseController
             ->findAll();
 
         return view('admin_kas_kecil/transaksi/tagihan_baru/closing1', $data);
+    }
+    public function edit_detail_closing()
+    {
+        $id_sales_detail = $this->request->getPost('id_sales_detail');
+        //$id_product = $this->request->getPost('id_product');
+        $id_nota_detail =  $this->request->getPost('id_nota_detail');
+        $id_nota =  $this->request->getPost('id_nota');
+        $data = [
+            'id_nota_detail' =>  $id_nota_detail,
+            'id_sales_detail' => $id_sales_detail,
+            'satuan_penjualan' => $this->request->getPost('satuan_penjualan'),
+            'diskon_penjualan' => $this->request->getPost('diskon_penjualan'),
+        ];
+        $this->mdNotaDetail->save($data);
+
+        $data['model'] = $this->mdNotaDetail
+            ->join('sales_detail', 'sales_detail.id_sales_detail=nota_detail.id_sales_detail')
+            ->join('product', 'product.id_product=sales_detail.id_product')
+            ->join('price_detail', 'price_detail.id_price_detail=sales_detail.id_price_detail')
+            ->where('nota_detail.id_nota', $id_nota)
+            ->findAll();
+        $total = 0;
+        foreach ($data['model'] as $key => $value) {
+            $total += ($value['harga'] * $value['satuan_penjualan']) - $value['diskon_penjualan'];
+        }
+        $data['total'] = $total;
+        $this->mdNota->where('id_nota', $id_nota)->decrement('total_beli', $total);
+
+        return redirect()->to(base_url('/akk/transaksi/tagihan_baru/nota/detail/' . $id_nota));
     }
     public function input_detail_closing()
     {
@@ -175,6 +211,16 @@ class TagihanBaruController extends BaseController
         $this->mdNota->save($data2);
 
         return redirect()->to(base_url('/akk/transaksi/tagihan_baru/nota/detail/' . $id_nota));
+    }
+    public function hapus_detail($id_nota, $id_nota_detail, $harga)
+    {
+        $this->mdNota->where('id_nota', $id_nota)->decrement('total_beli', $harga);
+        $delete = $this->mdNotaDetail->delete($id_nota_detail);
+        if ($delete) {
+            return redirect()->to(base_url('/akk/transaksi/tagihan_baru/nota/detail/' . $id_nota));
+        } else {
+            echo 'Gagal menghapus data.';
+        }
     }
     public function print($id_nota): string
     {
