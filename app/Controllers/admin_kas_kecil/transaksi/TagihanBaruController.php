@@ -108,6 +108,7 @@ class TagihanBaruController extends BaseController
             ->where('id_nota', $id_nota)
             ->find()[0];
         $data['customer'] = $this->mdCustomer->findAll();
+        $data['jenis_harga'] = $this->mdJenisHarga->findAll();
         $data['lastIdNotaDetail'] = $this->mdNotaDetail->getLastIdNotaDetail();
         $data['sales_detail'] = $this->mdSalesDetail
             // ->select('sales.createat as createat')
@@ -180,6 +181,7 @@ class TagihanBaruController extends BaseController
         $data = [
             'id_sales_detail' => $id_sales_detail,
             'id_nota' => $id_nota,
+            //'id_sales_detail' => $id_sales_detail,
             'satuan_penjualan' => $this->request->getPost('satuan_penjualan'),
             'diskon_penjualan' => $this->request->getPost('diskon_penjualan'),
             //'pay' => 0,
