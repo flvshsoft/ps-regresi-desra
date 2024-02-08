@@ -90,7 +90,7 @@
                                         <div class="form-group d-flex">
                                             <label class="col-5 col-form-label">TOKO</label>
                                             <div class="col-7">
-                                                <select class="form-control" name="id_customer">
+                                                <select class="form-control select2" name="id_customer">
                                                     <option> Pilih Customer</option>
                                                     <?php foreach ($customer as $value) { ?>
                                                     <option name="id_customer" value="<?= $value['id_customer'] ?>">

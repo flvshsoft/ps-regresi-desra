@@ -145,6 +145,20 @@ $routes->get('/akk/del_price_detail/(:any)', 'admin_kas_kecil\master\priceContro
 $routes->post('/tambah_nama_harga', 'admin_kas_kecil\master\priceController::tambah_nama_harga');
 
 
+$routes->get('/akk/master_barang_harga', 'admin_kas_kecil\master\barangHargaController::index');
+$routes->get('/akk/barang_harga', 'admin_kas_kecil\master\barangHargaController::tambah');
+$routes->post('/akk/save_barang_harga', 'admin_kas_kecil\master\barangHargaController::input');
+$routes->get('/akk/del_barang_harga/(:any)', 'admin_kas_kecil\master\barangHargaController::hapus/$1');
+$routes->get('/akk/form_barang_harga/(:any)', 'admin_kas_kecil\master\barangHargaController::edit/$1');
+$routes->post('/akk/update_barang_harga', 'admin_kas_kecil\master\barangHargaController::update');
+$routes->get('/akk/detail_barang_harga/(:any)', 'admin_kas_kecil\master\barangHargaController::detail/$1');
+$routes->get('/akk/add_detail_barang_harga/(:any)', 'admin_kas_kecil\master\barangHargaController::detail_tambah/$1');
+$routes->post('/akk/save_detail_barang_harga', 'admin_kas_kecil\master\barangHargaController::input_detail_barang_harga');
+$routes->get('/akk/edit_detail_barang_harga/(:any)', 'admin_kas_kecil\master\barangHargaController::detail_edit/$1');
+$routes->post('/akk/update_detail_barang_harga', 'admin_kas_kecil\master\barangHargaController::update_detail_barang_harga');
+$routes->get('/akk/del_barang_harga_detail/(:any)', 'admin_kas_kecil\master\barangHargaController::hapus_detail_barang_harga/$1');
+$routes->post('/tambah_nama_harga', 'admin_kas_kecil\master\barangHargaController::tambah_nama_harga');
+
 $routes->get('/akk/laporan', 'admin_kas_kecil\laporanController::index');
 $routes->get('/akk/laporan/form_report_assets', 'admin_kas_kecil\laporanController::form_report_assets');
 $routes->get('/akk/laporan/form_kas_kecil', 'admin_kas_kecil\laporanController::form_kas_kecil');

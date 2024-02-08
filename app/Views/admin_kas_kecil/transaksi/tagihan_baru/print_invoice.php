@@ -6,63 +6,73 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-    body {
-        font-family: Arial, sans-serif;
-        padding: 20px;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
 
-    .container {
-        max-width: 800px;
-        margin: 0 auto;
-    }
+        img {
+            max-width: 100%;
+            height: 20%;
+            width: 30%;
+            float: left;
+            margin: 20px 0;
+            margin-top: 10px;
+            /* Atur margin atas dan bawah */
+        }
 
-    .flex-container {
-        display: flex;
-        justify-content: space-between;
-    }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-    .header {
-        text-align: center;
-        margin-bottom: 20px;
-    }
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+        }
 
-    .left-column {
-        flex: 1;
-    }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-    .right-column {
-        flex: 1;
-    }
+        .left-column {
+            flex: 1;
+        }
 
-    .details {
-        margin-bottom: 20px;
-    }
+        .right-column {
+            flex: 1;
+        }
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-    }
+        .details {
+            margin-bottom: 20px;
+        }
 
-    table,
-    th,
-    td {
-        border: 1px solid black;
-    }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
 
-    th,
-    td {
-        padding: 10px;
-        text-align: left;
-    }
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
 
-    .payment {
-        margin-top: 20px;
-    }
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
 
-    .footer {
-        margin-top: 20px;
-    }
+        .payment {
+            margin-top: 20px;
+        }
+
+        .footer {
+            margin-top: 20px;
+        }
     </style>
     <title>Invoice Client</title>
 </head>
@@ -70,6 +80,7 @@
 <body>
     <div class="container">
         <div class="header">
+            <img src="<?= base_url() ?>/public/assets/images/logo.png" alt="logo" class="w-25 h-25">
             <h2><?= $judul ?></h2>
             <p><b><?= $judul1 ?></b></p>
         </div>
@@ -116,16 +127,16 @@
                     $total_keseluruhan += $total;
                     $total_barang += $value['satuan_penjualan'];
                 ?>
-                <tr style=" font-size: 11px;">
-                    <td><?= $no ?> </td>
-                    <td><?= $value['nama_product'] ?> </td>
-                    <td><?= $value['satuan_product'] ?> </td>
-                    <td><?= $value['satuan_penjualan'] ?> </td>
-                    <td><?= $value['harga'] ?> </td>
-                    <td><?= 'Rp. ' . number_format($harga_awal, 0, ',', '.') ?></td>
-                    <td><?= 'Rp. ' . number_format($value['diskon_penjualan'], 0, ',', '.') ?></td>
-                    <td><?= 'Rp. ' . number_format($total, 0, ',', '.') ?></td>
-                </tr>
+                    <tr style=" font-size: 11px;">
+                        <td><?= $no ?> </td>
+                        <td><?= $value['nama_product'] ?> </td>
+                        <td><?= $value['satuan_product'] ?> </td>
+                        <td><?= $value['satuan_penjualan'] ?> </td>
+                        <td><?= $value['harga'] ?> </td>
+                        <td><?= 'Rp. ' . number_format($harga_awal, 0, ',', '.') ?></td>
+                        <td><?= 'Rp. ' . number_format($value['diskon_penjualan'], 0, ',', '.') ?></td>
+                        <td><?= 'Rp. ' . number_format($total, 0, ',', '.') ?></td>
+                    </tr>
                 <?php $no++;
                 } ?>
             </tbody>
@@ -187,7 +198,7 @@
 </body>
 
 <script>
-window.print();
+    window.print();
 </script>
 
 <?php

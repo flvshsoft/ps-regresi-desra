@@ -98,8 +98,9 @@ class AmbilBarangController extends BaseController
         $data['judul1'] = 'Detail Product';
         $data['model'] = $this->mdSalesDetail
             ->join('sales', 'sales.id_sales=sales_detail.id_sales',)
-            ->join('price_detail', 'price_detail.id_price_detail=sales_detail.id_price_detail')
-            ->join('product', 'product.id_product=price_detail.id_product')
+            //->join('price_detail', 'price_detail.id_price_detail=sales_detail.id_price_detail')
+            ->join('product', 'product.id_product=sales_detail.id_product')
+            //->join('product', 'product.id_product=price_detail.id_product')
             ->join('partner', 'partner.id_partner=sales.id_partner')
             ->where('sales_detail.id_sales', $id_sales)
             ->orderBy('id_sales_detail', 'DESC')
@@ -124,9 +125,9 @@ class AmbilBarangController extends BaseController
             ->findAll();
 
         $data['product'] = $this->mdProduct
-            ->join('price_detail', 'price_detail.id_product=product.id_product')
-            ->join('sales_detail', 'sales_detail.id_price_detail=price_detail.id_price_detail')
-            ->join('jenis_harga', 'jenis_harga.id_jenis_harga=price_detail.id_jenis_harga')
+            //->join('price_detail', 'price_detail.id_product=product.id_product')
+            //->join('sales_detail', 'sales_detail.id_price_detail=price_detail.id_price_detail')
+            //->join('jenis_harga', 'jenis_harga.id_jenis_harga=price_detail.id_jenis_harga')
             ->findAll();
 
         $data['id_sales'] = $this->mdSales
@@ -141,10 +142,10 @@ class AmbilBarangController extends BaseController
     {
         $id = $this->request->getVar('id');
         $data['product'] = $this->mdProduct
-            ->join('price_detail', 'price_detail.id_product=product.id_product')
-            ->join('sales_detail', 'sales_detail.id_price_detail=price_detail.id_price_detail')
-            ->join('jenis_harga', 'jenis_harga.id_jenis_harga=price_detail.id_jenis_harga')
-            ->where('price_detail.id_price_detail', $id)
+            // ->join('price_detail', 'price_detail.id_product=product.id_product')
+            // ->join('sales_detail', 'sales_detail.id_price_detail=price_detail.id_price_detail')
+            // ->join('jenis_harga', 'jenis_harga.id_jenis_harga=price_detail.id_jenis_harga')
+            // ->where('price_detail.id_price_detail', $id)
             ->orderBy('product.id_product', 'ASC')
             ->find()[0];
         return $data['product']['nama_product'] . ';' . $data['product']['stock_product'];
@@ -152,14 +153,14 @@ class AmbilBarangController extends BaseController
     public function input_detail_sales()
     {
         $id_sales = $this->request->getPost('id_sales');
-        $id_price_detail = $this->request->getPost('id_price_detail');
+        // $id_price_detail = $this->request->getPost('id_price_detail');
         $id_product = $this->request->getPost('id_product');
         $satuan_sales_detail = $this->request->getPost('satuan_sales_detail');
         $data = [
             'id_sales' => $id_sales,
-            'id_product' => 0,
+            'id_product' => $id_product,
             'satuan_sales_detail' => $satuan_sales_detail,
-            'id_price_detail' => $id_price_detail,
+            // 'id_price_detail' => $id_price_detail,
         ];
         // print_r($data);
         // exit;
@@ -179,10 +180,10 @@ class AmbilBarangController extends BaseController
         $data['model'] = $this->mdSalesDetail
             ->where('sales_detail.id_sales_detail', $id_sales_detail)
             ->join('sales', 'sales.id_sales=sales_detail.id_sales',)
-            ->join('price_detail', 'price_detail.id_price_detail=sales_detail.id_price_detail')
-            ->join('product', 'product.id_product=price_detail.id_product')
-            ->join('jenis_harga', 'jenis_harga.id_jenis_harga=price_detail.id_jenis_harga')
-
+            // ->join('price_detail', 'price_detail.id_price_detail=sales_detail.id_price_detail')
+            //->join('product', 'product.id_product=price_detail.id_product')
+            ->join('product', 'product.id_product=sales_detail.id_product')
+            // ->join('jenis_harga', 'jenis_harga.id_jenis_harga=price_detail.id_jenis_harga')
             ->find()[0];
         return view('admin_kas_kecil/transaksi/ambil_barang/detail_edit', $data);
     }
@@ -190,14 +191,15 @@ class AmbilBarangController extends BaseController
     {
         $id_sales_detail = $this->request->getPost('id_sales_detail');
         $id_sales = $this->request->getPost('id_sales');
+        $id_product = $this->request->getPost('id_product');
         $id_price_detail = $this->request->getPost('id_price_detail');
         $satuan_sales_detail = $this->request->getPost('satuan_sales_detail');
         $data = [
             'id_sales_detail' => $id_sales_detail,
             'id_sales' => $id_sales,
-            'id_product' => 0,
+            'id_product' => $id_product,
             'satuan_sales_detail' => $satuan_sales_detail,
-            'id_price_detail' => $id_price_detail,
+            //'id_price_detail' => $id_price_detail,
         ];
         // print_r($data);
         // exit;

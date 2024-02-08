@@ -96,7 +96,7 @@
                                         <div class="form-group d-flex">
                                             <label class="col-5 col-form-label">TOKO</label>
                                             <div class="col-7">
-                                                <select class="form-control" name="id_customer">
+                                                <select class="form-control select2" name="id_customer">
                                                     <option value="<?= $nota['id_customer'] ?>">
                                                         <?= $nota['id_customer'] ?> - <?= $nota['nama_customer'] ?>
                                                     </option>
@@ -128,6 +128,7 @@
                                         <th style=" font-size: 11px;"> No </th>
                                         <th style=" font-size: 11px;"> ID NOTA </th>
                                         <th style=" font-size: 11px;"> ITEM - NAMA BARANG </th>
+                                        <th style=" font-size: 11px;"> TYPE HARGA </th>
                                         <th style=" font-size: 11px;"> STOK </th>
                                         <th style=" font-size: 11px;"> SATUAN </th>
                                         <th style=" font-size: 11px;"> DISKON </th>
@@ -157,6 +158,10 @@
                                         </td>
                                         <td style=" font-size: 11px;">
                                             <?= $value['id_product'] ?> - <?= $value['nama_product'] ?>
+                                        </td>
+                                        <td style=" font-size: 11px;">
+                                            <?//= $value['id_product'] ?> -
+                                            <?//= $value['nama_product'] ?>
                                         </td>
                                         <td style=" font-size: 11px;">
                                             <?= $value['satuan_sales_detail'] ?>
@@ -197,6 +202,17 @@
                                                         <?= $value['nama_product'] ?>
                                                         -
                                                         <?= $value['satuan_sales_detail'] ?>
+                                                    </option>
+                                                    <?php } ?>
+                                                </select>
+                                            </td>
+                                            <td style=" font-size: 11px;">
+                                                <select class="form-control" name="id_jenis_harga">
+                                                    <option value="id_jenis_harga"> Pilih Jenis Harga</option>
+                                                    <?php foreach ($jenis_harga as $value) { ?>
+                                                    <option value="<?= $value['id_jenis_harga'] ?>">
+                                                        <?= $value['remark_jenis_harga'] ?>
+
                                                     </option>
                                                     <?php } ?>
                                                 </select>
@@ -250,7 +266,8 @@
             </div>
         </div>
         <div class="col-md-6">
-            <a href="" class="btn btn-gradient-danger btn-sm btn-fw">
+            <a href="<?= base_url('/akk/transaksi/tagihan_baru/nota/' .  $nota['id_sales']) ?>"
+                class="btn btn-gradient-danger btn-sm btn-fw">
                 Input Nota Baru
             </a>
         </div><br>
@@ -296,15 +313,16 @@
                     <div class="form-group row">
                         <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Item - Barang</label>
                         <div class="col-sm-9">
-                            <input type="hidden" class="form-control" value="<?= $detail['id_nota_detail'] ?>"
+                            <input type="hidden" class="form-control" value="<?//= $detail['id_nota_detail'] ?>"
                                 name="id_nota_detail">
                             <select class="form-control" name="id_sales_detail">
                                 <option value="id_sales_detail">
-                                    <?= $detail['id_product'] ?>
+                                    <?//= $detail['id_product'] ?>
                                     -
-                                    <?= $detail['nama_product'] ?>
+                                    <?//= $detail['nama_product'] ?>
                                     -
-                                    <?= $detail['satuan_sales_detail'] ?></option>
+                                    <?//= $detail['satuan_sales_detail'] ?>
+                                </option>
                                 <?php foreach ($sales_detail as $value) { ?>
                                 <option value="<?= $value['id_sales_detail'] ?>">
                                     <?= $value['id_product'] ?>
@@ -320,16 +338,17 @@
                     <div class="form-group row">
                         <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Satuan</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" value="<?= $detail['satuan_penjualan'] ?>"
+                            <input type="text" class="form-control" value="rrr<?//= $detail['satuan_penjualan'] ?>"
                                 name="satuan_penjualan">
-                            <input type="hidden" class="form-control" value="<?= $detail['id_nota'] ?>" name="id_nota">
+                            <input type="hidden" class="form-control" value="<?//= $detail['id_nota'] ?>"
+                                name="id_nota">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Diskon</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" value="<?= $detail['diskon_penjualan'] ?>"
+                            <input type="text" class="form-control" value="<?//= $detail['diskon_penjualan'] ?>"
                                 name="diskon_penjualan">
                             <input type="hidden" class="form-control" value="<?//= $harga_b ?>" name="harga_b">
                         </div>

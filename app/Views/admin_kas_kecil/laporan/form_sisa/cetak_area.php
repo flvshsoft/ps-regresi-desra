@@ -11,6 +11,16 @@
         padding: 20px;
     }
 
+    img {
+        max-width: 100%;
+        height: 20%;
+        width: 30%;
+        float: left;
+        margin: 20px 0;
+        margin-top: 10px;
+        /* Atur margin atas dan bawah */
+    }
+
     .container {
         max-width: 800px;
         margin: 0 auto;
@@ -74,6 +84,7 @@
 <body>
     <div class="container">
         <div class="header">
+            <img src="<?= base_url() ?>/public/assets/images/logo.png" alt="logo" class="w-25 h-25">
             <h2><?= $judul ?></h2>
             <p><b><?= $judul1 ?></b></p>
         </div>

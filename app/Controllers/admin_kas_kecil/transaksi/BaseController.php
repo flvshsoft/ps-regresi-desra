@@ -2,6 +2,7 @@
 
 namespace App\Controllers\admin_kas_kecil\transaksi;
 
+use App\Models\jenishargaModel;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\CLIRequest;
 use CodeIgniter\HTTP\IncomingRequest;
@@ -67,6 +68,9 @@ abstract class BaseController extends Controller
         $this->mdCustomer = model('customerModel', true, $this->db);
         $this->mdNota = model('notaModel', true, $this->db);
         $this->mdNotaDetail = model('notadetailModel', true, $this->db);
+        $this->mdJenisHarga = model('jenishargaModel', true, $this->db);
+        $this->mdBarangHarga = model('barangHargaModel', true, $this->db);
+
         $this->session = \Config\Services::session();
     }
 }
