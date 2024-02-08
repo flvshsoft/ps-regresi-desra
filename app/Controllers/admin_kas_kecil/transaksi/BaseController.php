@@ -69,6 +69,8 @@ abstract class BaseController extends Controller
         $this->mdNota = model('notaModel', true, $this->db);
         $this->mdNotaDetail = model('notadetailModel', true, $this->db);
         $this->mdJenisHarga = model('jenishargaModel', true, $this->db);
+        $this->mdBarangHarga = model('barangHargaModel', true, $this->db);
+
         $this->session = \Config\Services::session();
     }
 }

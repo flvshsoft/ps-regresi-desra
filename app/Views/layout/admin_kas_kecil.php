@@ -247,7 +247,9 @@ use CodeIgniter\Session\Session;
                             <li class="nav-item"> <a class="nav-link text-black"
                                     href="<?= base_url('/akk/master_product') ?>">Barang</a></li>
                             <li class="nav-item"> <a class="nav-link text-black"
-                                    href="<?= base_url('/akk/master_price') ?>">Harga</a></li>
+                                    href="<?= base_url('/akk/master_barang_harga') ?>">Barang Harga</a></li>
+                            <!-- <li class="nav-item"> <a class="nav-link text-black"
+                                    href="<?= base_url('/akk/master_price') ?>">Harga</a></li> -->
                             <!-- <li class="nav-item"> <a class="nav-link text-black"
                                     href="<?= base_url('/akk/master_jenis_cuti') ?>">Jenis Cuti</a></li> -->
                             <li class="nav-item"> <a class="nav-link text-black"
@@ -349,7 +351,13 @@ use CodeIgniter\Session\Session;
     });
     </script>
 
-
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.select2').select2();
+    });
+    </script>
     <!-- Page level custom scripts -->
     <script src="<?= base_url() ?>/public/assets/js/demo/datatables-demo.js"></script>
 </body>

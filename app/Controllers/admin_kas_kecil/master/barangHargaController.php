@@ -2,37 +2,42 @@
 
 namespace App\Controllers\admin_kas_kecil\master;
 
-class priceController extends BaseController
+class barangHargaController extends BaseController
 {
     public function index()
     {
         $data['judul'] = 'Bintang';
-        $data['judul1'] = 'Master Data Price';
-        $data['model'] = $this->mdPrice
-            ->join('user', 'user.id_user=price.created_by')
+        $data['judul1'] = 'Master Barang Harga';
+        $data['model'] = $this->mdBarangHarga
+            ->join('product', 'product.id_product=barang_harga.id_product')
+            ->join('jenis_harga', 'jenis_harga.id_jenis_harga=barang_harga.id_jenis_harga')
+            // ->join('user', 'user.id_user=barang_harga.created_by')
             ->findAll();
-        return view('admin_kas_kecil/master/price/index', $data);
+        $data['product'] = $this->mdProduct->findAll();
+        $data['jenis_harga'] = $this->mdJenisHarga->findAll();
+        return view('admin_kas_kecil/master/barang_harga/index', $data);
     }
     public function tambah()
     {
         $data['judul'] = 'Bintang';
         $data['judul1'] = 'Data Price';
-        return view('admin_kas_kecil/master/price/tambah', $data);
+        return view('admin_kas_kecil/master/barang_harga/tambah', $data);
     }
     public function input()
     {
         $data = [
-            'keterangan_price' => $this->request->getPost('keterangan_price'),
-            'tanggal_aktif' =>  date('d-m-y h:i:s'),
+            'id_product' => $this->request->getPost('id_product'),
+            'id_jenis_harga' => $this->request->getPost('id_jenis_harga'),
+            'harga_aktif' => $this->request->getPost('harga_aktif'),
             'created_by' => SESSION('userData')['id_user'],
         ];
-        $this->mdPrice->insert($data);
-        return redirect()->to(base_url('/akk/master_price'));
+        $this->mdBarangHarga->insert($data);
+        return redirect()->to(base_url('/akk/master_barang_harga'));
     }
 
     public function hapus($id_price)
     {
-        $delete = $this->mdPrice->delete($id_price);
+        $delete = $this->mdJenisHarga->delete($id_price);
         if ($delete) {
             return redirect()->to(base_url('/akk/master_price'));
         } else {
@@ -44,11 +49,11 @@ class priceController extends BaseController
     {
         $data['judul'] = 'Bintang';
         $data['judul1'] = 'Data Harga';
-        $data['model'] = $this->mdPrice
+        $data['model'] = $this->mdJenisHarga
             ->where('id_price', $id_price)
             ->find()[0];
 
-        return view('admin_kas_kecil/master/price/edit', $data);
+        return view('admin_kas_kecil/master/barang_harga/edit', $data);
     }
 
     public function update()
@@ -60,14 +65,14 @@ class priceController extends BaseController
             'tanggal_aktif' =>  date('Y-m-d H:i:s'),
             'created_by' => SESSION('userData')['id_user'],
         ];
-        $this->mdPrice->save($data);
+        $this->mdJenisHarga->save($data);
         return redirect()->to(base_url('/akk/master_price'));
     }
     public function detail($id_price)
     {
         $data['judul'] = 'Bintang';
         $data['judul1'] = 'Detail Price';
-        $data['model'] = $this->mdPriceDetail
+        $data['model'] = $this->mdJenisHargaDetail
             //->join('price', 'price.id_price=price_detail.id_price',)
             ->join('product', 'product.id_product=price_detail.id_product')
             ->join('jenis_harga', 'jenis_harga.id_jenis_harga=price_detail.id_jenis_harga')
@@ -76,14 +81,14 @@ class priceController extends BaseController
             ->findAll();
         // print_r($data['model']);
         // exit;
-        $data['id_price'] = $this->mdPrice
+        $data['id_price'] = $this->mdJenisHarga
             ->join('user', 'user.id_user=price.created_by',)
             // ->join('product', 'product.id_product=price_detail.id_product')
             // ->join('jenis_harga', 'jenis_harga.id_jenis_harga=price_detail.id_jenis_harga')
             ->where('id_price', $id_price)
             ->orderBy('id_price', 'DESC')
             ->find()[0];
-        return view('admin_kas_kecil/master/price/detail', $data);
+        return view('admin_kas_kecil/master/barang_harga/detail', $data);
     }
 
     public function detail_tambah($id_price)
@@ -91,20 +96,20 @@ class priceController extends BaseController
 
         $data['judul'] = 'Bintang';
         $data['judul1'] = 'Add Detail Price';
-        $data['model'] = $this->mdPriceDetail
+        $data['model'] = $this->mdJenisHargaDetail
             ->join('price', 'price.id_price=price_detail.id_price',)
             ->join('product', 'product.id_product=price_detail.id_price')
             ->join('jenis_harga', 'jenis_harga.id_jenis_harga=price.id_price')
             ->where('price_detail.id_price', $id_price)
             ->orderBy('id_price_detail', 'DESC')
             ->findAll();
-        $data['id_price'] = $this->mdPrice
+        $data['id_price'] = $this->mdJenisHarga
             ->where('id_price', $id_price)
             ->find()[0];
         $data['product'] = $this->mdProduct->findAll();
         $data['jenis_harga'] = $this->mdJenisHarga->findAll();
-        $data['price'] = $this->mdPrice->findAll();
-        return view('admin_kas_kecil/master/price/detail_tambah', $data);
+        $data['price'] = $this->mdJenisHarga->findAll();
+        return view('admin_kas_kecil/master/barang_harga/detail_tambah', $data);
     }
 
     public function tambah_nama_harga()
@@ -128,36 +133,8 @@ class priceController extends BaseController
             'id_jenis_harga' => $id_jenis_harga,
             'harga' => $this->request->getPost('harga')
         ];
-        $this->mdPriceDetail->insert($data);
+        $this->mdJenisHargaDetail->insert($data);
         // print_r($data);
-
-        // BARANG GHARGA
-        $mdBarangHarga = $this->mdBarangHarga
-            ->where('id_product', $id_product)
-            ->where('id_jenis_harga', $id_jenis_harga)
-            ->find();
-
-        if (count($mdBarangHarga) > 0) {
-            echo "Ada";
-            $data2 = [
-                'id_barang_harga' => $mdBarangHarga[0]['id_barang_harga'],
-                'id_product' => $id_product,
-                'id_jenis_harga' => $id_jenis_harga,
-                'harga_aktif' => $this->request->getPost('harga')
-            ];
-            $this->mdBarangHarga->save($data2);
-        } else {
-            echo "Kosong";
-            $data2 = [
-                'id_product' => $id_product,
-                'id_jenis_harga' => $id_jenis_harga,
-                'harga_aktif' => $this->request->getPost('harga')
-            ];
-            $this->mdBarangHarga->insert($data2);
-            //
-        }
-        print_r($mdBarangHarga);
-
         // exit;
 
         return redirect()->to(base_url('/akk/detail_price/' . $id_price));
@@ -167,7 +144,7 @@ class priceController extends BaseController
     {
         $data['judul'] = 'Bintang';
         $data['judul1'] = 'Add Detail Price';
-        $data['model'] = $this->mdPriceDetail
+        $data['model'] = $this->mdJenisHargaDetail
             ->join('price', 'price.id_price=price_detail.id_price',)
             ->join('product', 'product.id_product=price_detail.id_product')
             ->join('jenis_harga', 'jenis_harga.id_jenis_harga=price_detail.id_jenis_harga')
@@ -176,8 +153,8 @@ class priceController extends BaseController
             ->find()[0];
         $data['product'] = $this->mdProduct->findAll();
         $data['jenis_harga'] = $this->mdJenisHarga->findAll();
-        $data['price'] = $this->mdPrice->findAll();
-        return view('admin_kas_kecil/master/price/detail_edit', $data);
+        $data['price'] = $this->mdJenisHarga->findAll();
+        return view('admin_kas_kecil/master/barang_harga/detail_edit', $data);
     }
     public function update_detail_price()
     {
@@ -192,16 +169,13 @@ class priceController extends BaseController
             'id_jenis_harga' => $id_jenis_harga,
             'harga' => $this->request->getPost('harga')
         ];
-        $this->mdPriceDetail->save($data);
-        // print_r($data);
-        // exit;
-
+        $this->mdJenisHargaDetail->save($data);
         return redirect()->to(base_url('/akk/detail_price/' . $id_price));
     }
 
     public function hapus_detail_price($id_price_detail, $id_price)
     {
-        $this->mdPriceDetail->delete($id_price_detail);
+        $this->mdJenisHargaDetail->delete($id_price_detail);
         return redirect()->to(base_url('/akk/detail_price/' . $id_price));
     }
 }
