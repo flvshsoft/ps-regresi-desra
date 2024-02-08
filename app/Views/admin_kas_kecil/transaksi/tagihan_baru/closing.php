@@ -25,14 +25,9 @@
                             <div class="row">
                                 <div class="col-md-9">
                                     <div class="form-group">
-                                        <label class="col-sm-2 col-form-label">MINGGU KE - </label>
-                                        <div class="col-sm-1">
-                                            <select class="form-control" name="weeks">
-                                                <option> Pilih Minggu </option>
-                                                <option> 1</option>
-                                                <option> 2</option>
-                                            </select>
-                                        </div>
+                                        <label class="col-sm-2 col-form-label">MINGGU KE - <?= $model['week'] ?>
+                                        </label>
+
                                     </div>
                                 </div>
                                 <div class="col-md-3 preview-list">
@@ -76,8 +71,8 @@
                                             99 -
                                         </label>
                                         <div class="col-sm-3 justify-content-start">
-                                            <input type="text" class="form-control" name="id_nota"
-                                                value="<?= $lastIdNota + 1 ?? 1 ?>" disabled>
+                                            <!-- <input type="text" class="form-control" name="id_nota" value="<?//= $lastIdNota + 1 ?? 1 ?>" disabled> -->
+                                            <input type="text" class="form-control" name="no_nota">
                                         </div>
                                     </div>
                                 </div>

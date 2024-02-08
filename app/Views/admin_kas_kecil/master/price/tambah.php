@@ -30,7 +30,7 @@
                                             <option value="<?//= $value['id_product'] ?>">
                                                 <?//= $value['id_product'] ?> - <?//= $value['nama_product'] ?>
                                             </option>
-                                        <?php// } ?>
+                                        <?//php } ?>
                                     </select>
                                 </div>
                             </div> -->
@@ -38,15 +38,12 @@
                                 <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Keterangan
                                 </label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control form-control-sm" name="keterangan_price"
-                                        placeholder="Keterangan">
+                                    <input type="text" class="form-control form-control-sm" name="keterangan_price" placeholder="Keterangan">
                                 </div>
                             </div>
                             <div class="form-group text-center mb-0">
-                                <button type="submit" class="btn btn-success btn-xs"><i
-                                        class="mdi mdi-content-save-all icon-sm"></i></button>
-                                <a class="btn btn-light btn-xs" href="<?= base_url('/akk/master_price') ?>"><i
-                                        class="mdi mdi-backburger icon-sm"></i></a>
+                                <button type="submit" class="btn btn-success btn-xs"><i class="mdi mdi-content-save-all icon-sm"></i></button>
+                                <a class="btn btn-light btn-xs" href="<?= base_url('/akk/master_price') ?>"><i class="mdi mdi-backburger icon-sm"></i></a>
                             </div>
                         </form>
                     </div>
