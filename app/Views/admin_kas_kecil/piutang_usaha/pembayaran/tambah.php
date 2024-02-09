@@ -61,23 +61,22 @@
                                         <th style="font-size: 11px;"> Total Tagihan </th>
                                         <th style="font-size: 11px;"> Tgl J Tempo </th>
                                         <th style="font-size: 11px;"> Top</th>
-                                        <th style="font-size: 11px;" width="1090px"> Tunai</th>
-                                        <th style="font-size: 11px;"> </th>
-
+                                        <th style="font-size: 11px;"> Bayar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($model as $value) { ?>
+                                    <?php foreach ($model as $value) {
+                                        $total_tagihan = $value['total_beli'] - $value['pay'] ?>
 
                                         <tr>
-                                            <form method="POST" action="<?= base_url('/akk/piutang_usaha/input_pembayaran/add') ?>">
+                                            <form method="POST" action="<?= base_url('/akk/piutang_usaha/input/add') ?>">
                                                 <td style="font-size: 11px;">
                                                     <?= $value['id_nota'] ?>
                                                     <input type="hidden" class="form-control form-control-sm" name="id_nota" value="<?= $value['id_nota'] ?>">
                                                     <input type="hidden" class="form-control form-control-sm" name="id_sales" value="<?= $value['id_sales'] ?>">
                                                 </td>
                                                 <td style="font-size: 11px;">
-
+                                                    <?= $value['no_nota'] ?>
                                                 </td>
                                                 <td style="font-size: 11px;">
                                                     <?= $value['nama_lengkap'] ?>
@@ -89,7 +88,7 @@
                                                     <?= $value['nama_customer'] ?>
                                                 </td>
                                                 <td style="font-size: 11px;">
-                                                    <?= 'Rp. ' . number_format($value['total_beli'], 0, ',', '.'); ?>
+                                                    <?= 'Rp. ' . number_format($total_tagihan, 0, ',', '.'); ?>
                                                 </td>
                                                 <td style="font-size: 11px;">
 
@@ -98,20 +97,25 @@
 
                                                 </td>
                                                 <td style="font-size: 11px;" width="1090px">
-                                                    <input type="text" placeholder="Payment" name="pay" class="form-control form-control-sm">
-                                                </td>
-                                                <td style="font-size: 11px;">
-                                                    <!-- <div class="justify-content-center text-center"> -->
 
-                                                    <button type="submit" class="btn btn-success btn-xs">
-                                                        S
-                                                    </button>
-
-                                                    <!-- </div> -->
+                                                    <div class="btn-group btn-sm">
+                                                        <button type="button" class="btn btn-sm btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li>
+                                                                <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Cicil
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <button type="submit" class="dropdown-item">
+                                                                    Lunas
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </td>
                                             </form>
                                         </tr>
-
                                     <?php }; ?>
                                 </tbody>
                             </table>
@@ -119,6 +123,33 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Edit -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Bayar Disini</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form class="forms-sample" action="<?= base_url('/akk/piutang_usaha/input_pembayaran/add') ?>" method="POST">
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Input Pembayaran</label>
+                        <div class="col-sm-9">
+                            <input type="text" placeholder="Payment" name="pay" class="form-control form-control-sm">
+                            <input type="hidden" class="form-control form-control-sm" name="id_sales" value="<?= $info['id_sales'] ?>">
+                            <input type="hidden" class="form-control form-control-sm" name="id_nota" value="<?= $info['id_nota'] ?>">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
