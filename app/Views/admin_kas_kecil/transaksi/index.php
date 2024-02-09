@@ -3,7 +3,7 @@
 
 <div class="main-panel">
     <div class="content-wrapper">
-        <div class="page-header">
+        <div class="page-header" style="margin-top:-40px;">
             <h3 class="page-title" style="color:#fd79b3">Transaksi</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -18,21 +18,6 @@
             <div class="col-lg-12 mb-4">
                 <!-- Color System -->
                 <div class="row p-2">
-                    <div class="col-lg-4 mb-3 px-2">
-                        <a href="<?= base_url('/akk/transaksi/tagihan_baru') ?>" class="text-decoration-none">
-                            <div class="card text-white shadow" style="background: #b7e5fc;">
-                                <div class="card-body d-flex p-0">
-                                    <div class="col-6 p-3 text-white-90">
-                                        <h5>Input Tagihan Baru</h5>
-                                        <h2 class="mb-0">Nota</h2>
-                                    </div>
-                                    <div class="col-6 p-0">
-                                        <img src="https://i.pinimg.com/564x/c0/c1/2d/c0c12d0054ac3fa10430f561bf26bcc0.jpg" alt="Foto" width="100%" class="mt-2">
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
 
                     <div class="col-lg-4 mb-3 px-2">
                         <a href="<?= base_url('/akk/transaksi/ambil_barang') ?>" class="text-decoration-none">
@@ -49,6 +34,23 @@
                             </div>
                         </a>
                     </div>
+
+                    <div class="col-lg-4 mb-3 px-2">
+                        <a href="<?= base_url('/akk/transaksi/tagihan_baru') ?>" class="text-decoration-none">
+                            <div class="card text-white shadow" style="background: #b7e5fc;">
+                                <div class="card-body d-flex p-0">
+                                    <div class="col-6 p-3 text-white-90">
+                                        <h5>Input Tagihan Baru</h5>
+                                        <h2 class="mb-0">Nota</h2>
+                                    </div>
+                                    <div class="col-6 p-0">
+                                        <img src="https://i.pinimg.com/564x/c0/c1/2d/c0c12d0054ac3fa10430f561bf26bcc0.jpg" alt="Foto" width="100%" class="mt-2">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
                     <div class="col-lg-4 mb-3 px-2">
                         <a href="#<?= base_url('/akk/transaksi/ambil_barang') ?>" class="text-decoration-none">
                             <div class="card text-white shadow" style="background: #7cddb2;">

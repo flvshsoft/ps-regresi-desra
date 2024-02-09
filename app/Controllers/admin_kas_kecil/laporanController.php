@@ -92,8 +92,8 @@ class laporanController extends BaseController
             ->join('partner', 'partner.id_partner=sales.id_partner')
             ->join('nota', 'nota.id_sales=sales.id_sales')
             ->orderBY('id_nota', 'DESC')
-            ->where('nota.created_at >=', $dt1)
-            ->where('nota.created_at <=', $dt2)
+            // ->where('nota.created_at >=', $dt1)
+            // ->where('nota.created_at <=', $dt2)
             ->where('sales.id_area', $id_area)
             ->where('nota.id_partner', $id_partner)
             ->find();
@@ -102,6 +102,8 @@ class laporanController extends BaseController
             $data['info'] = $data['info'][0];
         } else {
             $data['info'];
+            return redirect()->to(base_url('/akk/laporan/form_sisa#kosong'));
+            exit;
         }
 
         $mpdf = new \Mpdf\Mpdf();
