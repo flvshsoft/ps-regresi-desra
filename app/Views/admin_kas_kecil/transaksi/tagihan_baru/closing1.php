@@ -127,7 +127,7 @@
                                     <tr>
                                         <th style=" font-size: 11px;"> No </th>
                                         <th style=" font-size: 11px;"> ID NOTA </th>
-                                        <th style=" font-size: 11px;"> ITEM - NAMA BARANG </th>
+                                        <th style=" font-size: 11px;"> NAMA BARANG </th>
                                         <th style=" font-size: 11px;"> TYPE HARGA </th>
                                         <th style=" font-size: 11px;"> STOK </th>
                                         <th style=" font-size: 11px;"> SATUAN </th>
@@ -140,7 +140,7 @@
                                     <?php $no = 1;
                                     $total = 0;
                                     foreach ($model as $value) {
-                                        $harga =  $value['harga'] * $value['satuan_penjualan'] - $value['diskon_penjualan'];
+                                        $harga =  $value['harga_aktif'] * $value['satuan_penjualan'] - $value['diskon_penjualan'];
                                         $total += $harga;
                                     ?>
                                     <tr>
@@ -157,14 +157,13 @@
                                             </b>
                                         </td>
                                         <td style=" font-size: 11px;">
-                                            <?= $value['id_product'] ?> - <?= $value['nama_product'] ?>
+                                            <?= $value['nama_product'] ?>
                                         </td>
                                         <td style=" font-size: 11px;">
-                                            <?//= $value['id_product'] ?> -
-                                            <?//= $value['nama_product'] ?>
+                                            <?= $value['remark_jenis_harga'] ?>
                                         </td>
                                         <td style=" font-size: 11px;">
-                                            <?= $value['satuan_sales_detail'] ?>
+                                            <?//= $value['satuan_sales_detail'] ?>
                                         </td>
                                         <td style=" font-size: 11px;">
                                             <?= $value['satuan_penjualan'] ?>
@@ -177,7 +176,7 @@
                                         </td>
                                         <td>
                                             <a onclick="return confirm('Anda Yakin Ingin Menghapusnya?')"
-                                                href="<?= base_url('/akk/transaksi/tagihan_baru/nota/detail/hapus/' . $value['id_nota'] . '/' . $value['id_nota_detail'] . '/' . $harga) ?>">
+                                                href="<?= base_url('/akk/transaksi/tagihan_baru/nota/detail/hapus/' . $value['id_nota'] . '/' . $value['id_nota_detail']) . '/' . $harga ?>">
                                                 <i class="mdi mdi-delete-circle text-default icon-md"></i> </a>
                                         </td>
                                     </tr>
@@ -208,11 +207,10 @@
                                             </td>
                                             <td style=" font-size: 11px;">
                                                 <select class="form-control" name="id_jenis_harga">
-                                                    <option value="id_jenis_harga"> Pilih Jenis Harga</option>
+                                                    <option value=""> Pilih Jenis Harga</option>
                                                     <?php foreach ($jenis_harga as $value) { ?>
                                                     <option value="<?= $value['id_jenis_harga'] ?>">
-                                                        <?= $value['remark_jenis_harga'] ?>
-
+                                                        <?= $value['id_jenis_harga'] ?>
                                                     </option>
                                                     <?php } ?>
                                                 </select>
@@ -221,6 +219,8 @@
 
                                             </td>
                                             <td>
+                                                <input type="hidden" name="x" class="form-control form-control-sm"
+                                                    placeholder="0">
                                                 <input type="text" name="satuan_penjualan"
                                                     class="form-control form-control-sm" placeholder="0">
                                                 <input type="hidden" name="id_nota" class="form-control form-control-sm"
@@ -231,7 +231,7 @@
                                                 <input type="text" name="diskon_penjualan" class="form-control"
                                                     placeholder="0">
                                             </td>
-                                            <td style=" font-size: 11px;">
+                                            <td style="font-size: 11px;">
                                                 <button type="submit" class="btn btn-primary btn-xs"><i
                                                         class="mdi mdi-content-save-all icon-xs"></i>
                                                 </button>
@@ -242,7 +242,7 @@
                                 </tbody>
                                 <tfoot class="table-info">
                                     <tr>
-                                        <td style=" font-size: 11px;" colspan="6">
+                                        <td style=" font-size: 11px;" colspan="7">
                                             <b>Total </b>
                                         </td>
                                         <td style=" font-size: 11px;" colspan="6">
