@@ -25,6 +25,8 @@ if (!isset(Session('userData')['nama_user'])) {
     <!-- End layout styles -->
     <link rel="shortcut icon" href="<?= base_url() ?>/public/assets/images/favicon1.ico" />
     <link href="<?= base_url() ?>/public/assets/vendors/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!-- font -->
+    <link href="https://db.onlinewebfonts.com/c/c3264a2601f855aef183e1892c5504db?family=Sacramento" rel="stylesheet">
     <style>
         p,
         h1,
@@ -61,7 +63,7 @@ if (!isset(Session('userData')['nama_user'])) {
 
         /* icon menu */
         .sidebar .nav .nav-item .nav-link i.menu-icon {
-            color: #FFF;
+            color: #FFCF9D;
             font-size: 28px;
             margin-left: 0;
             margin-right: 10px;
@@ -69,7 +71,7 @@ if (!isset(Session('userData')['nama_user'])) {
 
         /* icon menu active */
         .sidebar .nav .nav-item.active>.nav-link i {
-            color: #294B29;
+            color: #1B4242;
             font-size: 28px;
             margin-left: 20px;
             margin-right: 0px;
@@ -78,7 +80,7 @@ if (!isset(Session('userData')['nama_user'])) {
         /* off kan putih */
         .sidebar .nav .nav-item.active {
             padding: 3%;
-            background-color: #20a2a0;
+            background-color: #1B4242;
         }
 
         /* menu active */
@@ -130,10 +132,15 @@ if (!isset(Session('userData')['nama_user'])) {
 
 <body>
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center" style="background-color:#20A2A0 ;">
-            <a class="navbar-brand brand-logo text-white" href="#">
-                <img src="<?= base_url('') ?>/public/assets/images/logo.png" alt="logo" width="30px" />
-                BINTANG REZEKI
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center" style="background-color:#1B4242 ;">
+            <a class="navbar-brand brand-logo text-white d-flex p-3 mt-2" href="#">
+                <div style="background: #FFFFFFc7;border-radius:50%;padding:3%;width:30%;margin-top:0px;">
+                    <img src="<?= base_url('') ?>/public/assets/images/logo.png" alt="logo" width="50px" style="background: #ffffffa8;border-radius:30px;padding:3%;" />
+                </div>
+                <div class="d-block mt-2 ms-2">
+                    <h3 class="text-start" style="font-family: 'Sacramento';">Bintang</h3>
+                    <h6 style="color:#FFCF9D;font-size:8px;">bintang rezeki madistro</h6>
+                </div>
             </a>
             <a class="navbar-brand brand-logo-mini" href="/">
                 <img src="<?= base_url('')
@@ -222,8 +229,8 @@ if (!isset(Session('userData')['nama_user'])) {
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
-        <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color:#20A2A0 ">
-            <ul class="nav">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color:#1B4242 ">
+            <ul class="nav pt-4">
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url() ?>/akk/dashboard">
                         <i class="mdi mdi-compass menu-icon text-whitex text-shadow"></i>
@@ -294,14 +301,9 @@ if (!isset(Session('userData')['nama_user'])) {
                         <span class="menu-title">Konsumen</span>
                         <i class="mdi mdi-book-open menu-icon text-white text-shadow"></i>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>/akk/sdm">
-                        <span class="menu-title">SDM</span>
-                        <i class="mdi mdi mdi-comment-account-outline menu-icon text-white text-shadow"></i>
-                    </a>
-                </li>  -->
+                </li>-->
             </ul>
+            <img src="https://i.pinimg.com/originals/da/41/06/da41069961bd2c79a786abb69328c9fc.gif" alt="Foto" width="100%" class="mt-0 p-2" style="border-radius: 30px;">
         </nav>
         <!-- partial -->
         <?= $this->renderSection('content'); ?>
