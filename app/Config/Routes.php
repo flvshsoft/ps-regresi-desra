@@ -108,7 +108,7 @@ $routes->get('/akk/piutang_usaha', 'admin_kas_kecil\piutang_usahaController::ind
 $routes->get('/akk/repayment_detail', 'admin_kas_kecil\piutang_usahaController::repayment_detail');
 $routes->get('/akk/piutang_usaha/form', 'admin_kas_kecil\piutang_usahaController::form_piutang');
 // $routes->get('/akk/piutang_usaha/input', 'admin_kas_kecil\piutang\tunaiController::index');
-// $routes->post('/akk/piutang_usaha/input/add', 'admin_kas_kecil\piutang\tunaiController::add');
+$routes->post('/akk/piutang_usaha/input/add', 'admin_kas_kecil\piutang\tunaiController::add');
 // $routes->get('/akk/piutang_usaha/input/detail/(:any)', 'admin_kas_kecil\piutang\tunaiController::detail_input_piutang/$1');
 $routes->get('/akk/piutang_usaha/input_pembayaran', 'admin_kas_kecil\piutang\pembayaranController::index');
 $routes->post('/akk/piutang_usaha/input_pembayaran/add', 'admin_kas_kecil\piutang\pembayaranController::add');
