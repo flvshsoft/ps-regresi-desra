@@ -111,20 +111,20 @@ class TagihanBaruController extends BaseController
         $data['jenis_harga'] = $this->mdJenisHarga->findAll();
         $data['lastIdNotaDetail'] = $this->mdNotaDetail->getLastIdNotaDetail();
         $data['sales_detail'] = $this->mdSalesDetail
-            // ->select('sales.createat as createat')
-            // ->join('product', 'product.id_product=sales_detail.id_product')
-            ->join('price_detail', 'price_detail.id_price_detail=sales_detail.id_price_detail')
-            ->join('product', 'product.id_product=price_detail.id_product')
+            ->join('product', 'product.id_product=sales_detail.id_product')
+            //->join('price_detail', 'price_detail.id_price_detail=sales_detail.id_price_detail')
+            //->join('product', 'product.id_product=price_detail.id_product')
             ->join('nota', 'nota.id_sales=sales_detail.id_sales')
             ->where('id_nota', $id_nota)
             ->findAll();
         $data['model'] = $this->mdNotaDetail
-            ->join('sales_detail', 'sales_detail.id_sales_detail=nota_detail.id_sales_detail')
-            // ->join('sales', 'sales.id_sales=nota.id_sales')
-            ->join('price_detail', 'price_detail.id_price_detail=sales_detail.id_price_detail')
-            ->join('product', 'product.id_product=price_detail.id_product')
+            // ->select('sales.created_at as created_at')
             ->join('nota', 'nota.id_nota=nota_detail.id_nota')
+            ->join('product', 'product.id_product=nota_detail.id_product')
+            ->join('jenis_harga', 'jenis_harga.id_jenis_harga=nota_detail.id_jenis_harga')
+            ->join('barang_harga', 'barang_harga.id_product=product.id_product')
             ->where('nota_detail.id_nota', $id_nota)
+            ->groupBy('id_nota_detail')
             ->findAll();
         $data['detail'] = $this->mdNotaDetail
             ->join('sales_detail', 'sales_detail.id_sales_detail=nota_detail.id_sales_detail')
@@ -182,58 +182,59 @@ class TagihanBaruController extends BaseController
     public function input_detail_closing()
     {
         $id_sales_detail = $this->request->getPost('id_sales_detail');
-        $id_product = $this->request->getPost('id_product');
         $id_jenis_harga = $this->request->getPost('id_jenis_harga');
+        $mdSalesDetail = $this->mdSalesDetail
+            ->where('id_sales_detail', $id_sales_detail)
+            ->find();
+        $id_product = $mdSalesDetail[0]['id_product'];
 
         $id_nota =  $this->request->getPost('id_nota');
         $data = [
-            'id_sales_detail' => $id_sales_detail,
+            'id_jenis_harga' => $id_jenis_harga,
             'id_nota' => $id_nota,
-            //'id_sales_detail' => $id_sales_detail,
+            'id_product' => $id_product,
+            'id_jenis_harga' => $id_jenis_harga,
             'satuan_penjualan' => $this->request->getPost('satuan_penjualan'),
             'diskon_penjualan' => $this->request->getPost('diskon_penjualan'),
-            //'pay' => 0,
-            //'created_by' => SESSION('userData')['id_user'],
-            //'tgl_bayar' =>  $this->request->getPost('tgl_bayar'),
         ];
-        //  $this->mdNotaDetail->insert($data);
 
-
-        //total
-        $data['model'] = $this->mdNotaDetail
-            ->join('sales_detail', 'sales_detail.id_sales_detail=nota_detail.id_sales_detail')
-            ->join('product', 'product.id_product=sales_detail.id_product')
-            ->join('price_detail', 'price_detail.id_price_detail=sales_detail.id_price_detail')
-            ->where('nota_detail.id_nota', $id_nota)
-            ->findAll();
-
-        $total = 0;
-        foreach ($data['model'] as $key => $value) {
-            $total += ($value['harga'] * $value['satuan_penjualan']) - $value['diskon_penjualan'];
-        }
-        $data['total'] = $total;
-        //update nota
-
-        $data2 = [
-            'id_nota' => $id_nota,
-            'total_beli' => $total,
-        ];
-        // $this->mdNota->save($data2);
-
-        print_r($data);
-
-        // BARANG GHARGA
         $mdBarangHarga = $this->mdBarangHarga
             ->where('id_product', $id_product)
             ->where('id_jenis_harga', $id_jenis_harga)
             ->find();
 
         if (count($mdBarangHarga) > 0) {
+            $this->mdNotaDetail->insert($data);
+        } else {
+            return redirect()->to(base_url('/akk/transaksi/tagihan_baru/nota/detail/' . $id_nota));
         }
-        exit;
 
 
-        //return redirect()->to(base_url('/akk/transaksi/tagihan_baru/nota/detail/' . $id_nota));
+        //total
+        $data['model'] = $this->mdNotaDetail
+            // ->select('sales.created_at as created_at')
+            ->join('nota', 'nota.id_nota=nota_detail.id_nota')
+            ->join('product', 'product.id_product=nota_detail.id_product')
+            ->join('barang_harga', 'barang_harga.id_product=product.id_product')
+            ->where('nota_detail.id_nota', $id_nota)
+            ->findAll();
+
+        $total = 0;
+        foreach ($data['model'] as $key => $value) {
+            $total += ($value['harga_aktif'] * $value['satuan_penjualan']) - $value['diskon_penjualan'];
+        }
+        $data['total'] = $total;
+        //update nota
+        // echo $total;
+        // exit;
+        $data2 = [
+            'id_nota' => $id_nota,
+            'total_beli' => $total,
+        ];
+        //  $this->mdNota->save($data2);
+        $this->mdNota->where('id_nota', $id_nota)->increment('total_beli', $total);
+
+        return redirect()->to(base_url('/akk/transaksi/tagihan_baru/nota/detail/' . $id_nota));
     }
     public function hapus_detail($id_nota, $id_nota_detail, $harga)
     {
