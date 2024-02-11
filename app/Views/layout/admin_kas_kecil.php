@@ -71,7 +71,7 @@ if (!isset(Session('userData')['nama_user'])) {
 
         /* icon menu active */
         .sidebar .nav .nav-item.active>.nav-link i {
-            color: #1B4242;
+            color: #436850;
             font-size: 28px;
             margin-left: 20px;
             margin-right: 0px;
@@ -80,7 +80,7 @@ if (!isset(Session('userData')['nama_user'])) {
         /* off kan putih */
         .sidebar .nav .nav-item.active {
             padding: 3%;
-            background-color: #1B4242;
+            background-color: #436850;
         }
 
         /* menu active */
@@ -132,8 +132,8 @@ if (!isset(Session('userData')['nama_user'])) {
 
 <body>
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center" style="background-color:#1B4242 ;">
-            <a class="navbar-brand brand-logo text-white d-flex p-3 mt-2" href="#">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center" style="background-color:#436850 ;">
+            <a class="navbar-brand brand-logo text-white d-flex p-3 mt-4" href="#">
                 <div style="background: #FFFFFFc7;border-radius:50%;padding:3%;width:30%;margin-top:0px;">
                     <img src="<?= base_url('') ?>/public/assets/images/logo.png" alt="logo" width="50px" style="background: #ffffffa8;border-radius:30px;padding:3%;" />
                 </div>
@@ -229,7 +229,7 @@ if (!isset(Session('userData')['nama_user'])) {
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
-        <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color:#1B4242 ">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color:#436850 ">
             <ul class="nav pt-4">
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url() ?>/akk/dashboard">

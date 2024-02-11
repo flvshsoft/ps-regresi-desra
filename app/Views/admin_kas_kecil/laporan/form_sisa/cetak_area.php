@@ -6,116 +6,129 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-    body {
-        font-family: Arial, sans-serif;
-        padding: 20px;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
 
-    img {
-        max-width: 100%;
-        height: 20%;
-        width: 30%;
-        float: left;
-        margin: 20px 0;
-        margin-top: 10px;
-        /* Atur margin atas dan bawah */
-    }
+        img {
+            max-width: 100%;
+            height: 20%;
+            width: 30%;
+            float: left;
+            margin: 20px 0;
+            margin-top: 10px;
+            /* Atur margin atas dan bawah */
+        }
 
-    .container {
-        max-width: 800px;
-        margin: 0 auto;
-    }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-    .flex-container {
-        display: flex;
-        justify-content: space-between;
-    }
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+        }
 
-    .header {
-        text-align: center;
-        margin-bottom: 20px;
-    }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-    .left-column {
-        flex: 1;
-    }
+        .left-column {
+            flex: 1;
+        }
 
-    .right-column {
-        flex: 1;
-    }
+        .right-column {
+            flex: 1;
+        }
 
-    .details {
-        margin-bottom: 20px;
-    }
+        .details {
+            margin-bottom: 20px;
+        }
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-    }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            /* margin-bottom: 20px; */
+        }
 
-    table,
-    th,
-    td {
-        border: 1px solid black;
-    }
+        table,
+        th,
+        td {
+            /* border: 1px solid black; */
+        }
 
-    th,
-    td {
-        padding: 10px;
-        text-align: left;
-    }
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
 
-    tbody td {
-        vertical-align: top;
-    }
+        tbody td {
+            vertical-align: top;
+        }
 
-    .payment {
-        margin-top: 20px;
-    }
+        .payment {
+            margin-top: 20px;
+        }
 
-    .footer {
-        margin-top: 20px;
-    }
+        .footer {
+            margin-top: 20px;
+        }
     </style>
     <title>Invoice Client</title>
 </head>
 
 <body>
     <div class="container">
-        <div class="header">
-            <img src="<?= base_url() ?>/public/assets/images/logo.png" alt="logo" class="w-25 h-25">
-            <h2><?= $judul ?></h2>
-            <p><b><?= $judul1 ?></b></p>
-        </div>
-        <div class="flex-container">
-            <div class="left-column">
-                <p>
-                    <b>
-                        Print Date : <?= date('Y-m-d') ?>
-                    </b>
-                </p>
-                <p>
-                    <b>
-                        Area :
-                        <?= $info['nama_area'] ?>
-                    </b>
-                </p>
+        <table border="0">
+            <thead>
+                <tr>
+                    <th style="width: 50px;">
+                        <img src="<?= base_url() ?>/public/assets/images/logo.png" alt="logo" style="width: 100px;height:auto;">
+                    </th>
+                    <th style="text-align: center;">
+                        <h4><?= $judul ?></h4>
+                        <h5><?= $judul1 ?></h5>
+                        <h6>Cabang : Kota Pekanbaru</h6>
+                    </th>
+                    <th style="width: 100px;">
 
-                <p>
-                    <b>
-                        Dicetak Oleh :
-                        <?= SESSION('userData')['nama_user'] ?>
-                    </b>
-                </p>
-                <p>
-                    <b>
-                        Salesman :
-                        <?= $info['nama_lengkap'] ?>
-                    </b>
-                </p>
-            </div>
-        </div>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <hr>
+        <table border="0">
+            <thead>
+                <tr>
+                    <th>
+                        <p style="font-size: 10px;">
+                            Print Date : <?= date('Y-m-d') ?>
+                        </p>
+                    </th>
+                    <th>
+                        <p style="font-size: 10px;">
+                            Area : <?= $info['nama_area'] ?>
+                        </p>
+                    </th>
+                    <th>
+                        <p style="font-size: 10px;">
+                            Dicetak Oleh :<?= SESSION('userData')['nama_user'] ?>
+                        </p>
+                    </th>
+                    <th>
+                        <p style="font-size: 10px;">
+                            Salesman :
+                            <?= $info['nama_lengkap'] ?>
+                        </p>
+                    </th>
+
+                </tr>
+            </thead>
+        </table>
         <table>
             <thead>
                 <tr style="font-size:11px ;">
@@ -136,16 +149,16 @@
                 foreach ($model as $value) {
                     $total += $value['total_beli'];
                 ?>
-                <tr style="font-size:11px ;">
-                    <td><?= $no ?> </td>
-                    <td><?= $value['id_nota'] ?> </td>
-                    <td><?= tgl_indo($value['tgl_bayar']) ?> </td>
-                    <td><?= $value['nama_customer'] ?> </td>
-                    <td><?= 'Rp. ' . number_format($value['total_beli'], 0, ',', '.') ?></td>
-                    <td><?= $value['no_hp_customer'] ?> </td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                    <tr style="font-size:11px ;">
+                        <td><?= $no ?> </td>
+                        <td><?= $value['id_nota'] ?> </td>
+                        <td><?= tgl_indo($value['tgl_bayar']) ?> </td>
+                        <td><?= $value['nama_customer'] ?> </td>
+                        <td><?= 'Rp. ' . number_format($value['total_beli'], 0, ',', '.') ?></td>
+                        <td><?= $value['no_hp_customer'] ?> </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
                 <?php $no++;
                 } ?>
             </tbody>
