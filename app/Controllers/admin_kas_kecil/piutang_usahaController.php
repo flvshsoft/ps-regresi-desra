@@ -14,6 +14,7 @@ class piutang_usahaController extends BaseController
             ->join('customer', 'customer.id_customer=nota.id_customer')
             ->join('partner', 'partner.id_partner=nota.id_partner')
             ->join('user', 'user.id_user=nota.created_by')
+            ->where('status', 'Lunas')
             ->groupBy('id_nota_detail')
             ->findAll();
         return view('admin_kas_kecil/piutang_usaha/index', $data);
