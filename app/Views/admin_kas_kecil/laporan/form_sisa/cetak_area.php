@@ -148,6 +148,7 @@
                 $total = 0;
                 foreach ($model as $value) {
                     $total += $value['total_beli'];
+                    $sisa = $value['total_beli'] - $value['pay'];
                 ?>
                     <tr style="font-size:11px ;">
                         <td><?= $no ?> </td>
@@ -156,8 +157,8 @@
                         <td><?= $value['nama_customer'] ?> </td>
                         <td><?= 'Rp. ' . number_format($value['total_beli'], 0, ',', '.') ?></td>
                         <td><?= $value['no_hp_customer'] ?> </td>
-                        <td></td>
-                        <td></td>
+                        <td><?= 'Rp. ' . number_format($value['pay'], 0, ',', '.') ?></td>
+                        <td><?= 'Rp. ' . number_format($sisa, 0, ',', '.') ?></td>
                     </tr>
                 <?php $no++;
                 } ?>

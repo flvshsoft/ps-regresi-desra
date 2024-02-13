@@ -81,8 +81,8 @@ class laporanController extends BaseController
             ->join('nota', 'nota.id_sales=sales.id_sales')
             ->join('customer', 'customer.id_customer=nota.id_customer')
             ->orderBY('id_nota', 'DESC')
-            ->where('nota.created_at >=', $dt1)
-            ->where('nota.created_at <=', $dt2)
+            // ->where('nota.created_at >=', $dt1)
+            // ->where('nota.created_at <=', $dt2)
             ->where('sales.id_area', $id_area)
             ->where('nota.id_partner', $id_partner)
             ->findAll();
