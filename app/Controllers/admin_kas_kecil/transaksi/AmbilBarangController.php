@@ -107,7 +107,9 @@ class AmbilBarangController extends BaseController
             ->findAll();
         // print_r($id_sales);
         // exit;
-        $data['id_sales'] = $this->mdSales
+        $data['info'] = $this->mdSales
+            ->join('partner', 'partner.id_partner=sales.id_partner')
+            ->join('area', 'area.id_area=sales.id_area')
             ->where('id_sales', $id_sales)
             ->find()[0];
         return view('admin_kas_kecil/transaksi/ambil_barang/detail', $data);

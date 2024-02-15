@@ -126,13 +126,12 @@
                                 <thead class="table table-primary">
                                     <tr>
                                         <th style=" font-size: 11px;"> No </th>
-                                        <th style=" font-size: 11px;"> ID NOTA </th>
+                                        <!-- <th style=" font-size: 11px;"> ID NOTA </th> -->
                                         <th style=" font-size: 11px;"> NAMA BARANG </th>
                                         <th style=" font-size: 11px;"> TYPE HARGA </th>
-                                        <th style=" font-size: 11px;"> STOK </th>
-                                        <th style=" font-size: 11px;"> SATUAN </th>
+                                        <th style=" font-size: 11px;"> JUMLAH </th>
                                         <th style=" font-size: 11px;"> DISKON </th>
-                                        <th style=" font-size: 11px;"> JUMLAH</th>
+                                        <th style=" font-size: 11px;"> TOTAL</th>
                                         <th style=" font-size: 11px;"> </th>
                                     </tr>
                                 </thead>
@@ -140,14 +139,15 @@
                                     <?php $no = 1;
                                     $total = 0;
                                     foreach ($model as $value) {
-                                        $harga =  $value['harga_aktif'] * $value['satuan_penjualan'] - $value['diskon_penjualan'];
+                                        $harga_aktif = $mdBarangHarga[$value['id_nota_detail']]['harga_aktif'];
+                                        $harga =  $harga_aktif * $value['satuan_penjualan'] - $value['diskon_penjualan'];
                                         $total += $harga;
                                     ?>
                                     <tr>
                                         <td style=" font-size: 11px;">
                                             <?= $no ?>
                                         </td>
-                                        <td style=" font-size: 11px;">
+                                        <!-- <td style=" font-size: 11px;">
                                             <b>
                                                 <a style="text-decoration:none"
                                                     href="<?= base_url('/akk/form_customer/' . $value['id_nota_detail']) ?>"
@@ -155,15 +155,13 @@
                                                     <?= $value['id_nota_detail'] ?>
                                                 </a>
                                             </b>
-                                        </td>
+                                        </td> -->
                                         <td style=" font-size: 11px;">
                                             <?= $value['nama_product'] ?>
                                         </td>
                                         <td style=" font-size: 11px;">
+                                            <?= $harga_aktif ?> -
                                             <?= $value['remark_jenis_harga'] ?>
-                                        </td>
-                                        <td style=" font-size: 11px;">
-                                            <?//= $value['satuan_sales_detail'] ?>
                                         </td>
                                         <td style=" font-size: 11px;">
                                             <?= $value['satuan_penjualan'] ?>
@@ -188,9 +186,9 @@
                                             <td style=" font-size: 11px;">
                                                 <?= $no ?? 1 ?>
                                             </td>
-                                            <td style=" font-size: 11px;">
-                                                <?= $lastIdNotaDetail + 1 ?? 1 ?>
-                                            </td>
+                                            <!-- <td style=" font-size: 11px;">
+                                                <?//= $lastIdNotaDetail + 1 ?? 1 ?>
+                                            </td> -->
                                             <td style=" font-size: 11px;">
                                                 <select class="form-control" name="id_sales_detail">
                                                     <option value="id_sales_detail"> Pilih Produk</option>
@@ -210,26 +208,23 @@
                                                     <option value=""> Pilih Jenis Harga</option>
                                                     <?php foreach ($jenis_harga as $value) { ?>
                                                     <option value="<?= $value['id_jenis_harga'] ?>">
-                                                        <?= $value['id_jenis_harga'] ?>
+                                                        <?= $value['remark_jenis_harga'] ?>
                                                     </option>
                                                     <?php } ?>
                                                 </select>
-                                            </td>
-                                            <td style=" font-size: 11px;">
-
                                             </td>
                                             <td>
                                                 <input type="hidden" name="x" class="form-control form-control-sm"
                                                     placeholder="0">
                                                 <input type="text" name="satuan_penjualan"
-                                                    class="form-control form-control-sm" placeholder="0">
+                                                    class="form-control form-control-sm" value="0">
                                                 <input type="hidden" name="id_nota" class="form-control form-control-sm"
                                                     value="<?= $nota['id_nota'] ?>">
                                             </td>
 
                                             <td style=" font-size: 11px;">
                                                 <input type="text" name="diskon_penjualan" class="form-control"
-                                                    placeholder="0">
+                                                    value="0">
                                             </td>
                                             <td style="font-size: 11px;">
                                                 <button type="submit" class="btn btn-primary btn-xs"><i
@@ -242,7 +237,7 @@
                                 </tbody>
                                 <tfoot class="table-info">
                                     <tr>
-                                        <td style=" font-size: 11px;" colspan="7">
+                                        <td style=" font-size: 11px;" colspan="6">
                                             <b>Total </b>
                                         </td>
                                         <td style=" font-size: 11px;" colspan="6">
@@ -313,15 +308,18 @@
                     <div class="form-group row">
                         <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Item - Barang</label>
                         <div class="col-sm-9">
-                            <input type="hidden" class="form-control" value="<?//= $detail['id_nota_detail'] ?>"
-                                name="id_nota_detail">
+                            <input type="hidden" class="form-control" value="<? //= $detail['id_nota_detail'] 
+                                                                                ?>" name="id_nota_detail">
                             <select class="form-control" name="id_sales_detail">
                                 <option value="id_sales_detail">
-                                    <?//= $detail['id_product'] ?>
+                                    <? //= $detail['id_product'] 
+                                    ?>
                                     -
-                                    <?//= $detail['nama_product'] ?>
+                                    <? //= $detail['nama_product'] 
+                                    ?>
                                     -
-                                    <?//= $detail['satuan_sales_detail'] ?>
+                                    <? //= $detail['satuan_sales_detail'] 
+                                    ?>
                                 </option>
                                 <?php foreach ($sales_detail as $value) { ?>
                                 <option value="<?= $value['id_sales_detail'] ?>">
@@ -338,19 +336,20 @@
                     <div class="form-group row">
                         <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Satuan</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" value="rrr<?//= $detail['satuan_penjualan'] ?>"
-                                name="satuan_penjualan">
-                            <input type="hidden" class="form-control" value="<?//= $detail['id_nota'] ?>"
-                                name="id_nota">
+                            <input type="text" class="form-control" value="rrr<? //= $detail['satuan_penjualan'] 
+                                                                                ?>" name="satuan_penjualan">
+                            <input type="hidden" class="form-control" value="<? //= $detail['id_nota'] 
+                                                                                ?>" name="id_nota">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Diskon</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" value="<?//= $detail['diskon_penjualan'] ?>"
-                                name="diskon_penjualan">
-                            <input type="hidden" class="form-control" value="<?//= $harga_b ?>" name="harga_b">
+                            <input type="text" class="form-control" value="<? //= $detail['diskon_penjualan'] 
+                                                                            ?>" name="diskon_penjualan">
+                            <input type="hidden" class="form-control" value="<? //= $harga_b 
+                                                                                ?>" name="harga_b">
                         </div>
                     </div>
                 </div>

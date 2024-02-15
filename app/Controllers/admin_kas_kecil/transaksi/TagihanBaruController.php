@@ -122,10 +122,24 @@ class TagihanBaruController extends BaseController
             ->join('nota', 'nota.id_nota=nota_detail.id_nota')
             ->join('product', 'product.id_product=nota_detail.id_product')
             ->join('jenis_harga', 'jenis_harga.id_jenis_harga=nota_detail.id_jenis_harga')
-            ->join('barang_harga', 'barang_harga.id_product=product.id_product')
+            // ->join('barang_harga', 'barang_harga.id_product=product.id_product')
             ->where('nota_detail.id_nota', $id_nota)
             ->groupBy('id_nota_detail')
             ->findAll();
+
+        $temp = [];
+        foreach ($data['model'] as $key => $value) {
+            $mdBarangHarga = $this->mdBarangHarga
+                ->where('id_product', $value['id_product'])
+                ->where('id_jenis_harga', $value['id_jenis_harga'])
+                ->find()[0];
+            // echo $value['id_nota_detail'];
+            // print_r($mdBarangHarga);
+            $temp[$value['id_nota_detail']] = $mdBarangHarga;
+        }
+        // print_r($temp);
+        $data['mdBarangHarga'] = $temp;
+        // exit;
         $data['detail'] = $this->mdNotaDetail
             ->join('sales_detail', 'sales_detail.id_sales_detail=nota_detail.id_sales_detail')
             ->join('price_detail', 'price_detail.id_price_detail=sales_detail.id_price_detail')
@@ -204,7 +218,7 @@ class TagihanBaruController extends BaseController
             ->find();
 
         if (count($mdBarangHarga) > 0) {
-            // $this->mdNotaDetail->insert($data);
+            $this->mdNotaDetail->insert($data);
         } else {
             return redirect()->to(base_url('/akk/transaksi/tagihan_baru/nota/detail/' . $id_nota));
         }
@@ -226,13 +240,13 @@ class TagihanBaruController extends BaseController
                 ->where('id_jenis_harga', $value['id_jenis_harga'])
                 ->find()[0];
 
-            print_r($mdBarangHarga2);
+            // print_r($mdBarangHarga2);
             // print_r($value);
             $total += ($mdBarangHarga2['harga_aktif'] * $value['satuan_penjualan']) - $value['diskon_penjualan'];
-            echo ($mdBarangHarga2['harga_aktif'] . '*' . $value['satuan_penjualan']) . '-' . $value['diskon_penjualan'];
-            echo '<br>';
-            echo ($mdBarangHarga2['harga_aktif'] * $value['satuan_penjualan']) - $value['diskon_penjualan'];
-            echo '<br>';
+            // echo ($mdBarangHarga2['harga_aktif'] . '*' . $value['satuan_penjualan']) . '-' . $value['diskon_penjualan'];
+            // echo '<br>';
+            // echo ($mdBarangHarga2['harga_aktif'] * $value['satuan_penjualan']) - $value['diskon_penjualan'];
+            // echo '<br>';
         }
         $data['total'] = $total;
         //update nota
@@ -243,10 +257,10 @@ class TagihanBaruController extends BaseController
             'total_beli' => $total,
         ];
         //  $this->mdNota->save($data2);
-        echo $total;
-        // $this->mdNota->where('id_nota', $id_nota)->increment('total_beli', $total);
+        // echo $total;
+        $this->mdNota->where('id_nota', $id_nota)->set(['total_beli' => $total])->update();
 
-        // return redirect()->to(base_url('/akk/transaksi/tagihan_baru/nota/detail/' . $id_nota));
+        return redirect()->to(base_url('/akk/transaksi/tagihan_baru/nota/detail/' . $id_nota));
     }
     public function hapus_detail($id_nota, $id_nota_detail, $harga)
     {
