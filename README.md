@@ -1,5 +1,8 @@
 # CodeIgniter 4 Framework
 
+## Mysql
+mysqld --console --skip-grant-tables --skip-external-locking
+
 ## What is CodeIgniter?
 
 CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
