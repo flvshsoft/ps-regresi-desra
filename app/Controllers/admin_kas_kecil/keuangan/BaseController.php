@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\admin\keuangan;
+namespace App\Controllers\admin_kas_kecil\keuangan;
 
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\CLIRequest;
@@ -8,6 +8,7 @@ use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use Config\Services;
 
 /**
  * Class BaseController
@@ -50,9 +51,31 @@ abstract class BaseController extends Controller
     {
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
+        $this->req = Services::request();
+        $this->session = Services::session();
+        $this->calendar = Services::calendar();
 
         // Preload any models, libraries, etc, here.
-
-        // E.g.: $this->session = \Config\Services::session();
+        $this->db = db_connect();
+        $this->mdUser = model('userModel', true, $this->db);
+        $this->mdArea = model('areaModel', true, $this->db);
+        $this->mdAsset = model('assetModel', true, $this->db);
+        $this->mdPartner = model('partnerModel', true, $this->db);
+        $this->mdSales = model('salesModel', true, $this->db);
+        $this->mdProduct = model('productModel', true, $this->db);
+        $this->mdSupplier = model('supplierModel', true, $this->db);
+        $this->mdStock = model('stockModel', true, $this->db);
+        $this->mdCustomer = model('customerModel', true, $this->db);
+        $this->mdBank = model('bankModel', true, $this->db);
+        $this->mdLokasi = model('lokasiModel', true, $this->db);
+        $this->mdCuti = model('cutiModel', true, $this->db);
+        $this->mdIzin = model('izinModel', true, $this->db);
+        $this->mdJenisHarga = model('jenishargaModel', true, $this->db);
+        $this->mdPrice = model('priceModel', true, $this->db);
+        $this->mdPriceDetail = model('pricedetailModel', true, $this->db);
+        $this->mdBarangHarga = model('barangHargaModel', true, $this->db);
+        $this->mdPengeluaranKantor = model('pengeluaran_kantorModel', true, $this->db);
+        $this->mdMutasiBank = model('mutasi_BankModel', true, $this->db);
+        $this->session = \Config\Services::session();
     }
 }

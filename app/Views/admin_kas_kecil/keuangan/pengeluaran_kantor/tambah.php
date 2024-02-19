@@ -1,16 +1,17 @@
-<?= $this->extend('layout/admin'); ?>
+<?= $this->extend('layout/admin_kas_kecil'); ?>
 <?= $this->section('content'); ?>
 
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title"><?= $judul1?></h3>
+            <h3 class="page-title"><?= $judul1 ?></h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?= base_url('/dashboard') ?>">BERANDA</a></li>
-                    <li class="breadcrumb-item"><a href="<?= base_url('/keuangan') ?>">DATA KEUANGAN</a></li>
-                    <li class="breadcrumb-item"><a href="<?= base_url('/pengeluaran') ?>">PENGELUARAN</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><?= $judul1?></li>
+                    <li class="breadcrumb-item"><a href="<?= base_url('/akk/dashboard') ?>">BERANDA</a></li>
+                    <li class="breadcrumb-item"><a href="<?= base_url('/akk/keuangan') ?>">DATA KEUANGAN</a></li>
+                    <li class="breadcrumb-item"><a href="<?= base_url('/akk/pengeluaran_kantor') ?>">PENGELUARAN</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page"><?= $judul1 ?></li>
                 </ol>
             </nav>
         </div>
@@ -18,11 +19,12 @@
             <div class="col-md-8 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <form class="forms-sample">
+                        <form class="forms-sample" method="POST"
+                            action="<?= base_url('/akk/pengeluaran_kantor/tambah') ?>">
                             <div class="form-group row mb-0">
                                 <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Keterangan</label>
                                 <div class="col-sm-9">
-                                    <select class="form-control">
+                                    <select class="form-control" name="keterangan_pengeluaran_kantor">
                                         <option> </option>
                                         <option> AIR LISTRIK & INTERNET</option>
                                         <option> ATK</option>
@@ -58,20 +60,21 @@
                                 <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Detail
                                     Keterangan</label>
                                 <div class="col-sm-9">
-                                    <textarea class="form-control" placeholder="Remark" rows="3"></textarea>
+                                    <textarea class="form-control" placeholder="Remark" rows="3"
+                                        name="remark_pengeluaran_kantor"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row mb-4">
                                 <label for="exampleInputMobile" class="col-sm-3 col-form-label">Biaya</label>
                                 <div class="col-sm-9">
                                     <input type="number" class="form-control" id="exampleInputMobile"
-                                        placeholder="Mobile number">
+                                        placeholder="Mobile number" name="biaya_pengeluaran_kantor">
                                 </div>
                             </div>
                             <div class="form-group row mb-0">
                                 <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Week</label>
                                 <div class="col-sm-9">
-                                    <select class="form-control">
+                                    <select class="form-control" name="week_pengeluaran_kantor">
                                         <option></option>
                                         <option>1</option>
                                         <option>2</option>
@@ -135,11 +138,11 @@
                                     Pengeluaran</label>
                                 <div class="col-sm-9">
                                     <input type="date" class="form-control" id="exampleInputConfirmPassword2"
-                                        placeholder="Password">
+                                        name="tgl_pengeluaran_kantor">
                                 </div>
                             </div>
                             <div class="form-group text-center mb-0">
-                                <a href="<?= base_url('/pengeluaran')?>" class="btn btn-primary btn-xs"><i
+                                <a href="<?= base_url('/akk/pengeluaran_kantor') ?>" class="btn btn-primary btn-xs"><i
                                         class="mdi mdi-backburger icon-sm"></i></a>
                                 <button type="submit" class="btn btn-warning btn-xs"><i
                                         class="mdi mdi-content-save-all icon-sm"></i></button>

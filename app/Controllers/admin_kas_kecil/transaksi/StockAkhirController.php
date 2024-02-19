@@ -2,29 +2,29 @@
 
 namespace App\Controllers\admin_kas_kecil\transaksi;
 
-class salesController extends BaseController
+class StockAkhirController extends BaseController
 {
     public function index(): string
     {
         $data['judul'] = 'Bintang';
-        $data['judul1'] = 'Pengambilan Barang';
-        $data['model'] = $this->mdSales
-            ->join('partner', 'partner.id_partner=sales.id_partner',)
-            ->join('area', 'area.id_area=sales.id_area')
-            ->join('asset', 'asset.id_asset=sales.id_asset')
-            ->orderBy('id_sales', 'DESC')
+        $data['judul1'] = 'Stock Akhir Salesman';
+        $data['model'] = $this->mdStockAkhir
+            // ->join('partner', 'partner.id_partner=sales.id_partner',)
+            // ->join('area', 'area.id_area=sales.id_area')
+            // ->join('asset', 'asset.id_asset=sales.id_asset')
+            // ->orderBy('id_sales', 'DESC')
             ->findAll();
-        return view('admin_kas_kecil/transaksi/sales/index', $data);
+        return view('admin_kas_kecil/transaksi/stock_akhir/index', $data);
     }
     public function tambah(): string
     {
         $data['judul'] = 'Bintang Distributor';
-        $data['judul1'] = 'Transasct Penjualan Barang';
+        $data['judul1'] = 'Transasct Pengembalian Barang Salesman';
         $data['salesman'] = $this->mdPartner->findAll();
         $data['area'] = $this->mdArea->findAll();
         $data['asset'] = $this->mdAsset->findAll();
 
-        return view('admin_kas_kecil/transaksi/sales/tambah', $data);
+        return view('admin_kas_kecil/transaksi/stock_akhir/tambah', $data);
     }
     public function input()
     {
@@ -70,7 +70,7 @@ class salesController extends BaseController
         $data['salesman'] = $this->mdPartner->findAll();
         $data['area'] = $this->mdArea->findAll();
         $data['asset'] = $this->mdAsset->findAll();
-        return view('admin_kas_kecil/transaksi/sales/edit', $data);
+        return view('admin_kas_kecil/transaksi/stock_akhir/edit', $data);
     }
 
     public function update()
@@ -109,7 +109,7 @@ class salesController extends BaseController
         $data['id_sales'] = $this->mdSales
             ->where('id_sales', $id_sales)
             ->find()[0];
-        return view('admin_kas_kecil/transaksi/sales/detail', $data);
+        return view('admin_kas_kecil/transaksi/stock_akhir/detail', $data);
     }
 
     public function detail_tambah($id_sales)
@@ -136,7 +136,7 @@ class salesController extends BaseController
         $data['area'] = $this->mdArea->findAll();
         $data['asset'] = $this->mdAsset->findAll();
         //  $data['product'] = $this->mdProduct ->findAll();
-        return view('admin_kas_kecil/transaksi/sales/detail_tambah', $data);
+        return view('admin_kas_kecil/transaksi/stock_akhir/detail_tambah', $data);
     }
 
     public function tambah_nama_barang()
@@ -185,7 +185,7 @@ class salesController extends BaseController
             ->where('sales_detail.id_sales_detail', $id_sales_detail)
             ->find()[0];
         $data['product'] = $this->mdProduct->findAll();
-        return view('admin_kas_kecil/transaksi/sales/detail_edit', $data);
+        return view('admin_kas_kecil/transaksi/stock_akhir/detail_edit', $data);
     }
     public function update_detail_sales()
     {
@@ -227,11 +227,11 @@ class salesController extends BaseController
             ->where('id_sales', $id_sales)
             ->find()[0];
         $mpdf = new \Mpdf\Mpdf();
-        $html = view('admin_kas_kecil/transaksi/sales/print', $data, []);
+        $html = view('admin_kas_kecil/transaksi/stock_akhir/print', $data, []);
         $mpdf->WriteHTML($html);
         $this->response->setHeader('Content-Type', 'application/pdf');
         $mpdf->Output('arjun.pdf', 'I'); // opens in browser
 
-        // return view('admin_kas_kecil/transaksi/sales/print', $data);
+        // return view('admin_kas_kecil/transaksi/stock_akhir/print', $data);
     }
 }

@@ -7,9 +7,10 @@
             <h3 class="page-title"><?= $judul1 ?></h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?= base_url('/dashboard') ?>">BERANDA</a></li>
-                    <li class="breadcrumb-item"><a href="<?= base_url('/keuangan') ?>">DATA KEUANGAN</a></li>
-                    <li class="breadcrumb-item"><a href="<?= base_url('/master_mutasi_bank') ?>">MUTASI BANK</a></li>
+                    <li class="breadcrumb-item"><a href="<?= base_url('/akk/dashboard') ?>">BERANDA</a></li>
+                    <li class="breadcrumb-item"><a href="<?= base_url('/akk/keuangan') ?>">DATA KEUANGAN</a></li>
+                    <li class="breadcrumb-item"><a href="<?= base_url('/akk/pengeluaran_kantor') ?>">PENGELUARAN</a>
+                    </li>
                     <li class="breadcrumb-item active" aria-current="page"><?= $judul1 ?></li>
                 </ol>
             </nav>
@@ -18,36 +19,62 @@
             <div class="col-md-9 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <form class="forms-sample" method="POST" action="<?= base_url('/akk/mutasi_bank/edit') ?>">
+                        <form class="forms-sample" method="POST" action="<?= base_url('/akk/pengeluaran_kantor/edit') ?>">
                             <div class="form-group row mb-0">
-                                <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Tanggal</label>
+                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Keterangan</label>
                                 <div class="col-sm-9">
-                                    <input type="date" class="form-control form-control-sm" name="tgl_mutasi_bank" value="<?= $model['tgl_mutasi_bank'] ?>">
-                                </div>
-                            </div>
-                            <div class="form-group row mb-0">
-                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Nama Bank</label>
-                                <div class="col-sm-9">
-                                    <select class="form-control" name="id_bank">
-                                        <option value="<?= $model['id_bank'] ?>"> <?= $model['nama_bank'] ?> </option>
-                                        <?php foreach ($bank as $value) { ?>
-                                            <option value="<?= $value['id_bank'] ?>"> <?= $value['nama_bank'] ?> </option>
-                                        <?php }; ?>
+                                    <input type="hidden" class="form-control" value="<?= $model['id_pengeluaran_kantor'] ?>" name="id_pengeluaran_kantor">
+                                    <select class="form-control" name="keterangan_pengeluaran_kantor">
+                                        <option><?= $model['keterangan_pengeluaran_kantor'] ?></option>
+                                        <option> AIR LISTRIK & INTERNET</option>
+                                        <option> ATK</option>
+                                        <option> ATM</option>
+                                        <option> BBM</option>
+                                        <option> BIAYA ADMINISTRASI</option>
+                                        <option> BIAYA AKOMODASI</option>
+                                        <option> BIAYA BARANG RUSAK</option>
+                                        <option> BIAYA BARANG SAMPLE</option>
+                                        <option> BIAYA KAPAL</option>
+                                        <option> BIAYA KIRIM & PAKET</option>
+                                        <option> BIAYA RETUR BARANG</option>
+                                        <option> BPJS</option>
+                                        <option> ENTERTAINT</option>
+                                        <option> GAJI KARYAWAN</option>
+                                        <option> HAMBA ALLAH</option>
+                                        <option> INSENTIF KARYAWAN & THR</option>
+                                        <option> INVENTARIS KANTOR</option>
+                                        <option> JASA SERVIS</option>
+                                        <option> KOORDINASI</option>
+                                        <option> LAIN - LAIN</option>
+                                        <option> MBAK YULI</option>
+                                        <option> OFFICE </option>
+                                        <option> OVERPRICE</option>
+                                        <option> PAJAK SURAT SURAT & KENDARAAN</option>
+                                        <option> PENGINAPAN</option>
+                                        <option> PERBAIKAN & PERAWATAN KENDARAAN</option>
+                                        <option> PINJAMAN KARYAWAN</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row mb-4">
-                                <label for="exampleInputMobile" class="col-sm-3 col-form-label">Jumlah</label>
+                                <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Detail
+                                    Keterangan</label>
                                 <div class="col-sm-9">
-                                    <input type="number" class="form-control" value="<?= $model['biaya_mutasi_bank'] ?>" name="biaya_mutasi_bank">
-                                    <input type="hidden" value="<?= $model['id_mutasi_bank'] ?>" name="id_mutasi_bank">
+                                    <textarea class="form-control" rows="3" name="remark_pengeluaran_kantor"><?= $model['remark_pengeluaran_kantor'] ?></textarea>
                                 </div>
                             </div>
-                            <div class="form-group row mb-0">
-                                <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Pekan Ke-</label>
+                            <div class="form-group row mb-4">
+                                <label for="exampleInputMobile" class="col-sm-3 col-form-label">Biaya</label>
                                 <div class="col-sm-9">
-                                    <select class="form-control" name="week_mutasi_bank">
-                                        <option><?= $model['week_mutasi_bank'] ?></option>
+                                    <input type="number" class="form-control" value="<?= $model['biaya_pengeluaran_kantor'] ?>" name="biaya_pengeluaran_kantor">
+                                </div>
+
+                            </div>
+                            <div class="form-group row mb-0">
+                                <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Week</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" name="week_pengeluaran_kantor">
+                                        <option><?= $model['week_pengeluaran_kantor'] ?></option>
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
@@ -106,26 +133,14 @@
                                 </div>
                             </div>
                             <div class="form-group row mb-0">
-                                <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Type Mutasi</label>
+                                <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Tgl
+                                    Pengeluaran</label>
                                 <div class="col-sm-9">
-                                    <select class="form-control" name="type_mutasi_bank">
-                                        <option><?= $model['type_mutasi_bank'] ?></option>
-                                        <option>Uang Keluar</option>
-                                        <option>Mutasi HO BOP</option>
-                                        <option>Mutasi HO Deviden</option>
-                                        <option>Mutasi Kas Pengembangan</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row mb-4">
-                                <label for="exampleInputEmail2" class="col-sm-3 col-form-label">
-                                    Keterangan</label>
-                                <div class="col-sm-9">
-                                    <textarea class="form-control" rows="3" name="remark_mutasi_bank"><?= $model['remark_mutasi_bank'] ?></textarea>
+                                    <input type="date" class="form-control" value="<?= $model['tgl_pengeluaran_kantor'] ?>" name="tgl_pengeluaran_kantor">
                                 </div>
                             </div>
                             <div class="form-group text-center mb-0">
-                                <a href="<?= base_url('/akk/mutasi_bank') ?>" class="btn btn-primary btn-xs"><i class="mdi mdi-backburger icon-sm"></i></a>
+                                <a href="<?= base_url('/akk/pengeluaran_kantor') ?>" class="btn btn-primary btn-xs"><i class="mdi mdi-backburger icon-sm"></i></a>
                                 <button type="submit" class="btn btn-warning btn-xs"><i class="mdi mdi-content-save-all icon-sm"></i></button>
                             </div>
                         </form>
