@@ -15,9 +15,20 @@ class piutang_usahaController extends BaseController
             ->join('partner', 'partner.id_partner=nota.id_partner')
             ->join('user', 'user.id_user=nota.created_by')
             ->where('status', 'Lunas')
-            ->groupBy('id_nota_detail')
+            ->groupBy('nota.id_nota')
             ->findAll();
         return view('admin_kas_kecil/piutang_usaha/index', $data);
+    }
+
+    public function hapus($id_nota)
+    {
+        $data = [
+            'id_nota' =>  $id_nota,
+            'status' => null,
+            'pay' => null,
+        ];
+        $this->mdNota->save($data);
+        return redirect()->to(base_url('/akk/piutang_usaha'));
     }
 
     public function repayment_detail(): string

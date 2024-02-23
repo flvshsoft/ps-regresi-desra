@@ -47,9 +47,8 @@ class tunaiController extends BaseController
         $notaData = $this->mdNota->find($id_nota);
         if ($notaData) {
             $totalBeli = $notaData['total_beli'];
-            // print_r($totalBeli);
-            // exit;
-            $this->mdNota->update($id_nota, ['pay' => $totalBeli]);
+
+            $this->mdNota->update($id_nota, ['pay' => $totalBeli,  'status' => 'Lunas']);
         }
         return redirect()->to(base_url('/akk/piutang_usaha'));
     }

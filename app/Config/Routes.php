@@ -100,6 +100,7 @@ $routes->post('/akk/transaksi/tagihan_baru/nota/detail', 'admin_kas_kecil\transa
 
 $routes->get('/akk/transaksi/stock_akhir', 'admin_kas_kecil\transaksi\StockAkhirController::index');
 $routes->get('/akk/transaksi/stock_akhir/tambah', 'admin_kas_kecil\transaksi\StockAkhirController::tambah');
+$routes->post('/akk/transaksi/stock_akhir/tambah', 'admin_kas_kecil\transaksi\StockAkhirController::input');
 $routes->post('/akk/transaksi/stock_akhir/nota/detail/edit', 'admin_kas_kecil\transaksi\StockAkhirController::edit_detail_closing');
 $routes->get('/akk/transaksi/stock_akhir/nota/detail/hapus/(:any)', 'admin_kas_kecil\transaksi\StockAkhirController::hapus_detail/$1');
 $routes->get('/akk/transaksi/stock_akhir/nota/detail/(:any)', 'admin_kas_kecil\transaksi\StockAkhirController::closing_detail/$1');
@@ -116,6 +117,7 @@ $routes->get('/akk/form_stock/(:any)', 'admin_kas_kecil\master\stockController::
 $routes->post('/akk/update_stock', 'admin_kas_kecil\master\stockController::update');
 
 $routes->get('/akk/piutang_usaha', 'admin_kas_kecil\piutang_usahaController::index');
+$routes->get('/akk/piutang_usaha/hapus/(:any)', 'admin_kas_kecil\piutang_usahaController::hapus/$1');
 $routes->get('/akk/repayment_detail', 'admin_kas_kecil\piutang_usahaController::repayment_detail');
 $routes->get('/akk/piutang_usaha/form', 'admin_kas_kecil\piutang_usahaController::form_piutang');
 // $routes->get('/akk/piutang_usaha/input', 'admin_kas_kecil\piutang\tunaiController::index');

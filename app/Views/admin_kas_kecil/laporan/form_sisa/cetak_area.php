@@ -102,7 +102,7 @@
             </thead>
         </table>
         <hr>
-        <table border="0">
+        <table>
             <thead>
                 <tr>
                     <th>
@@ -130,7 +130,7 @@
                 </tr>
             </thead>
         </table>
-        <table>
+        <table border="1">
             <thead>
                 <tr style="font-size:11px ;">
                     <th>No.</th>
@@ -153,16 +153,16 @@
                 ?>
                 <tr style="font-size:11px ;">
                     <td><?= $no ?> </td>
-                    <td><?= $value['id_nota'] ?> </td>
+                    <td><?= $value['no_nota'] ?> </td>
                     <td><?= tgl_indo($value['tgl_bayar']) ?> </td>
                     <td><?= $value['nama_customer'] ?> </td>
                     <td><?= 'Rp. ' . number_format($value['total_beli'], 0, ',', '.') ?></td>
                     <td><?= $value['no_hp_customer'] ?> </td>
                     <td>
-                        <?//= 'Rp. ' . number_format($value['pay'], 0, ',', '.') ?>
+
                     </td>
                     <td>
-                        <?//= 'Rp. ' . number_format($sisa, 0, ',', '.') ?>
+
                     </td>
                 </tr>
                 <?php $no++;
@@ -172,15 +172,35 @@
                 <tr style="font-size:11px ;">
                     <td colspan="4" align="left"><b>Total Tagihan Piutang Usaha </b></td>
                     <td colspan="2" align="left">
-                        <?//= 'Rp. ' . number_format($total, 0, ',', '.') ?>
+                        <?= 'Rp. ' . number_format($total, 0, ',', '.') ?>
                     </td>
                     <td></td>
                     <td></td>
                 </tr>
             </tfoot>
         </table>
+        <br><br>
+        <table border="0">
+            <thead>
+                <tr>
+                    <th>
+                        <p style="font-size: 15px;">
+                            Salesman: <br><br><br><br>
+                            ( <?= $info['nama_lengkap'] ?> )
+                        </p>
+                    </th>
 
-        <div class="footer" style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <th style="font-size: 15px;margin-left:300px;text-align:right">
+                        <p>
+                            Admin Penjualan: <br><br><br><br>
+                            ( <?= SESSION('userData')['nama_user'] ?> )
+                        </p>
+                    </th>
+
+                </tr>
+            </thead>
+        </table>
+        <!-- <div class="footer" style="display: flex; justify-content: space-between; align-items: flex-start;">
             <div style="text-align: left;">
                 <p>
                     Salesman: <br><br><br><br>
@@ -193,7 +213,7 @@
                     ( <?= SESSION('userData')['nama_user'] ?> )
                 </p>
             </div>
-        </div>
+        </div> -->
     </div>
 </body>
 

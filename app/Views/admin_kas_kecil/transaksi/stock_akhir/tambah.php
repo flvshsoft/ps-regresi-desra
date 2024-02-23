@@ -25,8 +25,8 @@
                             <table class="table table-bordered table-striped" width="100%" height="88%" cellspacing="0">
                                 <thead class="table table-primary">
                                     <tr>
-                                        <th style="font-size: 11px;"> ID Barang </th>
-                                        <th style="font-size: 11px;"> Nama Barang </th>
+                                        <th style="font-size: 11px;"> Kode Barang </th>
+                                        <th style="font-size: 11px;"> Barang </th>
                                         <th style="font-size: 11px;"> Stock Gudang Sales</th>
                                         <th style="font-size: 11px;"> Jumlah Stock Kembali </th>
                                         <th style="font-size: 11px;"> Satuan </th>
@@ -35,23 +35,25 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <form action="<?= base_url('/akk/input_area') ?>" method="post">
+                                        <form action="<?= base_url('/akk/transaksi/stock_akhir/tambah') ?>" method="post">
                                             <td style="font-size: 11px;">
-                                                <select class="form-control form-control-sm">
+                                                <select class="form-control form-control-sm" name="">
                                                     <option>Pilih Barang</option>
-                                                    <option>Female</option>
+                                                    <?php foreach ($product as $value) { ?>
+                                                        <option value="<?= $value['id_product'] ?>">
+                                                            <?= $value['id_product'] ?> -
+                                                            <?= $value['nama_product'] ?> </option>
+                                                    <?php }; ?>
                                                 </select>
                                             </td>
                                             <td style="font-size: 11px;">
-                                                <input type="text" disabled class="form-control form-control-sm"
-                                                    value="">
+                                                <input type="text" disabled class="form-control" id="">
                                             </td>
                                             <td style="font-size: 11px;">
-                                                <input type="text" disabled class="form-control form-control-sm"
-                                                    value="">
+                                                <input type="text" disabled class="form-control" id="">
                                             </td>
                                             <td style="font-size: 11px;">
-                                                <input type="text" class="form-control form-control-sm" value="">
+                                                <input type="text" class="form-control" value="0">
                                             </td>
                                             <td style="font-size: 11px;">
                                                 <select class="form-control form-control-sm">
@@ -60,8 +62,7 @@
                                                 </select>
                                             </td>
                                             <td style="font-size: 11px;">
-                                                <button type="text" class="btn btn-primary btn-xs"
-                                                    name="btn_s">R</button>
+                                                <button type="text" class="btn btn-primary btn-xs" name="btn_s">R</button>
                                             </td>
                                         </form>
                                     </tr>

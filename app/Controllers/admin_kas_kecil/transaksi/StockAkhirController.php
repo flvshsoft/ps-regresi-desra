@@ -23,6 +23,8 @@ class StockAkhirController extends BaseController
         $data['salesman'] = $this->mdPartner->findAll();
         $data['area'] = $this->mdArea->findAll();
         $data['asset'] = $this->mdAsset->findAll();
+        $data['product'] = $this->mdProduct->findAll();
+
 
         return view('admin_kas_kecil/transaksi/stock_akhir/tambah', $data);
     }
@@ -38,14 +40,14 @@ class StockAkhirController extends BaseController
             'keterangan' => $this->request->getPost('keterangan'),
         ];
 
-        // print_r($data);
-        // exit;
-        $this->mdSales->insert($data);
-        $id_sales = $this->mdSales->insertID();
-        $data = array(
-            'id_sales' => $id_sales,
-        );
-        return redirect()->to(base_url('/akk/detail_sales/' . $id_sales));
+        print_r($data);
+        exit;
+        $this->mdStockAkhir->insert($data);
+        // $id_sales = $this->mdSales->insertID();
+        // $data = array(
+        //     'id_sales' => $id_sales,
+        // );
+        return redirect()->to(base_url('/akk/transaksi/stock_akhir'));
     }
     public function hapus($id_sales)
     {

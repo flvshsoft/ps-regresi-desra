@@ -220,6 +220,8 @@ class TagihanBaruController extends BaseController
 
         if (count($mdBarangHarga) > 0) {
             $this->mdNotaDetail->insert($data);
+            $this->mdSalesDetail->where('id_sales_detail', $id_sales_detail)->decrement('jumlah_sales', $satuan_penjualan);
+            $this->mdProduct->where('id_product', $id_product)->decrement('stock_product', $satuan_penjualan);
         } else {
             return redirect()->to(base_url('/akk/transaksi/tagihan_baru/nota/detail/' . $id_nota));
         }
@@ -239,10 +241,8 @@ class TagihanBaruController extends BaseController
             $total += ($mdBarangHarga2['harga_aktif'] * $value['satuan_penjualan']) - $value['diskon_penjualan'];
         }
         $data['total'] = $total;
-     
+
         $this->mdNota->where('id_nota', $id_nota)->set(['total_beli' => $total])->update();
-        $this->mdSalesDetail->where('id_sales_detail', $id_sales_detail)->set(['jumlah_sales' => $satuan_penjualan])->decrement();
-        $this->mdProduct->where('id_product', $id_product)->set(['stock_product' => $satuan_penjualan])->decrement();
 
         return redirect()->to(base_url('/akk/transaksi/tagihan_baru/nota/detail/' . $id_nota));
     }
@@ -253,7 +253,7 @@ class TagihanBaruController extends BaseController
         if ($delete) {
             return redirect()->to(base_url('/akk/transaksi/tagihan_baru/nota/detail/' . $id_nota));
         } else {
-            echo 'Gagal menghapus data.';
+            echo 'Gagal Menghapus Data.';
         }
     }
     public function print($id_nota): string

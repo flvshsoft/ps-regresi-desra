@@ -57,6 +57,7 @@ class pembayaranController extends BaseController
         } else {
             if ($bayar == $total_beli) {
                 $this->mdNota->update($id_nota, ['pay' => $bayar,  'status' => 'Lunas']);
+                return redirect()->to(base_url('/akk/piutang_usaha'));
             } else {
                 $this->mdNota->update($id_nota, ['pay' => $bayar]);
             }
