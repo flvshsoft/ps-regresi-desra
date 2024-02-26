@@ -200,20 +200,7 @@
                 </tr>
             </thead>
         </table>
-        <!-- <div class="footer" style="display: flex; justify-content: space-between; align-items: flex-start;">
-            <div style="text-align: left;">
-                <p>
-                    Salesman: <br><br><br><br>
-                    ( <?= $info['nama_lengkap'] ?> )
-                </p>
-            </div>
-            <div style="text-align: right;">
-                <p>
-                    Admin Penjualan: <br><br><br><br>
-                    ( <?= SESSION('userData')['nama_user'] ?> )
-                </p>
-            </div>
-        </div> -->
+
     </div>
 </body>
 

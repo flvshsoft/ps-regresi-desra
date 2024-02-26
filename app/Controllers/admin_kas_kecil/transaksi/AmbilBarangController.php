@@ -223,13 +223,22 @@ class AmbilBarangController extends BaseController
     {
         $data['judul'] = 'Bintang';
         $data['judul1'] = 'Laporan Pengambilan Barang';
-        $data['model'] = $this->mdSalesDetail
-            ->join('product', 'product.id_product=sales_detail.id_product',)
-            ->join('sales', 'sales.id_sales=sales_detail.id_sales')
-            ->where('sales_detail.id_sales', $id_sales)
+        $data['model1'] = $this->mdSales
+            ->join('nota', 'nota.id_sales=sales.id_sales')
+            ->join('customer', 'customer.id_customer=nota.id_customer')
+            ->where('sales.id_sales', $id_sales)
             ->findAll();
-        $data['sales'] = $this->mdSales
+        $data['model2'] = $this->mdNota
+            ->join('nota_detail', 'nota_detail.id_nota=nota.id_nota')
+            ->join('product', 'product.id_product=nota_detail.id_product')
+            ->where('payment_method', 'CASH')
             ->where('id_sales', $id_sales)
+            ->findAll();
+
+        $data['info'] = $this->mdSales
+            ->where('sales.id_sales', $id_sales)
+            ->join('partner', 'partner.id_partner=sales.id_partner')
+            ->join('area', 'area.id_area=sales.id_area')
             ->find()[0];
         $mpdf = new \Mpdf\Mpdf();
         $html = view('admin_kas_kecil/transaksi/ambil_barang/print', $data, []);
