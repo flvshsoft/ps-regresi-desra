@@ -197,6 +197,7 @@ class TagihanBaruController extends BaseController
     {
         $id_sales_detail = $this->request->getPost('id_sales_detail');
         $id_jenis_harga = $this->request->getPost('id_jenis_harga');
+        $satuan_penjualan = $this->request->getPost('satuan_penjualan');
         $mdSalesDetail = $this->mdSalesDetail
             ->where('id_sales_detail', $id_sales_detail)
             ->find();
@@ -208,7 +209,7 @@ class TagihanBaruController extends BaseController
             'id_nota' => $id_nota,
             'id_product' => $id_product,
             'id_jenis_harga' => $id_jenis_harga,
-            'satuan_penjualan' => $this->request->getPost('satuan_penjualan'),
+            'satuan_penjualan' => $satuan_penjualan,
             'diskon_penjualan' => $this->request->getPost('diskon_penjualan'),
         ];
 
@@ -219,16 +220,13 @@ class TagihanBaruController extends BaseController
 
         if (count($mdBarangHarga) > 0) {
             $this->mdNotaDetail->insert($data);
+            $this->mdSalesDetail->where('id_sales_detail', $id_sales_detail)->decrement('jumlah_sales', $satuan_penjualan);
+            $this->mdProduct->where('id_product', $id_product)->decrement('stock_product', $satuan_penjualan);
         } else {
             return redirect()->to(base_url('/akk/transaksi/tagihan_baru/nota/detail/' . $id_nota));
         }
-
-
         //total
         $data['model'] = $this->mdNotaDetail
-            //->join('nota', 'nota.id_nota=nota_detail.id_nota')
-            // ->join('product', 'product.id_product=nota_detail.id_product')
-            // ->join('barang_harga', 'barang_harga.id_product=product.id_product')
             ->where('nota_detail.id_nota', $id_nota)
             ->findAll();
 
@@ -240,24 +238,10 @@ class TagihanBaruController extends BaseController
                 ->where('id_jenis_harga', $value['id_jenis_harga'])
                 ->find()[0];
 
-            // print_r($mdBarangHarga2);
-            // print_r($value);
             $total += ($mdBarangHarga2['harga_aktif'] * $value['satuan_penjualan']) - $value['diskon_penjualan'];
-            // echo ($mdBarangHarga2['harga_aktif'] . '*' . $value['satuan_penjualan']) . '-' . $value['diskon_penjualan'];
-            // echo '<br>';
-            // echo ($mdBarangHarga2['harga_aktif'] * $value['satuan_penjualan']) - $value['diskon_penjualan'];
-            // echo '<br>';
         }
         $data['total'] = $total;
-        //update nota
-        // echo $total;
-        // exit;
-        $data2 = [
-            'id_nota' => $id_nota,
-            'total_beli' => $total,
-        ];
-        //  $this->mdNota->save($data2);
-        // echo $total;
+
         $this->mdNota->where('id_nota', $id_nota)->set(['total_beli' => $total])->update();
 
         return redirect()->to(base_url('/akk/transaksi/tagihan_baru/nota/detail/' . $id_nota));
@@ -269,7 +253,7 @@ class TagihanBaruController extends BaseController
         if ($delete) {
             return redirect()->to(base_url('/akk/transaksi/tagihan_baru/nota/detail/' . $id_nota));
         } else {
-            echo 'Gagal menghapus data.';
+            echo 'Gagal Menghapus Data.';
         }
     }
     public function print($id_nota): string

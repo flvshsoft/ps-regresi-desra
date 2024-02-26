@@ -6,77 +6,77 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
 
-        img {
-            max-width: 100%;
-            height: 20%;
-            width: 30%;
-            float: left;
-            margin: 20px 0;
-            margin-top: 10px;
-            /* Atur margin atas dan bawah */
-        }
+    img {
+        max-width: 100%;
+        height: 20%;
+        width: 30%;
+        float: left;
+        margin: 20px 0;
+        margin-top: 10px;
+        /* Atur margin atas dan bawah */
+    }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
 
-        .flex-container {
-            display: flex;
-            justify-content: space-between;
-        }
+    .flex-container {
+        display: flex;
+        justify-content: space-between;
+    }
 
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+    .header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-        .left-column {
-            flex: 1;
-        }
+    .left-column {
+        flex: 1;
+    }
 
-        .right-column {
-            flex: 1;
-        }
+    .right-column {
+        flex: 1;
+    }
 
-        .details {
-            margin-bottom: 20px;
-        }
+    .details {
+        margin-bottom: 20px;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            /* margin-bottom: 20px; */
-        }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        /* margin-bottom: 20px; */
+    }
 
-        table,
-        th,
-        td {
-            /* border: 1px solid black; */
-        }
+    table,
+    th,
+    td {
+        /* border: 1px solid black; */
+    }
 
-        th,
-        td {
-            padding: 10px;
-            text-align: left;
-        }
+    th,
+    td {
+        padding: 10px;
+        text-align: left;
+    }
 
-        tbody td {
-            vertical-align: top;
-        }
+    tbody td {
+        vertical-align: top;
+    }
 
-        .payment {
-            margin-top: 20px;
-        }
+    .payment {
+        margin-top: 20px;
+    }
 
-        .footer {
-            margin-top: 20px;
-        }
+    .footer {
+        margin-top: 20px;
+    }
     </style>
     <title>Invoice Client</title>
 </head>
@@ -87,7 +87,8 @@
             <thead>
                 <tr>
                     <th style="width: 50px;">
-                        <img src="<?= base_url() ?>/public/assets/images/logo.png" alt="logo" style="width: 100px;height:auto;">
+                        <img src="<?= base_url() ?>/public/assets/images/logo.png" alt="logo"
+                            style="width: 100px;height:auto;">
                     </th>
                     <th style="text-align: center;">
                         <h4><?= $judul ?></h4>
@@ -101,7 +102,7 @@
             </thead>
         </table>
         <hr>
-        <table border="0">
+        <table>
             <thead>
                 <tr>
                     <th>
@@ -129,7 +130,7 @@
                 </tr>
             </thead>
         </table>
-        <table>
+        <table border="1">
             <thead>
                 <tr style="font-size:11px ;">
                     <th>No.</th>
@@ -150,30 +151,56 @@
                     $total += $value['total_beli'];
                     $sisa = $value['total_beli'] - $value['pay'];
                 ?>
-                    <tr style="font-size:11px ;">
-                        <td><?= $no ?> </td>
-                        <td><?= $value['id_nota'] ?> </td>
-                        <td><?= tgl_indo($value['tgl_bayar']) ?> </td>
-                        <td><?= $value['nama_customer'] ?> </td>
-                        <td><?= 'Rp. ' . number_format($value['total_beli'], 0, ',', '.') ?></td>
-                        <td><?= $value['no_hp_customer'] ?> </td>
-                        <td><?= 'Rp. ' . number_format($value['pay'], 0, ',', '.') ?></td>
-                        <td><?= 'Rp. ' . number_format($sisa, 0, ',', '.') ?></td>
-                    </tr>
+                <tr style="font-size:11px ;">
+                    <td><?= $no ?> </td>
+                    <td><?= $value['no_nota'] ?> </td>
+                    <td><?= tgl_indo($value['tgl_bayar']) ?> </td>
+                    <td><?= $value['nama_customer'] ?> </td>
+                    <td><?= 'Rp. ' . number_format($value['total_beli'], 0, ',', '.') ?></td>
+                    <td><?= $value['no_hp_customer'] ?> </td>
+                    <td>
+
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
                 <?php $no++;
                 } ?>
             </tbody>
             <tfoot>
                 <tr style="font-size:11px ;">
                     <td colspan="4" align="left"><b>Total Tagihan Piutang Usaha </b></td>
-                    <td colspan="2" align="left"><?= 'Rp. ' . number_format($total, 0, ',', '.') ?></td>
+                    <td colspan="2" align="left">
+                        <?= 'Rp. ' . number_format($total, 0, ',', '.') ?>
+                    </td>
                     <td></td>
                     <td></td>
                 </tr>
             </tfoot>
         </table>
+        <br><br>
+        <table border="0">
+            <thead>
+                <tr>
+                    <th>
+                        <p style="font-size: 15px;">
+                            Salesman: <br><br><br><br>
+                            ( <?= $info['nama_lengkap'] ?> )
+                        </p>
+                    </th>
 
-        <div class="footer" style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <th style="font-size: 15px;margin-left:300px;text-align:right">
+                        <p>
+                            Admin Penjualan: <br><br><br><br>
+                            ( <?= SESSION('userData')['nama_user'] ?> )
+                        </p>
+                    </th>
+
+                </tr>
+            </thead>
+        </table>
+        <!-- <div class="footer" style="display: flex; justify-content: space-between; align-items: flex-start;">
             <div style="text-align: left;">
                 <p>
                     Salesman: <br><br><br><br>
@@ -186,7 +213,7 @@
                     ( <?= SESSION('userData')['nama_user'] ?> )
                 </p>
             </div>
-        </div>
+        </div> -->
     </div>
 </body>
 

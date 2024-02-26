@@ -237,7 +237,6 @@ if (!isset(Session('userData')['nama_user'])) {
                         <span class="menu-title">Beranda</span>
                     </a>
                 </li>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                         <i class="menu-icon mdi mdi-server-network text-whitex text-shadowx"></i>
@@ -284,12 +283,12 @@ if (!isset(Session('userData')['nama_user'])) {
                         <span class="menu-title">Laporan</span>
                     </a>
                 </li>
-                <!-- <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="<?= base_url() ?>/akk/keuangan">
+                        <i class="mdi mdi-book-open menu-icon text-whitex text-shadow"></i>
                         <span class="menu-title">Keuangan</span>
-                        <i class="mdi mdi-book-open menu-icon text-white text-shadow"></i>
                     </a>
-                </li> -->
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url() ?>akk/piutang_usaha">
                         <i class="mdi mdi-calendar-check menu-icon text-whitex text-shadow"></i>

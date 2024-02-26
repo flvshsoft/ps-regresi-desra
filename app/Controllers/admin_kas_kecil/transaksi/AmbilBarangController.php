@@ -162,6 +162,7 @@ class AmbilBarangController extends BaseController
             'id_sales' => $id_sales,
             'id_product' => $id_product,
             'satuan_sales_detail' => $satuan_sales_detail,
+            'jumlah_sales' => $satuan_sales_detail,
             // 'id_price_detail' => $id_price_detail,
         ];
         // print_r($data);

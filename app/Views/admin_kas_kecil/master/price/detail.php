@@ -81,7 +81,7 @@
                                                 <?= $value['remark_jenis_harga'] ?>
                                             </td>
                                             <td style="font-size: 11px;">
-                                                <?= $value['harga'] ?>
+                                                <?= 'Rp. ' .  number_format($value['harga'], 0, ',', '.') ?>
                                             </td>
                                             <td style="font-size: 11px;">
                                                 <?= $value['satuan_product'] ?>

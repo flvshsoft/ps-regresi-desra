@@ -81,6 +81,21 @@
                             </div>
                         </a>
                     </div>
+                    <div class="col-lg-4 mb-3 px-2">
+                        <a href="#<?= base_url('/akk/transaksi/ambil_barang') ?>" class="text-decoration-none">
+                            <div class="card text-white shadow" style="background: #fd79b3;">
+                                <div class="card-body d-flex p-0">
+                                    <div class="col-6 p-3 text-white-90">
+                                        <h6>Stock Akhir Salesman</h6>
+                                        <h2 class="mb-0">-</h2>
+                                    </div>
+                                    <div class="col-6 p-0">
+                                        <img src="https://i.pinimg.com/564x/a0/ec/b0/a0ecb07bb90c12dcf046e476db0fe7c4.jpg" alt="Foto" width="100%" class="mt-2">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
 
             </div>
@@ -114,6 +129,13 @@
                                 <a href="#<?= base_url('/akk/transaksi/master_sample') ?>">
                                     <i class="mdi mdi-truck icon-md text-secondary"></i>
                                     <h6 class="text-secondary"> Pengeluaran Stock Sample</h6>
+                                </a>
+                            </div>
+                            <hr>
+                            <div class="menu-item">
+                                <a href="<?= base_url('/akk/transaksi/stock_akhir') ?>">
+                                    <i class="mdi mdi-undo icon-md text-secondary"></i>
+                                    <h6> Stock Akhir Salesman</h6>
                                 </a>
                             </div>
                             <hr>

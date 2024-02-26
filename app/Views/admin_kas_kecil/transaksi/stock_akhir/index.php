@@ -21,9 +21,8 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="form-group col-6">
-                                <a class="btn btn-success btn-xs" href="<?= base_url('/akk/sales') ?>">
-                                    <i class="mdi mdi-database-plus btn-icon-prepend"></i> Proses</a>
-                                <a class="btn btn-primary btn-xs" href="<?//= base_url('/akk/riwayat_sales') ?>">
+                                <a class="btn btn-primary btn-xs"
+                                    href="<?= base_url('/akk/transaksi/stock_akhir/riwayat') ?>">
                                     <i class="mdi mdi-history btn-icon-prepend"></i> Riwayat</a>
                             </div>
                         </div>
@@ -34,11 +33,9 @@
                                         <th style="font-size: 11px;"> NO </th>
                                         <th style="font-size: 11px;"> No DO </th>
                                         <th style="font-size: 11px;"> SALESMAN </th>
-                                        <th style="font-size: 11px;"> WEEKS </th>
-                                        <th style="font-size: 11px;"> REMARK </th>
-                                        <th style="font-size: 11px;"> CREATED DATE </th>
-                                        <th style="font-size: 11px;"> CREATED DO </th>
-                                        <th style="font-size: 11px;"> PRINT </th>
+                                        <th style="font-size: 11px;"> KETERANGAN </th>
+                                        <th style="font-size: 11px;"> CREATED BY </th>
+                                        <th style="font-size: 11px;"> TANGGAL </th>
                                         <th style="font-size: 11px;"> </th>
                                     </tr>
                                 </thead>
@@ -63,22 +60,17 @@
                                             <?= $value['nama_lengkap'] ?>
                                         </td>
                                         <td style=" font-size: 11px;">
-                                            <?= $value['week'] ?>
+                                            <?= $value['keterangan'] ?>
                                         </td>
                                         <td style=" font-size: 11px;">
-                                            <?= $value['keterangan'] ?>
+                                            <?= $value['nama_user'] ?>
                                         </td>
                                         <td style=" font-size: 11px;">
                                             <?= $value['created_at'] ?>
                                         </td>
                                         <td style=" font-size: 11px;">
-                                            <?= $value['tgl_do'] ?>
-                                        </td>
-                                        <td style=" font-size: 11px;">
                                             <a href="<?= base_url('/akk/print_sales/' . $value['id_sales']) ?>">
                                                 <i class="mdi mdi-file-pdf icon-md"></i></a>
-                                        </td>
-                                        <td>
                                             <a href="<?= base_url('/akk/detail_sales/' . $value['id_sales']) ?>"> <i
                                                     class="mdi mdi-plus-circle text-default icon-md"></i> </a>
 
