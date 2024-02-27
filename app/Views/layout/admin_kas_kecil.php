@@ -295,6 +295,12 @@ if (!isset(Session('userData')['nama_user'])) {
                         <span class="menu-title">Piutang Usaha</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url() ?>akk/kas">
+                        <i class="mdi mdi-calendar-check menu-icon text-whitex text-shadow"></i>
+                        <span class="menu-title">Kas</span>
+                    </a>
+                </li>
                 <!-- <li class="nav-item">
                     <a class="nav-link" href="<?= base_url() ?>/akk/konsumen">
                         <span class="menu-title">Konsumen</span>

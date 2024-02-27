@@ -127,6 +127,8 @@ $routes->get('/akk/piutang_usaha/input_pembayaran', 'admin_kas_kecil\piutang\pem
 $routes->post('/akk/piutang_usaha/input_pembayaran/add', 'admin_kas_kecil\piutang\pembayaranController::add');
 $routes->get('/akk/piutang_usaha/input_pembayaran/detail/(:any)', 'admin_kas_kecil\piutang\pembayaranController::detail_input_pembayaran/$1');
 
+$routes->get('/akk/kas', 'admin_kas_kecil\KasController::index');
+
 $routes->get('/akk/master_bank', 'admin_kas_kecil\master\bankController::index');
 $routes->post('/akk/input_bank', 'admin_kas_kecil\master\bankController::input');
 $routes->get('/akk/del_bank/(:any)', 'admin_kas_kecil\master\bankController::hapus/$1');

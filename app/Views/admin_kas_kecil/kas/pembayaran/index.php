@@ -26,7 +26,6 @@
                                     <tr>
                                         <th style="font-size: 11px;"> NO. DO </th>
                                         <th style="font-size: 11px;"> SALESMAN </th>
-                                        <th style="font-size: 11px;"> METHOD </th>
                                         <th style="font-size: 11px;"> WEEK </th>
                                         <th style="font-size: 11px;"> AREA </th>
                                         <th style="font-size: 11px;"> KETERANGAN </th>
@@ -43,9 +42,6 @@
                                             </td>
                                             <td style="font-size: 11px;">
                                                 <?= $value['nama_lengkap'] ?>
-                                            </td>
-                                            <td style="font-size: 11px;">
-                                                <?= $value['payment_method'] ?>
                                             </td>
                                             <td style="font-size: 11px;">
                                                 <?= $value['weeks'] ?>

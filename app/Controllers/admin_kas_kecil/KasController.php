@@ -2,12 +2,12 @@
 
 namespace App\Controllers\admin_kas_kecil;
 
-class piutang_usahaController extends BaseController
+class KasController extends BaseController
 {
     public function index(): string
     {
         $data['judul'] = 'Bintang Distributor';
-        $data['judul1'] = 'RIWAYAT DATA PELUNASAN PIUTANG';
+        $data['judul1'] = 'RIWAYAT DATA KAS';
         $data['model'] = $this->mdNotaDetail
             ->join('nota', 'nota.id_nota=nota_detail.id_nota')
             ->join('sales_detail', 'sales_detail.id_sales=nota.id_sales')
@@ -15,10 +15,9 @@ class piutang_usahaController extends BaseController
             ->join('partner', 'partner.id_partner=nota.id_partner')
             ->join('user', 'user.id_user=nota.created_by')
             ->where('status', 'Lunas')
-            ->where('payment_method', 'KREDIT')
             ->groupBy('nota.id_nota')
             ->findAll();
-        return view('admin_kas_kecil/piutang_usaha/index', $data);
+        return view('admin_kas_kecil/kas/index', $data);
     }
 
     public function hapus($id_nota)

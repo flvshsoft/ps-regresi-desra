@@ -72,6 +72,11 @@ class TagihanBaruController extends BaseController
         $id_partner = $this->request->getPost('id_partner');
         $id_customer = $this->request->getPost('id_customer');
         $id_area = $this->request->getPost('id_area');
+        $payment_method = $this->request->getPost('payment_method');
+        $status = "";
+        if($payment_method == "CASH"){
+            $status = 'Lunas';
+        }
 
         $data = [
             'id_sales' => $id_sales,
@@ -81,8 +86,9 @@ class TagihanBaruController extends BaseController
             'id_bank' => 3,
             'no_nota' => $this->request->getPost('no_nota'),
             //'weeks' => $this->request->getPost('weeks'),
-            'payment_method' => $this->request->getPost('payment_method'),
+            'payment_method' => $payment_method,
             'pay' => NULL,
+            'status' => $status,
             'created_by' => SESSION('userData')['id_user'],
             'tgl_bayar' =>  $this->request->getPost('tgl_bayar'),
         ];
