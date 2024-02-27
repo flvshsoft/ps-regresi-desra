@@ -2,163 +2,314 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
 
-        .container {
-            margin-top: 20px;
-        }
+    img {
+        max-width: 100%;
+        height: 20%;
+        width: 30%;
+        float: left;
+        margin: 20px 0;
+        margin-top: 10px;
+        /* Atur margin atas dan bawah */
+    }
 
-        .col-lg-8 {
-            flex: 0 0 75%;
-            padding-left: 20px;
-            /* Memberi jarak antara gambar dan teks */
-        }
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
 
-        img {
-            max-width: 100%;
-            height: 20%;
-            width: 30%;
-            float: left;
-            margin: 20px 0;
-            margin-top: 10px;
-            /* Atur margin atas dan bawah */
-        }
+    .flex-container {
+        display: flex;
+        justify-content: space-between;
+    }
 
-        .text-container {
-            width: 75%;
-            /* Menentukan lebar teks */
-            float: left;
-            /* Menggunakan float untuk menempatkan teks di sebelah kanan */
-        }
+    .header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-        h2,
-        h3,
-        h4 {
-            margin-bottom: 5px;
-        }
+    .left-column {
+        flex: 1;
+    }
 
-        table {
-            width: 100%;
-            margin-bottom: 20px;
-            border-collapse: collapse;
-        }
+    .right-column {
+        flex: 1;
+    }
 
-        th,
-        td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
+    .details {
+        margin-bottom: 20px;
+    }
 
-        th {
-            background-color: #f2f2f2;
-            font-size: 11px;
-        }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        /* margin-bottom: 20px; */
+    }
 
-        .row {
-            display: flex;
-            align-items: center;
-        }
+    table,
+    th,
+    td {
+        /* border: 1px solid black; */
+    }
 
-        .col-lg-4 {
-            flex: 0 0 25%;
-            /* Menentukan lebar gambar */
-        }
+    th,
+    td {
+        padding: 10px;
+        text-align: left;
+    }
 
-        tbody td {
-            font-size: 11px;
-        }
+    tbody td {
+        vertical-align: top;
+    }
+
+    .payment {
+        margin-top: 20px;
+    }
+
+    .footer {
+        margin-top: 20px;
+    }
     </style>
-    <title><?= $judul1 ?></title>
+    <title>Laporan Kwitansi</title>
 </head>
+
 
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-4">
-                <img src="<?= base_url() ?>/public/assets/images/logo.png" alt="logo" class="w-25 h-25">
-            </div>
-            <div class="col-lg-8 text-container">
-                <h2><b><?= $judul ?></b></h2>
-                <h3><b><?= $judul1 ?></b></h3>
-                <h4>Alamat: PKU</h4>
-            </div>
-        </div>
+        <table border="0">
+            <thead>
+                <tr>
+                    <th style="width: 50px;">
+                        <img src="<?= base_url() ?>/public/assets/images/logo.png" alt="logo"
+                            style="width: 100px;height:auto;">
+                    </th>
+                    <th style="text-align: center;">
+                        <h4><?= $judul ?></h4>
+                        <h5><?= $judul1 ?></h5>
+                        <h6>Cabang : Kota Pekanbaru</h6>
+                    </th>
+                    <th style="width: 100px;">
+
+                    </th>
+                </tr>
+            </thead>
+        </table>
         <hr>
-        <b>Dicetak Oleh : <?= SESSION('userData')['nama_user'] ?></b><br>
-        <b>No DO : <?= $sales['id_sales'] ?></b><br>
-        <b>Salesman : <?= $sales['id_sales'] ?></b><br>
-        <b>Weeks : <?= $sales['week'] ?></b><br>
+        <table border="0">
+            <thead>
+                <tr>
+                    <th>
+                        <p style="font-size: 13px;">
+                            No DO : <?= $info['id_sales'] ?>
+                        </p>
+                    </th>
+                    <th style="font-size: 13px;margin-left:300px;text-align:right">
+                        <p>
+                            Print By : <?= SESSION('userData')['nama_user'] ?>
+                        </p>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <p style="font-size: 13px;">
+                            Area : <?= $info['nama_area'] ?>
+                        </p>
+                    </th>
+                    <th style="font-size: 13px;margin-left:300px;text-align:right">
+                        <p>
+
+                        </p>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <p style="font-size: 13px;">
+                            Salesman : <?= $info['nama_lengkap'] ?>
+                        </p>
+                    </th>
+                    <th style="font-size: 13px;margin-left:300px;text-align:right">
+                        <p>
+                            TGL DO : <?= $info['tgl_do'] ?>
+                        </p>
+                    </th>
+                </tr>
+            </thead>
+        </table>
         <br>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="table-responsive">
-                    <table class="table table-striped" cellspacing="0">
-                        <thead class="table table-primary">
-                            <tr>
-                                <th style="width: 35%;"> <img src="<?= base_url() ?>/public/assets/images/logo.png" alt="logo">
-                                </th>
-                            </tr>
-                            <tr>
-                                <th class=""> NO </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    NO
-                                </td>
-                            </tr>
+        <table border="1">
+            <thead>
+                <tr style="font-size:11px ;">
+                    <th align="center">No.</th>
+                    <th align="center">No Tagihan</th>
+                    <th align="center">Konsumen</th>
+                    <th align="center">Kredit</th>
+                    <th align="center">Cash</th>
+                    <th align="center">Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $no = 1;
+                $bayar_kredit = 0;
+                $bayar_cash = 0;
+                foreach ($model1 as $value) {
+                ?>
+                <tr style="font-size:11px ;" align="center">
+                    <td align="center"><?= $no ?> </td>
+                    <td align="center"><?= $value['no_nota'] ?> </td>
+                    <td align="center"><?= $value['nama_customer'] ?> </td>
+                    <td align="center">
+                        <?php
+                            if ($value['payment_method'] == 'KREDIT') {
+                                $total_kredit = $value['total_beli'];
+                                echo 'Rp. ' . number_format($total_kredit, 0, ',', '.');
+                                $bayar_kredit += $total_kredit;
+                            } else {
+                                echo 'Rp. 0';
+                            }
+                            ?>
+                    </td>
+                    <td align="center">
+                        <?php
+                            if ($value['payment_method'] == 'CASH') {
+                                $total_cash = $value['total_beli']; // Tidak perlu format ke 'Rp.'
+                                echo 'Rp. ' . number_format($total_cash, 0, ',', '.');
+                                $bayar_cash += $total_cash;
+                            } else {
+                                echo 'Rp. 0';
+                            }
+                            ?>
+                    </td>
+                    <td align="center"><?= 'Rp. ' . number_format($value['total_beli'], 0, ',', '.'); ?></td>
+                </tr>
+                <?php $no++;
+                } ?>
+            </tbody>
+            <tfoot>
+                <tr style="font-size:11px ;">
+                    <td colspan="3" align="center"><b>Grand Total </b></td>
+                    <td align="center"><?= 'Rp. ' . number_format($bayar_kredit, 0, ',', '.') ?></td>
+                    <td align="center"><?= 'Rp. ' . number_format($bayar_cash, 0, ',', '.') ?></td>
+                    <td align="center"><?= 'Rp. ' . number_format($bayar_kredit + $bayar_cash, 0, ',', '.') ?></td>
+                </tr>
+            </tfoot>
+        </table>
+        <br>
+        <table border="1">
+            <thead>
+                <tr style="font-size:11px ;">
+                    <th align="center">No.</th>
+                    <th align="center">Kode Barang</th>
+                    <th align="center">Nama Barang</th>
+                    <th align="center">Satuan</th>
+                    <th align="center">QTY</th>
+                    <th align="center">TOTAL KONTAN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $no = 1;
+                foreach($model2 as $value){
+                ?>
+                <tr style="font-size:11px ;" align="center">
+                    <td align="center"><?= $no ?> </td>
+                    <td align="center">
 
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="table-responsive">
-                    <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
-                        <thead class="table table-primary">
-                            <tr>
-                                <th style="font-size: 11px;"> NO </th>
-                                <th style="font-size: 11px;"> No DO Detail </th>
-                                <th style="font-size: 11px;"> NAMA BARANG </th>
-                                <th style="font-size: 11px;"> STOK GUDANG </th>
-                                <th style="font-size: 11px;"> JUMLAH SALES </th>
-                                <th style="font-size: 11px;"> SATUAN</th>
-                                <th style="font-size: 11px;"> TANGGAL </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $no = 1;
-                            foreach ($model as $value) { ?>
-                                <tr>
-                                    <td><?= $no; ?></td>
-                                    <td>
-                                        <b>
-                                            <?= $value['id_sales_detail'] ?>
-                                        </b>
-                                    </td>
-                                    <td><?= $value['nama_product'] ?></td>
-                                    <td>
+                    </td>
+                    <td align="center">
 
-                                    </td>
-                                    <td><?= $value['jumlah_sales'] ?></td>
-                                    <td><?= $value['satuan_sales_detail'] ?></td>
-                                    <td><?= $value['created_at'] ?></td>
-                                </tr>
-                            <?php $no++;
-                            } ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+                    </td>
+                    <td align="center">
+
+                    </td>
+                    <td align="center">
+
+                    </td>
+                    <td align="center">
+
+                    </td>
+                </tr>
+                <?php }; $no++;
+                ?>
+            </tbody>
+            <tfoot>
+                <tr style="font-size:11px ;">
+                    <td colspan="3" align="center"><b>Grand Total Omset</b></td>
+                    <td align="center">
+
+                    </td>
+                    <td align="center">
+
+                    </td>
+                    <td align="center">
+
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <br>
+        <table border="1">
+            <thead>
+                <tr style="font-size:11px ;">
+                    <th align="center">No.</th>
+                    <th align="center">Kode Barang</th>
+                    <th align="center">Nama Barang</th>
+                    <th align="center">Satuan</th>
+                    <th align="center">QTY</th>
+                    <th align="center">TOTAL KREDIT</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $no = 1;
+
+                ?>
+                <tr style="font-size:11px ;" align="center">
+                    <td align="center"><?= $no ?> </td>
+                    <td align="center">
+
+                    </td>
+                    <td align="center">
+
+                    </td>
+                    <td align="center">
+
+                    </td>
+                    <td align="center">
+
+                    </td>
+                    <td align="center">
+
+                    </td>
+                </tr>
+                <?php $no++;
+                ?>
+            </tbody>
+            <tfoot>
+                <tr style="font-size:11px ;">
+                    <td colspan="3" align="center"><b>Grand Total Omset</b></td>
+                    <td align="center">
+
+                    </td>
+                    <td align="center">
+
+                    </td>
+                    <td align="center">
+
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <br>
+
 </body>
 
 </html>
