@@ -14,18 +14,18 @@ class stockAkhirModel extends Model
     protected $returnType = 'array';
     protected $usSoftDeletes = true;
 
-    protected $allowedFields = ['id_nota_detail', 'id_nota',  'id_sales_detail', 'id_product', 'id_jenis_harga', 'diskon_penjualan', 'satuan_penjualan'];
+    protected $allowedFields = ['id_product', 'jumlah_stock_kembali', 'satuan', 'id_sales', 'id_salesman'];
 
     protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $deletedField  = 'deleted_at';
 
-    public function getLastIdNotaDetail()
-    {
-        $lastIdNotaDetail = $this->db->table('nota_detail')
-            ->selectMax('id_nota_detail')
-            ->get()
-            ->getRow();
-        return $lastIdNotaDetail->id_nota_detail ?? 0;
-    }
+    // public function getLastIdNotaDetail()
+    // {
+    //     $lastIdNotaDetail = $this->db->table('nota_detail')
+    //         ->selectMax('id_nota_detail')
+    //         ->get()
+    //         ->getRow();
+    //     return $lastIdNotaDetail->id_nota_detail ?? 0;
+    // }
 }

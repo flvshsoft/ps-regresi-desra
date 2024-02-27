@@ -37,7 +37,7 @@
                                     <tr>
                                         <form action="<?= base_url('/akk/transaksi/stock_akhir/tambah') ?>" method="post">
                                             <td style="font-size: 11px;">
-                                                <select class="form-control form-control-sm" name="">
+                                                <select class="form-control form-control-sm" name="id_product">
                                                     <option>Pilih Barang</option>
                                                     <?php foreach ($product as $value) { ?>
                                                         <option value="<?= $value['id_product'] ?>">
@@ -53,16 +53,18 @@
                                                 <input type="text" disabled class="form-control" id="">
                                             </td>
                                             <td style="font-size: 11px;">
-                                                <input type="text" class="form-control" value="0">
+                                                <input type="text" name="jumlah_stock_kembali" class="form-control" value="0">
                                             </td>
                                             <td style="font-size: 11px;">
-                                                <select class="form-control form-control-sm">
-                                                    <option>Pilih Subinventory</option>
-                                                    <option>Female</option>
+                                                <select name="satuan" class="form-control form-control-sm" required>
+                                                    <option value="">Pilih Subinventory</option>
+                                                    <option>Defect</option>
+                                                    <option>Gudang</option>
+                                                    <option>Sample</option>
                                                 </select>
                                             </td>
                                             <td style="font-size: 11px;">
-                                                <button type="text" class="btn btn-primary btn-xs" name="btn_s">R</button>
+                                                <button type="text" class="btn btn-primary btn-xs" name="btn_s">Ok</button>
                                             </td>
                                         </form>
                                     </tr>

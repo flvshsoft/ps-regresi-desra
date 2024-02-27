@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\admin\keuangan;
+namespace App\Controllers\admin_kas_kecil\keuangan;
 
 class dataKasController extends BaseController
 {
@@ -8,7 +8,7 @@ class dataKasController extends BaseController
     {
         $data['judul'] = 'Bintang Distributor';
         $data['judul1'] = 'DATA KAS & BANK';
-        return view('admin/keuangan/data_kas/index', $data);
+        return view('admin_kas_kecil/keuangan/data_kas/index', $data);
     }
 
     public function voucher(): string
@@ -27,7 +27,7 @@ class dataKasController extends BaseController
     {
         $data['judul'] = 'Bintang Distributor';
         $data['judul1'] = 'FORM UANG KELUAR';
-        return view('admin/keuangan/data_kas/mutasi_bank', $data);
+        return view('admin_kas_kecil/keuangan/data_kas/mutasi_bank', $data);
     }
 
     public function uang_kas_kecil(): string

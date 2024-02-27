@@ -12,7 +12,7 @@ class StockAkhirController extends BaseController
             // ->join('partner', 'partner.id_partner=sales.id_partner',)
             // ->join('area', 'area.id_area=sales.id_area')
             // ->join('asset', 'asset.id_asset=sales.id_asset')
-            // ->orderBy('id_sales', 'DESC')
+            ->orderBy('id_stock_akhir', 'DESC')
             ->findAll();
         return view('admin_kas_kecil/transaksi/stock_akhir/index', $data);
     }
@@ -31,22 +31,35 @@ class StockAkhirController extends BaseController
     public function input()
     {
         $data = [
-            'id_partner' => $this->request->getPost('id_partner'),
-            'id_asset' => $this->request->getPost('id_asset'),
-            'id_area' => $this->request->getPost('id_area'),
-            'km' => $this->request->getPost('km'),
-            'week' => $this->request->getPost('week'),
-            'tgl_do' => $this->request->getPost('tgl_do'),
-            'keterangan' => $this->request->getPost('keterangan'),
+            'id_product' => $this->request->getPost('id_product'),
+            'jumlah_stock_kembali' => $this->request->getPost('jumlah_stock_kembali'),
+            'satuan' => $this->request->getPost('satuan'),
         ];
 
-        print_r($data);
-        exit;
-        $this->mdStockAkhir->insert($data);
+        // print_r($data);
+        // exit;
+        $this->mdStockAkhir->save($data);
         // $id_sales = $this->mdSales->insertID();
         // $data = array(
         //     'id_sales' => $id_sales,
         // );
+
+        $id_product = $this->request->getPost('id_product');
+
+        $mdProduct = $this->mdProduct
+            ->join('supplier', 'supplier.id_supplier=product.id_supplier')
+            ->where('id_product', $id_product)
+            ->find()[0];
+        $stock_product = $mdProduct['stock_product'] + $this->request->getPost('jumlah_stock_kembali');
+        $data = [
+            'id_product' => $id_product,
+            'stock_product' => $stock_product,
+        ];
+        print_r($data);
+        // exit;
+        $this->mdProduct->save($data);
+
+
         return redirect()->to(base_url('/akk/transaksi/stock_akhir'));
     }
     public function hapus($id_sales)

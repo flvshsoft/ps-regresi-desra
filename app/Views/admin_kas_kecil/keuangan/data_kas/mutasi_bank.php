@@ -1,4 +1,4 @@
-<?= $this->extend('layout/admin'); ?>
+<?= $this->extend('layout/admin_kas)kecil'); ?>
 <?= $this->section('content'); ?>
 
 <div class="main-panel">

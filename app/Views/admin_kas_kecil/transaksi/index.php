@@ -82,7 +82,7 @@
                         </a>
                     </div>
                     <div class="col-lg-4 mb-3 px-2">
-                        <a href="#<?= base_url('/akk/transaksi/ambil_barang') ?>" class="text-decoration-none">
+                        <a href="<?= base_url('/akk/transaksi/stock_akhir') ?>" class="text-decoration-none">
                             <div class="card text-white shadow" style="background: #fd79b3;">
                                 <div class="card-body d-flex p-0">
                                     <div class="col-6 p-3 text-white-90">
