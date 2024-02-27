@@ -44,7 +44,7 @@ class LoginController extends BaseController
         $user = $this->mdUser->where('username', $this->request->getPost('username'))->first();
 
         if (is_null($user) || !password_verify($this->request->getPost('password'), $user['password_hash'])) {
-            return redirect()->back()->withInput()->with;
+            return redirect()->back()->withInput()->with('error', lang('Auth.nonAktif'));
         }
 
         if ($user['status_user'] == 0) {
