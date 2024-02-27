@@ -302,7 +302,7 @@ if (!isset(Session('userData')['nama_user'])) {
                     </a>
                 </li>-->
             </ul>
-            <img src="https://i.pinimg.com/originals/da/41/06/da41069961bd2c79a786abb69328c9fc.gif" alt="Foto" width="100%" class="mt-0 p-2" style="border-radius: 30px;">
+            <!-- <img src="https://i.pinimg.com/originals/da/41/06/da41069961bd2c79a786abb69328c9fc.gif" alt="Foto" width="100%" class="mt-0 p-2" style="border-radius: 30px;"> -->
         </nav>
         <!-- partial -->
         <?= $this->renderSection('content'); ?>

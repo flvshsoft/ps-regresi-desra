@@ -104,9 +104,9 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="row justify-content-right mb-1">
-                                            <div class="col-md-6">
-                                                <button class="btn btn-gradient-warning btn-rounded btn-fw btn-sm">
+                                        <div class="row justify-content-right mb-4">
+                                            <div class="col-md-12">
+                                                <button class="btn btn-gradient-warning btn-rounded btn-fw btn-sm float-end ms-auto">
                                                     Save
                                                 </button>
                                             </div>
@@ -179,7 +179,8 @@
                                                 <?= $no ?? 1 ?>
                                             </td>
                                             <!-- <td style=" font-size: 11px;">
-                                                <?//= $lastIdNotaDetail + 1 ?? 1 ?>
+                                                <? //= $lastIdNotaDetail + 1 ?? 1 
+                                                ?>
                                             </td> -->
                                             <td style=" font-size: 11px;">
                                                 <select class="form-control" name="id_sales_detail">
@@ -247,8 +248,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <a href="<?= base_url('/akk/transaksi/tagihan_baru/nota/' .  $nota['id_sales']) ?>" class="btn btn-gradient-danger btn-sm btn-fw">
+        <div class="col-md-12 row">
+            <a href="<?= base_url('/akk/transaksi/tagihan_baru/nota/' .  $nota['id_sales']) ?>" class="btn btn-gradient-danger btn-sm btn-fw float-end w-auto ms-auto">
                 Input Nota Baru
             </a>
         </div><br>
@@ -260,12 +261,12 @@
                             <small class="text-muted"><?= tgl_indo($value['created_at']) ?></small>
                         </div>
                         <div class="card-bodyx" style="padding:5%">
-                            <h5 class="card-title text-center">No Invoice : <?= $value['id_nota'] ?></h5>
+                            <h5 class="card-title text-center">Konsumen : <?= $value['nama_customer'] ?></h5>
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Area : <?= $value['nama_area'] ?> </li>
                             <li class="list-group-item">Salesman : <?= $value['nama_lengkap'] ?></li>
-                            <li class="list-group-item">Konsumen : <?= $value['nama_customer'] ?></li>
+                            <li class="list-group-item">No Invoice : <?= $value['id_nota'] ?></li>
                         </ul>
                         <div class="" style="padding:5%">
                             <a href="<?= base_url('/akk/transaksi/tagihan_baru/nota/detail/' . $value['id_nota']) ?>" class="d-flex justify-content-center align-items-center btn btn-primary btn-sm btn-rounded">Cek
