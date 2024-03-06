@@ -1,4 +1,4 @@
-<?= $this->extend('layout/admin'); ?>
+<?= $this->extend('layout/admin_kas_kecil'); ?>
 <?= $this->section('content'); ?>
 
 <div class="main-panel">
@@ -9,8 +9,8 @@
             </h6>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb" style="font-size: 11px;">
-                    <li class="breadcrumb-item"><a href="<?= base_url('/dashboard')?>"> BERANDA </a></li>
-                    <li class="breadcrumb-item"><a href="<?= base_url('/piutang_usaha')?>"> RIWAYAT DATA PELUNASAN
+                    <li class="breadcrumb-item"><a href="<?= base_url('/akk/dashboard')?>"> BERANDA </a></li>
+                    <li class="breadcrumb-item"><a href="<?= base_url('/akk/piutang_usaha')?>"> RIWAYAT DATA PELUNASAN
                             PIUTANG
                         </a></li>
                     <li class="breadcrumb-item active" aria-current="page"> <?= $judul1?></li>

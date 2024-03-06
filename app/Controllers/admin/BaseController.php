@@ -54,5 +54,16 @@ abstract class BaseController extends Controller
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = \Config\Services::session();
+        $this->mdUser = model('userModel', true, $this->db);
+        $this->mdArea = model('areaModel', true, $this->db);
+        $this->mdAsset = model('assetModel', true, $this->db);
+        $this->mdPartner = model('partnerModel', true, $this->db);
+        $this->mdSales = model('salesModel', true, $this->db);
+        $this->mdSalesDetail = model('salesDetailModel', true, $this->db);
+        $this->mdProduct = model('productModel', true, $this->db);
+        $this->mdSupplier = model('supplierModel', true, $this->db);
+        $this->mdCustomer = model('customerModel', true, $this->db);
+        $this->mdNota = model('notaModel', true, $this->db);
+        $this->mdNotaDetail = model('notadetailModel', true, $this->db);
     }
 }

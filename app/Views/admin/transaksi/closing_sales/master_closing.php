@@ -1,4 +1,4 @@
-<?= $this->extend('layout/admin'); ?>
+<?= $this->extend('layout/admin_kas_kecil'); ?>
 <?= $this->section('content'); ?>
 
 <div class="main-panel">
@@ -9,9 +9,9 @@
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?= base_url('/dashboard') ?>"> BERANDA </a></li>
-                    <li class="breadcrumb-item"><a href="<?= base_url('/transaksi') ?>"> TRANSAKSI</a></li>
-                    <li class="breadcrumb-item"><a href="<?= base_url('/closing_sales') ?>"> SALES</a></li>
+                    <li class="breadcrumb-item"><a href="<?= base_url('/akk/dashboard') ?>"> BERANDA </a></li>
+                    <li class="breadcrumb-item"><a href="<?= base_url('/akk/transaksi') ?>"> TRANSAKSI</a></li>
+                    <li class="breadcrumb-item"><a href="<?= base_url('/akk/closing_sales') ?>"> SALES</a></li>
                     <li class="breadcrumb-item active" aria-current="page"> <?= $judul1 ?></li>
                 </ol>
             </nav>
@@ -41,41 +41,46 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php foreach ($model as $value) { ?>
                                     <tr>
                                         <td style="font-size: 11px;">
-                                            180032093
+                                            <?= $value['id_nota'] ?>
                                         </td>
                                         <td style=" font-size: 11px;">
-                                            160011047
+                                            <?= $value['id_sales'] ?>
                                         </td>
                                         <td style="font-size: 11px;">
-                                            ANDANI
+                                            <?= $value['nama_lengkap'] ?>
                                         </td>
                                         <td style=" font-size: 11px;">
-                                            48
+                                            <?= $value['weeks'] ?>
                                         </td>
                                         <td style="font-size: 11px;">
-                                            KONTAN
+                                            <?= $value['payment_method'] ?>
                                         </td>
                                         <td style=" font-size: 11px;">
-                                            RETAIL-PKU
+                                            <?= $value['nama_customer'] ?>
                                         </td>
                                         <td style="font-size: 11px;">
-                                            PKUKVS
+                                            <?= $value['nama_area'] ?>
                                         </td>
                                         <td style="font-size: 11px;">
-                                            ALDO
+                                            <?= $value['nama_user'] ?>
                                         </td>
                                         <td style=" font-size: 11px;">
-                                            2023-12-02 13:53:26
+                                            <?= $value['created_at'] ?>
                                         </td>
                                         <td style=" font-size: 11px;">
-                                            <a href="<?= base_url('/detail_closing') ?>"><i class="mdi mdi-pencil-circle icon-md"></i></a>
+                                            <a href="<?= base_url('/akk/detail_closing') ?>"><i
+                                                    class="mdi mdi-pencil-circle icon-md"></i></a>
                                             <a href="#"><i class="mdi mdi-file-pdf text-info icon-md"></i></a>
-                                            <a href="#"><i class="mdi mdi-book-open-page-variant text-success icon-md"></i></a>
-                                            <a href="#"><i class="mdi mdi-printer text-black icon-md"></i></a>
+                                            <a href="#"><i
+                                                    class="mdi mdi-book-open-page-variant text-success icon-md"></i></a>
+                                            <a href="<?= base_url('/akk/closing_sales_print/'. $value['id_nota']) ?>"><i
+                                                    class="mdi mdi-printer text-black icon-md"></i></a>
                                         </td>
                                     </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>

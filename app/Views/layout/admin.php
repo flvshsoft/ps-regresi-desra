@@ -2,7 +2,12 @@
 
 use CodeIgniter\Session\Session;
 
+if (!isset(Session('userData')['nama_user'])) {
+    Header("Location: " . base_url('/'));
+    exit;
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,6 +25,8 @@ use CodeIgniter\Session\Session;
     <!-- End layout styles -->
     <link rel="shortcut icon" href="<?= base_url() ?>/public/assets/images/favicon1.ico" />
     <link href="<?= base_url() ?>/public/assets/vendors/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!-- font -->
+    <link href="https://db.onlinewebfonts.com/c/c3264a2601f855aef183e1892c5504db?family=Sacramento" rel="stylesheet">
     <style>
     p,
     h1,
@@ -30,15 +37,117 @@ use CodeIgniter\Session\Session;
     h6 {
         margin-bottom: 0;
     }
+
+    /* icon app */
+
+    .navbar .navbar-brand-wrapper .navbar-brand {
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .navbar .navbar-brand-wrapper .navbar-brand img {
+        width: 50px;
+        height: 50px;
+        margin-left: 0px;
+        margin-right: 5%;
+    }
+
+    /* tulisan menu active */
+    .sidebar .nav .nav-item.active>.nav-link .menu-title {
+        padding: 2% 5% 2% 5%;
+        font-size: 16px;
+        font-weight: 600;
+        color: #294B29;
+    }
+
+
+    /* icon menu */
+    .sidebar .nav .nav-item .nav-link i.menu-icon {
+        color: #FFCF9D;
+        font-size: 28px;
+        margin-left: 0;
+        margin-right: 10px;
+    }
+
+    /* icon menu active */
+    .sidebar .nav .nav-item.active>.nav-link i {
+        color: #436850;
+        font-size: 28px;
+        margin-left: 20px;
+        margin-right: 0px;
+    }
+
+    /* off kan putih */
+    .sidebar .nav .nav-item.active {
+        padding: 3%;
+        background-color: #436850;
+    }
+
+    /* menu active */
+    .sidebar .nav .nav-item.active>a {
+        background: #ffffffc7;
+        border-radius: 10px;
+        padding: 5% 4% 5% 4%;
+    }
+
+    .sidebar .nav .nav-item:hover {
+        /* padding: 3%; */
+        /* margin: 3%; */
+        background: #ffffff8c;
+        border-radius: 10px;
+    }
+
+    /* menu off */
+    .sidebar .nav .nav-item .nav-link .menu-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #FFFFFF;
+    }
+
+    /* sub menu */
+    .sidebar .nav .nav-item .collapse {
+        margin-left: 20%;
+    }
+
+    /* nav ul .active>a {
+            background: #E95793;
+            border-radius: 10px;
+            color: #FFFFFF;
+        } */
+
+    nav ul .active>a .xn-text {
+        color: #FFFFFF;
+    }
+
+    nav ul .active>a .fa {
+        color: #FFFFFF;
+    }
+
+    nav ul li>a .fa {
+        color: #33414e;
+        font-size: 18px;
+    }
     </style>
 </head>
 
 <body>
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center"
-            style="background-color:#20A2A0 ;">
-            <a class="navbar-brand brand-logo text-white" href="#"> Bintang</a>
-            <!-- <a class="navbar-brand brand-logo-mini" href=""><img src="<?//= base_url('') ?>/public/assets/images/logo-mini.png" alt="logo" /></a> -->
+            style="background-color:#436850 ;">
+            <a class="navbar-brand brand-logo text-white d-flex p-3 mt-4" href="#">
+                <div style="background: #FFFFFFc7;border-radius:50%;padding:3%;width:30%;margin-top:0px;">
+                    <img src="<?= base_url('') ?>/public/assets/images/logo.png" alt="logo" width="50px"
+                        style="background: #ffffffa8;border-radius:30px;padding:3%;" />
+                </div>
+                <div class="d-block mt-2 ms-2">
+                    <h3 class="text-start" style="font-family: 'Sacramento';">Regresi Linear</h3>
+                    <h6 style="color:#FFCF9D;font-size:8px;">Kepadatan Penduduk </h6>
+                </div>
+            </a>
+            <a class="navbar-brand brand-logo-mini" href="/">
+                <img src="<?= base_url('')
+                            ?>/public/assets/images/logo-mini.png" alt="logo" />
+            </a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize"
@@ -103,8 +212,7 @@ use CodeIgniter\Session\Session;
                         aria-expanded="false">
                         <div class="nav-profile-text">
                             <p class="mb-1 text-black">
-                                <? //= SESSION('userData')['namalengkap']
-                                ?>Hai, ALDO - PKU
+                                Hai, <?= Session('userData')['nama_user'] ?> , PKU
                             </p>
                         </div>
                     </a>
@@ -112,7 +220,7 @@ use CodeIgniter\Session\Session;
                         <a class="dropdown-item" href="#">
                             <i class="mdi mdi-cached me-2 text-success"></i> Ganti Password</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="<?= base_url('/') ?>">
+                        <a class="dropdown-item" href="<?= base_url('/logout') ?>">
                             <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
                     </div>
                 </li>
@@ -131,57 +239,85 @@ use CodeIgniter\Session\Session;
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
-        <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color:#20A2A0 ">
-            <ul class="nav">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color:#436850 ">
+            <ul class="nav pt-4">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>/dashboard">
+                    <a class="nav-link" href="<?= base_url() ?>/akk/dashboard">
+                        <i class="mdi mdi-compass menu-icon text-whitex text-shadow"></i>
                         <span class="menu-title">Beranda</span>
-                        <i class="mdi mdi-compass menu-icon text-white text-shadow"></i>
                     </a>
                 </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
+                        aria-controls="ui-basic">
+                        <i class="menu-icon mdi mdi-server-network text-whitex text-shadowx"></i>
+                        <span class="menu-title">Master</span>
+                        <i class="menu-arrow text-whitex"></i>
+                    </a>
+                    <div class="collapse" id="ui-basic">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link text-black"
+                                    href="<?= base_url('/akk/master_area') ?>"> Area</a> </li>
+                            <li class="nav-item"> <a class="nav-link text-black"
+                                    href="<?= base_url('/akk/master_asset') ?>">Asset</a></li>
+                            <li class="nav-item"> <a class="nav-link text-black"
+                                    href="<?= base_url('/akk/master_bank') ?>">Bank</a></li>
+                            <li class="nav-item"> <a class="nav-link text-black"
+                                    href="<?= base_url('/akk/master_product') ?>">Barang</a></li>
+                            <li class="nav-item"> <a class="nav-link text-black"
+                                    href="<?= base_url('/akk/master_barang_harga') ?>">Barang Harga</a></li>
+                            <li class="nav-item"> <a class="nav-link text-black"
+                                    href="<?= base_url('/akk/master_customer') ?>">Konsumen</a></li>
+                            <li class="nav-item"> <a class="nav-link text-black"
+                                    href="<?= base_url('/akk/master_lokasi') ?>">Lokasi</a></li>
+                            <li class="nav-item"> <a class="nav-link text-black"
+                                    href="<?= base_url('/akk/master_partner') ?>">Salesman</a></li>
+                            <li class="nav-item"> <a class="nav-link text-black"
+                                    href="<?= base_url('/akk/master_supplier') ?>">Supplier</a></li>
+                            <li class="nav-item"> <a class="nav-link text-black"
+                                    href="<?= base_url('/akk/stock') ?>">Stock</a></li>
+                        </ul>
+                    </div>
+                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>/transaksi">
+                    <a class="nav-link" href="<?= base_url() ?>akk/transaksi">
+                        <i class="mdi mdi-cart menu-icon text-whitex text-shadow"></i>
                         <span class="menu-title">Transaksi</span>
-                        <i class="mdi mdi-cart menu-icon text-white text-shadow"></i>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>/penjualan">
+                </li> -->
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url() ?>/akk/penjualan">
                         <span class="menu-title">Penjualan</span>
                         <i class="mdi mdi-file-pdf-box menu-icon text-white text-shadow"></i>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>/laporan">
+                </li> -->
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url() ?>akk/laporan">
+                        <i class="mdi mdi-file-pdf-box menu-icon text-whitex text-shadow"></i>
                         <span class="menu-title">Laporan</span>
-                        <i class="mdi mdi-file-pdf-box menu-icon text-white text-shadow"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>/keuangan">
+                    <a class="nav-link" href="<?= base_url() ?>/akk/keuangan">
+                        <i class="mdi mdi-book-open menu-icon text-whitex text-shadow"></i>
                         <span class="menu-title">Keuangan</span>
-                        <i class="mdi mdi-book-open menu-icon text-white text-shadow"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>/piutang_usaha">
+                    <a class="nav-link" href="<?= base_url() ?>akk/piutang_usaha">
+                        <i class="mdi mdi-calendar-check menu-icon text-whitex text-shadow"></i>
                         <span class="menu-title">Piutang Usaha</span>
-                        <i class="mdi mdi-calendar-check menu-icon text-white text-shadow"></i>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>/konsumen">
+                </li> -->
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url() ?>/akk/konsumen">
                         <span class="menu-title">Konsumen</span>
                         <i class="mdi mdi-book-open menu-icon text-white text-shadow"></i>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>/sdm">
-                        <span class="menu-title">SDM</span>
-                        <i class="mdi mdi mdi-comment-account-outline menu-icon text-white text-shadow"></i>
-                    </a>
-                </li>
+                </li>-->
             </ul>
+            <img src="https://i.pinimg.com/originals/da/41/06/da41069961bd2c79a786abb69328c9fc.gif" alt="Foto"
+                width="100%" class="mt-0 p-2" style="border-radius: 30px;">
         </nav>
         <!-- partial -->
         <?= $this->renderSection('content'); ?>
@@ -221,7 +357,13 @@ use CodeIgniter\Session\Session;
     });
     </script>
 
-
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.select2').select2();
+    });
+    </script>
     <!-- Page level custom scripts -->
     <script src="<?= base_url() ?>/public/assets/js/demo/datatables-demo.js"></script>
 </body>

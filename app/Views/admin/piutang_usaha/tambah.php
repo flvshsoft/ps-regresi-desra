@@ -1,4 +1,4 @@
-<?= $this->extend('layout/admin'); ?>
+<?= $this->extend('layout/admin_kas_kecil'); ?>
 <?= $this->section('content'); ?>
 
 <div class="main-panel">
@@ -9,8 +9,8 @@
             </h6>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb" style="font-size: 11px;">
-                    <li class="breadcrumb-item"><a href="<?= base_url('/dashboard')?>"> BERANDA </a></li>
-                    <li class="breadcrumb-item"><a href="<?= base_url('/piutang_usaha')?>"> PIUTANG </a></li>
+                    <li class="breadcrumb-item"><a href="<?= base_url('/akk/dashboard')?>"> BERANDA </a></li>
+                    <li class="breadcrumb-item"><a href="<?= base_url('/akk/piutang_usaha')?>"> PIUTANG </a></li>
                     <li class="breadcrumb-item active" aria-current="page"> <?= $judul1?></li>
                 </ol>
             </nav>
@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                             <div class="form-group text-center">
-                                <a href="<?= base_url('/piutang_usaha')?>"
+                                <a href="<?= base_url('/akk/piutang_usaha')?>"
                                     class="btn btn-gradient-primary btn-xs tip-top">
                                     <i class="mdi mdi-backburger"></i>
                                 </a>

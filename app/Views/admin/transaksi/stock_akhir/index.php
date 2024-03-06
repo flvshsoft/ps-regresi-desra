@@ -9,8 +9,8 @@
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?= base_url('/dashboard') ?>"> BERANDA </a></li>
-                    <li class="breadcrumb-item"><a href="<?= base_url('/akk/transaksi') ?>"> TRANSAKSI</a></li>
+                    <li class="breadcrumb-item"><a href="<?= base_url('/akk/dashboard') ?>"> Beranda </a></li>
+                    <li class="breadcrumb-item"><a href="<?= base_url('/akk/transaksi') ?>"> Transaksi</a></li>
                     <li class="breadcrumb-item active" aria-current="page"> <?= $judul1 ?></li>
                 </ol>
             </nav>
@@ -21,8 +21,9 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="form-group col-6">
-                                <a class="btn btn-success btn-xs" href="<?= base_url('/akk/master_closing') ?>">
-                                    <i class="mdi mdi-book-multiple-variant icon-sm"></i> Proses</a>
+                                <a class="btn btn-primary btn-xs"
+                                    href="<?= base_url('/akk/transaksi/stock_akhir/riwayat') ?>">
+                                    <i class="mdi mdi-history btn-icon-prepend"></i> Riwayat</a>
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -30,14 +31,12 @@
                                 <thead class="table table-primary">
                                     <tr>
                                         <th style="font-size: 11px;"> NO </th>
-                                        <th style=" font-size: 11px;"> NO DO </th>
-                                        <th style=" font-size: 11px;"> Salesman </th>
-                                        <th style=" font-size: 11px;"> ID Area </th>
-                                        <th style=" font-size: 11px;"> Week </th>
-                                        <th style=" font-size: 11px;"> Keterangan </th>
-                                        <th style=" font-size: 11px;"> Created By </th>
-                                        <th style=" font-size: 11px;"> Created At </th>
-                                        <th style=" font-size: 11px;"> </th>
+                                        <th style="font-size: 11px;"> No DO </th>
+                                        <th style="font-size: 11px;"> SALESMAN </th>
+                                        <th style="font-size: 11px;"> KETERANGAN </th>
+                                        <th style="font-size: 11px;"> CREATED BY </th>
+                                        <th style="font-size: 11px;"> TANGGAL </th>
+                                        <th style="font-size: 11px;"> </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -45,35 +44,39 @@
                                     foreach ($model as $value) {
                                     ?>
                                     <tr>
+
                                         <td style="font-size: 11px;">
                                             <?= $no ?>
                                         </td>
                                         <td style=" font-size: 11px;">
-                                            <?= $value['id_sales'] ?>
+                                            <b>
+                                                <a style="text-decoration:none"
+                                                    href="<?= base_url('/akk/form_sales/' .  $value['id_sales']) ?>">
+                                                    <?= $value['id_sales'] ?>
+                                                </a>
+                                            </b>
                                         </td>
                                         <td style=" font-size: 11px;">
                                             <?= $value['nama_lengkap'] ?>
                                         </td>
                                         <td style=" font-size: 11px;">
-                                            <?= $value['nama_area'] ?>
-                                        </td>
-                                        <td style=" font-size: 11px;">
-                                            <?= $value['week'] ?>
-                                        </td>
-                                        <td style=" font-size: 11px;">
                                             <?= $value['keterangan'] ?>
                                         </td>
                                         <td style=" font-size: 11px;">
-
+                                            <?= $value['nama_user'] ?>
                                         </td>
                                         <td style=" font-size: 11px;">
-                                            <?= $value['tgl_do'] ?>
+                                            <?= $value['created_at'] ?>
                                         </td>
+                                        <td style=" font-size: 11px;">
+                                            <a href="<?= base_url('/akk/print_sales/' . $value['id_sales']) ?>">
+                                                <i class="mdi mdi-file-pdf icon-md"></i></a>
+                                            <a href="<?= base_url('/akk/detail_sales/' . $value['id_sales']) ?>"> <i
+                                                    class="mdi mdi-plus-circle text-default icon-md"></i> </a>
 
-                                        <td>
-                                            <a class="btn btn-success btn-xs"
-                                                href="<?= base_url('/akk/closing/' . $value['id_sales']) ?>"> <i
-                                                    class="mdi mdi-database-plus icon-sm"></i> </a>
+                                            <a onclick="return confirm('Anda Yakin Ingin Menghapusnya?')"
+                                                href="<?= base_url('/akk/del_sales/' . $value['id_sales']) ?>"> <i
+                                                    class="mdi mdi-delete-circle text-default icon-md"></i> </a>
                                         </td>
                                     </tr>
                                     <?php $no++;

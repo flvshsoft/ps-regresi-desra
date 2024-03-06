@@ -44,7 +44,7 @@ class LoginController extends BaseController
         $user = $this->mdUser->where('username', $this->request->getPost('username'))->first();
 
         if (is_null($user) || !password_verify($this->request->getPost('password'), $user['password_hash'])) {
-            return redirect()->back()->withInput()->with('error', lang('Auth.nonAktif'));
+            return redirect()->back()->withInput()->with;
         }
 
         if ($user['status_user'] == 0) {
@@ -60,7 +60,7 @@ class LoginController extends BaseController
                 'password_hash'          => $user["password_hash"],
                 'level_user' => $user["level_user"],
             ]);
-            return redirect()->to(base_url('/akk/dashboard'));
+            return redirect()->to(base_url('/admin/dashboard'));
         } elseif ($user['level_user'] == 'Gudang') {
 
             // $modelPemilik = $this->mdPemilik

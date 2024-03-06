@@ -12,23 +12,28 @@
     <link rel="stylesheet" href="<?= base_url() ?>/public/assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="<?= base_url() ?>/public/assets/images/logo.png" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
     <div class="container-scroller">
         <div class="container-fluid page-body-wrapper full-page-wrapper">
-            <div class="content-wrapper d-flex align-items-center auth px-4" style="background-image:url('https://dev.bintang-rezeki.co.id/assets/images/bg.jpg')">
+            <div class="content-wrapper d-flex align-items-center auth px-4"
+                style="background-image:url('https://dev.bintang-rezeki.co.id/assets/images/bg.jpg')">
                 <div class="row mx-auto" style="background-color: #FFFFFF;width:70%;">
                     <!-- <div class=" mx-auto"> -->
                     <div class="col-lg-7 ml-auto">
                         <div class="auth-form-light auth-left text-center p-0">
-                            <div class="brand-logo mt-4">
-                                <img src="<?= base_url() ?>/public/assets/images/logo.png" alt="Logo">
+                            <div class="brand-logo mt-4 font-weight-light text-bold">
+                                <!-- <img src="<?//= base_url() ?>/public/assets/images/logo.png" alt="Logo"> -->
+                                Kepadatan Penduduk Menggunakan Regresi Linear
                             </div>
                             <!-- Tambahkan gambar atau konten lainnya di sini -->
-                            <img src="https://dev.bintang-rezeki.co.id/assets/images/help.png" width="100%" alt="Gambar Saya">
-                            <p class="text-muted">© 2023 Hak Cipta Anda</p>
+                            <img src="https://dev.bintang-rezeki.co.id/assets/images/help.png" width="100%"
+                                alt="Gambar Saya">
+                            <p class="text-muted">© 2024 Hak Cipta Anda</p>
                         </div>
                     </div>
                     <div class="col-lg-5 mr-auto" style="background: #4c56c0;border:1px solid #FFFFFF">
@@ -39,20 +44,26 @@
                                 <label class="mb-2">Username</label>
                                 <div class="form-group d-flex">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1" style="background: #3d46a7;color:#ffffffcf;border:0px;">
+                                        <span class="input-group-text" id="basic-addon1"
+                                            style="background: #3d46a7;color:#ffffffcf;border:0px;">
                                             <i class="fa fa-user"></i>
                                         </span>
                                     </div>
-                                    <input type="text" style="background:#ffffff;color:#000000;" class="form-control form-control-sm" name="username" id="exampleInputEmail1" placeholder="Username" autofocus>
+                                    <input type="text" style="background:#ffffff;color:#000000;"
+                                        class="form-control form-control-sm" name="username" id="exampleInputEmail1"
+                                        placeholder="Username" autofocus>
                                 </div>
                                 <label class="mb-2">Password</label>
                                 <div class="form-group d-flex">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1" style="background: #3d46a7;color:#ffffffcf;border:0px;">
+                                        <span class="input-group-text" id="basic-addon1"
+                                            style="background: #3d46a7;color:#ffffffcf;border:0px;">
                                             <i class="fas fa-lock"></i>
                                         </span>
                                     </div>
-                                    <input type="password" style="background:#ffffff;color:#000000;" class="form-control form-control-sm" name="password" id="exampleInputPassword1" placeholder="Password">
+                                    <input type="password" style="background:#ffffff;color:#000000;"
+                                        class="form-control form-control-sm" name="password" id="exampleInputPassword1"
+                                        placeholder="Password">
                                 </div>
                                 <!-- <div class="form-group">
                                     <select class="form-control form-control-lg" id="exampleSelectGender">
@@ -61,7 +72,9 @@
                                     </select>
                                 </div> -->
                                 <div class="mt-3">
-                                    <button class="btn btn-block btn-gradient-danger btn-lg font-weight-medium auth-form-btn col-12" type="submit">Login</button>
+                                    <button
+                                        class="btn btn-block btn-gradient-danger btn-lg font-weight-medium auth-form-btn col-12"
+                                        type="submit">Login</button>
                                 </div><br>
                                 <div class="my-2 d-flex justify-content-between align-items-center">
                                     <a href="#" class="auth-link text-black mx-auto">Forgot password?</a>

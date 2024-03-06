@@ -1,16 +1,16 @@
-<?= $this->extend('layout/admin'); ?>
+<?= $this->extend('layout/admin_kas_kecil'); ?>
 <?= $this->section('content'); ?>
 
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title"><?= $judul1?></h3>
+            <h3 class="page-title"><?= $judul1 ?></h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?= base_url('/dashboard') ?>">BERANDA</a></li>
                     <li class="breadcrumb-item"><a href="<?= base_url('/keuangan') ?>">DATA KEUANGAN</a></li>
                     <li class="breadcrumb-item"><a href="<?= base_url('/master_mutasi_bank') ?>">MUTASI BANK</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><?= $judul1?></li>
+                    <li class="breadcrumb-item active" aria-current="page"><?= $judul1 ?></li>
                 </ol>
             </nav>
         </div>
@@ -18,18 +18,36 @@
             <div class="col-md-9 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <form class="forms-sample">
+                        <form class="forms-sample" method="POST" action="<?= base_url('/akk/mutasi_bank/edit') ?>">
                             <div class="form-group row mb-0">
-                                <label for="exampleInputMobile" class="col-sm-4 col-form-label">Transact Code</label>
-                                <div class="col-sm-8">
-                                    <input type="number" class="form-control" disabled value="150014420">
+                                <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Tanggal</label>
+                                <div class="col-sm-9">
+                                    <input type="date" class="form-control form-control-sm" name="tgl_mutasi_bank" value="<?= $model['tgl_mutasi_bank'] ?>">
                                 </div>
                             </div>
                             <div class="form-group row mb-0">
-                                <label for="exampleInputPassword2" class="col-sm-4 col-form-label">Week</label>
-                                <div class="col-sm-8">
-                                    <select class="form-control">
-                                        <option>39</option>
+                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Nama Bank</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" name="id_bank">
+                                        <option value="<?= $model['id_bank'] ?>"> <?= $model['nama_bank'] ?> </option>
+                                        <?php foreach ($bank as $value) { ?>
+                                            <option value="<?= $value['id_bank'] ?>"> <?= $value['nama_bank'] ?> </option>
+                                        <?php }; ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-4">
+                                <label for="exampleInputMobile" class="col-sm-3 col-form-label">Jumlah</label>
+                                <div class="col-sm-9">
+                                    <input type="number" class="form-control" value="<?= $model['biaya_mutasi_bank'] ?>" name="biaya_mutasi_bank">
+                                    <input type="hidden" value="<?= $model['id_mutasi_bank'] ?>" name="id_mutasi_bank">
+                                </div>
+                            </div>
+                            <div class="form-group row mb-0">
+                                <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Pekan Ke-</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" name="week_mutasi_bank">
+                                        <option><?= $model['week_mutasi_bank'] ?></option>
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
@@ -87,17 +105,28 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group row mb-2">
-                                <label for="exampleInputMobile" class="col-sm-4 col-form-label">Nilai (Rp.)</label>
-                                <div class="col-sm-8">
-                                    <input type="number" class="form-control" id="exampleInputMobile" Value="76512541">
+                            <div class="form-group row mb-0">
+                                <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Type Mutasi</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" name="type_mutasi_bank">
+                                        <option><?= $model['type_mutasi_bank'] ?></option>
+                                        <option>Uang Keluar</option>
+                                        <option>Mutasi HO BOP</option>
+                                        <option>Mutasi HO Deviden</option>
+                                        <option>Mutasi Kas Pengembangan</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-4">
+                                <label for="exampleInputEmail2" class="col-sm-3 col-form-label">
+                                    Keterangan</label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" rows="3" name="remark_mutasi_bank"><?= $model['remark_mutasi_bank'] ?></textarea>
                                 </div>
                             </div>
                             <div class="form-group text-center mb-0">
-                                <a href="<?= base_url('/master_mutasi_bank')?>" class="btn btn-primary btn-xs"><i
-                                        class="mdi mdi-backburger icon-sm"></i></a>
-                                <button type="submit" class="btn btn-warning btn-xs"><i
-                                        class="mdi mdi-content-save-all icon-sm"></i></button>
+                                <a href="<?= base_url('/akk/mutasi_bank') ?>" class="btn btn-primary btn-xs"><i class="mdi mdi-backburger icon-sm"></i></a>
+                                <button type="submit" class="btn btn-warning btn-xs"><i class="mdi mdi-content-save-all icon-sm"></i></button>
                             </div>
                         </form>
                     </div>

@@ -1,16 +1,16 @@
-<?= $this->extend('layout/admin'); ?>
+<?= $this->extend('layout/admin_kas_kecil'); ?>
 <?= $this->section('content'); ?>
 
 
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title"><?= $judul1?></h3>
+            <h3 class="page-title"><?= $judul1 ?></h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?= base_url('/dashboard') ?>">BERANDA</a></li>
                     <li class="breadcrumb-item"><a href="<?= base_url('/keuangan') ?>">DATA KEUANGAN</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><?= $judul1?></li>
+                    <li class="breadcrumb-item active" aria-current="page"><?= $judul1 ?></li>
                 </ol>
             </nav>
         </div>
@@ -36,111 +36,44 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php foreach ($model as $value) { ?>
                                     <tr>
                                         <td style="font-size: 11px;">
-                                            150014422
+                                            <?= $value['id_mutasi_bank'] ?>
                                         </td>
                                         <td style="font-size: 11px;">
-                                            KAS
+                                            <?= $value['nama_bank'] ?>
                                         </td>
                                         <td style="font-size: 11px;">
-                                            17,000,000
+                                            <?= 'Rp. ' . number_format($value['biaya_mutasi_bank'], 0, ',', '.') ?>
                                         </td>
                                         <td style="font-size: 11px;">
-                                            UANG KELUAR
+                                            <?= $value['type_mutasi_bank'] ?>
                                         </td>
                                         <td style="font-size: 11px;">
-                                            39
+                                            <?= $value['week_mutasi_bank'] ?>
                                         </td>
                                         <td style="font-size: 11px;">
-                                            TRANSFERAN SALESMAN
+                                            <?= $value['remark_mutasi_bank'] ?>
                                         </td>
                                         <td style="font-size: 11px;">
-                                            maya
+                                            <?= $value['nama_user'] ?>
                                         </td>
                                         <td style="font-size: 11px;">
-                                            2023-09-30
+                                            <?= $value['tgl_mutasi_bank'] ?>
                                         </td>
                                         <td style="font-size: 11px;">
-                                            ADE
+                                            <?= $value['nama_user'] ?>
                                         </td>
                                         <td>
-                                            <a href="<?= base_url('/edit_mutasi_bank')?>">
+                                            <a
+                                                href="<?= base_url('/akk/mutasi_bank/edit/' . $value['id_mutasi_bank']) ?>">
                                                 <i class="mdi mdi-pencil-circle icon-md">
                                                 </i>
                                             </a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td style="font-size: 11px;">
-                                            150014421
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            KAS
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            8,000,000
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            UANG KELUAR
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            39
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            TRANSFERAN SALESMAN
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            maya
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            2023-09-30
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            ADE
-                                        </td>
-                                        <td>
-                                            <a href="<?= base_url('/edit_mutasi_bank')?>">
-                                                <i class="mdi mdi-pencil-circle icon-md">
-                                                </i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="font-size: 11px;">
-                                            150014420
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            BANK MANDIRI 2
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            76,512,541
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            MUTASI KAS PENGEMBANGAN
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            39
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            MUTASI HO PENGEMBANGAN SEPT
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            maya
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            2023-09-30
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            ADE
-                                        </td>
-                                        <td>
-                                            <a href="<?= base_url('/edit_mutasi_bank')?>">
-                                                <i class="mdi mdi-pencil-circle icon-md">
-                                                </i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    <?php }; ?>
                                 </tbody>
                             </table>
                         </div>

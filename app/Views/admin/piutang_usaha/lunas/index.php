@@ -1,17 +1,18 @@
-<?= $this->extend('layout/admin'); ?>
+<?= $this->extend('layout/admin_kas_kecil'); ?>
 <?= $this->section('content'); ?>
 
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
             <h6 class="page-title">
-                <?=$judul1?>
+                <?= $judul1 ?>
             </h6>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb" style="font-size: 11px;">
-                    <li class="breadcrumb-item"><a href="<?= base_url('/dashboard')?>"> BERANDA </a></li>
-                    <li class="breadcrumb-item"><a href="<?= base_url('/piutang_usaha')?>"> RIWAYAT PIUTANG </a></li>
-                    <li class="breadcrumb-item active" aria-current="page"> <?= $judul1?></li>
+                    <li class="breadcrumb-item"><a href="<?= base_url('/akk/dashboard') ?>"> BERANDA </a></li>
+                    <li class="breadcrumb-item"><a href="<?= base_url('/akk/piutang_usaha') ?>"> RIWAYAT PIUTANG </a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page"> <?= $judul1 ?></li>
                 </ol>
             </nav>
         </div>
@@ -35,96 +36,39 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php foreach ($model as $value) { ?>
                                     <tr>
                                         <td style="font-size: 11px;">
-                                            160009959
+                                            <?= $value['id_sales'] ?>
                                         </td>
                                         <td style="font-size: 11px;">
-                                            HIDAYAT
+                                            <?= $value['nama_lengkap'] ?>
                                         </td>
                                         <td style="font-size: 11px;">
-                                            39
+                                            <?= $value['weeks'] ?>
                                         </td>
                                         <td style="font-size: 11px;">
-                                            SIAKDRP
+                                            <?= $value['nama_area'] ?>
                                         </td>
                                         <td style="font-size: 11px;">
-                                            02861
+
                                         </td>
                                         <td style="font-size: 11px;">
-                                            2023-09-30 12:27:47
+                                            <?= $value['created_at'] ?>
                                         </td>
                                         <td style="font-size: 11px;">
-                                            Muhammad
+
                                         </td>
                                         <td style="font-size: 11px;">
                                             <div class="justify-content-center text-center">
-                                                <a href="<?= base_url('/detail_input_piutang')?>">
+                                                <a
+                                                    href="<?= base_url('/akk/piutang_usaha/input/detail/' . $value['id_sales']) ?>">
                                                     <i class="mdi mdi-database-plus icon-md"></i>
                                                 </a>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td style="font-size: 11px;">
-                                            160009958
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            YUNAIDI
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            39
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            FBYDRP
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            02856
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            2023-09-30 12:22:39
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            Muhammad
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            <div class="justify-content-center text-center">
-                                                <a href="<?= base_url('/detail_input_piutang')?>">
-                                                    <i class="mdi mdi-database-plus icon-md"></i>
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="font-size: 11px;">
-                                            160009911
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            JUNAIDI
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            39
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            PKUKVS
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            02865
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            2023-09-27 11:24:13
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            Muhammad
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            <div class="justify-content-center text-center">
-                                                <a href="<?= base_url('/detail_input_piutang')?>">
-                                                    <i class="mdi mdi-database-plus icon-md"></i>
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    <?php }; ?>
                                 </tbody>
                             </table>
                         </div>

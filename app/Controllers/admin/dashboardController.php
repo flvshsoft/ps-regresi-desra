@@ -9,10 +9,10 @@ class dashboardController extends BaseController
         $data['judul'] = 'Dashboard';
 
         $data['ipAddress'] = $_SERVER['REMOTE_ADDR'];
-        
+
         // Set the default time zone
         date_default_timezone_set('Asia/Jakarta');
-        
+
         // Get the current time in the specified format
         $data['loginTime'] = date('H:i:s T', $_SERVER['REQUEST_TIME']);
 
@@ -24,7 +24,7 @@ class dashboardController extends BaseController
 
         // Get the full browser information string
         $browserInfo = $userAgent->getAgentString();
-        
+
         // Extract the browser name from the user agent string
         $data['browser'] = $this->getBrowserName($browserInfo);
 

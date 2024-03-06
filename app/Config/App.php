@@ -18,7 +18,7 @@ class App extends BaseConfig
      *    http://example.com/
      */
     // public string $baseURL = 'https://brmadistro.com';
-    public string $baseURL = 'http://localhost/bintang';
+    public string $baseURL = 'http://localhost/ps-regresi-desra/';
     // public string $baseURL = 'http://localhost/SH/bintang/bintang';
     // public string $baseURL = 'http://localhost/SH/bintang/app';
 
