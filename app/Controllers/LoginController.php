@@ -6,7 +6,7 @@ class LoginController extends BaseController
 {
     public function index()
     {
-        $data['judul'] = 'Bintang Distributor';
+        $data['judul'] = 'Regresi Linear Desra';
         return view('login', $data);
     }
     public function register()

@@ -6,7 +6,7 @@ class dashboardController extends BaseController
 {
     public function index()
     {
-        $data['judul'] = 'Dashboard';
+        $data['judul'] = 'Regresi Linear Desra';
 
         $data['ipAddress'] = $_SERVER['REMOTE_ADDR'];
 
