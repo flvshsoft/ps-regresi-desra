@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 13, 2024 at 04:12 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Waktu pembuatan: 18 Mar 2024 pada 09.00
+-- Versi server: 10.4.28-MariaDB
+-- Versi PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bintang_distributor`
+-- Database: `ps_regresi_desra`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `area`
+-- Struktur dari tabel `area`
 --
 
 CREATE TABLE `area` (
@@ -34,10 +34,10 @@ CREATE TABLE `area` (
   `created_at` date NOT NULL,
   `updated_at` date NOT NULL,
   `deleted_at` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `area`
+-- Dumping data untuk tabel `area`
 --
 
 INSERT INTO `area` (`id_area`, `id_nama_area`, `nama_area`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -49,7 +49,7 @@ INSERT INTO `area` (`id_area`, `id_nama_area`, `nama_area`, `created_at`, `updat
 -- --------------------------------------------------------
 
 --
--- Table structure for table `asset`
+-- Struktur dari tabel `asset`
 --
 
 CREATE TABLE `asset` (
@@ -69,20 +69,20 @@ CREATE TABLE `asset` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `asset`
+-- Dumping data untuk tabel `asset`
 --
 
 INSERT INTO `asset` (`id_asset`, `nama_asset`, `jenis_asset`, `tahun_pembelian`, `no_plat`, `no_mesin`, `no_rangka`, `satuan`, `tgl_berakhir_kir`, `tgl_berakhir_pajak_stnk`, `tgl_berakhir_plat`, `pic`, `lokasi`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(50000000, 'COLT DIESEL FE 84 (ORANGE)	', 'Kendaraan', 2024, 'BM 8924 QUA', 'shdx', 'shdx', 'Unit', '2023-12-15', '2023-12-15', '2023-12-15', 'Aku', 'OFFICE', '2023-12-13 08:24:24', '2023-12-15 10:02:29', '0000-00-00 00:00:00'),
-(50000001, 'FUSO FIGHTER X FN62L HD 6x4', 'Kendaraan', 2024, 'BM 4339 RHY	', '6m60', '6m60 T3', 'Unit', '2024-02-10', '2024-02-10', '2024-02-10', 'Aku', 'SALES', '2023-12-13 10:05:38', '2023-12-15 10:04:02', '0000-00-00 00:00:00');
+(50000000, 'COLT DIESEL FE 84 (ORANGE)	', 'Kendaraan', '2024', 'BM 8924 QUA', 'shdx', 'shdx', 'Unit', '2023-12-15', '2023-12-15', '2023-12-15', 'Aku', 'OFFICE', '2023-12-13 08:24:24', '2023-12-15 10:02:29', '0000-00-00 00:00:00'),
+(50000001, 'FUSO FIGHTER X FN62L HD 6x4', 'Kendaraan', '2024', 'BM 4339 RHY	', '6m60', '6m60 T3', 'Unit', '2024-02-10', '2024-02-10', '2024-02-10', 'Aku', 'SALES', '2023-12-13 10:05:38', '2023-12-15 10:04:02', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bank`
+-- Struktur dari tabel `bank`
 --
 
 CREATE TABLE `bank` (
@@ -93,10 +93,10 @@ CREATE TABLE `bank` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `bank`
+-- Dumping data untuk tabel `bank`
 --
 
 INSERT INTO `bank` (`id_bank`, `nama_bank`, `payment_code`, `created_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -107,32 +107,7 @@ INSERT INTO `bank` (`id_bank`, `nama_bank`, `payment_code`, `created_by`, `creat
 -- --------------------------------------------------------
 
 --
--- Table structure for table `barang_harga`
---
-
-CREATE TABLE `barang_harga` (
-  `id_barang_harga` int(11) NOT NULL,
-  `id_product` int(11) NOT NULL,
-  `id_jenis_harga` int(11) NOT NULL,
-  `harga_aktif` varchar(250) NOT NULL,
-  `created_by` varchar(11) NOT NULL,
-  `created_at` date NOT NULL,
-  `updated_at` date NOT NULL,
-  `deleted_at` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `barang_harga`
---
-
-INSERT INTO `barang_harga` (`id_barang_harga`, `id_product`, `id_jenis_harga`, `harga_aktif`, `created_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 10000000, 2, '18000', '34551', '2024-02-08', '2024-02-08', '0000-00-00'),
-(2, 10000000, 1, '11100', '', '2024-02-08', '2024-02-08', '0000-00-00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `customer`
+-- Struktur dari tabel `customer`
 --
 
 CREATE TABLE `customer` (
@@ -143,10 +118,10 @@ CREATE TABLE `customer` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `customer`
+-- Dumping data untuk tabel `customer`
 --
 
 INSERT INTO `customer` (`id_customer`, `nama_customer`, `alamat_customer`, `no_hp_customer`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -159,7 +134,7 @@ INSERT INTO `customer` (`id_customer`, `nama_customer`, `alamat_customer`, `no_h
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cuti`
+-- Struktur dari tabel `cuti`
 --
 
 CREATE TABLE `cuti` (
@@ -169,10 +144,10 @@ CREATE TABLE `cuti` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `cuti`
+-- Dumping data untuk tabel `cuti`
 --
 
 INSERT INTO `cuti` (`id_cuti`, `remark_cuti`, `created_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -182,7 +157,22 @@ INSERT INTO `cuti` (`id_cuti`, `remark_cuti`, `created_by`, `created_at`, `updat
 -- --------------------------------------------------------
 
 --
--- Table structure for table `izin`
+-- Struktur dari tabel `data_penduduk`
+--
+
+CREATE TABLE `data_penduduk` (
+  `id_penduduk` int(11) NOT NULL,
+  `kode_kecamatan` varchar(20) NOT NULL,
+  `tahun` int(4) NOT NULL,
+  `luas_wilayah` double NOT NULL,
+  `jumlah_penduduk` double NOT NULL,
+  `kepadatan_penduduk` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `izin`
 --
 
 CREATE TABLE `izin` (
@@ -192,10 +182,10 @@ CREATE TABLE `izin` (
   `created_at` datetime NOT NULL,
   `updated_at` int(11) NOT NULL,
   `deleted_at` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `izin`
+-- Dumping data untuk tabel `izin`
 --
 
 INSERT INTO `izin` (`id_izin`, `remark_izin`, `created_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -205,7 +195,7 @@ INSERT INTO `izin` (`id_izin`, `remark_izin`, `created_by`, `created_at`, `updat
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jenis_harga`
+-- Struktur dari tabel `jenis_harga`
 --
 
 CREATE TABLE `jenis_harga` (
@@ -215,10 +205,10 @@ CREATE TABLE `jenis_harga` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `jenis_harga`
+-- Dumping data untuk tabel `jenis_harga`
 --
 
 INSERT INTO `jenis_harga` (`id_jenis_harga`, `remark_jenis_harga`, `created_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -234,7 +224,18 @@ INSERT INTO `jenis_harga` (`id_jenis_harga`, `remark_jenis_harga`, `created_by`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lokasi`
+-- Struktur dari tabel `kecamatan`
+--
+
+CREATE TABLE `kecamatan` (
+  `kode_kecamatan` varchar(20) NOT NULL,
+  `nama_kecamatan` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `lokasi`
 --
 
 CREATE TABLE `lokasi` (
@@ -245,10 +246,10 @@ CREATE TABLE `lokasi` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `lokasi`
+-- Dumping data untuk tabel `lokasi`
 --
 
 INSERT INTO `lokasi` (`id_lokasi`, `nama_lokasi`, `maps`, `created_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -258,7 +259,7 @@ INSERT INTO `lokasi` (`id_lokasi`, `nama_lokasi`, `maps`, `created_by`, `created
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nota`
+-- Struktur dari tabel `nota`
 --
 
 CREATE TABLE `nota` (
@@ -268,31 +269,33 @@ CREATE TABLE `nota` (
   `id_partner` int(11) NOT NULL,
   `weeks` int(2) NOT NULL,
   `payment_method` varchar(255) NOT NULL,
-  `total_beli` int(25) NOT NULL,
+  `total_beli` varchar(255) NOT NULL,
   `id_customer` int(11) NOT NULL,
   `id_area` int(11) NOT NULL,
   `id_bank` int(11) NOT NULL,
   `tgl_bayar` date NOT NULL,
   `pay` int(120) DEFAULT NULL,
-  `status` varchar(22) NOT NULL,
   `created_by` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `nota`
+-- Dumping data untuk tabel `nota`
 --
 
-INSERT INTO `nota` (`id_nota`, `no_nota`, `id_sales`, `id_partner`, `weeks`, `payment_method`, `total_beli`, `id_customer`, `id_area`, `id_bank`, `tgl_bayar`, `pay`, `status`, `created_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, '2034', 1, 4000002, 0, 'CASH', 600000, 300002, 5, 3, '2024-02-08', NULL, '', 34551, '2024-02-08 10:29:50', '2024-02-09 10:54:07', '0000-00-00 00:00:00'),
-(2, '2035', 2, 4000003, 0, 'CASH', 287000, 300002, 5, 3, '2024-02-09', NULL, '', 34551, '2024-02-09 11:02:11', '2024-02-09 11:02:11', '0000-00-00 00:00:00');
+INSERT INTO `nota` (`id_nota`, `no_nota`, `id_sales`, `id_partner`, `weeks`, `payment_method`, `total_beli`, `id_customer`, `id_area`, `id_bank`, `tgl_bayar`, `pay`, `created_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(180000000, '', 3, 4000001, 1, 'KREDIT', '9835800', 300000, 3, 3, '2024-01-10', 2200000, 34551, '2024-01-10 06:58:20', '2024-01-10 06:58:20', '0000-00-00 00:00:00'),
+(180000002, '', 3, 4000001, 1, 'KREDIT', '308800', 300000, 3, 3, '2024-01-10', 3200000, 34551, '2024-01-10 06:58:20', '2024-01-22 07:49:45', '0000-00-00 00:00:00'),
+(180000003, '', 160000000, 4000001, 1, 'CASH', '110800', 300003, 2, 3, '2024-01-22', 110800, 34551, '2024-01-22 07:40:34', '2024-01-25 10:16:26', '0000-00-00 00:00:00'),
+(180000004, '', 160000000, 4000001, 2, 'CASH', '0', 300004, 2, 3, '2024-01-26', NULL, 34551, '2024-01-26 13:52:11', '2024-01-26 13:54:06', '0000-00-00 00:00:00'),
+(180000007, '2034', 5, 4000001, 0, 'KREDIT', '', 300000, 2, 3, '2024-02-02', NULL, 34551, '2024-02-02 10:21:19', '2024-02-02 10:21:19', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nota_detail`
+-- Struktur dari tabel `nota_detail`
 --
 
 CREATE TABLE `nota_detail` (
@@ -306,22 +309,27 @@ CREATE TABLE `nota_detail` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `nota_detail`
+-- Dumping data untuk tabel `nota_detail`
 --
 
 INSERT INTO `nota_detail` (`id_nota_detail`, `id_nota`, `id_product`, `id_sales_detail`, `id_jenis_harga`, `satuan_penjualan`, `diskon_penjualan`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 10000000, 0, 2, 4, 20000, '2024-02-09 07:35:36', '2024-02-09 07:35:36', '0000-00-00 00:00:00'),
-(2, 1, 10000000, 0, 1, 8, 1000, '2024-02-09 07:39:19', '2024-02-09 07:39:19', '0000-00-00 00:00:00'),
-(3, 2, 10000000, 0, 1, 10, 2000, '2024-02-09 11:09:21', '2024-02-09 11:09:21', '0000-00-00 00:00:00'),
-(4, 2, 10000000, 0, 2, 4, 2000, '2024-02-09 11:10:47', '2024-02-09 11:10:47', '0000-00-00 00:00:00');
+(3000, 180000002, 0, 3, 0, 12, 0, '2024-01-11 06:03:31', '2024-01-11 06:03:31', '0000-00-00 00:00:00'),
+(3002, 180000000, 0, 3, 0, 12, 1000, '2024-01-11 06:05:28', '2024-01-11 06:05:28', '0000-00-00 00:00:00'),
+(3003, 180000000, 0, 5, 0, 12, 1000, '2024-01-11 06:05:28', '2024-01-11 06:05:28', '0000-00-00 00:00:00'),
+(3004, 180000000, 0, 5, 0, 12, 1000, '2024-01-15 05:59:57', '2024-01-15 05:59:57', '0000-00-00 00:00:00'),
+(3005, 180000000, 0, 3, 0, 10, 1000, '2024-01-22 07:33:33', '2024-01-22 07:33:33', '0000-00-00 00:00:00'),
+(3006, 180000002, 0, 3, 0, 10, 20000, '2024-01-22 07:48:11', '2024-01-22 07:48:11', '0000-00-00 00:00:00'),
+(3007, 180000002, 0, 3, 0, 10, 20000, '2024-01-22 07:49:44', '2024-01-22 07:49:44', '0000-00-00 00:00:00'),
+(3008, 180000003, 0, 6, 0, 12, 20000, '2024-01-25 07:14:30', '2024-01-25 07:14:30', '0000-00-00 00:00:00'),
+(3009, 180000004, 0, 8, 0, 8, 0, '2024-01-26 13:54:06', '2024-01-26 13:54:06', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `partner`
+-- Struktur dari tabel `partner`
 --
 
 CREATE TABLE `partner` (
@@ -334,10 +342,10 @@ CREATE TABLE `partner` (
   `updated_at` date NOT NULL,
   `deleted_at` date NOT NULL,
   `nik` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `partner`
+-- Dumping data untuk tabel `partner`
 --
 
 INSERT INTO `partner` (`id_partner`, `nama_lengkap`, `no_hp`, `alamat`, `set_karyawan`, `created_at`, `updated_at`, `deleted_at`, `nik`) VALUES
@@ -350,7 +358,7 @@ INSERT INTO `partner` (`id_partner`, `nama_lengkap`, `no_hp`, `alamat`, `set_kar
 -- --------------------------------------------------------
 
 --
--- Table structure for table `price`
+-- Struktur dari tabel `price`
 --
 
 CREATE TABLE `price` (
@@ -361,10 +369,10 @@ CREATE TABLE `price` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `price`
+-- Dumping data untuk tabel `price`
 --
 
 INSERT INTO `price` (`id_price`, `keterangan_price`, `tanggal_aktif`, `created_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -373,7 +381,7 @@ INSERT INTO `price` (`id_price`, `keterangan_price`, `tanggal_aktif`, `created_b
 -- --------------------------------------------------------
 
 --
--- Table structure for table `price_detail`
+-- Struktur dari tabel `price_detail`
 --
 
 CREATE TABLE `price_detail` (
@@ -385,10 +393,10 @@ CREATE TABLE `price_detail` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `price_detail`
+-- Dumping data untuk tabel `price_detail`
 --
 
 INSERT INTO `price_detail` (`id_price_detail`, `id_price`, `id_product`, `id_jenis_harga`, `harga`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -400,7 +408,7 @@ INSERT INTO `price_detail` (`id_price_detail`, `id_price`, `id_product`, `id_jen
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Struktur dari tabel `product`
 --
 
 CREATE TABLE `product` (
@@ -412,10 +420,10 @@ CREATE TABLE `product` (
   `created_at` date NOT NULL,
   `updated_at` date NOT NULL,
   `deleted_at` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `product`
+-- Dumping data untuk tabel `product`
 --
 
 INSERT INTO `product` (`id_product`, `nama_product`, `satuan_product`, `stock_product`, `id_supplier`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -427,7 +435,7 @@ INSERT INTO `product` (`id_product`, `nama_product`, `satuan_product`, `stock_pr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales`
+-- Struktur dari tabel `sales`
 --
 
 CREATE TABLE `sales` (
@@ -442,20 +450,22 @@ CREATE TABLE `sales` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `sales`
+-- Dumping data untuk tabel `sales`
 --
 
 INSERT INTO `sales` (`id_sales`, `id_partner`, `id_asset`, `id_area`, `km`, `week`, `tgl_do`, `keterangan`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 4000002, 50000000, 5, 2000, '20', '2024-02-08 17:28:00', 'W', '2024-02-08 10:29:03', '2024-02-08 10:29:03', '0000-00-00 00:00:00'),
-(2, 4000003, 50000000, 5, 20000, '19', '2024-02-09 18:01:00', 'A', '2024-02-09 11:01:46', '2024-02-09 11:01:46', '0000-00-00 00:00:00');
+(3, 4000001, 50000001, 3, 590000, '10', '2023-12-19 15:31:00', 'Ntah lha ya', '2023-12-19 07:34:23', '2023-12-19 07:36:41', '0000-00-00 00:00:00'),
+(5, 4000001, 50000001, 2, 2000, '18', '2023-12-26 14:44:00', 'Penjuala', '2023-12-26 07:44:18', '2023-12-26 07:44:18', '0000-00-00 00:00:00'),
+(6, 4000001, 50000001, 2, 580000, '30', '2023-12-27 16:26:00', 'Jual', '2023-12-27 09:26:46', '2024-01-26 11:01:33', '0000-00-00 00:00:00'),
+(160000000, 4000001, 50000000, 2, 20000, '50', '2023-12-28 13:42:00', '03259', '2023-12-28 06:37:01', '2024-01-26 09:48:20', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales_detail`
+-- Struktur dari tabel `sales_detail`
 --
 
 CREATE TABLE `sales_detail` (
@@ -468,22 +478,24 @@ CREATE TABLE `sales_detail` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `sales_detail`
+-- Dumping data untuk tabel `sales_detail`
 --
 
 INSERT INTO `sales_detail` (`id_sales_detail`, `id_sales`, `id_product`, `id_price_detail`, `satuan_sales_detail`, `jumlah_sales`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 10000001, 0, 20, 0, '2024-02-08 10:29:17', '2024-02-08 10:29:17', '0000-00-00 00:00:00'),
-(2, 1, 10000000, 0, 10, 0, '2024-02-08 10:29:27', '2024-02-08 10:29:27', '0000-00-00 00:00:00'),
-(3, 2, 10000000, 0, 24, 0, '2024-02-09 11:06:17', '2024-02-09 11:06:17', '0000-00-00 00:00:00'),
-(4, 2, 10000001, 0, 12, 0, '2024-02-09 11:06:25', '2024-02-09 11:06:25', '0000-00-00 00:00:00');
+(3, 3, 10000000, 2, 20, 0, '2023-12-26 07:43:41', '2023-12-26 07:43:41', '0000-00-00 00:00:00'),
+(4, 6, 10000001, 3, 619, 0, '2023-12-27 09:59:48', '2023-12-27 09:59:48', '0000-00-00 00:00:00'),
+(5, 3, 10000001, 4, 24, 0, '2024-01-08 07:12:07', '2024-01-08 07:12:07', '0000-00-00 00:00:00'),
+(7, 160000000, 0, 3, 11, 0, '2024-01-25 06:30:30', '2024-01-25 06:30:30', '0000-00-00 00:00:00'),
+(8, 160000000, 0, 4, 19, 0, '2024-01-26 11:04:18', '2024-01-26 11:13:08', '0000-00-00 00:00:00'),
+(9, 160000000, 10000001, 0, 10, 0, '2024-02-06 07:35:07', '2024-02-06 07:35:07', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `stock`
+-- Struktur dari tabel `stock`
 --
 
 CREATE TABLE `stock` (
@@ -494,10 +506,10 @@ CREATE TABLE `stock` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `stock`
+-- Dumping data untuk tabel `stock`
 --
 
 INSERT INTO `stock` (`id_stock`, `id_product`, `jumlah_stock`, `tanggal_masuk`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -507,7 +519,7 @@ INSERT INTO `stock` (`id_stock`, `id_product`, `jumlah_stock`, `tanggal_masuk`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `supplier`
+-- Struktur dari tabel `supplier`
 --
 
 CREATE TABLE `supplier` (
@@ -518,10 +530,10 @@ CREATE TABLE `supplier` (
   `created_at` date NOT NULL,
   `updated_at` date NOT NULL,
   `deleted_at` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `supplier`
+-- Dumping data untuk tabel `supplier`
 --
 
 INSERT INTO `supplier` (`id_supplier`, `nama_supplier`, `no_hp_supplier`, `alamat_supplier`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -531,7 +543,7 @@ INSERT INTO `supplier` (`id_supplier`, `nama_supplier`, `no_hp_supplier`, `alama
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -546,10 +558,10 @@ CREATE TABLE `user` (
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime NOT NULL,
   `gambar` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id_user`, `username`, `nama_user`, `password_hash`, `level_user`, `status_user`, `tanggal_akses`, `created_at`, `updated_at`, `deleted_at`, `gambar`) VALUES
@@ -562,245 +574,251 @@ INSERT INTO `user` (`id_user`, `username`, `nama_user`, `password_hash`, `level_
 --
 
 --
--- Indexes for table `area`
+-- Indeks untuk tabel `area`
 --
 ALTER TABLE `area`
   ADD PRIMARY KEY (`id_area`);
 
 --
--- Indexes for table `asset`
+-- Indeks untuk tabel `asset`
 --
 ALTER TABLE `asset`
   ADD PRIMARY KEY (`id_asset`);
 
 --
--- Indexes for table `bank`
+-- Indeks untuk tabel `bank`
 --
 ALTER TABLE `bank`
   ADD PRIMARY KEY (`id_bank`);
 
 --
--- Indexes for table `barang_harga`
---
-ALTER TABLE `barang_harga`
-  ADD PRIMARY KEY (`id_barang_harga`);
-
---
--- Indexes for table `customer`
+-- Indeks untuk tabel `customer`
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`id_customer`);
 
 --
--- Indexes for table `cuti`
+-- Indeks untuk tabel `cuti`
 --
 ALTER TABLE `cuti`
   ADD PRIMARY KEY (`id_cuti`);
 
 --
--- Indexes for table `izin`
+-- Indeks untuk tabel `data_penduduk`
+--
+ALTER TABLE `data_penduduk`
+  ADD PRIMARY KEY (`id_penduduk`);
+
+--
+-- Indeks untuk tabel `izin`
 --
 ALTER TABLE `izin`
   ADD PRIMARY KEY (`id_izin`);
 
 --
--- Indexes for table `jenis_harga`
+-- Indeks untuk tabel `jenis_harga`
 --
 ALTER TABLE `jenis_harga`
   ADD PRIMARY KEY (`id_jenis_harga`);
 
 --
--- Indexes for table `lokasi`
+-- Indeks untuk tabel `kecamatan`
+--
+ALTER TABLE `kecamatan`
+  ADD PRIMARY KEY (`kode_kecamatan`);
+
+--
+-- Indeks untuk tabel `lokasi`
 --
 ALTER TABLE `lokasi`
   ADD PRIMARY KEY (`id_lokasi`);
 
 --
--- Indexes for table `nota`
+-- Indeks untuk tabel `nota`
 --
 ALTER TABLE `nota`
   ADD PRIMARY KEY (`id_nota`);
 
 --
--- Indexes for table `nota_detail`
+-- Indeks untuk tabel `nota_detail`
 --
 ALTER TABLE `nota_detail`
   ADD PRIMARY KEY (`id_nota_detail`);
 
 --
--- Indexes for table `partner`
+-- Indeks untuk tabel `partner`
 --
 ALTER TABLE `partner`
   ADD PRIMARY KEY (`id_partner`);
 
 --
--- Indexes for table `price`
+-- Indeks untuk tabel `price`
 --
 ALTER TABLE `price`
   ADD PRIMARY KEY (`id_price`);
 
 --
--- Indexes for table `price_detail`
+-- Indeks untuk tabel `price_detail`
 --
 ALTER TABLE `price_detail`
   ADD PRIMARY KEY (`id_price_detail`);
 
 --
--- Indexes for table `product`
+-- Indeks untuk tabel `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id_product`);
 
 --
--- Indexes for table `sales`
+-- Indeks untuk tabel `sales`
 --
 ALTER TABLE `sales`
   ADD PRIMARY KEY (`id_sales`);
 
 --
--- Indexes for table `sales_detail`
+-- Indeks untuk tabel `sales_detail`
 --
 ALTER TABLE `sales_detail`
   ADD PRIMARY KEY (`id_sales_detail`);
 
 --
--- Indexes for table `stock`
+-- Indeks untuk tabel `stock`
 --
 ALTER TABLE `stock`
   ADD PRIMARY KEY (`id_stock`);
 
 --
--- Indexes for table `supplier`
+-- Indeks untuk tabel `supplier`
 --
 ALTER TABLE `supplier`
   ADD PRIMARY KEY (`id_supplier`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `area`
+-- AUTO_INCREMENT untuk tabel `area`
 --
 ALTER TABLE `area`
   MODIFY `id_area` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `asset`
+-- AUTO_INCREMENT untuk tabel `asset`
 --
 ALTER TABLE `asset`
   MODIFY `id_asset` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50000002;
 
 --
--- AUTO_INCREMENT for table `bank`
+-- AUTO_INCREMENT untuk tabel `bank`
 --
 ALTER TABLE `bank`
   MODIFY `id_bank` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `barang_harga`
---
-ALTER TABLE `barang_harga`
-  MODIFY `id_barang_harga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `customer`
+-- AUTO_INCREMENT untuk tabel `customer`
 --
 ALTER TABLE `customer`
   MODIFY `id_customer` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=300007;
 
 --
--- AUTO_INCREMENT for table `cuti`
+-- AUTO_INCREMENT untuk tabel `cuti`
 --
 ALTER TABLE `cuti`
   MODIFY `id_cuti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `izin`
+-- AUTO_INCREMENT untuk tabel `data_penduduk`
+--
+ALTER TABLE `data_penduduk`
+  MODIFY `id_penduduk` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `izin`
 --
 ALTER TABLE `izin`
   MODIFY `id_izin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `jenis_harga`
+-- AUTO_INCREMENT untuk tabel `jenis_harga`
 --
 ALTER TABLE `jenis_harga`
-  MODIFY `id_jenis_harga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_jenis_harga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `lokasi`
+-- AUTO_INCREMENT untuk tabel `lokasi`
 --
 ALTER TABLE `lokasi`
   MODIFY `id_lokasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `nota`
+-- AUTO_INCREMENT untuk tabel `nota`
 --
 ALTER TABLE `nota`
-  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180000008;
 
 --
--- AUTO_INCREMENT for table `nota_detail`
+-- AUTO_INCREMENT untuk tabel `nota_detail`
 --
 ALTER TABLE `nota_detail`
-  MODIFY `id_nota_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_nota_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3010;
 
 --
--- AUTO_INCREMENT for table `partner`
+-- AUTO_INCREMENT untuk tabel `partner`
 --
 ALTER TABLE `partner`
   MODIFY `id_partner` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4000006;
 
 --
--- AUTO_INCREMENT for table `price`
+-- AUTO_INCREMENT untuk tabel `price`
 --
 ALTER TABLE `price`
   MODIFY `id_price` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=500000001;
 
 --
--- AUTO_INCREMENT for table `price_detail`
+-- AUTO_INCREMENT untuk tabel `price_detail`
 --
 ALTER TABLE `price_detail`
   MODIFY `id_price_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `product`
+-- AUTO_INCREMENT untuk tabel `product`
 --
 ALTER TABLE `product`
   MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10000004;
 
 --
--- AUTO_INCREMENT for table `sales`
+-- AUTO_INCREMENT untuk tabel `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id_sales` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_sales` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160000002;
 
 --
--- AUTO_INCREMENT for table `sales_detail`
+-- AUTO_INCREMENT untuk tabel `sales_detail`
 --
 ALTER TABLE `sales_detail`
-  MODIFY `id_sales_detail` int(111) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_sales_detail` int(111) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `stock`
+-- AUTO_INCREMENT untuk tabel `stock`
 --
 ALTER TABLE `stock`
   MODIFY `id_stock` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `supplier`
+-- AUTO_INCREMENT untuk tabel `supplier`
 --
 ALTER TABLE `supplier`
   MODIFY `id_supplier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=213000002;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34552;
