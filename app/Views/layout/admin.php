@@ -247,7 +247,7 @@ if (!isset(Session('userData')['nama_user'])) {
                         <span class="menu-title">Beranda</span>
                     </a>
                 </li>
-                <!-- <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
                         aria-controls="ui-basic">
                         <i class="menu-icon mdi mdi-server-network text-whitex text-shadowx"></i>
@@ -257,25 +257,9 @@ if (!isset(Session('userData')['nama_user'])) {
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"> <a class="nav-link text-black"
-                                    href="<?= base_url('/akk/master_area') ?>"> Area</a> </li>
+                                    href="<?= base_url('/admin/data_kecamatan') ?>"> Data Kecamatan</a></li>
                             <li class="nav-item"> <a class="nav-link text-black"
-                                    href="<?= base_url('/akk/master_asset') ?>">Asset</a></li>
-                            <li class="nav-item"> <a class="nav-link text-black"
-                                    href="<?= base_url('/akk/master_bank') ?>">Bank</a></li>
-                            <li class="nav-item"> <a class="nav-link text-black"
-                                    href="<?= base_url('/akk/master_product') ?>">Barang</a></li>
-                            <li class="nav-item"> <a class="nav-link text-black"
-                                    href="<?= base_url('/akk/master_barang_harga') ?>">Barang Harga</a></li>
-                            <li class="nav-item"> <a class="nav-link text-black"
-                                    href="<?= base_url('/akk/master_customer') ?>">Konsumen</a></li>
-                            <li class="nav-item"> <a class="nav-link text-black"
-                                    href="<?= base_url('/akk/master_lokasi') ?>">Lokasi</a></li>
-                            <li class="nav-item"> <a class="nav-link text-black"
-                                    href="<?= base_url('/akk/master_partner') ?>">Salesman</a></li>
-                            <li class="nav-item"> <a class="nav-link text-black"
-                                    href="<?= base_url('/akk/master_supplier') ?>">Supplier</a></li>
-                            <li class="nav-item"> <a class="nav-link text-black"
-                                    href="<?= base_url('/akk/stock') ?>">Stock</a></li>
+                                    href="<?= base_url('/admin/data_penduduk') ?>"> Data Penduduk</a></li>
                         </ul>
                     </div>
                 </li>
@@ -284,37 +268,13 @@ if (!isset(Session('userData')['nama_user'])) {
                         <i class="mdi mdi-cart menu-icon text-whitex text-shadow"></i>
                         <span class="menu-title">Transaksi</span>
                     </a>
-                </li> -->
+                </li>
                 <!-- <li class="nav-item">
                     <a class="nav-link" href="<?= base_url() ?>/akk/penjualan">
                         <span class="menu-title">Penjualan</span>
                         <i class="mdi mdi-file-pdf-box menu-icon text-white text-shadow"></i>
                     </a>
                 </li> -->
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>akk/laporan">
-                        <i class="mdi mdi-file-pdf-box menu-icon text-whitex text-shadow"></i>
-                        <span class="menu-title">Laporan</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>/akk/keuangan">
-                        <i class="mdi mdi-book-open menu-icon text-whitex text-shadow"></i>
-                        <span class="menu-title">Keuangan</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>akk/piutang_usaha">
-                        <i class="mdi mdi-calendar-check menu-icon text-whitex text-shadow"></i>
-                        <span class="menu-title">Piutang Usaha</span>
-                    </a>
-                </li> -->
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>/akk/konsumen">
-                        <span class="menu-title">Konsumen</span>
-                        <i class="mdi mdi-book-open menu-icon text-white text-shadow"></i>
-                    </a>
-                </li>-->
             </ul>
             <img src="https://i.pinimg.com/originals/da/41/06/da41069961bd2c79a786abb69328c9fc.gif" alt="Foto"
                 width="100%" class="mt-0 p-2" style="border-radius: 30px;">

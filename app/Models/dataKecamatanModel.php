@@ -4,17 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class areaModel extends Model
+class dataKecamatanModel extends Model
 {
-    protected $table = 'area';
-    protected $primaryKey = 'id_area';
+    protected $table = 'kecamatan';
+    protected $primaryKey = 'id_kecamatan';
 
     protected $useAutoIncrement = true;
 
     protected $returnType = 'array';
     protected $usSoftDeletes = true;
 
-    protected $allowedFields = ['id_nama_area',  'nama_area'];
+    protected $allowedFields = ['nama_kecamatan',  'jenis_kecamatan', 'tahun_pembelian'];
 
     protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
