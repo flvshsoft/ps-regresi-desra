@@ -7,16 +7,16 @@ use CodeIgniter\Model;
 class dataKecamatanModel extends Model
 {
     protected $table = 'kecamatan';
-    protected $primaryKey = 'id_kecamatan';
+    protected $primaryKey = 'kode_kecamatan';
 
-    protected $useAutoIncrement = true;
+    protected $useAutoIncrement = false;
 
     protected $returnType = 'array';
     protected $usSoftDeletes = true;
 
-    protected $allowedFields = ['nama_kecamatan',  'jenis_kecamatan', 'tahun_pembelian'];
+    protected $allowedFields = ['nama_kecamatan',  '', ''];
 
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
     protected $deletedField  = 'deleted_at';
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\admin\keuangan;
+namespace App\Controllers\admin\master;
 
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\CLIRequest;
@@ -52,7 +52,10 @@ abstract class BaseController extends Controller
         parent::initController($request, $response, $logger);
 
         // Preload any models, libraries, etc, here.
-
+        // E.g.: $this->session = \Config\Services::session();
+        $this->mdUser = model('userModel', true, $this->db);
+        $this->modelPenduduk = model('dataPendudukModel', true, $this->db);
+        $this->modelKecamatan = model('dataKecamatanModel', true, $this->db);
         // E.g.: $this->session = \Config\Services::session();
     }
 }

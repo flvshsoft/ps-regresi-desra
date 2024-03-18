@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class dataPendudukModel extends Model
 {
-    protected $table = 'penduduk';
+    protected $table = 'data_penduduk';
     protected $primaryKey = 'id_penduduk';
 
     protected $useAutoIncrement = true;
@@ -14,9 +14,9 @@ class dataPendudukModel extends Model
     protected $returnType = 'array';
     protected $usSoftDeletes = true;
 
-    protected $allowedFields = ['nama_penduduk',  ''];
+    protected $allowedFields = ['kode_kecamatan',  'tahun', 'luas_wilayah', 'jumlah_penduduk', 'kepadatan_penduduk'];
 
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
     protected $deletedField  = 'deleted_at';
 }

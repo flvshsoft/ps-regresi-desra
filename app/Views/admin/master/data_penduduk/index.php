@@ -1,4 +1,4 @@
-<?= $this->extend('layout/admin_kas_kecil'); ?>
+<?= $this->extend('layout/admin'); ?>
 <?= $this->section('content'); ?>
 
 <div class="main-panel">
@@ -9,7 +9,7 @@
             </h6>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb" style="font-size: 11px;">
-                    <li class="breadcrumb-item"><a href="<?= base_url('/dashboard') ?>"> BERANDA </a></li>
+                    <li class="breadcrumb-item"><a href="<?= base_url('/admin/dashboard') ?>"> Beranda </a></li>
                     <li class="breadcrumb-item active" aria-current="page"> <?= $judul1 ?></li>
                 </ol>
             </nav>
@@ -20,20 +20,38 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="form-group col-12">
-                                <a class="btn btn-gradient-success btn-xs btn-icon-text my-1" href="<?= base_url('/akk/product') ?>">
-                                    <i class="mdi mdi-database-plus icon-sm"></i> Input Barang</a>
+                                <a class="btn btn-gradient-success btn-xs btn-icon-text my-1" href="<?= base_url('/admin/data_penduduk/tambah') ?>">
+                                    <i class="mdi mdi-database-plus icon-sm"></i> Input </a>
                             </div>
                         </div>
+                        <?php if (session()->getFlashdata("tambah")) { ?>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <?= session()->getFlashdata("tambah") ?>
+                            </div>
+                        <?php } ?>
+                        <?php if (session()->getFlashdata("edit")) { ?>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <?= session()->getFlashdata("edit") ?>
+                            </div>
+                        <?php } ?>
+                        <?php if (session()->getFlashdata("hapus")) { ?>
+                            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <?= session()->getFlashdata("hapus") ?>
+                            </div>
+                        <?php } ?>
                         <div class="table-responsive">
                             <table class="table table-sm table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
                                 <thead class="table table-primary">
                                     <tr>
                                         <th style="font-size: 11px;"> No </th>
-                                        <th style="font-size: 11px;"> Kode Barang </th>
-                                        <th style="font-size: 11px;"> Nama Barang </th>
-                                        <th style="font-size: 11px;"> Stok Barang </th>
-                                        <th style="font-size: 11px;"> Satuan </th>
-                                        <th style="font-size: 11px;"> Supplier </th>
+                                        <th style="font-size: 11px;"> Nama Kecamatan</th>
+                                        <th style="font-size: 11px;"> Tahun</th>
+                                        <th style="font-size: 11px;"> Luas Wilayah</th>
+                                        <th style="font-size: 11px;"> Jumlah Penduduk</th>
+                                        <th style="font-size: 11px;"> Kepadatan Penduduk</th>
                                         <th style="font-size: 11px;"> </th>
                                     </tr>
                                 </thead>
@@ -42,29 +60,30 @@
                                     foreach ($model as $value) { ?>
                                         <tr>
                                             <td style="font-size: 11px;">
-                                                <?= $no ?>
-                                            </td>
-                                            <td style="font-size: 11px;">
                                                 <b>
-                                                    <a style="text-decoration:none" href="<?= base_url('/akk/form_product/' . $value['id_product']) ?>">
-                                                        <?= $value['id_product'] ?>
+                                                    <a style="text-decoration:none" href="<?= base_url('/admin/data_penduduk/edit/' . $value['id_penduduk']) ?>">
+                                                        <?= $no ?>
                                                     </a>
                                                 </b>
                                             </td>
                                             <td style="font-size: 11px;">
-                                                <?= $value['nama_product'] ?>
+                                                <?= $value['nama_kecamatan'] ?>
                                             </td>
                                             <td style="font-size: 11px;">
-                                                <?= $value['stock_product'] ?>
+                                                <?= $value['tahun'] ?>
                                             </td>
                                             <td style="font-size: 11px;">
-                                                <?= $value['satuan_product'] ?>
+                                                <?= $value['luas_wilayah']  ?> m<sub>2</sub>
                                             </td>
                                             <td style="font-size: 11px;">
-                                                <?= $value['nama_supplier'] ?>
+                                                <?= $value['jumlah_penduduk']  ?>
                                             </td>
                                             <td style="font-size: 11px;">
-                                                <a onclick="return confirm('Anda Yakin Ingin Menghapusnya?')" href="<?= base_url('/akk/del_product/' . $value['id_product']) ?>"> <i class="mdi mdi-delete-circle text-default icon-md"></i> </a>
+                                                <?= $value['kepadatan_penduduk'] ?> jiwa/km<sub>2</sub>
+                                            </td>
+                                            <td style="font-size: 11px;">
+                                                <a onclick="return confirm('Anda Yakin Ingin Menghapusnya?')" href="<?= base_url('/admin/data_penduduk/hapus/' . $value['id_penduduk']) ?>">
+                                                    <i class="mdi mdi-delete-circle text-default icon-md"></i> </a>
                                             </td>
                                         </tr>
                                     <?php $no++;
