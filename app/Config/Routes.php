@@ -33,6 +33,25 @@ $routes->set404Override();
 $routes->get('/', 'LoginController::index');
 $routes->get('/admin/dashboard', 'admin\dashboardController::index');
 
+//kecamatan start
+$routes->get('/admin/data_kecamatan', 'admin\master\KecamatanController::index');
+$routes->get('/admin/data_kecamatan/tambah', 'admin\master\KecamatanController::tambah');
+$routes->get('/admin/data_kecamatan/hapus/(:any)', 'admin\master\KecamatanController::hapus/$1');
+$routes->get('/admin/data_kecamatan/edit/(:any)', 'admin\master\KecamatanController::edit/$1');
+$routes->post('/admin/data_kecamatan/edit', 'admin\master\KecamatanController::edit_proses');
+$routes->post('/admin/data_kecamatan/tambah', 'admin\master\KecamatanController::tambah_proses');
+//kecamatan end
+
+//penduduk start
+$routes->get('/admin/data_penduduk', 'admin\master\PendudukController::index');
+$routes->get('/admin/data_penduduk/tambah', 'admin\master\PendudukController::tambah');
+$routes->get('/admin/data_penduduk/hapus/(:any)', 'admin\master\PendudukController::hapus/$1');
+$routes->get('/admin/data_penduduk/edit/(:any)', 'admin\master\PendudukController::edit/$1');
+$routes->post('/admin/data_penduduk/edit', 'admin\master\PendudukController::edit_proses');
+$routes->post('/admin/data_penduduk/tambah', 'admin\master\PendudukController::tambah_proses');
+//penduduk end
+
+
 $routes->post('/proses_login', 'LoginController::proseslogin');
 $routes->post('/proses_register', 'LoginController::proses_register');
 $routes->get('/logout', 'LoginController::logout');
