@@ -3,7 +3,10 @@
 ## Mysql
 mysqld --console --skip-grant-tables --skip-external-locking
 
-<!-- jalankan ci4 -->
+## composer
+https://getcomposer.org/download/
+
+## Jalankan ci4
 php spark serve
 
 ## What is CodeIgniter?
