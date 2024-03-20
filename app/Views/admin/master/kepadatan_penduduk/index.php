@@ -19,11 +19,11 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="form-group col-12">
+                            <!-- <div class="form-group col-12">
                                 <a class="btn btn-gradient-success btn-xs btn-icon-text my-1"
-                                    href="<?= base_url('/admin/data_penduduk/tambah') ?>">
+                                    href="<?= base_url('/admin/luas_wilayah/tambah') ?>">
                                     <i class="mdi mdi-database-plus icon-sm"></i> Input </a>
-                            </div>
+                            </div> -->
                         </div>
                         <?php if (session()->getFlashdata("tambah")) { ?>
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -48,51 +48,55 @@
                                 cellspacing="0">
                                 <thead class="table table-primary">
                                     <tr>
-                                        <th style="font-size: 11px;"> No </th>
-                                        <th style="font-size: 11px;"> Nama Kecamatan</th>
-                                        <th style="font-size: 11px;"> Tahun</th>
-                                        <th style="font-size: 11px;"> Luas Wilayah</th>
-                                        <th style="font-size: 11px;"> Jumlah Penduduk</th>
-                                        <th style="font-size: 11px;"> Kepadatan Penduduk</th>
-                                        <th style="font-size: 11px;"> </th>
+                                        <th style="font-size: 11px;" rowspan="2">Kecamatan</th>
+                                        <th style="font-size: 11px;" rowspan="2">Kode Kecamatan</th>
+                                        <th style="font-size: 11px;" colspan="14" class="text-center">Tahun</th>
+                                    </tr>
+                                    <tr>
+                                        <?php
+                                        $tahun_awal = 2010;
+                                        $tahun_akhir = 2023;
+                                        for ($tahun = $tahun_awal; $tahun <= $tahun_akhir; $tahun++) {
+                                        ?>
+                                        <th style="font-size: 11px;"><?= $tahun ?></th>
+                                        <?php } ?>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $no = 1;
-                                    foreach ($model as $value) { ?>
+                                    <?php
+                                    $groupedData = [];
+                                    $kecList = [];
+                                    $jumlah_penduduk = [];
+                                    $luas_kecamatan = [];
+
+                                    foreach ($model as $value) {
+                                        $kode_kecamatan = $value['kode_kecamatan'];
+                                        $kecList[$kode_kecamatan] = $value['nama_kecamatan'];
+                                        $jumlah_penduduk[$kode_kecamatan] = $value['jumlah_penduduk'];
+                                        $luas_wilayah[$kode_kecamatan] = $value['luas_wilayah'];
+                                        if (!isset($groupedData[$kode_kecamatan])) {
+                                            $groupedData[$kode_kecamatan] = array_fill(2010, 14, 0);
+                                        }
+                                        $tahun = (int)$value['tahun'];
+                                        $kepadatan = $jumlah_penduduk[$kode_kecamatan] / $luas_wilayah[$kode_kecamatan];
+                                        $groupedData[$kode_kecamatan][$tahun] = number_format($kepadatan, 3, ',', '.');
+                                        // print_r($groupedData);
+                                        // exit;
+                                    }
+
+                                    foreach ($groupedData as $kode_kecamatan => $tahun_data) {
+                                    ?>
                                     <tr>
-                                        <td style="font-size: 11px;">
-                                            <b>
-                                                <a style="text-decoration:none"
-                                                    href="<?= base_url('/admin/data_penduduk/edit/' . $value['id_penduduk']) ?>">
-                                                    <?= $no ?>
-                                                </a>
-                                            </b>
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            <?= $value['nama_kecamatan'] ?>
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            <?= $value['tahun'] ?>
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            <?= (number_format($value['luas_wilayah'], 2, ',', ',')) ?> m<sub>2</sub>
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            <?= (number_format($value['jumlah_penduduk'], 0, ',', '.'))  ?>
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            <?= $value['kepadatan_penduduk'] ?> jiwa/km<sub>2</sub>
-                                        </td>
-                                        <td style="font-size: 11px;">
-                                            <a onclick="return confirm('Anda Yakin Ingin Menghapusnya?')"
-                                                href="<?= base_url('/admin/data_penduduk/hapus/' . $value['id_penduduk']) ?>">
-                                                <i class="mdi mdi-delete-circle text-default icon-md"></i> </a>
-                                        </td>
+                                        <td><?= $kecList[$kode_kecamatan] ?></td>
+                                        <td><?= $kode_kecamatan ?></td>
+                                        <?php foreach ($tahun_data as $kepadatan_penduduk) { ?>
+                                        <td><?= $kepadatan_penduduk ?></td>
+                                        <?php } ?>
                                     </tr>
-                                    <?php $no++;
-                                    } ?>
+                                    <?php } ?>
                                 </tbody>
+
+
                             </table>
                         </div>
                     </div>
