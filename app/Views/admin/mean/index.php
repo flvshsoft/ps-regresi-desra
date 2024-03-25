@@ -44,6 +44,15 @@
                         </div>
                         <?php } ?>
                         <div class="table-responsive">
+                            <table class="table table-sm table-bordered table-striped" width="100%" cellspacing="0">
+                                <thead class="table table-danger">
+                                    <tr>
+                                        <th style="font-size: 11px;" colspan="2">X Mean = </th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div><br>
+                        <div class="table-responsive">
                             <table class="table table-sm table-bordered table-striped" id="dataTable" width="100%"
                                 cellspacing="0">
                                 <thead class="table table-primary">
@@ -51,6 +60,7 @@
                                         <th style="font-size: 11px;" rowspan="2">Kecamatan</th>
                                         <th style="font-size: 11px;" rowspan="2">Kode Kecamatan</th>
                                         <th style="font-size: 11px;" colspan="14" class="text-center">Tahun</th>
+                                        <th style="font-size: 11px;" rowspan="2">Y Mean</th>
                                     </tr>
                                     <tr>
                                         <?php
@@ -66,28 +76,40 @@
                                     <?php
                                     $groupedData = [];
                                     $kecList = [];
+                                    $jumlah_penduduk = [];
+                                    $luas_kecamatan = [];
+                                    $rata_rata_kepadatan = [];
                                     foreach ($model as $value) {
                                         $kode_kecamatan = $value['kode_kecamatan'];
                                         $kecList[$kode_kecamatan] = $value['nama_kecamatan'];
+                                        $jumlah_penduduk[$kode_kecamatan] = $value['jumlah_penduduk'];
+                                        $luas_wilayah[$kode_kecamatan] = $value['luas_wilayah'];
                                         if (!isset($groupedData[$kode_kecamatan])) {
                                             $groupedData[$kode_kecamatan] = array_fill(2010, 14, 0);
                                         }
                                         $tahun = (int)$value['tahun'];
-                                        $groupedData[$kode_kecamatan][$tahun] = (number_format($value['luas_wilayah'], 2, ',', '.'));
+                                        $kepadatan = $jumlah_penduduk[$kode_kecamatan] / $luas_wilayah[$kode_kecamatan];
+                                        $groupedData[$kode_kecamatan][$tahun] = number_format($kepadatan, 3, ',', '.');
+                                        $rata_rata_kepadatan[$kode_kecamatan] =  array_sum($groupedData[$kode_kecamatan]) / count($groupedData[$kode_kecamatan]);
                                     }
+                                    // print_r($rata_rata_kepadatan);
+                                    // exit;
+
 
                                     foreach ($groupedData as $kode_kecamatan => $tahun_data) {
                                     ?>
                                     <tr>
                                         <td><?= $kecList[$kode_kecamatan] ?></td>
                                         <td><?= $kode_kecamatan ?></td>
-                                        <?php foreach ($tahun_data as $luas_wilayah) { ?>
-                                        <td><?= $luas_wilayah ?></td>
+                                        <?php foreach ($tahun_data as $kepadatan_penduduk) { ?>
+                                        <td><?= $kepadatan_penduduk ?></td>
                                         <?php } ?>
+                                        <td rowspan="1">
+                                            <?= number_format($rata_rata_kepadatan[$kode_kecamatan], 3, ',', '.') ?>
+                                        </td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>
-
                             </table>
                         </div>
                     </div>

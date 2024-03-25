@@ -58,7 +58,7 @@
                                 </label>
                                 <div class="col-sm-9">
                                     <input type="number" class="form-control form-control-sm" name="luas_wilayah"
-                                        value="<?= $model['luas_wilayah'] ?>">
+                                        step="any" value="<?= $model['luas_wilayah'] ?>">
                                 </div>
                             </div>
                             <div class="form-group row mb-0">

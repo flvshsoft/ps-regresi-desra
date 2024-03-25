@@ -271,9 +271,9 @@ if (!isset(Session('userData')['nama_user'])) {
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url() ?>akk/transaksi">
-                        <i class="mdi mdi-cart menu-icon text-whitex text-shadow"></i>
-                        <span class="menu-title">Transaksi</span>
+                    <a class="nav-link" href="<?= base_url() ?>admin/mean">
+                        <i class="mdi mdi-altimeter menu-icon text-whitex text-shadow"></i>
+                        <span class="menu-title">Mean</span>
                     </a>
                 </li>
                 <!-- <li class="nav-item">

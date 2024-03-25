@@ -11,6 +11,7 @@ class PendudukController extends BaseController
         $data['model'] = $this->modelPenduduk
             ->join('kecamatan', 'kecamatan.kode_kecamatan=data_penduduk.kode_kecamatan')
             ->findAll();
+
         return view('admin/master/data_penduduk/index', $data);
     }
 

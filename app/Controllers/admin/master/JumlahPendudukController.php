@@ -10,8 +10,8 @@ class JumlahPendudukController extends BaseController
         $data['judul1'] = 'Jumlah Penduduk';
         $data['model'] = $this->modelPenduduk
             ->join('kecamatan', 'kecamatan.kode_kecamatan=data_penduduk.kode_kecamatan')
-            //->groupBy('kecamatan.kode_kecamatan')
             ->findAll();
+
         return view('admin/master/jumlah_penduduk/index', $data);
     }
 

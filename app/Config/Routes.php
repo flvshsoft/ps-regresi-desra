@@ -78,6 +78,11 @@ $routes->post('/admin/kepadatan_penduduk/edit', 'admin\master\KepadatanPendudukC
 $routes->post('/admin/kepadatan_penduduk/tambah', 'admin\master\KepadatanPendudukController::tambah_proses');
 //luas wilayah end
 
+//mean start
+$routes->get('/admin/mean', 'admin\mean\MeanController::index');
+//mean end
+
+
 $routes->post('/proses_login', 'LoginController::proseslogin');
 $routes->post('/proses_register', 'LoginController::proses_register');
 $routes->get('/logout', 'LoginController::logout');
