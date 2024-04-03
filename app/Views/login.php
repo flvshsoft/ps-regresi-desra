@@ -21,7 +21,7 @@
     <div class="container-scroller">
         <div class="container-fluid page-body-wrapper full-page-wrapper">
             <div class="content-wrapper d-flex align-items-center auth px-4"
-                style="background-image:url('https://dev.bintang-rezeki.co.id/assets/images/bg.jpg')">
+                style="background-image:url('https://i.pinimg.com/564x/fa/4f/ad/fa4fadbdd887f40fa2f5b621d013e9ba.jpg')">
                 <div class="row mx-auto" style="background-color: #FFFFFF;width:70%;">
                     <!-- <div class=" mx-auto"> -->
                     <div class="col-lg-7 ml-auto">
@@ -31,7 +31,7 @@
                                 Kepadatan Penduduk Menggunakan Regresi Linear
                             </div>
                             <!-- Tambahkan gambar atau konten lainnya di sini -->
-                            <img src="https://dev.bintang-rezeki.co.id/assets/images/help.png" width="100%"
+                            <img src="https://i.pinimg.com/564x/03/66/6c/03666c91066c13e5aebfdc2722a95631.jpg" width="100%"
                                 alt="Gambar Saya">
                             <p class="text-muted">© 2024 Hak Cipta Anda</p>
                         </div>
