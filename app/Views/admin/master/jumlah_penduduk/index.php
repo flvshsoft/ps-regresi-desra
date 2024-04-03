@@ -26,26 +26,25 @@
                             </div> -->
                         </div>
                         <?php if (session()->getFlashdata("tambah")) { ?>
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            <?= session()->getFlashdata("tambah") ?>
-                        </div>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <?= session()->getFlashdata("tambah") ?>
+                            </div>
                         <?php } ?>
                         <?php if (session()->getFlashdata("edit")) { ?>
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            <?= session()->getFlashdata("edit") ?>
-                        </div>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <?= session()->getFlashdata("edit") ?>
+                            </div>
                         <?php } ?>
                         <?php if (session()->getFlashdata("hapus")) { ?>
-                        <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            <?= session()->getFlashdata("hapus") ?>
-                        </div>
+                            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <?= session()->getFlashdata("hapus") ?>
+                            </div>
                         <?php } ?>
                         <div class="table-responsive">
-                            <table class="table table-sm table-bordered table-striped" id="dataTable" width="100%"
-                                cellspacing="0">
+                            <table class="table table-sm table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
                                 <thead class="table table-primary">
                                     <tr>
                                         <th style="font-size: 11px;" rowspan="2">Kecamatan</th>
@@ -58,7 +57,7 @@
                                         $tahun_akhir = 2023;
                                         for ($tahun = $tahun_awal; $tahun <= $tahun_akhir; $tahun++) {
                                         ?>
-                                        <th style="font-size: 11px;"><?= $tahun ?></th>
+                                            <th style="font-size: 11px;"><?= $tahun ?></th>
                                         <?php } ?>
                                     </tr>
                                 </thead>
@@ -78,13 +77,13 @@
 
                                     foreach ($groupedData as $kode_kecamatan => $tahun_data) {
                                     ?>
-                                    <tr>
-                                        <td><?= $kecList[$kode_kecamatan] ?></td>
-                                        <td><?= $kode_kecamatan ?></td>
-                                        <?php foreach ($tahun_data as $jumlah_penduduk) { ?>
-                                        <td><?= $jumlah_penduduk ?></td>
-                                        <?php } ?>
-                                    </tr>
+                                        <tr>
+                                            <td><?= $kecList[$kode_kecamatan] ?></td>
+                                            <td><?= $kode_kecamatan ?></td>
+                                            <?php foreach ($tahun_data as $jumlah_penduduk) { ?>
+                                                <td><?= $jumlah_penduduk ?></td>
+                                            <?php } ?>
+                                        </tr>
                                     <?php } ?>
                                 </tbody>
                             </table>
@@ -97,12 +96,12 @@
 </div>
 
 <style>
-.table-bordered-custom {
-    border: 1px solid #000;
-    /* Ganti dengan warna dan ketebalan sesuai preferensi Anda */
-}
+    .table-bordered-custom {
+        border: 1px solid #000;
+        /* Ganti dengan warna dan ketebalan sesuai preferensi Anda */
+    }
 
-/* Tambahkan class ini pada tabel Anda */
+    /* Tambahkan class ini pada tabel Anda */
 </style>
 
 <?= $this->endSection() ?>

@@ -14,7 +14,7 @@ class dataPendudukModel extends Model
     protected $returnType = 'array';
     protected $usSoftDeletes = true;
 
-    protected $allowedFields = ['kode_kecamatan',  'tahun', 'luas_wilayah', 'jumlah_penduduk', 'kepadatan_penduduk'];
+    protected $allowedFields = ['kode_kecamatan',  'tahun', 'luas_wilayah', 'jumlah_penduduk', 'kepadatan_penduduk', 'bagi_data'];
 
     protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';

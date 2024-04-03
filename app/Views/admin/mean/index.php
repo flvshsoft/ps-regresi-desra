@@ -26,22 +26,22 @@
                             </div> -->
                         </div>
                         <?php if (session()->getFlashdata("tambah")) { ?>
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            <?= session()->getFlashdata("tambah") ?>
-                        </div>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <?= session()->getFlashdata("tambah") ?>
+                            </div>
                         <?php } ?>
                         <?php if (session()->getFlashdata("edit")) { ?>
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            <?= session()->getFlashdata("edit") ?>
-                        </div>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <?= session()->getFlashdata("edit") ?>
+                            </div>
                         <?php } ?>
                         <?php if (session()->getFlashdata("hapus")) { ?>
-                        <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            <?= session()->getFlashdata("hapus") ?>
-                        </div>
+                            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <?= session()->getFlashdata("hapus") ?>
+                            </div>
                         <?php } ?>
                         <div class="table-responsive">
                             <table class="table table-sm table-bordered table-striped" width="100%" cellspacing="0">
@@ -53,8 +53,7 @@
                             </table>
                         </div><br>
                         <div class="table-responsive">
-                            <table class="table table-sm table-bordered table-striped" id="dataTable" width="100%"
-                                cellspacing="0">
+                            <table class="table table-sm table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
                                 <thead class="table table-primary">
                                     <tr>
                                         <th style="font-size: 11px;" rowspan="2">Kecamatan</th>
@@ -68,7 +67,7 @@
                                         $tahun_akhir = 2023;
                                         for ($tahun = $tahun_awal; $tahun <= $tahun_akhir; $tahun++) {
                                         ?>
-                                        <th style="font-size: 11px;"><?= $tahun ?></th>
+                                            <th style="font-size: 11px;"><?= $tahun ?></th>
                                         <?php } ?>
                                     </tr>
                                 </thead>
@@ -76,6 +75,7 @@
                                     <?php
                                     $groupedData = [];
                                     $kecList = [];
+                                    $kecIdList = [];
                                     $jumlah_penduduk = [];
                                     $luas_kecamatan = [];
                                     $rata_rata_kepadatan = [];
@@ -91,6 +91,7 @@
                                         $kepadatan = $jumlah_penduduk[$kode_kecamatan] / $luas_wilayah[$kode_kecamatan];
                                         $groupedData[$kode_kecamatan][$tahun] = number_format($kepadatan, 3, ',', '.');
                                         $rata_rata_kepadatan[$kode_kecamatan] =  array_sum($groupedData[$kode_kecamatan]) / count($groupedData[$kode_kecamatan]);
+                                        $kecIdList[$kode_kecamatan][$tahun] = $value['id_penduduk'];
                                     }
                                     // print_r($rata_rata_kepadatan);
                                     // exit;
@@ -98,16 +99,20 @@
 
                                     foreach ($groupedData as $kode_kecamatan => $tahun_data) {
                                     ?>
-                                    <tr>
-                                        <td><?= $kecList[$kode_kecamatan] ?></td>
-                                        <td><?= $kode_kecamatan ?></td>
-                                        <?php foreach ($tahun_data as $kepadatan_penduduk) { ?>
-                                        <td><?= $kepadatan_penduduk ?></td>
-                                        <?php } ?>
-                                        <td rowspan="1">
-                                            <?= number_format($rata_rata_kepadatan[$kode_kecamatan], 3, ',', '.') ?>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td>
+                                                <?= $kecList[$kode_kecamatan] ?>
+                                            </td>
+                                            <td><?= $kode_kecamatan ?></td>
+                                            <?php foreach ($tahun_data as $key => $kepadatan_penduduk) { ?>
+                                                <td>
+                                                    <?= $kepadatan_penduduk ?>
+                                                </td>
+                                            <?php } ?>
+                                            <td rowspan="1">
+                                                <?= number_format($rata_rata_kepadatan[$kode_kecamatan], 3, ',', '.') ?>
+                                            </td>
+                                        </tr>
                                     <?php } ?>
                                 </tbody>
                             </table>
@@ -120,12 +125,12 @@
 </div>
 
 <style>
-.table-bordered-custom {
-    border: 1px solid #000;
-    /* Ganti dengan warna dan ketebalan sesuai preferensi Anda */
-}
+    .table-bordered-custom {
+        border: 1px solid #000;
+        /* Ganti dengan warna dan ketebalan sesuai preferensi Anda */
+    }
 
-/* Tambahkan class ini pada tabel Anda */
+    /* Tambahkan class ini pada tabel Anda */
 </style>
 
 <?= $this->endSection() ?>
