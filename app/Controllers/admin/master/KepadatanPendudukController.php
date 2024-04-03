@@ -2,25 +2,24 @@
 
 namespace App\Controllers\admin\master;
 
-class PendudukController extends BaseController
+class KepadatanPendudukController extends BaseController
 {
     public function index(): string
     {
         $data['judul'] = 'Regresi Linear Desra';
-        $data['judul1'] = 'Data Penduduk';
+        $data['judul1'] = 'Kepadatan Penduduk';
         $data['model'] = $this->modelPenduduk
             ->join('kecamatan', 'kecamatan.kode_kecamatan=data_penduduk.kode_kecamatan')
             ->findAll();
-
-        return view('admin/master/data_penduduk/index', $data);
+        return view('admin/master/kepadatan_penduduk/index', $data);
     }
 
     public function tambah(): string
     {
         $data['judul'] = 'Regresi Linear Desra';
-        $data['judul1'] = 'Data Penduduk';
+        $data['judul1'] = 'Kepadatan Penduduk';
         $data['model'] = $this->modelKecamatan->findAll();
-        return view('admin/master/data_penduduk/tambah', $data);
+        return view('admin/master/kepadatan_penduduk/tambah', $data);
     }
     public function tambah_proses()
     {
@@ -35,9 +34,9 @@ class PendudukController extends BaseController
         $berhasil = $this->modelPenduduk->insert($data);
         if ($berhasil) {
             // tampilkan pesan 
-            session()->setFlashdata('tambah', 'Data Penduduk Berhasil Ditambah.');
-            // Redirect ke halaman data Penduduk setelah berhasil menyisipkan data
-            return redirect()->to(base_url('/admin/data_penduduk'));
+            session()->setFlashdata('tambah', 'Kepadatan Penduduk Berhasil Ditambah.');
+            // Redirect ke halaman Kepadatan Penduduk setelah berhasil menyisipkan data
+            return redirect()->to(base_url('/admin/kepadatan_penduduk'));
         }
     }
 
@@ -57,22 +56,22 @@ class PendudukController extends BaseController
         $berhasil =  $this->modelPenduduk->save($data);
         if ($berhasil) {
             // tampilkan pesan jika berhasil diedit
-            session()->setFlashdata('edit', '  Data PenduduK Berhasil Diedit');
+            session()->setFlashdata('edit', '  Kepadatan Penduduk Berhasil Diedit');
 
             // Redirect kembali ke halaman tambah
-            return redirect()->to(base_url('/admin/data_penduduk/'));
+            return redirect()->to(base_url('/admin/kepadatan_penduduk/'));
         }
     }
     public function edit($id_kecamatan)
     {
         $data['judul'] = 'Regresi Linear Desra';
-        $data['judul1'] = 'Data Penduduk';
+        $data['judul1'] = 'Kepadatan Penduduk';
         $data['kecamatan'] = $this->modelKecamatan->findAll();
         $data['model'] = $this->modelPenduduk
             ->join('kecamatan', 'kecamatan.kode_kecamatan=data_penduduk.kode_kecamatan')
             ->where('id_penduduk', $id_kecamatan)
             ->find()[0];
-        echo view('admin/master/data_penduduk/edit', $data);
+        echo view('admin/master/kepadatan_penduduk/edit', $data);
     }
 
     public function hapus($id_kecamatan)
@@ -80,8 +79,8 @@ class PendudukController extends BaseController
         $hapus =  $this->modelPenduduk->delete($id_kecamatan);
         if ($hapus) {
             // tampilkan pesan jika berhasil dihapus
-            session()->setFlashdata('hapus', '  Data Penduduk Berhasil Di Hapus');
-            return redirect()->to(base_url('/admin/data_penduduk'));
+            session()->setFlashdata('hapus', '  Kepadatan Penduduk Berhasil Di Hapus');
+            return redirect()->to(base_url('/admin/kepadatan_penduduk'));
         }
     }
 }

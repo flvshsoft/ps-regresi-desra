@@ -51,6 +51,37 @@ $routes->post('/admin/data_penduduk/edit', 'admin\master\PendudukController::edi
 $routes->post('/admin/data_penduduk/tambah', 'admin\master\PendudukController::tambah_proses');
 //penduduk end
 
+//luas wilayah start
+$routes->get('/admin/luas_wilayah', 'admin\master\LuasWilayahController::index');
+$routes->get('/admin/luas_wilayah/tambah', 'admin\master\LuasWilayahController::tambah');
+$routes->get('/admin/luas_wilayah/hapus/(:any)', 'admin\master\LuasWilayahController::hapus/$1');
+$routes->get('/admin/luas_wilayah/edit/(:any)', 'admin\master\LuasWilayahController::edit/$1');
+$routes->post('/admin/luas_wilayah/edit', 'admin\master\LuasWilayahController::edit_proses');
+$routes->post('/admin/luas_wilayah/tambah', 'admin\master\LuasWilayahController::tambah_proses');
+//luas wilayah end
+
+//jumlah penduduk start
+$routes->get('/admin/jumlah_penduduk', 'admin\master\JumlahPendudukController::index');
+$routes->get('/admin/jumlah_penduduk/tambah', 'admin\master\JumlahPendudukController::tambah');
+$routes->get('/admin/jumlah_penduduk/hapus/(:any)', 'admin\master\JumlahPendudukController::hapus/$1');
+$routes->get('/admin/jumlah_penduduk/edit/(:any)', 'admin\master\JumlahPendudukController::edit/$1');
+$routes->post('/admin/jumlah_penduduk/edit', 'admin\master\JumlahPendudukController::edit_proses');
+$routes->post('/admin/jumlah_penduduk/tambah', 'admin\master\JumlahPendudukController::tambah_proses');
+//jumlah penduduk end
+
+//luas wilayah start
+$routes->get('/admin/kepadatan_penduduk', 'admin\master\KepadatanPendudukController::index');
+$routes->get('/admin/kepadatan_penduduk/tambah', 'admin\master\KepadatanPendudukController::tambah');
+$routes->get('/admin/kepadatan_penduduk/hapus/(:any)', 'admin\master\KepadatanPendudukController::hapus/$1');
+$routes->get('/admin/kepadatan_penduduk/edit/(:any)', 'admin\master\KepadatanPendudukController::edit/$1');
+$routes->post('/admin/kepadatan_penduduk/edit', 'admin\master\KepadatanPendudukController::edit_proses');
+$routes->post('/admin/kepadatan_penduduk/tambah', 'admin\master\KepadatanPendudukController::tambah_proses');
+//luas wilayah end
+
+//mean start
+$routes->get('/admin/mean', 'admin\mean\MeanController::index');
+//mean end
+
 
 $routes->post('/proses_login', 'LoginController::proseslogin');
 $routes->post('/proses_register', 'LoginController::proses_register');
