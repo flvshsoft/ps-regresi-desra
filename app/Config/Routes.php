@@ -80,8 +80,13 @@ $routes->post('/admin/kepadatan_penduduk/tambah', 'admin\master\KepadatanPendudu
 
 //mean start
 $routes->get('/admin/mean', 'admin\mean\MeanController::index');
+$routes->get('/admin/mean/generate', 'admin\mean\MeanController::generate');
 //mean end
 
+//bagidata start
+$routes->get('/admin/bagi_data', 'admin\bagi_data\BagiDataController::index');
+$routes->get('/admin/bagi_data/generate', 'admin\bagi_data\BagiDataController::generate');
+//bagidata end
 
 $routes->post('/proses_login', 'LoginController::proseslogin');
 $routes->post('/proses_register', 'LoginController::proses_register');

@@ -21,7 +21,7 @@
                         <div class="row">
                             <div class="form-group col-12">
                                 <a class="btn btn-gradient-success btn-xs btn-icon-text my-1"
-                                    href="<?= base_url('/admin/mean/generate') ?>">
+                                    href="<?= base_url('/admin/bagi_data/generate') ?>">
                                     <i class="mdi mdi-database-plus icon-sm"></i> Generate </a>
                             </div>
                         </div>
@@ -43,6 +43,15 @@
                             <?= session()->getFlashdata("hapus") ?>
                         </div>
                         <?php } ?>
+                        <!-- <div class="table-responsive">
+                            <table class="table table-sm table-bordered table-striped" width="100%" cellspacing="0">
+                                <thead class="table table-danger">
+                                    <tr>
+                                        <th style="font-size: 11px;" colspan="2">X Mean = </th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div><br> -->
                         <div class="table-responsive">
                             <table class="table table-sm table-bordered table-striped" id="dataTable" width="100%"
                                 cellspacing="0">
@@ -51,8 +60,6 @@
                                         <th style="font-size: 11px;" rowspan="2">Kecamatan</th>
                                         <th style="font-size: 11px;" rowspan="2">Kode Kecamatan</th>
                                         <th style="font-size: 11px;" colspan="14" class="text-center">Tahun</th>
-                                        <th style="font-size: 11px;" rowspan="2">X Mean</th>
-                                        <th style="font-size: 11px;" rowspan="2">Y Mean</th>
                                     </tr>
                                     <tr>
                                         <?php
@@ -82,17 +89,11 @@
                                         }
                                         $tahun = (int)$value['tahun'];
                                         $kepadatan = $jumlah_penduduk[$kode_kecamatan] / $luas_wilayah[$kode_kecamatan];
-                                        $groupedData[$kode_kecamatan][$tahun] = number_format($kepadatan, 3, ',', '.');
-                                        // tahun
-                                        $groupedDataTahun[$kode_kecamatan][$tahun] = $tahun;;
-                                        // 1
-                                        $meanY[$kode_kecamatan] =  array_sum($groupedData[$kode_kecamatan]) / count($groupedData[$kode_kecamatan]);
-                                        // tahun
-                                        $meanX[$kode_kecamatan] =  array_sum($groupedDataTahun[$kode_kecamatan]) / count($groupedDataTahun[$kode_kecamatan]);
-                                        // 1
+                                        $groupedData[$kode_kecamatan][$tahun] = ($value['bagi_data']);
+                                        $rata_rata_kepadatan[$kode_kecamatan] =  array_sum($groupedData[$kode_kecamatan]) / count($groupedData[$kode_kecamatan]);
                                         $kecIdList[$kode_kecamatan][$tahun] = $value['id_penduduk'];
                                     }
-                                    // print_r($meanY);
+                                    // print_r($rata_rata_kepadatan);
                                     // exit;
 
 
@@ -108,12 +109,6 @@
                                             <?= $kepadatan_penduduk ?>
                                         </td>
                                         <?php } ?>
-                                        <td rowspan="1">
-                                            <?= number_format($meanX[$kode_kecamatan], 1, ',', '.') ?>
-                                        </td>
-                                        <td colspan="2">
-                                            <?= number_format($meanY[$kode_kecamatan], 3, ',', '.') ?>
-                                        </td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>
