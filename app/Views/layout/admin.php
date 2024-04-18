@@ -278,9 +278,14 @@ if (!isset(Session('userData')['nama_user'])) {
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url() ?>admin/bagi_data">
-                        <i class="mdi mdi-division-box
- menu-icon text-whitex text-shadow"></i>
+                        <i class="mdi mdi-division-box menu-icon text-whitex text-shadow"></i>
                         <span class="menu-title">Bagi Data</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url() ?>admin/training">
+                        <i class="mdi mdi-division-box menu-icon text-whitex text-shadow"></i>
+                        <span class="menu-title">Training</span>
                     </a>
                 </li>
             </ul>

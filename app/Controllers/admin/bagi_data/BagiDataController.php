@@ -67,4 +67,14 @@ class BagiDataController extends BaseController
             return redirect()->to(base_url('/admin/bagi_data'));
         }
     }
+
+    public function training(): string
+    {
+        $data['judul'] = 'Regresi Linear Desra';
+        $data['judul1'] = 'Training';
+        $data['model'] = $this->modelPenduduk
+            ->join('kecamatan', 'kecamatan.kode_kecamatan=data_penduduk.kode_kecamatan')
+            ->findAll();
+        return view('admin/bagi_data/training', $data);
+    }
 }

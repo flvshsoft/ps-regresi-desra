@@ -86,6 +86,7 @@ $routes->get('/admin/mean/generate', 'admin\mean\MeanController::generate');
 //bagidata start
 $routes->get('/admin/bagi_data', 'admin\bagi_data\BagiDataController::index');
 $routes->get('/admin/bagi_data/generate', 'admin\bagi_data\BagiDataController::generate');
+$routes->get('/admin/training', 'admin\bagi_data\BagiDataController::training');
 //bagidata end
 
 $routes->post('/proses_login', 'LoginController::proseslogin');
