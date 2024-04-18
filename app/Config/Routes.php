@@ -88,6 +88,12 @@ $routes->get('/admin/bagi_data', 'admin\bagi_data\BagiDataController::index');
 $routes->get('/admin/bagi_data/generate', 'admin\bagi_data\BagiDataController::generate');
 //bagidata end
 
+//training start
+$routes->get('/admin/training', 'admin\training\TrainingController::index');
+$routes->get('/admin/training/generate', 'admin\training\TrainingController::generate');
+//training end
+
+
 $routes->post('/proses_login', 'LoginController::proseslogin');
 $routes->post('/proses_register', 'LoginController::proses_register');
 $routes->get('/logout', 'LoginController::logout');
