@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Controllers\admin\bagi_data;
+namespace App\Controllers\admin\training;
 
-class BagiDataController extends BaseController
+class TrainingController extends BaseController
 {
     public function index(): string
     {
         $data['judul'] = 'Regresi Linear Desra';
-        $data['judul1'] = 'Bagi Data';
+        $data['judul1'] = 'Training Data';
         $data['model'] = $this->modelPenduduk
             ->join('kecamatan', 'kecamatan.kode_kecamatan=data_penduduk.kode_kecamatan')
+            ->where('bagi_data', 'Training')
             ->findAll();
-        return view('admin/bagi_data/index', $data);
+        return view('admin/training/index', $data);
     }
     public function generate()
     {
@@ -39,7 +40,7 @@ class BagiDataController extends BaseController
             $kecIdList[$kode_kecamatan][$tahun] = $value['id_penduduk'];
         }
         // bagi data
-        $bagi_presen = 75 / 100;
+        $bagi_presen = 70 / 100;
         foreach ($groupedData as $kode_kecamatan => $tahun_data) {
             $no = 1;
             foreach ($tahun_data as $key => $kepadatan_penduduk) {
@@ -61,20 +62,10 @@ class BagiDataController extends BaseController
         }
         if ($berhasil) {
             session()->setFlashdata("berhasil", "Bagi Data Berhasil Digenerate");
-            return redirect()->to(base_url('/admin/bagi_data'));
+            return redirect()->to(base_url('/admin/training'));
         } else {
             session()->setFlashdata("gagal", "Bagi Data Gagal Digenerate");
-            return redirect()->to(base_url('/admin/bagi_data'));
+            return redirect()->to(base_url('/admin/training'));
         }
-    }
-
-    public function training(): string
-    {
-        $data['judul'] = 'Regresi Linear Desra';
-        $data['judul1'] = 'Training';
-        $data['model'] = $this->modelPenduduk
-            ->join('kecamatan', 'kecamatan.kode_kecamatan=data_penduduk.kode_kecamatan')
-            ->findAll();
-        return view('admin/bagi_data/training', $data);
     }
 }

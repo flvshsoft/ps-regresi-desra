@@ -266,7 +266,6 @@ if (!isset(Session('userData')['nama_user'])) {
                                     href="<?= base_url('/admin/jumlah_penduduk') ?>"> Jumlah Penduduk</a></li>
                             <li class="nav-item"> <a class="nav-link text-black"
                                     href="<?= base_url('/admin/kepadatan_penduduk') ?>"> Kepadatan Penduduk</a></li>
-                            <!-- <li class="nav-item"> <a class="nav-link text-black" href="<?= base_url('/admin/data_penduduk') ?>"> Data Penduduk</a></li> -->
                         </ul>
                     </div>
                 </li>
@@ -279,12 +278,13 @@ if (!isset(Session('userData')['nama_user'])) {
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url() ?>admin/bagi_data">
                         <i class="mdi mdi-division-box menu-icon text-whitex text-shadow"></i>
+                        <i class="mdi mdi-division-box menu-icon text-whitex text-shadow"></i>
                         <span class="menu-title">Bagi Data</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url() ?>admin/training">
-                        <i class="mdi mdi-division-box menu-icon text-whitex text-shadow"></i>
+                        <i class="mdi mdi-server-network menu-icon text-whitex text-shadow"></i>
                         <span class="menu-title">Training</span>
                     </a>
                 </li>
