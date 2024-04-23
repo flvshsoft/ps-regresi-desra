@@ -67,11 +67,11 @@
                                         placeholder="Jumlah Penduduk">
                                 </div>
                             </div>
-                            <div class="form-group row mb-0">
+                            <div class="form-group row mb-0 d-none">
                                 <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Kepadaan Penduduk
                                 </label>
                                 <div class="col-sm-9">
-                                    <input type="int" class="form-control form-control-sm" name="kepadatan_penduduk"
+                                    <input type="hidden" class="form-control form-control-sm" name="kepadatan_penduduk"
                                         placeholder="Kepadatan Penduduk">
                                 </div>
                             </div>
