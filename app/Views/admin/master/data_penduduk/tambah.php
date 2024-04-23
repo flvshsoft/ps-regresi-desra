@@ -55,7 +55,7 @@
                                 <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Luas Wilayah
                                 </label>
                                 <div class="col-sm-9">
-                                    <input type="number" step="any" class="form-control form-control-sm"
+                                    <input type="text" step="any" class="form-control form-control-sm"
                                         name="luas_wilayah" placeholder="Luas Wilayah">
                                 </div>
                             </div>
@@ -63,7 +63,7 @@
                                 <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Jumlah Penduduk
                                 </label>
                                 <div class="col-sm-9">
-                                    <input type="number" class="form-control form-control-sm" name="jumlah_penduduk"
+                                    <input type="text" class="form-control form-control-sm" name="jumlah_penduduk"
                                         placeholder="Jumlah Penduduk">
                                 </div>
                             </div>
