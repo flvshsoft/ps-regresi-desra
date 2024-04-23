@@ -33,6 +33,68 @@ $routes->set404Override();
 $routes->get('/', 'LoginController::index');
 $routes->get('/admin/dashboard', 'admin\dashboardController::index');
 
+//kecamatan start
+$routes->get('/admin/data_kecamatan', 'admin\master\KecamatanController::index');
+$routes->get('/admin/data_kecamatan/tambah', 'admin\master\KecamatanController::tambah');
+$routes->get('/admin/data_kecamatan/hapus/(:any)', 'admin\master\KecamatanController::hapus/$1');
+$routes->get('/admin/data_kecamatan/edit/(:any)', 'admin\master\KecamatanController::edit/$1');
+$routes->post('/admin/data_kecamatan/edit', 'admin\master\KecamatanController::edit_proses');
+$routes->post('/admin/data_kecamatan/tambah', 'admin\master\KecamatanController::tambah_proses');
+//kecamatan end
+
+//penduduk start
+$routes->get('/admin/data_penduduk', 'admin\master\PendudukController::index');
+$routes->get('/admin/data_penduduk/tambah', 'admin\master\PendudukController::tambah');
+$routes->get('/admin/data_penduduk/hapus/(:any)', 'admin\master\PendudukController::hapus/$1');
+$routes->get('/admin/data_penduduk/edit/(:any)', 'admin\master\PendudukController::edit/$1');
+$routes->post('/admin/data_penduduk/edit', 'admin\master\PendudukController::edit_proses');
+$routes->post('/admin/data_penduduk/tambah', 'admin\master\PendudukController::tambah_proses');
+//penduduk end
+
+//luas wilayah start
+$routes->get('/admin/luas_wilayah', 'admin\master\LuasWilayahController::index');
+$routes->get('/admin/luas_wilayah/tambah', 'admin\master\LuasWilayahController::tambah');
+$routes->get('/admin/luas_wilayah/hapus/(:any)', 'admin\master\LuasWilayahController::hapus/$1');
+$routes->get('/admin/luas_wilayah/edit/(:any)', 'admin\master\LuasWilayahController::edit/$1');
+$routes->post('/admin/luas_wilayah/edit', 'admin\master\LuasWilayahController::edit_proses');
+$routes->post('/admin/luas_wilayah/tambah', 'admin\master\LuasWilayahController::tambah_proses');
+//luas wilayah end
+
+//jumlah penduduk start
+$routes->get('/admin/jumlah_penduduk', 'admin\master\JumlahPendudukController::index');
+$routes->get('/admin/jumlah_penduduk/tambah', 'admin\master\JumlahPendudukController::tambah');
+$routes->get('/admin/jumlah_penduduk/hapus/(:any)', 'admin\master\JumlahPendudukController::hapus/$1');
+$routes->get('/admin/jumlah_penduduk/edit/(:any)', 'admin\master\JumlahPendudukController::edit/$1');
+$routes->post('/admin/jumlah_penduduk/edit', 'admin\master\JumlahPendudukController::edit_proses');
+$routes->post('/admin/jumlah_penduduk/tambah', 'admin\master\JumlahPendudukController::tambah_proses');
+//jumlah penduduk end
+
+//luas wilayah start
+$routes->get('/admin/kepadatan_penduduk', 'admin\master\KepadatanPendudukController::index');
+$routes->get('/admin/kepadatan_penduduk/tambah', 'admin\master\KepadatanPendudukController::tambah');
+$routes->get('/admin/kepadatan_penduduk/hapus/(:any)', 'admin\master\KepadatanPendudukController::hapus/$1');
+$routes->get('/admin/kepadatan_penduduk/edit/(:any)', 'admin\master\KepadatanPendudukController::edit/$1');
+$routes->post('/admin/kepadatan_penduduk/edit', 'admin\master\KepadatanPendudukController::edit_proses');
+$routes->post('/admin/kepadatan_penduduk/tambah', 'admin\master\KepadatanPendudukController::tambah_proses');
+//luas wilayah end
+
+//mean start
+$routes->get('/admin/mean', 'admin\mean\MeanController::index');
+$routes->get('/admin/mean/generate', 'admin\mean\MeanController::generate');
+//mean end
+
+//bagidata start
+$routes->get('/admin/bagi_data', 'admin\bagi_data\BagiDataController::index');
+$routes->get('/admin/bagi_data/generate', 'admin\bagi_data\BagiDataController::generate');
+// $routes->get('/admin/training', 'admin\bagi_data\BagiDataController::training');
+//bagidata end
+
+//training start
+$routes->get('/admin/training', 'admin\training\TrainingController::index');
+$routes->get('/admin/training/generate', 'admin\training\TrainingController::generate');
+//training end
+
+
 $routes->post('/proses_login', 'LoginController::proseslogin');
 $routes->post('/proses_register', 'LoginController::proses_register');
 $routes->get('/logout', 'LoginController::logout');

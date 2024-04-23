@@ -3,6 +3,23 @@
 ## Mysql
 mysqld --console --skip-grant-tables --skip-external-locking
 
+## composer
+https://getcomposer.org/download/
+
+## Jalankan ci4
+php spark serve
+
+## Hitungan Manual
+https://docs.google.com/spreadsheets/d/11eb2gcxZNH3ZslLlW_ylqdKo2l6fj4Cxc1oGvYMdtPI/edit#gid=68859732
+
+
+
+
+
+
+
+
+
 ## What is CodeIgniter?
 
 CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
