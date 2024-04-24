@@ -48,8 +48,7 @@ class TrainingController extends BaseController
                 // Hitung (x - mean X) dan (y - mean Y)
                 $diffXMean = $tahun - $meanX[$kode_kecamatan];
                 $diffYMean = number_format($kepadatan_penduduk - $meanY[$kode_kecamatan], 3);
-                print_r($diffXMean);
-                exit;
+
                 // Hitung (x - mean X) * (y - mean Y)
                 $sigmaXY = $diffXMean * $diffYMean;
 

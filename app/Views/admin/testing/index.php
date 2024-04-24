@@ -46,6 +46,9 @@
         $rata_rata_kepadatan = [];
         foreach ($model as $value) {
             $kode_kecamatan = $value['kode_kecamatan'];
+            $y = $value['y'];
+            $m = $value['m'];
+            $b = $value['b'];
             $kepadatan_penduduk = $value['kepadatan_penduduk'];
             $kecList[$kode_kecamatan] = $value['nama_kecamatan'];
             if (!isset($groupedData[$kode_kecamatan])) {
@@ -87,11 +90,32 @@
                                 </tr>
                                 <?php } ?>
                                 <tr>
-                                    <td class="text-center table-danger">
+                                    <td class="text-center table-primary">
                                         2024
                                     </td>
-                                    <td class="text-center table-danger">
-                                        ?
+                                    <!-- <td class="text-center table-primary">
+
+                                    </td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-2">
+                        <h6 class="card-title">Prediksi</h6>
+                        <table class="table table-sm table-bordered table-striped m-2" id="dataTable" width="100%"
+                            cellspacing="0">
+                            <thead class="table table-danger">
+                                <tr>
+                                    <th style="font-size: 11px;">Testing </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">y = mx + b</td>
+                                </tr>
+                                <tr>
+                                    <td class="table-primary text-center">y =
+
                                     </td>
                                 </tr>
                             </tbody>
