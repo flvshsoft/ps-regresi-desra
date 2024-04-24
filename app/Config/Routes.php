@@ -33,6 +33,15 @@ $routes->set404Override();
 $routes->get('/', 'LoginController::index');
 $routes->get('/admin/dashboard', 'admin\dashboardController::index');
 
+//user start
+$routes->get('/admin/data_user', 'admin\master\UserController::index');
+$routes->get('/admin/data_user/tambah', 'admin\master\UserController::tambah');
+$routes->get('/admin/data_user/hapus/(:any)', 'admin\master\UserController::hapus/$1');
+$routes->get('/admin/data_user/edit/(:any)', 'admin\master\UserController::edit/$1');
+$routes->post('/admin/data_user/edit', 'admin\master\UserController::edit_proses');
+$routes->post('/admin/data_user/tambah', 'admin\master\UserController::tambah_proses');
+//user end
+
 //kecamatan start
 $routes->get('/admin/data_kecamatan', 'admin\master\KecamatanController::index');
 $routes->get('/admin/data_kecamatan/tambah', 'admin\master\KecamatanController::tambah');
@@ -94,6 +103,10 @@ $routes->get('/admin/training', 'admin\training\TrainingController::index');
 $routes->get('/admin/training/generate', 'admin\training\TrainingController::generate');
 //training end
 
+//testing start
+$routes->get('/admin/testing', 'admin\testing\TestingController::index');
+$routes->get('/admin/testing/generate', 'admin\testing\TestingController::generate');
+//testing end
 
 $routes->post('/proses_login', 'LoginController::proseslogin');
 $routes->post('/proses_register', 'LoginController::proses_register');

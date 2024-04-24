@@ -14,11 +14,61 @@
                 </ol>
             </nav>
         </div>
-        <div class="row">
+        <div class="form-group col-12">
+            <a class="btn btn-gradient-success btn-xs btn-icon-text my-1"
+                href="<?= base_url('/admin/training/generate') ?>">
+                <i class="mdi mdi-database-plus icon-sm"></i> Generate </a>
+        </div>
+        <?php if (session()->getFlashdata("berhasil")) { ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <?= session()->getFlashdata("berhasil") ?>
+        </div>
+        <?php } ?>
+        <?php if (session()->getFlashdata("gagal")) { ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <?= session()->getFlashdata("gagal") ?>
+        </div>
+        <?php } ?>
+        <?php if (session()->getFlashdata("hapus")) { ?>
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <?= session()->getFlashdata("hapus") ?>
+        </div>
+        <?php } ?>
+        <?php
+        $groupedData = [];
+        $kecList = [];
+        $kecIdList = [];
+        $jumlah_penduduk = [];
+        $luas_kecamatan = [];
+        $rata_rata_kepadatan = [];
+        foreach ($model as $value) {
+            $kode_kecamatan = $value['kode_kecamatan'];
+            $kepadatan_penduduk = $value['kepadatan_penduduk'];
+            $kecList[$kode_kecamatan] = $value['nama_kecamatan'];
+            if (!isset($groupedData[$kode_kecamatan])) {
+                $groupedData[$kode_kecamatan] = array_fill(2010, 9, 0);
+            }
+            $tahun = (int)$value['tahun'];
+            $groupedData[$kode_kecamatan][$tahun] = number_format($kepadatan_penduduk, 3);
+            // tahun
+            $groupedDataTahun[$kode_kecamatan][$tahun] = $tahun;;
+            // 1
+            $meanY[$kode_kecamatan] =  array_sum($groupedData[$kode_kecamatan]) / count($groupedData[$kode_kecamatan]);
+            // tahun
+            $meanX[$kode_kecamatan] =  array_sum($groupedDataTahun[$kode_kecamatan]) / count($groupedDataTahun[$kode_kecamatan]);
+        }
+        ?>
+        <?php foreach ($kecList as $key => $value) :
+            $kode_kecamatan = $key;
+        ?>
+        <div class="row mb-2">
             <div class="col-12 stretch-card bg-white p-4 rounded-3">
                 <div class="row col-12">
                     <div class="col-5">
-                        <h4 class="card-title">Tabel Kecamatan</h4>
+                        <h4 class="card-title">Tabel Kecamatan <?php echo $kode_kecamatan; ?></h4>
                         <table class="table table-sm table-bordered table-striped m-2" id="dataTable" width="100%"
                             cellspacing="0">
                             <thead class="table table-danger">
@@ -29,36 +79,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                $groupedData = [];
-                                $kecList = [];
-                                $kecIdList = [];
-                                $jumlah_penduduk = [];
-                                $luas_kecamatan = [];
-                                $rata_rata_kepadatan = [];
-                                foreach ($model as $value) {
-                                    $kode_kecamatan = $value['kode_kecamatan'];
-                                    $kepadatan_penduduk = $value['kepadatan_penduduk'];
-                                    $kecList[$kode_kecamatan] = $value['nama_kecamatan'];
-                                    if (!isset($groupedData[$kode_kecamatan])) {
-                                        $groupedData[$kode_kecamatan] = array_fill(2010, 9, 0);
-                                    }
-                                    $tahun = (int)$value['tahun'];
-                                    $groupedData[$kode_kecamatan][$tahun] = number_format($kepadatan_penduduk, 3);
-                                    // tahun
-                                    $groupedDataTahun[$kode_kecamatan][$tahun] = $tahun;;
-                                    // 1
-                                    $meanY[$kode_kecamatan] =  array_sum($groupedData[$kode_kecamatan]) / count($groupedData[$kode_kecamatan]);
-                                    // tahun
-                                    $meanX[$kode_kecamatan] =  array_sum($groupedDataTahun[$kode_kecamatan]) / count($groupedDataTahun[$kode_kecamatan]);
-                                }
-                                foreach ($groupedData as $kode_kecamatan => $tahun_data) { ?>
                                 <tr>
-                                    <td class="text-center" rowspan="<?php echo count($tahun_data) + 1; ?>">
+                                    <td class="text-center"
+                                        rowspan="<?php echo count($groupedData[$kode_kecamatan]) + 1; ?>">
                                         <?php echo $kecList[$kode_kecamatan]; ?>
                                     </td>
                                 </tr>
-                                <?php foreach ($tahun_data as $tahun => $kepadatan_penduduk) { ?>
+                                <?php foreach ($groupedData[$kode_kecamatan] as $tahun => $kepadatan_penduduk) { ?>
                                 <tr>
                                     <td class="text-center"><?php echo $tahun; ?></td>
                                     <td class="text-center"><?php echo $kepadatan_penduduk; ?></td>
@@ -73,7 +100,6 @@
                                         <?= number_format($meanY[$kode_kecamatan], 3) ?>
                                     </td>
                                 </tr>
-                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
@@ -90,13 +116,11 @@
                             </thead>
                             <tbody>
                                 <?php // Inisialisasi variabel untuk total Sigma
-                                $totalSigmaXMean = 0;
-                                $totalSigmaYMean = 0;
-                                $totalSigmaXY = 0;
-                                foreach ($groupedData as $kode_kecamatan => $tahun_data) {
-                                ?>
+                                    $totalSigmaXMean = 0;
+                                    $totalSigmaXY = 0;
+                                    ?>
                                 <?php
-                                    foreach ($tahun_data as $tahun => $kepadatan_penduduk) {
+                                    foreach ($groupedData[$kode_kecamatan] as $tahun => $kepadatan_penduduk) {
                                         // Hitung (x - mean X) dan (y - mean Y)
                                         $diffXMean = $tahun - $meanX[$kode_kecamatan];
                                         $diffYMean = number_format($kepadatan_penduduk - $meanY[$kode_kecamatan], 3);
@@ -121,8 +145,8 @@
                                     <td class="text-center table-warning"><?= $totalSigmaXY ?></td>
                                 </tr>
                                 <?php
-                                }
-                                ?>
+                                    // }
+                                    ?>
                                 <!-- <tr>
                                     <td class="text-center"><?= $diffXMean ?></td>
                                     <td class="text-center"></td>
@@ -142,9 +166,9 @@
                             </thead>
                             <tbody>
                                 <?php
-                                $totalSigmaKuadrat = 0;
-                                foreach ($groupedData as $kode_kecamatan => $tahun_data) {
-                                    foreach ($tahun_data as $tahun => $kepadatan_penduduk) {
+                                    $totalSigmaKuadrat = 0;
+                                    //foreach ($groupedData as $kode_kecamatan => $tahun_data) {
+                                    foreach ($groupedData[$kode_kecamatan] as $tahun => $kepadatan_penduduk) {
                                         // Hitung (x - mean X) ^ 2
                                         $diffXMean = $tahun - $meanX[$kode_kecamatan];
                                         $kuadrat = pow($diffXMean, 2);
@@ -152,14 +176,13 @@
                                         $slope = $totalSigmaXY / $totalSigmaKuadrat;
                                         $intercept = $meanY[$kode_kecamatan] - ($slope * $meanX[$kode_kecamatan]);
                                         $regresi = (number_format($slope, 3)) . 'x ' . (number_format($intercept, 3, '.', ','));
-                                ?>
+                                    ?>
                                 <tr>
                                     <td class="text-center"><?php echo $kuadrat; ?></td>
                                 </tr>
                                 <?php
                                     }
-                                }
-                                ?>
+                                    ?>
                                 <tr>
                                     <td class="text-center table-success"><?= $totalSigmaKuadrat ?></td>
                                 </tr>
@@ -174,7 +197,7 @@
                         <h6 class="card-title">Slope </h6>
                         <table class="table table-sm table-bordered table-striped m-2" id="dataTable" width="100%"
                             cellspacing="0">
-                            <thead class="table table-warning">
+                            <thead class="table table-danger">
                                 <tr>
                                     <th style="font-size: 11px;">(Koefisien Kemiringan) (m) : </th>
                                 </tr>
@@ -185,25 +208,25 @@
                                         / Σ((x - mean_x)^2)
                                     </td>
                                 <tr>
-                                    <td class="text-center table-warning">m = <?= number_format($slope, 3) ?> </td>
+                                    <td class="text-center table-danger">m = <?= number_format($slope, 3) ?> </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="col-5">
-                        <h6 class="card-title">Intercept (b): </h6>
+                        <h6 class="card-title">Intercept : </h6>
                         <table class="table table-sm table-bordered table-striped m-2" id="dataTable" width="100%"
                             cellspacing="0">
-                            <thead class="table table-success">
+                            <thead class="table table-warning">
                                 <tr>
-                                    <th style="font-size: 11px;">(Koefisien Kemiringan) (m) : </th>
+                                    <th style="font-size: 11px;">(b) : </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td class="text-center">b = b = mean_y - (m * mean_x)</td>
                                 <tr>
-                                    <td class="text-center table-success">b =
+                                    <td class="text-center table-warning">b =
                                         <?= number_format($intercept, 3, '.', ',') ?> </td>
                                 </tr>
                             </tbody>
@@ -213,7 +236,7 @@
                         <h6 class="card-title">Persamaan</h6>
                         <table class="table table-sm table-bordered table-striped m-2" id="dataTable" width="100%"
                             cellspacing="0">
-                            <thead class="table table-primary">
+                            <thead class="table table-success">
                                 <tr>
                                     <th style="font-size: 11px;">Regresi Linear </th>
                                 </tr>
@@ -223,7 +246,7 @@
                                     <td class="text-center">y = mx + b</td>
                                 </tr>
                                 <tr>
-                                    <td class="table-primary text-center">y =
+                                    <td class="table-success text-center">y =
                                         <?= $regresi ?>
                                     </td>
                                 </tr>
@@ -233,9 +256,9 @@
                 </div>
             </div>
         </div>
+        <?php endforeach; ?>
     </div>
 </div>
-
 <style>
 .table-bordered-custom {
     border: 1px solid #000;

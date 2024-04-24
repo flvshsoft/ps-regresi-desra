@@ -8,20 +8,16 @@ class userModel extends Model
 {
     protected $table = 'user';
     protected $primaryKey = 'id_user';
-
     protected $useAutoIncrement = true;
-
     protected $returnType = 'array';
     protected $usSoftDeletes = true;
 
     protected $allowedFields = ['username', 'nama_user', 'password', 'level_user', 'status_user', 'tanggal_akses', 'gambar'];
-
     protected $useTimestamps = true;
     protected $createdField = 'created_at';
     protected $updatedFiled = 'updated_at';
     protected $deletedField = 'deleted_at';
     protected $dateFormat    = 'datetime';
-
     protected $validationRules = [];
 
     protected $dynamicRules = [

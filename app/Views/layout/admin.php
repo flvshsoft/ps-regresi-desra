@@ -250,12 +250,14 @@ if (!isset(Session('userData')['nama_user'])) {
                 <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
                         aria-controls="ui-basic">
-                        <i class="menu-icon mdi mdi-server-network text-whitex text-shadowx"></i>
+                        <i class="menu-icon mdi mdi-google-drive text-whitex text-shadowx"></i>
                         <span class="menu-title">Master</span>
                         <i class="menu-arrow text-whitex"></i>
                     </a>
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link text-black"
+                                    href="<?= base_url('/admin/data_user') ?>"> Data User</a></li>
                             <li class="nav-item"> <a class="nav-link text-black"
                                     href="<?= base_url('/admin/data_kecamatan') ?>"> Data Kecamatan</a></li>
                             <li class="nav-item"> <a class="nav-link text-black"
@@ -285,6 +287,12 @@ if (!isset(Session('userData')['nama_user'])) {
                     <a class="nav-link" href="<?= base_url() ?>admin/training">
                         <i class="mdi mdi-server-network menu-icon text-whitex text-shadow"></i>
                         <span class="menu-title">Training</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url() ?>admin/testing">
+                        <i class="mdi mdi-refresh menu-icon text-whitex text-shadow"></i>
+                        <span class="menu-title">Testing & MAPE</span>
                     </a>
                 </li>
             </ul>

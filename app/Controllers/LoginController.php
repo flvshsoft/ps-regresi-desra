@@ -52,7 +52,7 @@ class LoginController extends BaseController
         }
         $this->session->set('isLoggedIn', true);
 
-        if ($user['level_user'] == 'Kas Kecil') {
+        if ($user['level_user'] == 'Admin') {
             $this->session->set('userData', [
                 'id_user'            => $user["id_user"],
                 'username'          => $user["username"],
