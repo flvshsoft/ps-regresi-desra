@@ -76,13 +76,13 @@
                                             <?= $value['tahun'] ?>
                                         </td>
                                         <td style="font-size: 11px;">
-                                            <?= (number_format($value['luas_wilayah'], 2, ',', ',')) ?> m<sub>2</sub>
+                                            <?= (number_format($value['luas_wilayah'], 2, ',', ',')) ?> km
                                         </td>
                                         <td style="font-size: 11px;">
                                             <?= (number_format($value['jumlah_penduduk'], 0, ',', '.'))  ?>
                                         </td>
                                         <td style="font-size: 11px;">
-                                            <?= $value['kepadatan_penduduk'] ?> jiwa/km<sub>2</sub>
+                                            <?= $value['kepadatan_penduduk'] ?> jiwa/km
                                         </td>
                                         <td style="font-size: 11px;">
                                             <a onclick="return confirm('Anda Yakin Ingin Menghapusnya?')"
