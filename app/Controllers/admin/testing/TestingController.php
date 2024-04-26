@@ -18,53 +18,60 @@ class TestingController extends BaseController
     {
         $data['model'] = $this->modelPenduduk
             ->join('kecamatan', 'kecamatan.kode_kecamatan=data_penduduk.kode_kecamatan')
+            ->where('bagi_data', 'Testing')
             ->findAll();
 
         $groupedData = [];
         $kecList = [];
-        $kecIdList = [];
-        $jumlah_penduduk = [];
-        $rata_rata_kepadatan = [];
         foreach ($data['model'] as $value) {
             $kode_kecamatan = $value['kode_kecamatan'];
+            $y[$kode_kecamatan] = $value['y'];
+            $m[$kode_kecamatan] = $value['m'];
+            $b[$kode_kecamatan] = $value['b'];
+
+            $kepadatan_penduduk = $value['kepadatan_penduduk'];
             $kecList[$kode_kecamatan] = $value['nama_kecamatan'];
-            $jumlah_penduduk[$kode_kecamatan] = $value['jumlah_penduduk'];
-            $luas_wilayah[$kode_kecamatan] = $value['luas_wilayah'];
             if (!isset($groupedData[$kode_kecamatan])) {
-                $groupedData[$kode_kecamatan] = array_fill(2010, 14, 0);
+                $groupedData[$kode_kecamatan] = array_fill(2010, 0, 0);
             }
             $tahun = (int)$value['tahun'];
-            $kepadatan = $jumlah_penduduk[$kode_kecamatan] / $luas_wilayah[$kode_kecamatan];
-            $groupedData[$kode_kecamatan][$tahun] = number_format($kepadatan, 3);
-            $rata_rata_kepadatan[$kode_kecamatan] =  array_sum($groupedData[$kode_kecamatan]) / count($groupedData[$kode_kecamatan]);
-            $kecIdList[$kode_kecamatan][$tahun] = $value['id_penduduk'];
+            $groupedData[$kode_kecamatan][$tahun] = number_format($kepadatan_penduduk, 3);
+            $testing = ($m[$kode_kecamatan] * $tahun) - $b[$kode_kecamatan];
+            $groupedDataTesting[$kode_kecamatan][$tahun] = number_format($testing, 3, ',', '.');
+            $af = ($groupedData[$kode_kecamatan][$tahun] - $testing) * $groupedData[$kode_kecamatan][$tahun];
+            $groupedDataAF[$kode_kecamatan][$tahun] = number_format($af, 3, ',', '.');
         }
-        // bagi data
-        $bagi_presen = 70 / 100;
-        foreach ($groupedData as $kode_kecamatan => $tahun_data) {
-            $no = 1;
-            foreach ($tahun_data as $key => $kepadatan_penduduk) {
-                if (isset($kecIdList[$kode_kecamatan][$key])) {
-                    $total = count($tahun_data);
-                    if ($no <= ($bagi_presen * $total)) {
-                        $bagi_data = 'Training';
-                    } else {
-                        $bagi_data = 'Testing';
-                    }
-                    $dataSave = [
-                        'id_penduduk' => $kecIdList[$kode_kecamatan][$key],
-                        'bagi_data' => $bagi_data,
-                    ];
-                    $berhasil =  $this->modelPenduduk->save($dataSave);
-                    $no++;
-                }
+        foreach ($kecList as $key => $value) :
+            $kode_kecamatan = $key;
+            foreach ($groupedData[$kode_kecamatan] as $tahun => $kepadatan_penduduk) {
+                $kepadatan_penduduk;
             }
-        }
+            foreach ($groupedDataTesting[$kode_kecamatan] as $tahun => $testing) {
+                $testing;
+                $prediksi = ($m[$kode_kecamatan] * 2024) - $b[$kode_kecamatan];
+            }
+            $sum_abs = 0;
+            foreach ($groupedDataAF[$kode_kecamatan] as $tahun => $actual_forest) {
+                $n = count($groupedDataAF[$kode_kecamatan]);
+                $actual_forest;
+                abs($actual_forest);
+                $sum_abs += abs($actual_forest);
+            }
+            $satu_n = 1 / $n;
+            $mape = $satu_n * $sum_abs * 100;
+            $dataSave = [
+                'kode_kecamatan' => $kode_kecamatan,
+                'mape' => $mape,
+            ];
+
+            $berhasil = $this->modelKecamatan->save($dataSave);
+        endforeach;
+
         if ($berhasil) {
-            session()->setFlashdata("berhasil", "Bagi Data Berhasil Digenerate");
+            session()->setFlashdata("berhasil", "Mape Berhasil Digenerate");
             return redirect()->to(base_url('/admin/testing'));
         } else {
-            session()->setFlashdata("gagal", "Bagi Data Gagal Digenerate");
+            session()->setFlashdata("gagal", "Mape Gagal Digenerate");
             return redirect()->to(base_url('/admin/testing'));
         }
     }

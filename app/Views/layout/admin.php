@@ -295,6 +295,12 @@ if (!isset(Session('userData')['nama_user'])) {
                         <span class="menu-title">Testing & MAPE</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url() ?>admin/hasil">
+                        <i class="mdi mdi-bookmark-check menu-icon text-whitex text-shadow"></i>
+                        <span class="menu-title">Hasil</span>
+                    </a>
+                </li>
             </ul>
             <img src="https://i.pinimg.com/originals/da/41/06/da41069961bd2c79a786abb69328c9fc.gif" alt="Foto"
                 width="100%" class="mt-0 p-2" style="border-radius: 30px;">

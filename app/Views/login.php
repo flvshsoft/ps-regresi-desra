@@ -31,8 +31,8 @@
                                 Kepadatan Penduduk Menggunakan Regresi Linear
                             </div>
                             <!-- Tambahkan gambar atau konten lainnya di sini -->
-                            <img src="https://i.pinimg.com/564x/03/66/6c/03666c91066c13e5aebfdc2722a95631.jpg" width="100%"
-                                alt="Gambar Saya">
+                            <img src="https://i.pinimg.com/564x/03/66/6c/03666c91066c13e5aebfdc2722a95631.jpg"
+                                width="100%" alt="Gambar Saya">
                             <p class="text-muted">© 2024 Hak Cipta Anda</p>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                                             <i class="fa fa-user"></i>
                                         </span>
                                     </div>
-                                    <input type="text" style="background:#ffffff;color:#000000;"
+                                    <input required type="text" style="background:#ffffff;color:#000000;"
                                         class="form-control form-control-sm" name="username" id="exampleInputEmail1"
                                         placeholder="Username" autofocus>
                                 </div>
@@ -61,7 +61,7 @@
                                             <i class="fas fa-lock"></i>
                                         </span>
                                     </div>
-                                    <input type="password" style="background:#ffffff;color:#000000;"
+                                    <input required type="password" style="background:#ffffff;color:#000000;"
                                         class="form-control form-control-sm" name="password" id="exampleInputPassword1"
                                         placeholder="Password">
                                 </div>

@@ -73,10 +73,10 @@ class TrainingController extends BaseController
         endforeach;
 
         if ($berhasil) {
-            session()->setFlashdata("berhasil", "Bagi Data Berhasil Digenerate");
+            session()->setFlashdata("berhasil", "Persamaan Regresi Linear Berhasil Digenerate");
             return redirect()->to(base_url('/admin/training'));
         } else {
-            session()->setFlashdata("gagal", "Bagi Data Gagal Digenerate");
+            session()->setFlashdata("gagal", "Persamaan Regresi Linear Gagal Digenerate");
             return redirect()->to(base_url('/admin/training'));
         }
     }

@@ -108,6 +108,10 @@ $routes->get('/admin/testing', 'admin\testing\TestingController::index');
 $routes->get('/admin/testing/generate', 'admin\testing\TestingController::generate');
 //testing end
 
+//hasil start
+$routes->get('/admin/hasil', 'admin\hasil\HasilController::index');
+//hasil end
+
 $routes->post('/proses_login', 'LoginController::proseslogin');
 $routes->post('/proses_register', 'LoginController::proses_register');
 $routes->get('/logout', 'LoginController::logout');

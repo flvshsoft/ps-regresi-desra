@@ -16,7 +16,7 @@
         </div>
         <div class="form-group col-12">
             <a class="btn btn-gradient-success btn-xs btn-icon-text my-1"
-                href="<?= base_url('/admin/training/generate') ?>">
+                href="<?= base_url('/admin/testing/generate') ?>">
                 <i class="mdi mdi-database-plus icon-sm"></i> Generate </a>
         </div>
         <?php if (session()->getFlashdata("berhasil")) { ?>
@@ -57,14 +57,10 @@
             $groupedDataTesting[$kode_kecamatan][$tahun] = number_format($testing, 3, ',', '.');
             $af = ($groupedData[$kode_kecamatan][$tahun] - $testing) * $groupedData[$kode_kecamatan][$tahun];
             $groupedDataAF[$kode_kecamatan][$tahun] = number_format($af, 3, ',', '.');
-
-            // print_r($af);
-            // exit;
         }
         ?>
         <?php foreach ($kecList as $key => $value) :
             $kode_kecamatan = $key;
-            // $y = '0,669x -1322,917';
         ?>
         <div class="row mb-2">
             <div class="col-12 stretch-card bg-white p-4 rounded-3">
