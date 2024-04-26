@@ -45,6 +45,10 @@ class TrainingController extends BaseController
             $totalSigmaXY = 0;
             $totalSigmaKuadrat = 0;
             foreach ($groupedData[$kode_kecamatan] as $tahun => $kepadatan_penduduk) {
+                $kepadatan_penduduk;
+                $tahun;
+                $meanX[$kode_kecamatan];
+                $meanY[$kode_kecamatan];
                 // Hitung (x - mean X) dan (y - mean Y)
                 $diffXMean = $tahun - $meanX[$kode_kecamatan];
                 $diffYMean = number_format($kepadatan_penduduk - $meanY[$kode_kecamatan], 3);
