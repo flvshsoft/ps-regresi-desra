@@ -47,7 +47,7 @@
             $b[$kode_kecamatan] = $value['b'];
 
             $kepadatan_penduduk = $value['kepadatan_penduduk'];
-            $kecList[$kode_kecamatan] = $value['nama_kecamatan'];
+            $kecList[$kode_kecamatan] = $value['nama_kecamatan'] . '<br><br>' . $value['y'];
             if (!isset($groupedData[$kode_kecamatan])) {
                 $groupedData[$kode_kecamatan] = array_fill(2010, 0, 0);
             }

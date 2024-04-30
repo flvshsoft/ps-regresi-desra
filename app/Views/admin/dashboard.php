@@ -45,8 +45,8 @@
                             <div class="card text-white shadow" style="background: #b7e5fc;">
                                 <div class="card-body d-flex p-0">
                                     <div class="col-6 p-3 text-white-90">
-                                        <h5>Salesman</h5>
-                                        <h2 class="mb-0">50</h2>
+                                        <h5>Data Penduduk</h5>
+                                        <h2 class="mb-0"><?= count($penduduk) ?></h2>
                                     </div>
                                     <div class="col-6 p-0">
                                         <img src="https://i.pinimg.com/564x/c0/c1/2d/c0c12d0054ac3fa10430f561bf26bcc0.jpg"
@@ -59,8 +59,8 @@
                             <div class="card text-white shadow" style="background: #eebf35;">
                                 <div class="card-body d-flex p-0">
                                     <div class="col-6 p-3 text-white-90">
-                                        <h5>Transaksi</h5>
-                                        <h2 class="mb-0">50</h2>
+                                        <h5>Data Kecamatan</h5>
+                                        <h2 class="mb-0"><?= count($kecamatan) ?></h2>
                                     </div>
                                     <div class="col-6 p-0">
                                         <img src="https://i.pinimg.com/564x/59/26/74/592674493a167bddfdcb6972d9e19d77.jpg"
@@ -73,8 +73,8 @@
                             <div class="card text-white shadow" style="background: #7cddb2;">
                                 <div class="card-body d-flex p-0">
                                     <div class="col-6 p-3 text-white-90">
-                                        <h6>Piutang Usaha</h6>
-                                        <h2 class="mb-0">50</h2>
+                                        <h6>Data User</h6>
+                                        <h2 class="mb-0"><?= count($user) ?></h2>
                                     </div>
                                     <div class="col-6 p-0">
                                         <img src="https://i.pinimg.com/564x/c3/d6/d5/c3d6d5874c5147ae9617138d384fef32.jpg"

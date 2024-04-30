@@ -7,6 +7,12 @@ class dashboardController extends BaseController
     public function index()
     {
         $data['judul'] = 'Regresi Linear Desra';
+        $data['kecamatan'] = $this->modelKecamatan
+            ->findAll();
+        $data['user'] = $this->mdUser
+            ->findAll();
+        $data['penduduk'] = $this->modelPenduduk
+            ->findAll();
 
         $data['ipAddress'] = $_SERVER['REMOTE_ADDR'];
 

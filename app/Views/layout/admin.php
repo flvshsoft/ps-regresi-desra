@@ -212,7 +212,7 @@ if (!isset(Session('userData')['nama_user'])) {
                         aria-expanded="false">
                         <div class="nav-profile-text">
                             <p class="mb-1 text-black">
-                                Hai, <?= Session('userData')['nama_user'] ?> , PKU
+                                Hai, <?= Session('userData')['nama_user'] ?>
                             </p>
                         </div>
                     </a>

@@ -36,9 +36,6 @@ class TrainingController extends BaseController
             $meanX[$kode_kecamatan] =  array_sum($groupedDataTahun[$kode_kecamatan]) / count($groupedDataTahun[$kode_kecamatan]);
         }
 
-        // Inisialisasi variabel untuk total Sigma
-
-
         foreach ($kecList as $key => $value) :
             $kode_kecamatan = $key;
             $totalSigmaXMean = 0;
