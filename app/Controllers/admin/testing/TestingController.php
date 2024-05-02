@@ -30,16 +30,19 @@ class TestingController extends BaseController
             $b[$kode_kecamatan] = $value['b'];
 
             $kepadatan_penduduk = $value['kepadatan_penduduk'];
-            $kecList[$kode_kecamatan] = $value['nama_kecamatan'];
+            $kecList[$kode_kecamatan] = $value['nama_kecamatan'] . '<br><br>' . $value['y'];
             if (!isset($groupedData[$kode_kecamatan])) {
                 $groupedData[$kode_kecamatan] = array_fill(2010, 0, 0);
             }
-            $tahun = (int)$value['tahun'];
+            $tahun = (int) $value['tahun'];
+
             $groupedData[$kode_kecamatan][$tahun] = number_format($kepadatan_penduduk, 3);
-            $testing = ($m[$kode_kecamatan] * $tahun) - $b[$kode_kecamatan];
+            $testing = ($m[$kode_kecamatan] * $tahun) + (1 * $b[$kode_kecamatan]);
+
             $groupedDataTesting[$kode_kecamatan][$tahun] = number_format($testing, 3, ',', '.');
-            $af = ($groupedData[$kode_kecamatan][$tahun] - $testing) * $groupedData[$kode_kecamatan][$tahun];
-            $groupedDataAF[$kode_kecamatan][$tahun] = number_format($af, 3, ',', '.');
+            $af = ($groupedData[$kode_kecamatan][$tahun] - $testing) / $groupedData[$kode_kecamatan][$tahun];
+
+            $groupedDataAF[$kode_kecamatan][$tahun] = number_format($af, 3);
         }
         foreach ($kecList as $key => $value) :
             $kode_kecamatan = $key;
@@ -57,6 +60,7 @@ class TestingController extends BaseController
                 abs($actual_forest);
                 $sum_abs += abs($actual_forest);
             }
+
             $satu_n = 1 / $n;
             $mape = $satu_n * $sum_abs * 100;
             $dataSave = [

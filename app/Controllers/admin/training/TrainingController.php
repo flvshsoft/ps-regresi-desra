@@ -17,6 +17,7 @@ class TrainingController extends BaseController
     public function generate()
     {
         $data['model'] = $this->modelPenduduk
+            ->where('bagi_data', 'Training')
             ->join('kecamatan', 'kecamatan.kode_kecamatan=data_penduduk.kode_kecamatan')
             ->findAll();
 
@@ -27,11 +28,11 @@ class TrainingController extends BaseController
             $kepadatan_penduduk = $value['kepadatan_penduduk'];
             $kecList[$kode_kecamatan] = $value['nama_kecamatan'];
             if (!isset($groupedData[$kode_kecamatan])) {
-                $groupedData[$kode_kecamatan] = array_fill(2010, 9, 0);
+                $groupedData[$kode_kecamatan] = array_fill(2010, 10, 0);
             }
-            $tahun = (int)$value['tahun'];
+            $tahun = (int) $value['tahun'];
             $groupedData[$kode_kecamatan][$tahun] = number_format($kepadatan_penduduk, 3);
-            $groupedDataTahun[$kode_kecamatan][$tahun] = $tahun;;
+            $groupedDataTahun[$kode_kecamatan][$tahun] = $tahun;
             $meanY[$kode_kecamatan] =  array_sum($groupedData[$kode_kecamatan]) / count($groupedData[$kode_kecamatan]);
             $meanX[$kode_kecamatan] =  array_sum($groupedDataTahun[$kode_kecamatan]) / count($groupedDataTahun[$kode_kecamatan]);
         }
@@ -46,11 +47,10 @@ class TrainingController extends BaseController
                 $tahun;
                 $meanX[$kode_kecamatan];
                 $meanY[$kode_kecamatan];
-                // Hitung (x - mean X) dan (y - mean Y)
+
                 $diffXMean = $tahun - $meanX[$kode_kecamatan];
                 $diffYMean = number_format($kepadatan_penduduk - $meanY[$kode_kecamatan], 3);
 
-                // Hitung (x - mean X) * (y - mean Y)
                 $sigmaXY = $diffXMean * $diffYMean;
 
                 $totalSigmaXMean += $diffXMean;
@@ -60,18 +60,26 @@ class TrainingController extends BaseController
                 $kuadrat = pow($diffXMean, 2);
                 $totalSigmaKuadrat += $kuadrat;
                 $slope = $totalSigmaXY / $totalSigmaKuadrat;
-                $intercept = $meanY[$kode_kecamatan] - ($slope * $meanX[$kode_kecamatan]);
-                $regresi = (number_format($slope, 3)) . 'x ' . (number_format($intercept, 3, '.', ','));
-
+                $m = (string) number_format($slope, 3);
+                $intercept = $meanY[$kode_kecamatan] - ($m * $meanX[$kode_kecamatan]);
+                $regresi = (number_format($m, 3)) . 'x ' . (number_format($intercept, 3, '.', ','));
+                $b = number_format($intercept, 3);
+                $b = str_replace(',', '', $b);
+                $y = number_format($m, 3);
+                $y = str_replace(',', '', $y);
                 $dataSave = [
                     'kode_kecamatan' => $kode_kecamatan,
                     'y' => $regresi,
-                    'm' => (number_format($slope, 3)),
-                    'b' => (number_format($intercept, 3, '.', ',')),
+                    'm' => $y,
+                    'b' => $b,
                 ];
+                // print_r($dataSave);
+                // exit;
                 $berhasil = $this->modelKecamatan->save($dataSave);
             }
+
         endforeach;
+        // }
 
         if ($berhasil) {
             session()->setFlashdata("berhasil", "Persamaan Regresi Linear Berhasil Digenerate");

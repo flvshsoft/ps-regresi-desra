@@ -51,12 +51,15 @@
             if (!isset($groupedData[$kode_kecamatan])) {
                 $groupedData[$kode_kecamatan] = array_fill(2010, 0, 0);
             }
-            $tahun = (int)$value['tahun'];
+            $tahun = (int) $value['tahun'];
+
             $groupedData[$kode_kecamatan][$tahun] = number_format($kepadatan_penduduk, 3);
-            $testing = ($m[$kode_kecamatan] * $tahun) - $b[$kode_kecamatan];
+            $testing = ($m[$kode_kecamatan] * $tahun) + (1 * $b[$kode_kecamatan]);
+
             $groupedDataTesting[$kode_kecamatan][$tahun] = number_format($testing, 3, ',', '.');
-            $af = ($groupedData[$kode_kecamatan][$tahun] - $testing) * $groupedData[$kode_kecamatan][$tahun];
-            $groupedDataAF[$kode_kecamatan][$tahun] = number_format($af, 3, ',', '.');
+            $af = ($groupedData[$kode_kecamatan][$tahun] - $testing) / $groupedData[$kode_kecamatan][$tahun];
+  
+            $groupedDataAF[$kode_kecamatan][$tahun] = number_format($af, 3);
         }
         ?>
         <?php foreach ($kecList as $key => $value) :
@@ -116,7 +119,7 @@
                                 <?php } ?>
                                 <tr>
                                     <td class="table-primary text-center">
-                                        <?php $prediksi = ($m[$kode_kecamatan] * 2024) - $b[$kode_kecamatan];
+                                        <?php $prediksi =  ($m[$kode_kecamatan] * 2024) + (1 * $b[$kode_kecamatan]);;
                                             echo number_format($prediksi, 3, ',', '.')
                                             ?>
                                     </td>
@@ -142,12 +145,14 @@
                                     ?>
                                 <tr>
                                     <td class="text-center">
-                                        <?= $actual_forest ?>
+                                        <?=
+                                                    $actual_forest ?>
                                     </td>
                                     <td class="text-center">
                                         <?php
+                                                // $act_for = number_format($actual_forest, 3);
                                                 $sum_abs += abs($actual_forest);
-                                                echo abs($actual_forest)
+                                                echo abs($actual_forest);
                                                 ?>
                                     </td>
                                 </tr>

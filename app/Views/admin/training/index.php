@@ -51,7 +51,7 @@
             if (!isset($groupedData[$kode_kecamatan])) {
                 $groupedData[$kode_kecamatan] = array_fill(2010, 9, 0);
             }
-            $tahun = (int)$value['tahun'];
+            $tahun = (int) $value['tahun'];
             $groupedData[$kode_kecamatan][$tahun] = number_format($kepadatan_penduduk, 3);
             // tahun
             $groupedDataTahun[$kode_kecamatan][$tahun] = $tahun;;
@@ -173,7 +173,8 @@
                                         $kuadrat = pow($diffXMean, 2);
                                         $totalSigmaKuadrat += $kuadrat;
                                         $slope = $totalSigmaXY / $totalSigmaKuadrat;
-                                        $intercept = $meanY[$kode_kecamatan] - ($slope * $meanX[$kode_kecamatan]);
+                                        $m = (string) number_format($slope, 3);
+                                        $intercept = $meanY[$kode_kecamatan] - ($m * $meanX[$kode_kecamatan]);
                                         $regresi = (number_format($slope, 3)) . 'x ' . (number_format($intercept, 3, '.', ','));
                                     ?>
                                 <tr>
@@ -207,7 +208,9 @@
                                         / Σ((x - mean_x)^2)
                                     </td>
                                 <tr>
-                                    <td class="text-center table-danger">m = <?= number_format($slope, 3) ?> </td>
+                                    <td class="text-center table-danger">m =
+                                        <?= $m  ?>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
