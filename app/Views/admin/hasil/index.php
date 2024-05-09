@@ -85,7 +85,7 @@
 
                                     </td>
                                     <td class="text-center">
-                                        Rerata
+                                        MAPE
                                     </td>
                                     <td class="text-center">
                                         <?= number_format(array_sum($regresi_list) / count($regresi_list), 3) ?>
