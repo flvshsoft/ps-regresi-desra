@@ -15,7 +15,7 @@
             </nav>
         </div>
         <div class="form-group col-12">
-            <a class="btn btn-gradient-success btn-xs btn-icon-text my-1" href="<?= base_url('/admin/testing/generate') ?>">
+            <a class="btn btn-gradient-success btn-xs btn-icon-text my-1" href="<?= base_url('/admin/testing/generate-ses') ?>">
                 <i class="mdi mdi-database-plus icon-sm"></i> Generate </a>
         </div>
         <?php if (session()->getFlashdata("berhasil")) { ?>
@@ -53,10 +53,10 @@
             $tahun = (int) $value['tahun'];
 
             $groupedData[$kode_kecamatan][$tahun] = number_format($kepadatan_penduduk, 3);
-            if($key == 0){
+            if ($key == 0) {
                 $testing = $kepadatan_penduduk;
                 $nilai_ses = [$testing];
-            }else{
+            } else {
                 $nilai_ses_end = end($nilai_ses);
                 $testing = $nilai_ses_end;
                 $testing2 = ($alpha * $kepadatan_penduduk) + ((1 - $alpha) * $nilai_ses_end);
@@ -64,11 +64,11 @@
             }
 
             $groupedDataTesting[$kode_kecamatan][$tahun] = number_format($testing, 3, ',', '.');
-                if ($groupedData[$kode_kecamatan][$tahun] != 0) {
-                    $af = ($groupedData[$kode_kecamatan][$tahun] - $testing) / $groupedData[$kode_kecamatan][$tahun];
-                } else {
-                    $af = 0;
-                }
+            if ($groupedData[$kode_kecamatan][$tahun] != 0) {
+                $af = ($groupedData[$kode_kecamatan][$tahun] - $testing) / $groupedData[$kode_kecamatan][$tahun];
+            } else {
+                $af = 0;
+            }
 
             $groupedDataAF[$kode_kecamatan][$tahun] = number_format($af, 3);
         }
@@ -180,7 +180,7 @@
                                             1/n
                                         </td>
                                         <td class="text-center">
-                                            <?php $satu_n = number_format(1 / ($n-1),3);
+                                            <?php $satu_n = number_format(1 / ($n), 3);
                                             echo $satu_n ?>
                                         </td>
                                     </tr>

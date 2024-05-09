@@ -14,7 +14,7 @@ class dataKecamatanModel extends Model
     protected $returnType = 'array';
     protected $usSoftDeletes = true;
 
-    protected $allowedFields = ['nama_kecamatan',  'y', 'm', 'b', 'mape'];
+    protected $allowedFields = ['nama_kecamatan',  'y', 'm', 'b', 'mape', 'mape_ses'];
 
     protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
