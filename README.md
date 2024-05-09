@@ -13,8 +13,9 @@ php spark serve
 https://docs.google.com/spreadsheets/d/11eb2gcxZNH3ZslLlW_ylqdKo2l6fj4Cxc1oGvYMdtPI/edit#gid=68859732
 
 
-
-
+## migrate 
+php spark make:migration AlterKecamatan
+php spark migrate
 
 
 
