@@ -75,8 +75,6 @@
                             if (isset($_GET['tahun'])) {
                                 $prediksi = (0.669 * $_GET['tahun']) - 1322.917;
                                 echo "<h3>Prediksi  : $prediksi</h3>";
-                                // echo '<br>';
-                                // echo $prediksi;
                             }
                             ?>
                         </div>
