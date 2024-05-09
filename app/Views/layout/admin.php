@@ -212,7 +212,7 @@ if (!isset(Session('userData')['nama_user'])) {
                         aria-expanded="false">
                         <div class="nav-profile-text">
                             <p class="mb-1 text-black">
-                                Hai, <?= Session('userData')['nama_user'] ?> , PKU
+                                Hai, <?= Session('userData')['nama_user'] ?>
                             </p>
                         </div>
                     </a>
@@ -293,6 +293,12 @@ if (!isset(Session('userData')['nama_user'])) {
                     <a class="nav-link" href="<?= base_url() ?>admin/testing">
                         <i class="mdi mdi-refresh menu-icon text-whitex text-shadow"></i>
                         <span class="menu-title">Testing & MAPE</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url() ?>admin/hasil">
+                        <i class="mdi mdi-bookmark-check menu-icon text-whitex text-shadow"></i>
+                        <span class="menu-title">Hasil</span>
                     </a>
                 </li>
             </ul>

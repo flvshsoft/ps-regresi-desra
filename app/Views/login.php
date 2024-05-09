@@ -23,16 +23,14 @@
             <div class="content-wrapper d-flex align-items-center auth px-4"
                 style="background-image:url('https://i.pinimg.com/564x/fa/4f/ad/fa4fadbdd887f40fa2f5b621d013e9ba.jpg')">
                 <div class="row mx-auto" style="background-color: #FFFFFF;width:70%;">
-                    <!-- <div class=" mx-auto"> -->
                     <div class="col-lg-7 ml-auto">
                         <div class="auth-form-light auth-left text-center p-0">
                             <div class="brand-logo mt-4 font-weight-light text-bold">
-                                <!-- <img src="<?//= base_url() ?>/public/assets/images/logo.png" alt="Logo"> -->
                                 Kepadatan Penduduk Menggunakan Regresi Linear
                             </div>
                             <!-- Tambahkan gambar atau konten lainnya di sini -->
-                            <img src="https://i.pinimg.com/564x/03/66/6c/03666c91066c13e5aebfdc2722a95631.jpg" width="100%"
-                                alt="Gambar Saya">
+                            <img src="https://i.pinimg.com/564x/03/66/6c/03666c91066c13e5aebfdc2722a95631.jpg"
+                                width="100%" alt="Gambar Saya">
                             <p class="text-muted">© 2024 Hak Cipta Anda</p>
                         </div>
                     </div>
@@ -40,6 +38,20 @@
                         <div class="auth-form-lightx text-center p-5 text-white">
                             <h4 class="text-bold">Welcome Back</h4>
                             <h6 class="font-weight-light">Sign in to your account</h6><br>
+                            <?php if (session()->getFlashdata("berhasil")) { ?>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                                <?= session()->getFlashdata("berhasil") ?>
+                            </div>
+                            <?php } ?>
+                            <?php if (session()->getFlashdata("gagal")) { ?>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                                <?= session()->getFlashdata("gagal") ?>
+                            </div>
+                            <?php } ?>
                             <form class="pt-3 text-start" action="<?= base_url('/proses_login') ?>" method="post">
                                 <label class="mb-2">Username</label>
                                 <div class="form-group d-flex">
@@ -49,7 +61,7 @@
                                             <i class="fa fa-user"></i>
                                         </span>
                                     </div>
-                                    <input type="text" style="background:#ffffff;color:#000000;"
+                                    <input required type="text" style="background:#ffffff;color:#000000;"
                                         class="form-control form-control-sm" name="username" id="exampleInputEmail1"
                                         placeholder="Username" autofocus>
                                 </div>
@@ -61,7 +73,7 @@
                                             <i class="fas fa-lock"></i>
                                         </span>
                                     </div>
-                                    <input type="password" style="background:#ffffff;color:#000000;"
+                                    <input required type="password" style="background:#ffffff;color:#000000;"
                                         class="form-control form-control-sm" name="password" id="exampleInputPassword1"
                                         placeholder="Password">
                                 </div>
@@ -82,7 +94,6 @@
                             </form>
                         </div>
                     </div>
-                    <!-- </div> -->
                 </div>
             </div>
         </div>

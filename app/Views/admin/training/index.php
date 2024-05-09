@@ -51,7 +51,7 @@
             if (!isset($groupedData[$kode_kecamatan])) {
                 $groupedData[$kode_kecamatan] = array_fill(2010, 9, 0);
             }
-            $tahun = (int)$value['tahun'];
+            $tahun = (int) $value['tahun'];
             $groupedData[$kode_kecamatan][$tahun] = number_format($kepadatan_penduduk, 3);
             // tahun
             $groupedDataTahun[$kode_kecamatan][$tahun] = $tahun;;
@@ -68,7 +68,7 @@
             <div class="col-12 stretch-card bg-white p-4 rounded-3">
                 <div class="row col-12">
                     <div class="col-5">
-                        <h4 class="card-title">Tabel Kecamatan <?php echo $kode_kecamatan; ?></h4>
+                        <h4 class="card-title">Tabel Kecamatan <?= $kode_kecamatan; ?></h4>
                         <table class="table table-sm table-bordered table-striped m-2" id="dataTable" width="100%"
                             cellspacing="0">
                             <thead class="table table-danger">
@@ -80,15 +80,14 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="text-center"
-                                        rowspan="<?php echo count($groupedData[$kode_kecamatan]) + 1; ?>">
-                                        <?php echo $kecList[$kode_kecamatan]; ?>
+                                    <td class="text-center" rowspan="<?= count($groupedData[$kode_kecamatan]) + 1; ?>">
+                                        <?= $kecList[$kode_kecamatan]; ?>
                                     </td>
                                 </tr>
                                 <?php foreach ($groupedData[$kode_kecamatan] as $tahun => $kepadatan_penduduk) { ?>
                                 <tr>
-                                    <td class="text-center"><?php echo $tahun; ?></td>
-                                    <td class="text-center"><?php echo $kepadatan_penduduk; ?></td>
+                                    <td class="text-center"><?= $tahun; ?></td>
+                                    <td class="text-center"><?= $kepadatan_penduduk; ?></td>
                                 </tr>
                                 <?php } ?>
                                 <tr>
@@ -133,9 +132,9 @@
                                         $kuadrat = $diffXMean * $diffXMean;
                                     ?>
                                 <tr>
-                                    <td class="text-center"><?php echo $diffXMean; ?></td>
-                                    <td class="text-center"><?php echo $diffYMean; ?></td>
-                                    <td class="text-center"><?php echo $sigmaXY; ?></td>
+                                    <td class="text-center"><?= $diffXMean; ?></td>
+                                    <td class="text-center"><?= $diffYMean; ?></td>
+                                    <td class="text-center"><?= $sigmaXY; ?></td>
                                 </tr>
                                 <?php
                                     }
@@ -174,11 +173,12 @@
                                         $kuadrat = pow($diffXMean, 2);
                                         $totalSigmaKuadrat += $kuadrat;
                                         $slope = $totalSigmaXY / $totalSigmaKuadrat;
-                                        $intercept = $meanY[$kode_kecamatan] - ($slope * $meanX[$kode_kecamatan]);
+                                        $m = (string) number_format($slope, 3);
+                                        $intercept = $meanY[$kode_kecamatan] - ($m * $meanX[$kode_kecamatan]);
                                         $regresi = (number_format($slope, 3)) . 'x ' . (number_format($intercept, 3, '.', ','));
                                     ?>
                                 <tr>
-                                    <td class="text-center"><?php echo $kuadrat; ?></td>
+                                    <td class="text-center"><?= $kuadrat; ?></td>
                                 </tr>
                                 <?php
                                     }
@@ -208,7 +208,9 @@
                                         / Σ((x - mean_x)^2)
                                     </td>
                                 <tr>
-                                    <td class="text-center table-danger">m = <?= number_format($slope, 3) ?> </td>
+                                    <td class="text-center table-danger">m =
+                                        <?= $m  ?>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
