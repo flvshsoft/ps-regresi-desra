@@ -79,4 +79,16 @@ class TestingController extends BaseController
             return redirect()->to(base_url('/admin/testing'));
         }
     }
+
+    public function ses(): string
+    {
+        $data['judul'] = 'Regresi Linear Desra';
+        $data['judul1'] = 'Testing & Mape';
+        $data['model'] = $this->modelPenduduk
+            ->join('kecamatan', 'kecamatan.kode_kecamatan=data_penduduk.kode_kecamatan')
+            // ->where('bagi_data', 'Testing')
+            ->findAll();
+        $data['alpha'] = 0.2;
+        return view('admin/testing/ses', $data);
+    }
 }

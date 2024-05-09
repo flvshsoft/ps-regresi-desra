@@ -106,6 +106,7 @@ $routes->get('/admin/training/generate', 'admin\training\TrainingController::gen
 //testing start
 $routes->get('/admin/testing', 'admin\testing\TestingController::index');
 $routes->get('/admin/testing/generate', 'admin\testing\TestingController::generate');
+$routes->get('/admin/testing-ses', 'admin\testing\TestingController::ses');
 //testing end
 
 //hasil start

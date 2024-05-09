@@ -39,28 +39,36 @@
         <?php
         $groupedData = [];
         $kecList = [];
-        foreach ($model as $value) {
+        foreach ($model as $key => $value) {
             $kode_kecamatan = $value['kode_kecamatan'];
             $y[$kode_kecamatan] = $value['y'];
             $m[$kode_kecamatan] = $value['m'];
             $b[$kode_kecamatan] = $value['b'];
 
             $kepadatan_penduduk = $value['kepadatan_penduduk'];
-            $kecList[$kode_kecamatan] = $value['nama_kecamatan'] . '<br><br>' . $value['y'];
+            $kecList[$kode_kecamatan] = $value['nama_kecamatan'];
             if (!isset($groupedData[$kode_kecamatan])) {
                 $groupedData[$kode_kecamatan] = array_fill(2010, 0, 0);
             }
             $tahun = (int) $value['tahun'];
 
             $groupedData[$kode_kecamatan][$tahun] = number_format($kepadatan_penduduk, 3);
-            $testing = ($m[$kode_kecamatan] * $tahun) + (1 * $b[$kode_kecamatan]);
+            if($key == 0){
+                $testing = $kepadatan_penduduk;
+                $nilai_ses = [$testing];
+            }else{
+                $nilai_ses_end = end($nilai_ses);
+                $testing = $nilai_ses_end;
+                $testing2 = ($alpha * $kepadatan_penduduk) + ((1 - $alpha) * $nilai_ses_end);
+                $nilai_ses[] = $testing2;
+            }
 
             $groupedDataTesting[$kode_kecamatan][$tahun] = number_format($testing, 3, ',', '.');
-            if ($groupedData[$kode_kecamatan][$tahun] != 0) {
-                $af = ($groupedData[$kode_kecamatan][$tahun] - $testing) / $groupedData[$kode_kecamatan][$tahun];
-            } else {
-                $af = 0;
-            }
+                if ($groupedData[$kode_kecamatan][$tahun] != 0) {
+                    $af = ($groupedData[$kode_kecamatan][$tahun] - $testing) / $groupedData[$kode_kecamatan][$tahun];
+                } else {
+                    $af = 0;
+                }
 
             $groupedDataAF[$kode_kecamatan][$tahun] = number_format($af, 3);
         }
@@ -93,14 +101,6 @@
                                             <td class="text-center"><?= $kepadatan_penduduk; ?></td>
                                         </tr>
                                     <?php } ?>
-                                    <tr>
-                                        <td class="text-center table-primary">
-                                            2024
-                                        </td>
-                                        <!-- <td class="text-center table-primary">
-
-                                    </td> -->
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -118,13 +118,6 @@
                                             <td class="text-center"><?= $testing ?></td>
                                         </tr>
                                     <?php } ?>
-                                    <tr>
-                                        <td class="table-primary text-center">
-                                            <?php $prediksi =  ($m[$kode_kecamatan] * 2024) + (1 * $b[$kode_kecamatan]);;
-                                            echo number_format($prediksi, 3, ',', '.')
-                                            ?>
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -187,7 +180,7 @@
                                             1/n
                                         </td>
                                         <td class="text-center">
-                                            <?php $satu_n = 1 / $n;
+                                            <?php $satu_n = number_format(1 / ($n-1),3);
                                             echo $satu_n ?>
                                         </td>
                                     </tr>
@@ -205,7 +198,7 @@
                                         </td>
                                         <td class="text-center">
                                             <?php $mape = $satu_n * $sum_abs * 100;
-                                            echo number_format($mape, 2, ',', '.'); ?>
+                                            echo number_format($mape, 3, ',', '.'); ?>
                                         </td>
                                     </tr>
                                 </tbody>
