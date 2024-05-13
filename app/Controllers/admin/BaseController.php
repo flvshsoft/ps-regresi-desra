@@ -57,5 +57,6 @@ abstract class BaseController extends Controller
         $this->mdUser = model('userModel', true, $this->db);
         $this->modelPenduduk = model('dataPendudukModel', true, $this->db);
         $this->modelKecamatan = model('dataKecamatanModel', true, $this->db);
+        $this->modelRiwayat = model('riwayatModel', true, $this->db);
     }
 }

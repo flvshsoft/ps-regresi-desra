@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\admin\bagi_data;
+namespace App\Controllers\admin\riwayat;
 
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\CLIRequest;
@@ -56,7 +56,6 @@ abstract class BaseController extends Controller
         $this->modelPenduduk = model('dataPendudukModel', true, $this->db);
         $this->modelKecamatan = model('dataKecamatanModel', true, $this->db);
         $this->modelRiwayat = model('riwayatModel', true, $this->db);
-
         // E.g.: $this->session = \Config\Services::session();
     }
 }

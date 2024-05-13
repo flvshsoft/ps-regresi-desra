@@ -112,7 +112,18 @@ $routes->get('/admin/testing/generate-ses', 'admin\testing\TestingController::ge
 
 //hasil start
 $routes->get('/admin/hasil', 'admin\hasil\HasilController::index');
+$routes->get('/admin/riwayat', 'admin\riwayat\riwayatController::index');
 //hasil end
+
+//user testing start
+$routes->get('/admin/user_testing/regresi', 'admin\user_testing\UserTestingController::regresi');
+$routes->post('/user_testing/regresi', 'admin\user_testing\UserTestingController::tambah_regresi');
+$routes->post('/admin/user_testing/regresi', 'admin\user_testing\UserTestingController::tambah_regresi_save');
+$routes->get('/admin/user_testing/generate', 'admin\user_testing\UserTestingController::generate_regresi');
+$routes->get('/admin/user_testing/ses', 'admin\user_testing\UserTestingController::ses');
+$routes->get('/admin/user_testing/generate-ses', 'admin\user_testing\UserTestingController::generate_ses');
+//user testing end
+
 
 $routes->post('/proses_login', 'LoginController::proseslogin');
 $routes->post('/proses_register', 'LoginController::proses_register');

@@ -16,7 +16,7 @@ class dataPendudukModel extends Model
 
     protected $allowedFields = ['kode_kecamatan',  'tahun', 'luas_wilayah', 'jumlah_penduduk', 'kepadatan_penduduk', 'bagi_data'];
 
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $deletedField  = 'deleted_at';
 }
