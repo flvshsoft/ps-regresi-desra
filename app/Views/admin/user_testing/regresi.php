@@ -52,8 +52,11 @@
                                 <tr>
                                     <form method="POST" action="<?= base_url('/admin/user_testing/regresi') ?>">
                                         <td></td>
-                                        <td><input type="number" name="input_tahun" class="form-control form-control-sm" value="2024"></td>
-                                        <td><select class="form-control" id="kode_kecamatan" name="kode_kecamatan">
+                                        <td>
+                                            <input type="number" name="input_tahun" required class="form-control form-control-sm" value="2024">
+                                        </td>
+                                        <td>
+                                            <select required class="form-control" id="kode_kecamatan" name="kode_kecamatan">
                                                 <option>Pilih Kecamatan</option>
                                                 <?php foreach ($model as $value) { ?>
                                                     <option value="<?= $value['kode_kecamatan'] ?>">
