@@ -125,7 +125,7 @@
                                         $diffYMean = number_format($kepadatan_penduduk - $meanY[$kode_kecamatan], 3);
 
                                         // Hitung (x - mean X) * (y - mean Y)
-                                        $sigmaXY = $diffXMean * $diffYMean;
+                                        $sigmaXY = (double)number_format($diffXMean * $diffYMean, 3);
 
                                         $totalSigmaXMean += $diffXMean;
                                         $totalSigmaXY += $sigmaXY;
