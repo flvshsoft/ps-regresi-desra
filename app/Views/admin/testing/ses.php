@@ -70,7 +70,18 @@
 
             $groupedDataTesting[$kode_kecamatan][$tahun] = number_format($testing, 3, ',', '.');
             if ($groupedData[$kode_kecamatan][$tahun] != 0) {
-                $af = ($groupedData[$kode_kecamatan][$tahun] - $testing) / $groupedData[$kode_kecamatan][$tahun];
+                // print_r($groupedData);
+                // print_r($testing);
+                // exit;
+                if (is_string($groupedData[$kode_kecamatan][$tahun])) {
+                    // echo $groupedData[$kode_kecamatan][$tahun];
+                    // exit;
+                } else {
+                    // $af =  $testing;
+                }
+                $temp = (float)$groupedData[$kode_kecamatan][$tahun];
+                $af = ($temp - (float)$testing) / $temp;
+                $af = (float)$af;
             } else {
                 $af = 0;
             }
@@ -149,8 +160,12 @@
                                             <td class="text-center">
                                                 <?php
                                                 // $act_for = number_format($actual_forest, 3);
-                                                $sum_abs += abs($actual_forest);
-                                                echo abs($actual_forest);
+                                                $sum_abs += abs((float)$actual_forest);
+                                                // if(is_string($actual_forest)){
+
+                                                    // echo ($actual_forest);
+                                                // }
+                                                echo abs((float)$actual_forest);
                                                 ?>
                                             </td>
                                         </tr>

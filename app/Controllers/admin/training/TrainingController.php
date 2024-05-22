@@ -12,6 +12,9 @@ class TrainingController extends BaseController
             ->join('kecamatan', 'kecamatan.kode_kecamatan=data_penduduk.kode_kecamatan')
             ->where('bagi_data', 'Training')
             ->findAll();
+
+        print_r($data['model']);
+        exit;
         return view('admin/training/index', $data);
     }
     public function generate()

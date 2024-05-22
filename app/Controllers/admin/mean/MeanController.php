@@ -40,22 +40,32 @@ class MeanController extends BaseController
             }
             $tahun = (int)$value['tahun'];
             $kepadatan = $jumlah_penduduk[$kode_kecamatan] / $luas_wilayah[$kode_kecamatan];
-            $groupedData[$kode_kecamatan][$tahun] = number_format($kepadatan, 3);
+            // if ($kode_kecamatan == "14.06.13") {
+            $kepadatan_format = number_format($kepadatan, 3);
+            $kepadatan_format = str_replace(',', '', $kepadatan_format);
+            // echo $kepadatan_format;
+            // echo '<br>';
+            //     exit;
+            // }
+            $groupedData[$kode_kecamatan][$tahun] = $kepadatan_format;
             $rata_rata_kepadatan[$kode_kecamatan] =  array_sum($groupedData[$kode_kecamatan]) / count($groupedData[$kode_kecamatan]);
             $kecIdList[$kode_kecamatan][$tahun] = $value['id_penduduk'];
         }
+        // exit;
 
         foreach ($groupedData as $kode_kecamatan => $tahun_data) {
             foreach ($tahun_data as $key => $kepadatan_penduduk) {
                 if (isset($kecIdList[$kode_kecamatan][$key])) {
                     $dataSave = [
                         'id_penduduk' => $kecIdList[$kode_kecamatan][$key],
-                        'kepadatan_penduduk' => (float)$kepadatan_penduduk,
+                        'kepadatan_penduduk' => $kepadatan_penduduk,
                     ];
+                    print_r($dataSave);
                     $berhasil =  $this->modelPenduduk->save($dataSave);
                 }
             }
         }
+        // exit;
         if ($berhasil) {
             session()->setFlashdata("berhasil", "Mean Berhasil Digenerate");
             return redirect()->to(base_url('/admin/mean'));
