@@ -52,7 +52,7 @@
             }
             $tahun = (int) $value['tahun'];
 
-            $groupedData[$kode_kecamatan][$tahun] = number_format($kepadatan_penduduk, 3);
+            $groupedData[$kode_kecamatan][$tahun] = (float)number_format($kepadatan_penduduk, 3);
             $testing = ($m[$kode_kecamatan] * $tahun) + (1 * $b[$kode_kecamatan]);
 
             $groupedDataTesting[$kode_kecamatan][$tahun] = number_format($testing, 3, ',', '.');
@@ -205,7 +205,7 @@
                                         </td>
                                         <td class="text-center">
                                             <?php $mape = $satu_n * $sum_abs * 100;
-                                            echo number_format($mape, 2, ',', '.'); ?>
+                                            echo number_format($mape, 3); ?>
                                         </td>
                                     </tr>
                                 </tbody>

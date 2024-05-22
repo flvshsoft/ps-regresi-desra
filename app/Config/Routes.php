@@ -121,7 +121,7 @@ $routes->post('/user_testing/regresi', 'admin\user_testing\UserTestingController
 $routes->post('/admin/user_testing/regresi', 'admin\user_testing\UserTestingController::tambah_regresi_save');
 $routes->get('/admin/user_testing/generate', 'admin\user_testing\UserTestingController::generate_regresi');
 $routes->get('/admin/user_testing/ses', 'admin\user_testing\UserTestingController::ses');
-$routes->get('/admin/user_testing/generate-ses', 'admin\user_testing\UserTestingController::generate_ses');
+$routes->POST('/admin/user_testing/generate-ses', 'admin\user_testing\UserTestingController::generate_ses');
 //user testing end
 
 

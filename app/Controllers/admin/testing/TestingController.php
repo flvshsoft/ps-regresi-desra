@@ -87,6 +87,8 @@ class TestingController extends BaseController
         $data['model'] = $this->modelPenduduk
             ->join('kecamatan', 'kecamatan.kode_kecamatan=data_penduduk.kode_kecamatan')
             // ->where('bagi_data', 'Testing')
+            ->orderBy('kecamatan.kode_kecamatan')
+            ->orderBy('data_penduduk.tahun')
             ->findAll();
         $data['alpha'] = 0.2;
         return view('admin/testing/ses', $data);

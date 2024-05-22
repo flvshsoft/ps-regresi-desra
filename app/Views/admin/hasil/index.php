@@ -50,10 +50,10 @@
                                             <?= $value['nama_kecamatan'] ?>
                                         </td>
                                         <td class="text-center">
-                                            <?= $value['mape'] ?>
+                                            <?= number_format($value['mape'],3) ?>
                                         </td>
                                         <td class="text-center">
-                                            <?= $value['mape_ses'] ?>
+                                            <?= number_format($value['mape_ses'],3) ?>
                                         </td>
                                     </tr>
                                 <?php endforeach;
