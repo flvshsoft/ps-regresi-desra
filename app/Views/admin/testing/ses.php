@@ -53,14 +53,19 @@
             $tahun = (int) $value['tahun'];
 
             $groupedData[$kode_kecamatan][$tahun] = number_format($kepadatan_penduduk, 3);
-            if ($key == 0) {
+            if (isset($groupedDataTesting[$kode_kecamatan])) {
+                if (count($groupedDataTesting[$kode_kecamatan]) > 0) {
+                    $nilai_ses_end = end($nilai_ses);
+                    $testing = $nilai_ses_end;
+                    $testing2 = ($alpha * $kepadatan_penduduk) + ((1 - $alpha) * $nilai_ses_end);
+                    $nilai_ses[] = $testing2;
+                } else {
+                    $testing = $kepadatan_penduduk;
+                    $nilai_ses = [$testing];
+                }
+            } else {
                 $testing = $kepadatan_penduduk;
                 $nilai_ses = [$testing];
-            } else {
-                $nilai_ses_end = end($nilai_ses);
-                $testing = $nilai_ses_end;
-                $testing2 = ($alpha * $kepadatan_penduduk) + ((1 - $alpha) * $nilai_ses_end);
-                $nilai_ses[] = $testing2;
             }
 
             $groupedDataTesting[$kode_kecamatan][$tahun] = number_format($testing, 3, ',', '.');
