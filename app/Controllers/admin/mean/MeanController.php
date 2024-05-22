@@ -40,6 +40,7 @@ class MeanController extends BaseController
             }
             $tahun = (int)$value['tahun'];
             $kepadatan = $jumlah_penduduk[$kode_kecamatan] / $luas_wilayah[$kode_kecamatan];
+            // print_r([$kode_kecamatan, $tahun, $jumlah_penduduk[$kode_kecamatan], (float)$luas_wilayah[$kode_kecamatan]]);
             // if ($kode_kecamatan == "14.06.13") {
             $kepadatan_format = number_format($kepadatan, 3);
             $kepadatan_format = str_replace(',', '', $kepadatan_format);

@@ -13,8 +13,8 @@ class TrainingController extends BaseController
             ->where('bagi_data', 'Training')
             ->findAll();
 
-        print_r($data['model']);
-        exit;
+        // print_r($data['model']);
+        // exit;
         return view('admin/training/index', $data);
     }
     public function generate()

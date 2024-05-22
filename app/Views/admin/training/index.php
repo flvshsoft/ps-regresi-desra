@@ -51,7 +51,7 @@
                 $groupedData[$kode_kecamatan] = array_fill(2010, 9, 0);
             }
             $tahun = (int) $value['tahun'];
-            $groupedData[$kode_kecamatan][$tahun] = number_format($kepadatan_penduduk, 3);
+            $groupedData[$kode_kecamatan][$tahun] = (float)number_format($kepadatan_penduduk, 3);
             // tahun
             $groupedDataTahun[$kode_kecamatan][$tahun] = $tahun;
             // 1
