@@ -36,22 +36,54 @@
                             <tbody>
                                 <?php $no = 1;
                                 foreach ($model as  $value) {
-                                    $createdAt = $value['created_at']; // Tanggal dari kolom 'created_at'
+                                    $createdAt = $value['created_at'];
                                     $tanggalBaru = date('d F Y', strtotime($createdAt));
                                 ?>
                                     <tr>
                                         <td>
                                             <?= $no++; ?>
                                         </td>
-                                        <td><?= $value['input_tahun'] ?> </td>
+                                        <td>
+                                            <?= $value['input_tahun'] ?>
+                                        </td>
                                         <td>
                                             <?= $value['nama_kecamatan'] ?>
                                         </td>
-                                        <td><?= $value['regresi'] ?> </td>
-                                        <td><?= $value['slope'] ?></td>
-                                        <td><?= $value['intercept'] ?></td>
-                                        <td><?= number_format($value['hasil'], 3, ',', ',') ?></td>
-                                        <td><?= $tanggalBaru ?></td>
+                                        <td>
+                                            <?php if ($value['regresi'] == NULL) {
+                                                echo NULL;
+                                            } else {
+                                                echo  $value['regresi'];
+                                            }
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <?php if ($value['slope'] == NULL) {
+                                                echo NULL;
+                                            } else {
+                                                echo  $value['slope'];
+                                            }
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <?php if ($value['intercept'] == NULL) {
+                                                echo NULL;
+                                            } else {
+                                                echo $value['intercept'];
+                                            }
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <?php if ($value['hasil'] == NULL) {
+                                                echo number_format($value['hasil_ses'], 3, ',', ',');
+                                            } else if ($value['hasil_ses'] == NULL) {
+                                                echo number_format($value['hasil'], 3, ',', ',');
+                                            }
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <?= $tanggalBaru ?>
+                                        </td>
                                     </tr>
                                 <?php  };
                                 $no++ ?>

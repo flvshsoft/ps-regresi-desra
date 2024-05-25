@@ -14,7 +14,7 @@ class riwayatModel extends Model
     protected $returnType = 'array';
     protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['kode_kecamatan',  'input_tahun', 'hasil', 'slope', 'intercept', 'regresi', 'id_user'];
+    protected $allowedFields = ['kode_kecamatan',  'input_tahun', 'hasil', 'slope', 'intercept', 'regresi', 'id_user', 'hasil_ses'];
 
     protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';

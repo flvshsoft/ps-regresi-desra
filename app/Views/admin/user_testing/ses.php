@@ -80,11 +80,7 @@
                                     <th> No </th>
                                     <th> Input Tahun </th>
                                     <th> Nama Kecamatan </th>
-                                    <th> Regresi </th>
-                                    <th> Slope </th>
-                                    <th> Intercept </th>
                                     <th> Hasil</th>
-                                    <!-- <th> </th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -98,11 +94,7 @@
                                         <td>
                                             <?= $value['nama_kecamatan'] ?>
                                         </td>
-                                        <td><?= $value['regresi'] ?> </td>
-                                        <td><?= $value['slope'] ?></td>
-                                        <td><?= $value['intercept'] ?></td>
-                                        <td><?= number_format($value['hasil'], 3, ',', ',') ?></td>
-                                        <!-- <td></td> -->
+                                        <td><?= number_format($value['hasil_ses'], 3, ',', ',') ?></td>
                                     </tr>
                                 <?php  };
                                 $no++ ?>
