@@ -79,17 +79,19 @@
                             </div>
                         </div>
                         <div class="col-lg-6 mb-2">
-                            <div class="card text-white shadow" style="background: #fd79b3;">
-                                <div class="card-body d-flex p-0">
-                                    <div class="col-6 p-3 text-white-90">
-                                        <h6>Product</h6>
-                                        <h2 class="mb-0">50</h2>
-                                    </div>
-                                    <div class="col-6 p-0">
-                                        <img src="https://i.pinimg.com/564x/a0/ec/b0/a0ecb07bb90c12dcf046e476db0fe7c4.jpg" alt="Foto" width="100%" class="mt-2">
+                            <a href="https://rohulkab.bps.go.id/" target="_blank" class="text-decoration-none">
+                                <div class="card text-white shadow" style="background: #fd79b3;">
+                                    <div class="card-body d-flex p-0">
+                                        <div class="col-6 p-3 text-white-90">
+                                            <h6>Rokan Hulu</h6>
+                                            <h2 class="mb-0">BPS</h2>
+                                        </div>
+                                        <div class="col-6 p-0">
+                                            <img src="https://rohulkab.bps.go.id/images/bps.ico" alt="Foto" width="80%" class="mt-2">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
 
@@ -133,7 +135,7 @@
                                 </div>
                             </a>
                         </div>
-                        
+
                         <div class="col-12 mb-3 px-2">
                             <a href="<?= base_url('/admin/mean') ?>" class="text-decoration-none">
                                 <div class="card text-white shadow" style="background: #AD88C6;">
@@ -149,7 +151,7 @@
                                 </div>
                             </a>
                         </div>
-                        
+
                         <div class="col-12 mb-3 px-2">
                             <a href="<?= base_url('/admin/bagi_data') ?>" class="text-decoration-none">
                                 <div class="card text-white shadow" style="background: #7469B6;">
@@ -166,7 +168,7 @@
                             </a>
                         </div>
 
-                        
+
                         <div class="col-12 mb-3 px-2">
                             <a href="<?= base_url('/admin/training') ?>" class="text-decoration-none">
                                 <div class="card text-black shadow" style="background: #DCF2F1;">
@@ -182,7 +184,7 @@
                                 </div>
                             </a>
                         </div>
-                        
+
                         <div class="col-12 mb-3 px-2">
                             <a href="<?= base_url('/admin/testing') ?>" class="text-decoration-none">
                                 <div class="card text-white shadow" style="background: #7FC7D9;">
@@ -199,7 +201,7 @@
                             </a>
                         </div>
 
-                        
+
                         <div class="col-12 mb-3 px-2">
                             <a href="<?= base_url('/admin/testing-ses') ?>" class="text-decoration-none">
                                 <div class="card text-white shadow" style="background: #365486;">
@@ -216,7 +218,7 @@
                             </a>
                         </div>
 
-                        
+
                         <div class="col-12 mb-3 px-2">
                             <a href="<?= base_url('/admin/user_testing/regresi') ?>" class="text-decoration-none">
                                 <div class="card text-white shadow" style="background: #0F1035;">
@@ -232,7 +234,7 @@
                                 </div>
                             </a>
                         </div>
-                        
+
                         <div class="col-12 mb-3 px-2">
                             <a href="<?= base_url('/admin/user_testing/ses') ?>" class="text-decoration-none">
                                 <div class="card text-white shadow" style="background: #add2e9;">
@@ -249,7 +251,7 @@
                             </a>
                         </div>
 
-                        
+
                         <div class="col-12 mb-3 px-2">
                             <a href="<?= base_url('/admin/hasil') ?>" class="text-decoration-none">
                                 <div class="card text-white shadow" style="background: #C683D7;">

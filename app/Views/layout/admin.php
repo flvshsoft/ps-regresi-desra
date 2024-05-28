@@ -23,7 +23,7 @@ if (!isset(Session('userData')['nama_user'])) {
     <link rel="stylesheet" href="<?= base_url() ?>/public/assets/vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="<?= base_url() ?>/public/assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="<?= base_url() ?>/public/assets/images/favicon1.ico" />
+    <link rel="shortcut icon" href="https://rohulkab.bps.go.id/images/bps.ico" />
     <link href="<?= base_url() ?>/public/assets/vendors/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <!-- font -->
     <link href="https://db.onlinewebfonts.com/c/c3264a2601f855aef183e1892c5504db?family=Sacramento" rel="stylesheet">
@@ -135,7 +135,7 @@ if (!isset(Session('userData')['nama_user'])) {
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center" style="background-color:#436850 ;">
             <a class="navbar-brand brand-logo text-white d-flex p-3 mt-4" href="#">
                 <div style="background: #FFFFFFc7;border-radius:50%;padding:3%;width:30%;margin-top:0px;">
-                    <img src="<?= base_url('') ?>/public/assets/images/logo.png" alt="logo" width="50px" style="background: #ffffffa8;border-radius:30px;padding:3%;" />
+                    <img src="https://rohulkab.bps.go.id/images/bps.ico" alt="logo" width="50px" style="background: #ffffffa8;border-radius:30px;padding:3%;" />
                 </div>
                 <div class="d-block mt-2 ms-2">
                     <h3 class="text-start" style="font-family: 'Sacramento';">Regresi Linear</h3>
@@ -152,53 +152,6 @@ if (!isset(Session('userData')['nama_user'])) {
                 <span class="mdi mdi-menu"></span>
             </button>
             <ul class="navbar-nav navbar-nav-right">
-                <li class="nav-item dropdown">
-                    <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
-                        <i class="mdi mdi-bell-outline"></i>
-                        <span class="count-symbol bg-danger"></span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-                        <h6 class="p-3 mb-0">Notifications</h6>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item preview-item">
-                            <div class="preview-thumbnail">
-                                <div class="preview-icon bg-success">
-                                    <i class="mdi mdi-calendar"></i>
-                                </div>
-                            </div>
-                            <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                                <h6 class="preview-subject font-weight-normal mb-1">Event today</h6>
-                                <p class="text-gray ellipsis mb-0"> Just a reminder that you have an event today </p>
-                            </div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item preview-item">
-                            <div class="preview-thumbnail">
-                                <div class="preview-icon bg-warning">
-                                    <i class="mdi mdi-settings"></i>
-                                </div>
-                            </div>
-                            <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                                <h6 class="preview-subject font-weight-normal mb-1">Settings</h6>
-                                <p class="text-gray ellipsis mb-0"> Update dashboard </p>
-                            </div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item preview-item">
-                            <div class="preview-thumbnail">
-                                <div class="preview-icon bg-info">
-                                    <i class="mdi mdi-link-variant"></i>
-                                </div>
-                            </div>
-                            <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                                <h6 class="preview-subject font-weight-normal mb-1">Launch Admin</h6>
-                                <p class="text-gray ellipsis mb-0"> New admin wow! </p>
-                            </div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <h6 class="p-3 mb-0 text-center">See all notifications</h6>
-                    </div>
-                </li>
                 <li class="nav-item nav-profile dropdown">
                     <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                         <div class="nav-profile-text">
